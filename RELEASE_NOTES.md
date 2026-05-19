@@ -1,5 +1,28 @@
 # KCP Core Evidence/Execution Alpha - 1.0.0a0
 
+## Public-alpha mirror patch
+
+Following a fresh-clone review of the public mirror, this patch restores release-safe
+artifacts that an external reviewer found missing or under-documented. No protocol features,
+HAIL semantics, v1 vector intent, or claim boundaries changed.
+
+- Restored signed-manifest vector fixtures (`manifest/run_manifest_signed.json` and
+  `manifest/trust_policy.json`) for `012_hard_signed_run_manifest`,
+  `N020_signed_manifest_tampered_payload`, `N021_signed_manifest_untrusted_key`, and
+  `N022_signed_manifest_wrong_hail_digest`. Without these, suite integrity reported 8
+  issues and v1 conformance reported 49/53, with N020/N021/N022 failing for missing-file
+  reasons rather than their intended tamper / untrusted-key / wrong-HAIL-digest semantics.
+- Restored `tests/fixtures/run_bundle/valid_signed_run_dir/manifest/run_manifest.json`
+  so the directory-format Run Bundle fixture is complete.
+- Documented the Rust verifier's required toolchain: the committed `Cargo.lock` is
+  lockfile v4 and several dependencies require `edition2024`. Validated with
+  `cargo 1.95.0`; the Ubuntu 24.04 distro-packaged `cargo 1.75` is too old. See
+  `verifiers/rust/README.md`, `docs/VALIDATION_MATRIX.md`, `README.md`,
+  `examples/public-alpha/DEMO_COMMANDS.md`, and `examples/public-alpha/EXPECTED_OUTPUTS.md`.
+
+Recorded-run raw device-log hash fixtures were re-verified on a fresh clone and already
+match the declared `sha256` references on disk; no fixture edits were required.
+
 ## Summary
 
 This is the first public alpha of the Klein Conformance Protocol evidence and verification stack.

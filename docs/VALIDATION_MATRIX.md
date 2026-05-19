@@ -16,7 +16,8 @@ ruff check src/klein/hail src/klein/profiles src/klein/tools src/klein/conforman
 Expected at this point:
 
 - Python: `3.12.10` in the validated environment.
-- Pytest: `439 passed, 3 skipped`.
+- Pytest: `439 passed, 3 skipped` when `cargo` is on `PATH`; without `cargo` available, four
+  Rust-bridge tests skip and the line reads `435 passed, 7 skipped`.
 - Ruff: `All checks passed!`.
 
 ## Timestamp Stub Validation
@@ -104,6 +105,14 @@ Expected at this point:
 
 - Rust fixture CLI: `106 fixtures passed, 0 failed`;
 - bundle verifier: `pass trusted_key_ids=klein-test-backend-001`.
+
+### Rust toolchain requirement
+
+The Rust verifier currently requires a recent stable Rust toolchain. It is validated with
+`cargo 1.95.0`; the Ubuntu 24.04 distro-packaged `cargo 1.75` is **too old** for the current
+lockfile (`Cargo.lock` lockfile v4) and `edition2024` dependencies. Use
+[`rustup`](https://rustup.rs/) or an equivalent current stable toolchain. See
+[`verifiers/rust/README.md`](../verifiers/rust/README.md) for details.
 
 ## Build And Twine
 

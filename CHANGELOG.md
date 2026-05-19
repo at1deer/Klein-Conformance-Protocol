@@ -4,6 +4,31 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+### Public-alpha mirror patch (post `1.0.0a0`)
+
+- Restored signed-manifest vector fixtures that were missing from the public mirror:
+  `manifest/run_manifest_signed.json` and `manifest/trust_policy.json` for the v1 vectors
+  `012_hard_signed_run_manifest`, `N020_signed_manifest_tampered_payload`,
+  `N021_signed_manifest_untrusted_key`, and `N022_signed_manifest_wrong_hail_digest`.
+  Without these files, `klein-conform --check-suite-integrity` reported 8 issues and
+  `klein-conform --suite tests/vectors/v1 --backend full_simulator --json` reported 49/53;
+  N020/N021/N022 also failed for missing-file reasons instead of their intended tamper /
+  untrusted-key / wrong-HAIL-digest semantics. Suite integrity now passes and v1 returns
+  53/53 with N020/N021/N022 failing for their declared expected error codes.
+- Restored `tests/fixtures/run_bundle/valid_signed_run_dir/manifest/run_manifest.json` so
+  the bundled directory-format Run Bundle fixture is complete.
+- Documented the Rust verifier's required toolchain: the committed `Cargo.lock` is
+  lockfile v4 and several dependencies require `edition2024`. Validated with `cargo 1.95.0`;
+  the Ubuntu 24.04 distro-packaged `cargo 1.75` is too old. Updated `verifiers/rust/README.md`,
+  `docs/VALIDATION_MATRIX.md`, `README.md`, `examples/public-alpha/DEMO_COMMANDS.md`, and
+  `examples/public-alpha/EXPECTED_OUTPUTS.md` to call this out.
+
+No HAIL goldens, vector intent, or claim boundaries changed in this patch. Recorded-run raw
+device-log hash fixtures were re-checked and already match their declared `sha256`
+references on a fresh clone; no fixture edits were required for that path.
+
+### Other
+
 - Added canonical hash utilities shared by HAIL, simulator evidence hashes, artifact hashing, and report binding.
 - Added `klein-hash-artifact` for `.klein`, `.kleinc`, HAIL JSONL, and raw-byte hash checks.
 - Bound v1 conformance report details to input artifact hashes, raw input hashes, profile/backend identifiers, and full-simulator DMF substrate fingerprints.

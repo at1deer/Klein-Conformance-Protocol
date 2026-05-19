@@ -1,0 +1,40 @@
+{
+  "manifest_version": "klein.run_manifest.v1",
+  "payload": {
+    "artifact_canonicalization": "klein.canon.json.v1",
+    "artifact_hash": "sha256:45f839857a27a2447299adcfe8e1996c546119f2cba8f92f2f9603ad7853d967",
+    "artifact_type": "container",
+    "backend_id": "full_simulator",
+    "backend_version": "1.0.0a0",
+    "conformance_summary_hash": null,
+    "created_at": null,
+    "created_by": "klein-protocol",
+    "error_code": null,
+    "event_count": 7,
+    "event_count_preclose": 6,
+    "hail_canonicalization": "klein.canon.jsonl.v1",
+    "hail_chain_algorithm": "klein.hail.chain.v1",
+    "hail_chain_digest": "sha256:8cfa7fabdc0e0c1898a839d70e7ebc17f159f6a6474ee2a8a0d620ae9fef61aa",
+    "hail_digest": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+    "mode": "HARD",
+    "preclose_hail_chain_digest": "sha256:8cfa7fabdc0e0c1898a839d70e7ebc17f159f6a6474ee2a8a0d620ae9fef61aa",
+    "preclose_hail_digest": "sha256:c33344b735971f6b85a97e11ace0e7c3c94a50a93200881a091faf5536739ef3",
+    "profile_id": "dmf",
+    "profile_version": "v1",
+    "run_id": "R012",
+    "run_status": "SUCCESS",
+    "substrate_capabilities_hash": "sha256:c29a5d7866fffb2a5c3637c7458d32b7dcb5f2f7a1b41cdc6750855fe1e62028",
+    "substrate_fingerprint": "sha256:8258d5b8a612dc21efc011543aee1513864840467caa7a8e3b2255be11b2087e",
+    "substrate_topology_hash": "sha256:bc1dec5c5b8c6ba0c5c97501fb1940ac6a615897f0db2b28294ff980020ef7e3"
+  },
+  "signatures": [
+    {
+      "key_id": "klein-test-backend-001",
+      "public_key": "A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=",
+      "public_key_encoding": "base64.raw.ed25519",
+      "signature": "XVdPDPjp19fNwu4Yu4YG2XjnweAD8SmHT1TYyw7k67dnBPaSgsKMfFPCnLP9MQi63Ze5EdzmQzcJGh1nyVa0AQ==",
+      "signature_algorithm": "Ed25519",
+      "signature_encoding": "base64.raw.ed25519"
+    }
+  ]
+}

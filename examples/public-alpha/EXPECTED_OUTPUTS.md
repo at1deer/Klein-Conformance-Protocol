@@ -166,6 +166,13 @@ OpenDrop/EWOD dry-run skeleton complete: .tmp\opendrop_dry_run
 hardware_io_enabled=false; no physical execution
 ```
 
+## Rust Toolchain Requirement
+
+The Rust verifier currently requires a recent stable Rust toolchain (validated with
+`cargo 1.95.0`). The Ubuntu 24.04 distro-packaged `cargo 1.75` is too old for the committed
+`Cargo.lock` (lockfile v4) and `edition2024` dependencies. Use [`rustup`](https://rustup.rs/)
+or an equivalent current toolchain. See [`../../verifiers/rust/README.md`](../../verifiers/rust/README.md).
+
 ## Rust Fixtures
 
 Command:

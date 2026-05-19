@@ -1,0 +1,32 @@
+{
+  "description": "Test policy for Klein signed-conformance fixtures.",
+  "policy_id": "klein-test-policy",
+  "policy_version": "klein.trust_policy.v1",
+  "revoked_keys": [],
+  "trusted_keys": [
+    {
+      "key_id": "klein-test-backend-001",
+      "not_after": null,
+      "not_before": null,
+      "notes": "Public test key. Not production.",
+      "public_key": "A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=",
+      "public_key_encoding": "base64.raw.ed25519",
+      "signature_algorithm": "Ed25519",
+      "status": "trusted",
+      "trust_scope": {
+        "backend_ids": [
+          "not_full_simulator"
+        ],
+        "manifest_versions": [
+          "klein.run_manifest.v1"
+        ],
+        "profile_ids": [
+          "dmf"
+        ],
+        "profile_versions": [
+          "v1"
+        ]
+      }
+    }
+  ]
+}

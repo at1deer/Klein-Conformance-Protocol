@@ -24,7 +24,10 @@ share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-MANIFEST
+# Anchor the setuptools MANIFEST artifact so case-insensitive filesystems do not also
+# match the per-vector and per-fixture `manifest/` directories (signed run manifest and
+# trust policy fixtures live there).
+/MANIFEST
 
 # PyInstaller
 *.manifest

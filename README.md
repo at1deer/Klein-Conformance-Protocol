@@ -191,3 +191,8 @@ cargo run --manifest-path verifiers/rust/Cargo.toml -- verify-fixtures tests/fix
 ```
 
 Legacy experimental vectors remain report-only and are not authoritative KCP Core v1 conformance.
+
+The Rust verifier currently requires a recent stable Rust toolchain (validated with
+`cargo 1.95.0`). The Ubuntu 24.04 distro-packaged `cargo 1.75` is too old for the committed
+`Cargo.lock` (lockfile v4) and `edition2024` dependencies; use [`rustup`](https://rustup.rs/)
+or an equivalent current toolchain. See `verifiers/rust/README.md` for details.

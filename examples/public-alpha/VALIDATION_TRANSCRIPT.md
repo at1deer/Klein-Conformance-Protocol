@@ -2,6 +2,12 @@
 
 Current as of this alpha release-candidate prep pass. Counts may change after future protocol work.
 
+This transcript reflects the post-fresh-clone patch that restored missing signed-manifest
+fixtures (`012_hard_signed_run_manifest`, `N020_signed_manifest_tampered_payload`,
+`N021_signed_manifest_untrusted_key`, `N022_signed_manifest_wrong_hail_digest`) and the
+directory-format Run Bundle manifest fixture, and added Rust toolchain requirement
+documentation. See `RELEASE_NOTES.md` and `CHANGELOG.md` for details.
+
 ## Environment
 
 ```text

@@ -4,6 +4,21 @@
 
 It validates the cross-language fixture index and verifies a portable `.kcprun` bundle without executing the simulator or using Python conformance runner state.
 
+## Required Rust toolchain
+
+The Rust verifier currently requires a recent stable Rust toolchain. The committed `Cargo.lock`
+is lockfile v4 and several transitive dependencies require Rust 2024-edition support.
+
+- Validated with `cargo 1.95.0` (`rustc 1.95.0`).
+- The Ubuntu 24.04 distro-packaged `cargo 1.75` is **too old** for this lockfile / dependency
+  set and will fail with errors like `unsupported lock file version 4` or
+  `package … requires edition2024`.
+- Install or update a current stable toolchain via [`rustup`](https://rustup.rs/) (or your
+  preferred equivalent) before running `cargo test` / `cargo run` against this crate.
+
+If you cannot use `rustup`, a current toolchain from the official Rust release channel is
+required; do not assume the distro-packaged Cargo is recent enough.
+
 Implemented checks:
 
 - RFC 8785/JCS canonical JSON for Klein fixture values
