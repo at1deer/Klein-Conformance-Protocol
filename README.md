@@ -1,7 +1,7 @@
-# Klein Conformance Protocol / KCP
+# Klein Conformance Protocol (KCP)
 
 KCP is a protocol stack for producing, packaging, signing, and independently verifying evidence of
-physical-substrate execution attempts under uncertainty. It is aimed at the TCP/IP-for-matter
+physical-substrate execution attempts under uncertainty. It is aimed at the "TCP/IP-for-matter"
 problem: making heterogeneous programmable-matter substrates describable, testable, and comparable
 without pretending physical execution is deterministic.
 
@@ -55,7 +55,7 @@ Current alpha does not claim:
 - OpenDrop serial hardware transport;
 - production certification.
 
-These are not abandoned goals. They are tracked as `TARGET_V1` or `LONG_HORIZON` work in
+These are not abandoned goals, tracked as `TARGET_V1` or `LONG_HORIZON` work in
 `docs/CLAIMS_LEDGER.md`, `docs/CURRENT_ALPHA.md`, and `docs/ROADMAP.md`.
 
 For the current public-alpha synthesis, read `docs/WHITEPAPER.md`.
@@ -95,8 +95,7 @@ KCP separates planned execution, observed execution evidence, signed claims, and
     -> Independent Verifier
 ```
 
-The purpose is not to hide substrate uncertainty. The purpose is to make execution attempts,
-constraints, evidence, and failures explicit enough that independent tools can evaluate the claim.
+The purpose is to make execution attempts, constraints, evidence, and failures explicit enough that independent tools can evaluate the claim.
 
 ## Trust Stack
 
