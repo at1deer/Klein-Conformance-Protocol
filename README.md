@@ -1,7 +1,6 @@
 # Klein Conformance Protocol (KCP)
 
-KCP is a protocol stack for producing, packaging, signing, and independently verifying evidence of
-physical-substrate execution attempts under uncertainty. It is aimed at making heterogeneous programmable-matter substrates describable, testable, and comparable without pretending physical execution is deterministic.
+KCP is a protocol stack for producing, packaging, signing, and independently verifying evidence of physical-substrate execution attempts under uncertainty. It is aimed at making heterogeneous programmable-matter substrates describable, testable, and comparable without pretending physical execution is deterministic.
 
 ## Current Alpha Status
 
@@ -19,7 +18,7 @@ This repository is a public alpha for the KCP core evidence and execution stack.
 - **Attestation Profile Stub v1**: schema, none/mock statement fixtures, subject/backend binding
   checks, and status vocabulary without hardware attestation proof.
 
-The current alpha verifies evidence artifacts and declared bindings. It does not prove physical
+The current alpha verifies evidence artifacts and declared bindings. It does **not** prove physical
 execution.
 
 ## What KCP Currently Does
@@ -108,7 +107,7 @@ Backend Key
     -> Verified Run Claim
 ```
 
-This is not global PKI and not hardware attestation. It is the current machinery for making local
+This is **not** global PKI and not hardware attestation. It is the current machinery for making local
 test evidence claims explicit and independently checkable.
 
 `tests/fixtures/crypto/backend_test_ed25519_private.pem` is an intentional public deterministic test
@@ -147,8 +146,7 @@ Read `docs/ADAPTERS.md` and `docs/VERIFY_A_BUNDLE.md` for the current boundaries
 
 ## Roadmap
 
-Near-term work is public-alpha documentation, whitepaper rewrite, website/demo prep, and release
-packaging. Protocol work after that is expected to move from the timestamp and attestation profile
+Near-term work is expected to move from the timestamp and attestation profile
 stubs toward external timestamp authority validation, real attestation verification, real backend
 planning, hardware source semantics, and eventually hardware-backed evidence under an explicit threat
 model.
@@ -187,7 +185,7 @@ cargo test --manifest-path verifiers/rust/Cargo.toml
 cargo run --manifest-path verifiers/rust/Cargo.toml -- verify-fixtures tests/fixtures/cross_language/fixtures.json
 ```
 
-Legacy experimental vectors remain report-only and are not authoritative KCP Core v1 conformance.
+Legacy experimental vectors remain report-only relics and are not authoritative KCP Core v1 conformance.
 
 The Rust verifier currently requires a recent stable Rust toolchain (validated with
 `cargo 1.95.0`). The Ubuntu 24.04 distro-packaged `cargo 1.75` is too old for the committed
