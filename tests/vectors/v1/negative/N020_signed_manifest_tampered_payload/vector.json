@@ -1,0 +1,20 @@
+{
+  "id": "N020",
+  "name": "N020_signed_manifest_tampered_payload",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "RUN_MANIFEST_SIGNATURE_INVALID",
+  "expected_validation_stage": "signed_conformance",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "run_manifest_path": "manifest/run_manifest_signed.json",
+  "trust_policy_path": "manifest/trust_policy.json",
+  "signed_conformance": true,
+  "purpose": "signed manifest payload tampering is rejected",
+  "run_id": "R012",
+  "profile_version": "v1"
+}

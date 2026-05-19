@@ -1,0 +1,4 @@
+{"code": "START", "kind": "DEVICE_EVENT", "level": "INFO", "message": "segment_A started", "run_id": "R19", "t": 0, "timebase": "DEVICE_TICKS"}
+{"code": "DECISION_TIMEOUT", "kind": "DEVICE_EVENT", "level": "WARN", "message": "decide_1 timed out; applying fallback", "run_id": "R19", "t": 6, "timebase": "DEVICE_TICKS"}
+{"chosen": "segment_C", "confidence": 1.0, "decision_id": "decide_1", "kind": "BRANCH_DECISION", "predicate": {"details": {"measurement_id": "M0", "threshold": 0.25, "value": "MISSING"}, "kind": "MEASUREMENT_LT"}, "run_id": "R19", "t": 6, "timebase": "DEVICE_TICKS"}
+{"code": "COMPLETE", "kind": "DEVICE_EVENT", "level": "INFO", "message": "segment_C completed", "run_id": "R19", "t": 7, "timebase": "DEVICE_TICKS"}

@@ -1,0 +1,36 @@
+{
+  "calibration": {
+    "required": false
+  },
+  "created_utc": "2026-01-03T00:00:00Z",
+  "kap_version": "0.1",
+  "observables": {
+    "declared": [
+      "DEVICE_EVENT_LOG"
+    ],
+    "strictness": "HARD"
+  },
+  "payloads": [
+    {
+      "digest": "sha256:3c3815546107f8a3a1b7eb2acaa6c369fa9d616a883a3d6f3913e6fa743160f1",
+      "kind": "CHANNEL_LIST",
+      "path": "payload/channel_list.csv"
+    }
+  ],
+  "runtime": {
+    "strict_mode": true,
+    "tick_ms": 10,
+    "ticks_per_meter": 1000,
+    "voltage_range_v": [
+      0,
+      150
+    ]
+  },
+  "source": {
+    "backend_profile": "dmf.muxed_ewod.dropbot.v1.0",
+    "commit_profile": "release",
+    "decision_log_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "kln_version": "0.8",
+    "source_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "frame_sequence_version": "0.2",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "SPARSE",
+      "pixels": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tick": 0
+    },
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "DELTA_TILES",
+      "tick": 1,
+      "tiles": [
+        {
+          "add": [
+            [
+              5,
+              5
+            ]
+          ],
+          "c0": 4,
+          "r0": 4,
+          "remove": []
+        },
+        {
+          "add": [
+            [
+              1,
+              1
+            ]
+          ],
+          "c0": 0,
+          "r0": 0,
+          "remove": []
+        }
+      ]
+    }
+  ],
+  "notes": "Positive: tiles may be unsorted in input; implementation canonicalizes (sort by r0,c0) deterministically.",
+  "tile_size": 4
+}

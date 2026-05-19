@@ -1,0 +1,7 @@
+{
+  "expected_result": "PASS",
+  "comparison_mode": "ENVELOPE",
+  "tolerances": {
+    "t": 1
+  }
+}

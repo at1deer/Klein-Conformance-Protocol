@@ -1,0 +1,157 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Conformance Report v1",
+  "type": "object",
+  "required": ["summary", "results"],
+  "additionalProperties": true,
+  "properties": {
+    "summary": {
+      "type": "object",
+      "required": [
+        "backend",
+        "total",
+        "passed",
+        "failed",
+        "skipped",
+        "errors",
+        "success_rate",
+        "legacy_namespace",
+        "authoritative_v1"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "backend": { "type": "string" },
+        "total": { "type": "integer", "minimum": 0 },
+        "passed": { "type": "integer", "minimum": 0 },
+        "failed": { "type": "integer", "minimum": 0 },
+        "skipped": { "type": "integer", "minimum": 0 },
+        "errors": { "type": "integer", "minimum": 0 },
+        "success_rate": { "type": "number", "minimum": 0, "maximum": 100 },
+        "legacy_namespace": { "type": "boolean" },
+        "authoritative_v1": { "type": "boolean" }
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "vector_id",
+          "vector_name",
+          "outcome",
+          "message",
+          "expected_result",
+          "actual_result",
+          "expected_error_code",
+          "actual_error_code",
+          "validation_stage",
+          "reason",
+          "duration_ms",
+          "classification",
+          "details"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "vector_id": { "type": "string" },
+          "vector_name": { "type": "string" },
+          "outcome": { "type": "string", "enum": ["PASS", "FAIL", "SKIP", "ERROR"] },
+          "message": { "type": "string" },
+          "expected_result": { "type": ["string", "null"] },
+          "actual_result": { "type": ["string", "null"] },
+          "expected_error_code": { "type": ["string", "null"] },
+          "actual_error_code": { "type": ["string", "null"] },
+          "validation_stage": { "type": ["string", "null"] },
+          "reason": { "type": ["string", "null"] },
+          "duration_ms": { "type": "number", "minimum": 0 },
+          "expected_error": { "type": ["string", "null"] },
+          "actual_error": { "type": ["string", "null"] },
+          "classification": { "type": ["string", "null"] },
+          "details": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "comparison_mode": { "type": ["string", "null"] },
+              "normalized_run_metadata": { "type": ["boolean", "null"] },
+              "actual_event_count": { "type": ["integer", "null"], "minimum": 0 },
+              "expected_event_count": { "type": ["integer", "null"], "minimum": 0 },
+              "digest_actual": { "type": ["string", "null"] },
+              "digest_expected": { "type": ["string", "null"] },
+              "input_type": { "type": ["string", "null"] },
+              "input_path": { "type": ["string", "null"] },
+              "input_raw_sha256": { "type": ["string", "null"] },
+              "input_artifact_hash": { "type": ["string", "null"] },
+              "input_artifact_hash_mode": { "type": ["string", "null"] },
+              "input_artifact_canonicalization": { "type": ["string", "null"] },
+              "input_artifact_hash_error": { "type": ["string", "null"] },
+              "input_artifact_hash_stage": { "type": ["string", "null"] },
+              "profile_id": { "type": ["string", "null"] },
+              "profile_version": { "type": ["string", "null"] },
+              "backend_id": { "type": ["string", "null"] },
+              "backend_version": { "type": ["string", "null"] },
+              "substrate_capabilities_hash": { "type": ["string", "null"] },
+              "substrate_capabilities_canonicalization": { "type": ["string", "null"] },
+              "substrate_topology_hash": { "type": ["string", "null"] },
+              "substrate_topology_canonicalization": { "type": ["string", "null"] },
+              "substrate_fingerprint": { "type": ["string", "null"] },
+              "substrate_fingerprint_canonicalization": { "type": ["string", "null"] },
+              "run_start_present": { "type": ["boolean", "null"] },
+              "run_end_present": { "type": ["boolean", "null"] },
+              "lifecycle_bound": { "type": ["boolean", "null"] },
+              "run_start_artifact_hash": { "type": ["string", "null"] },
+              "run_start_artifact_canonicalization": { "type": ["string", "null"] },
+              "run_start_profile_id": { "type": ["string", "null"] },
+              "run_start_profile_version": { "type": ["string", "null"] },
+              "run_start_backend_id": { "type": ["string", "null"] },
+              "run_start_substrate_fingerprint": { "type": ["string", "null"] },
+              "run_end_status": { "type": ["string", "null"] },
+              "run_end_error_code": { "type": ["string", "null"] },
+              "preclose_hail_digest": { "type": ["string", "null"] },
+              "preclose_hail_digest_computed": { "type": ["string", "null"] },
+              "preclose_hail_digest_matches": { "type": ["boolean", "null"] },
+              "hail_chain_algorithm": { "type": ["string", "null"] },
+              "preclose_hail_chain_digest": { "type": ["string", "null"] },
+              "run_end_preclose_hail_chain_digest": { "type": ["string", "null"] },
+              "hail_chain_matches_run_end": { "type": ["boolean", "null"] },
+              "event_count_chained": { "type": ["integer", "null"], "minimum": 0 },
+              "hail_chain_canonical_order_ok": { "type": ["boolean", "null"] },
+              "event_count_preclose": { "type": ["integer", "null"], "minimum": 0 },
+              "signed_conformance": { "type": ["boolean", "null"] },
+              "bundle_conformance": { "type": ["boolean", "null"] },
+              "run_bundle_present": { "type": ["boolean", "null"] },
+              "run_bundle_verified": { "type": ["boolean", "null"] },
+              "run_bundle_format": {
+                "type": ["string", "null"],
+                "enum": ["directory", "zip", null]
+              },
+              "run_bundle_error_code": { "type": ["string", "null"] },
+              "run_bundle_signed_conformance_status": {
+                "type": ["string", "null"],
+                "enum": ["pass", "fail", "not_evaluated", null]
+              },
+              "signed_conformance_overall_status": {
+                "type": ["string", "null"],
+                "enum": ["pass", "fail", null]
+              },
+              "run_manifest_present": { "type": ["boolean", "null"] },
+              "run_manifest_verified": { "type": ["boolean", "null"] },
+              "run_manifest_signature_status": {
+                "type": ["string", "null"],
+                "enum": ["valid", "invalid", "missing", null]
+              },
+              "run_manifest_trust_status": {
+                "type": ["string", "null"],
+                "enum": ["trusted", "untrusted", "not_evaluated", "indeterminate", null]
+              },
+              "run_manifest_key_id": { "type": ["string", "null"] },
+              "run_manifest_signature_algorithm": {
+                "type": ["string", "null"],
+                "enum": ["Ed25519", null]
+              },
+              "run_manifest_error_code": { "type": ["string", "null"] }
+            }
+          }
+        }
+      }
+    }
+  }
+}

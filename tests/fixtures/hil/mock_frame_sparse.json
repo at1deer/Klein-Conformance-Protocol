@@ -1,0 +1,9 @@
+{
+  "active_electrodes": [
+    1,
+    2,
+    3
+  ],
+  "duration_ms": 10,
+  "seq": 1
+}

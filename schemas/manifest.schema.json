@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Package Manifest",
+  "type": "object",
+  "required": ["project", "runtime"],
+  "properties": {
+    "project": {
+      "type": "object",
+      "required": ["name", "version", "authors"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" },
+        "authors": { "type": "array", "items": { "type": "string" } },
+        "license": { "type": "string", "default": "UNLICENSED" },
+        "description": { "type": "string" }
+      },
+      "additionalProperties": true,
+      "description": "Project metadata allows unknown fields for forward compatibility."
+    },
+    "runtime": {
+      "type": "object",
+      "required": ["mode", "target_substrate"],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["HARD", "ENVELOPE", "DIAGNOSTIC"],
+          "description": "Normative execution contract."
+        },
+        "target_substrate": { "type": "string" },
+        "biosafety_level": {
+          "type": "integer",
+          "enum": [1, 2, 3, 4],
+          "default": 1,
+          "description": "Safety declaration for liability handling."
+        },
+        "resources": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Required reagents for safety checks."
+        }
+      }
+    }
+  }
+}

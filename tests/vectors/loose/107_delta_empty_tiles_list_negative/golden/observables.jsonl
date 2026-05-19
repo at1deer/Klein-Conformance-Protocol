@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_EMPTY_DELTA", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "DELTA_TILES frame contains empty tiles list", "run_id": "R107", "t": 0, "timebase": "DEVICE_TICKS"}

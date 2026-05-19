@@ -1,0 +1,8 @@
+{
+  "chain_algorithm": "klein.hail.chain.v1",
+  "chain_domain_hex": "4b4c45494e2d4841494c2d434841494e2d763100",
+  "event_count_preclose": 6,
+  "preclose_hail_digest": "sha256:f39b63abde2d883af207777931e714b27edf4100f923446871b6316f763392fe",
+  "preclose_hail_chain_digest": "sha256:fd1359a9c1367425b56dd91b49695f26b10a98b427ae967bd34b555c022dec30",
+  "full_hail_digest": "sha256:6f6601bf97252faf9f39247ac57603040bb700a1b893a9c1322f824c38059568"
+}

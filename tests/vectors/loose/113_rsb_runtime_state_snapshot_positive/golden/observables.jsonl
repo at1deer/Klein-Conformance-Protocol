@@ -1,0 +1,2 @@
+{"fields": {"humidity_pct": 40.0, "temperature_c": 25.0}, "kind": "RUNTIME_STATE_SNAPSHOT", "rsb_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "run_id": "R113", "sampling": "stub", "t": 0, "timebase": "DEVICE_TICKS", "valid_from_t": 0, "valid_to_t": 100}
+{"code": "OK", "kind": "DEVICE_EVENT", "level": "INFO", "message": "rsb snapshot emitted", "run_id": "R113", "t": 0, "timebase": "DEVICE_TICKS"}

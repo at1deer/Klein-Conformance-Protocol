@@ -1,0 +1,198 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein HAIL Event Log v1",
+  "description": "Schema for one Hardware Audit & Integrity Log (HAIL) JSONL event.",
+  "type": "object",
+  "required": ["kind", "t", "timebase", "run_id"],
+  "properties": {
+    "t": { "type": "integer", "minimum": 0 },
+    "timebase": { "type": "string", "enum": ["DEVICE_TICKS", "WALL_MS"] },
+    "run_id": { "type": "string" },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "RUN_START",
+        "DEVICE_EVENT",
+        "MEASUREMENT",
+        "ECRP_ATTEMPT",
+        "REPLAN_DECISION",
+        "RUNTIME_STATE_SNAPSHOT",
+        "RUN_END"
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "required": [
+        "kind",
+        "t",
+        "timebase",
+        "run_id",
+        "artifact_hash",
+        "artifact_canonicalization",
+        "artifact_type",
+        "profile_id",
+        "profile_version",
+        "backend_id",
+        "backend_version",
+        "mode"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "RUN_START" },
+        "t": { "type": "integer", "minimum": 0 },
+        "timebase": { "type": "string", "enum": ["DEVICE_TICKS", "WALL_MS"] },
+        "run_id": { "type": "string" },
+        "artifact_hash": { "type": "string" },
+        "artifact_canonicalization": {
+          "type": "string",
+          "enum": ["klein.canon.json.v1", "klein.canon.jsonl.v1", "raw-bytes"]
+        },
+        "artifact_type": {
+          "type": "string",
+          "enum": ["project", "container", "hail_jsonl", "invalid_artifact", "unknown"]
+        },
+        "profile_id": { "type": "string" },
+        "profile_version": { "type": "string" },
+        "backend_id": { "type": "string" },
+        "backend_version": { "type": "string" },
+        "mode": { "type": "string", "enum": ["HARD", "ENVELOPE", "DIAGNOSTIC"] },
+        "substrate_capabilities_hash": { "type": ["string", "null"] },
+        "substrate_topology_hash": { "type": ["string", "null"] },
+        "substrate_fingerprint": { "type": ["string", "null"] },
+        "substrate_fingerprint_canonicalization": { "type": ["string", "null"] }
+      }
+    },
+    {
+      "type": "object",
+      "required": ["kind", "t", "timebase", "run_id", "code", "level", "message"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "DEVICE_EVENT" },
+        "t": { "type": "integer", "minimum": 0 },
+        "timebase": { "type": "string", "enum": ["DEVICE_TICKS", "WALL_MS"] },
+        "run_id": { "type": "string" },
+        "code": { "type": "string" },
+        "level": { "type": "string", "enum": ["DEBUG", "INFO", "WARN", "ERROR"] },
+        "message": { "type": "string" },
+        "detail": { "type": "object" }
+      }
+    },
+    {
+      "type": "object",
+      "required": ["kind", "t", "timebase", "run_id", "detector_id", "value"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "MEASUREMENT" },
+        "t": { "type": "integer", "minimum": 0 },
+        "timebase": { "type": "string", "enum": ["DEVICE_TICKS", "WALL_MS"] },
+        "run_id": { "type": "string" },
+        "detector_id": { "type": "string" },
+        "measurement_id": { "type": "string" },
+        "op_id": { "type": "string" },
+        "value": {
+          "type": "object",
+          "required": ["type", "data"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "type": "string", "enum": ["F64", "U32", "BOOL"] },
+            "data": {}
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": ["kind", "t", "timebase", "run_id", "attempt_index", "strategy", "outcome", "deltas"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "ECRP_ATTEMPT" },
+        "t": { "type": "integer", "minimum": 0 },
+        "timebase": { "type": "string", "enum": ["DEVICE_TICKS", "WALL_MS"] },
+        "run_id": { "type": "string" },
+        "attempt_index": { "type": "integer", "minimum": 1 },
+        "strategy": { "type": "string" },
+        "outcome": { "type": "string", "enum": ["SUCCESS", "FAIL", "PARTIAL", "NO_CHANGE"] },
+        "deltas": { "type": "object" },
+        "parameters": { "type": "object" }
+      }
+    },
+    {
+      "type": "object",
+      "required": ["kind", "t", "timebase", "run_id", "checkpoint_id", "reason", "solver_version", "seed", "inputs_ref"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "REPLAN_DECISION" },
+        "t": { "type": "integer", "minimum": 0 },
+        "timebase": { "type": "string", "enum": ["DEVICE_TICKS", "WALL_MS"] },
+        "run_id": { "type": "string" },
+        "checkpoint_id": { "type": "string" },
+        "reason": { "type": "string" },
+        "solver_version": { "type": "string" },
+        "solver_mode": { "type": "string", "enum": ["GEODESIC", "HAMILTONIAN"] },
+        "seed": { "type": "integer" },
+        "inputs_ref": {
+          "type": "object",
+          "required": ["simgb_hash", "rimgb_hash"],
+          "additionalProperties": false,
+          "properties": {
+            "simgb_hash": { "type": "string" },
+            "rimgb_hash": { "type": "string" },
+            "observables_snapshot": { "type": "object" }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": ["kind", "t", "timebase", "run_id", "rimgb_hash", "state_fields", "validity_window"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "RUNTIME_STATE_SNAPSHOT" },
+        "t": { "type": "integer", "minimum": 0 },
+        "timebase": { "type": "string", "enum": ["DEVICE_TICKS", "WALL_MS"] },
+        "run_id": { "type": "string" },
+        "rimgb_hash": { "type": "string" },
+        "state_fields": { "type": "object" },
+        "validity_window": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "start_t": { "type": "integer", "minimum": 0 },
+            "end_t": { "type": "integer", "minimum": 0 }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "kind",
+        "t",
+        "timebase",
+        "run_id",
+        "status",
+        "preclose_hail_digest",
+        "preclose_hail_canonicalization",
+        "preclose_hail_chain_digest",
+        "preclose_hail_chain_algorithm",
+        "event_count_preclose"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "RUN_END" },
+        "t": { "type": "integer", "minimum": 0 },
+        "timebase": { "type": "string", "enum": ["DEVICE_TICKS", "WALL_MS"] },
+        "run_id": { "type": "string" },
+        "status": { "type": "string", "enum": ["SUCCESS", "FAIL", "ERROR"] },
+        "error_code": { "type": ["string", "null"] },
+        "preclose_hail_digest": { "type": "string" },
+        "preclose_hail_canonicalization": { "const": "klein.canon.jsonl.v1" },
+        "preclose_hail_chain_digest": { "type": "string" },
+        "preclose_hail_chain_algorithm": { "const": "klein.hail.chain.v1" },
+        "event_count_preclose": { "type": "integer", "minimum": 0 }
+      }
+    }
+  ]
+}

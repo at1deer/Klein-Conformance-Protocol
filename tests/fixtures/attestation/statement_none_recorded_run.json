@@ -1,0 +1,20 @@
+{
+  "attestation_statement_version": "klein.attestation_statement.v1",
+  "statement_id": "none-attestation-recorded-run-001",
+  "statement_kind": "none",
+  "subject": {
+    "subject_type": "recorded_run",
+    "subject_id": "opendrop_dry_run_recorded_run",
+    "subject_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+  },
+  "backend": {
+    "backend_id": null,
+    "backend_version": null
+  },
+  "hardware_attestation_claimed": false,
+  "hardware_root": null,
+  "quote": null,
+  "measurements": [],
+  "signature": null,
+  "metadata": {}
+}

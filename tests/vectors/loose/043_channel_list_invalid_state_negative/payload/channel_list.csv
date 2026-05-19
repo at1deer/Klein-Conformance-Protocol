@@ -1,0 +1,2 @@
+tick,channel_id,state,voltage_v,frequency_hz,waveform
+0,1,2,120,1000,AC_SINE

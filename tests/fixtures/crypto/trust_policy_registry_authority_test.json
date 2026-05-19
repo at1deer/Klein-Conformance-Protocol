@@ -1,0 +1,43 @@
+{
+  "description": "Registry-backed test policy for Klein signed-conformance fixtures.",
+  "policy_id": "klein-test-registry-policy",
+  "policy_version": "klein.trust_policy.v1",
+  "revoked_keys": [],
+  "trusted_keys": [
+    {
+      "key_id": "klein-test-backend-001",
+      "signature_algorithm": "Ed25519",
+      "source": "registry",
+      "status": "trusted",
+      "trust_scope": {
+        "backend_ids": [
+          "full_simulator"
+        ],
+        "manifest_versions": [
+          "klein.run_manifest.v1"
+        ],
+        "profile_ids": [
+          "dmf"
+        ],
+        "profile_versions": [
+          "v1"
+        ]
+      }
+    }
+  ],
+  "trusted_registry_authorities": [
+    {
+      "authority_id": "klein-test-registry-root",
+      "not_after": null,
+      "not_before": null,
+      "notes": "Public test registry root. Not production.",
+      "public_key": "6kpsY+KcUgq+9VB7Ey7F+ZVHdq6+vnuSQh7qaRRG0iw=",
+      "public_key_encoding": "base64.raw.ed25519",
+      "registry_ids": [
+        "klein-test-registry"
+      ],
+      "signature_algorithm": "Ed25519",
+      "status": "trusted"
+    }
+  ]
+}

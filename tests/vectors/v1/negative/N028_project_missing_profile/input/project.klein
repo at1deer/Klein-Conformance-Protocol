@@ -1,0 +1,12 @@
+{
+  "kind": "KLEIN_PROJECT",
+  "schema_version": "v1",
+  "project_id": "negative-artifact",
+  "mode": "HARD",
+  "payload": {
+    "kind": "CHANNEL_LIST",
+    "encoding": "JSON",
+    "data": []
+  },
+  "metadata": {}
+}

@@ -1,0 +1,14 @@
+{
+  "id": "N003",
+  "name": "N003_legacy_runtime_snapshot_rejected",
+  "schema_version": "v1",
+  "profile": "core",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "HAIL_SCHEMA_INVALID",
+  "expected_validation_stage": "hail_schema",
+  "input_type": "hail_jsonl",
+  "input_path": "input/observables.jsonl",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "legacy rsb_hash snapshot fields are not accepted as strict HAIL v1"
+}

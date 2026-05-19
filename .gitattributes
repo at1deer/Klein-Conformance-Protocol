@@ -1,0 +1,16 @@
+* text=auto
+.gitignore text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.jsonl text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+*.tex text eol=lf
+*.klein text eol=lf
+*.kleinc text eol=lf
+*.klnc text eol=lf
+*.csv text eol=lf
+*.pdf binary
+*.png binary

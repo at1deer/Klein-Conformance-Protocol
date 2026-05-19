@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Observation Snapshot v1",
+  "type": "object",
+  "required": [
+    "observation_version",
+    "observation_id",
+    "run_id",
+    "timebase",
+    "tick",
+    "profile",
+    "source",
+    "observation_model",
+    "confidence",
+    "runbook_step_id",
+    "trace_step_id",
+    "state",
+    "metadata"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "observation_version": { "const": "klein.observation_snapshot.v1" },
+    "observation_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "timebase": { "const": "DEVICE_TICKS" },
+    "tick": { "type": "integer", "minimum": 0 },
+    "profile": { "$ref": "#/definitions/profile" },
+    "source": { "$ref": "#/definitions/source" },
+    "observation_model": { "type": "string", "enum": ["simulated"] },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "runbook_step_id": { "type": ["string", "null"] },
+    "trace_step_id": { "type": ["string", "null"] },
+    "state": { "$ref": "#/definitions/state" },
+    "metadata": { "type": "object" }
+  },
+  "definitions": {
+    "profile": {
+      "type": "object",
+      "required": ["profile_id", "profile_version"],
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": { "type": "string", "minLength": 1 },
+        "profile_version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["source_type", "source_id", "source_version", "attestation"],
+      "additionalProperties": false,
+      "properties": {
+        "source_type": { "type": "string", "enum": ["simulator", "hardware_sensor"] },
+        "source_id": { "type": "string", "minLength": 1 },
+        "source_version": { "type": "string", "minLength": 1 },
+        "attestation": { "type": ["object", "null"] }
+      }
+    },
+    "state": {
+      "type": "object",
+      "required": ["dmf"],
+      "additionalProperties": false,
+      "properties": {
+        "dmf": {
+          "type": "object",
+          "required": ["active_channels", "active_tiles"],
+          "additionalProperties": false,
+          "properties": {
+            "active_channels": {
+              "type": "array",
+              "items": { "type": "integer", "minimum": 0 }
+            },
+            "active_tiles": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": { "type": "integer", "minimum": 0 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

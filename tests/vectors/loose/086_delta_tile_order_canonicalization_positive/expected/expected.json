@@ -1,0 +1,10 @@
+{
+  "canonicalization": {
+    "pixel_list_sort": "r_then_c",
+    "tiles_sort": "r0_then_c0"
+  },
+  "expected_version": "0.1",
+  "mode": "HARD",
+  "must_pass": true,
+  "notes": "If implementation supports tile sorting canonicalization; otherwise should still behave deterministically."
+}

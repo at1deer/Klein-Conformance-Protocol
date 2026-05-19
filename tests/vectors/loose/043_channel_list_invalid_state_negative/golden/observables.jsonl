@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_INVALID_STATE", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "CHANNEL_LIST state must be 0 or 1 (got 2)", "run_id": "R43", "t": 0, "timebase": "DEVICE_TICKS"}

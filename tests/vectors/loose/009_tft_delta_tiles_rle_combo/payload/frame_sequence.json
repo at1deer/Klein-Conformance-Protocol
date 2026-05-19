@@ -1,0 +1,32 @@
+{
+  "frame_sequence_version": "0.2",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "BITMAP",
+      "payload_b64": "AGAgAAAAAAA=",
+      "tick": 0
+    },
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "DELTA_TILES",
+      "tick": 1,
+      "tile_payload_encoding": "RLE",
+      "tiles": [
+        {
+          "c0": 0,
+          "payload_b64": "AgECAwECAwE=",
+          "r0": 0
+        }
+      ]
+    }
+  ],
+  "notes": "Test vector DELTA_TILES with tile_payload_encoding=RLE. Tile payload decodes to op-stream: [op][count][r][c]...; op=1 ADD, op=2 REMOVE. The op-stream bytes are then RLE-compressed as (count,value) uint8 pairs.",
+  "tile_size": 4
+}

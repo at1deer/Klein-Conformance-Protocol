@@ -1,0 +1,14 @@
+{
+  "timestamp_profile_version": "klein.timestamp_profile.v1",
+  "profile_id": "mock-local-alpha-invalid",
+  "profile_kind": "mock_local",
+  "trusted_time_claimed": true,
+  "allowed_token_kinds": [
+    "mock_local"
+  ],
+  "requires_external_time_authority": false,
+  "trust_roots": [],
+  "limitations": [
+    "Invalid fixture: mock/local profile claims trusted time."
+  ]
+}

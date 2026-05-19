@@ -1,0 +1,14 @@
+{
+  "id": "N018",
+  "name": "N018_delta_remove_inactive_pixel",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "PAYLOAD_DELTA_REMOVE_MISS",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "FRAME_SEQUENCE delta_tiles rejects removal of inactive electrodes",
+  "profile_version": "v1"
+}

@@ -1,0 +1,15 @@
+{
+  "frame_sequence_version": "0.1",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "BITMAP",
+      "payload_b64": "AAAAAAAAAA==",
+      "tick": 0
+    }
+  ],
+  "notes": "Negative: BITMAP payload length mismatch (7 bytes for rows=8)"
+}

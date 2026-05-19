@@ -1,0 +1,43 @@
+{
+  "calibration": {
+    "required": false
+  },
+  "created_utc": "2026-01-03T00:00:00Z",
+  "kap_version": "0.1",
+  "observables": {
+    "declared": [
+      "BRANCH_DECISION",
+      "DEVICE_EVENT_LOG"
+    ],
+    "strictness": "HARD"
+  },
+  "payloads": [
+    {
+      "digest": "sha256:f4f47a826d7b47f0fd495cc8c363f0c043d4b83e69d412d6792626bff300e0b3",
+      "kind": "CHANNEL_LIST",
+      "path": "payload/segment_A.csv"
+    },
+    {
+      "digest": "sha256:41ed0e664a8cf58474dc56deb7e100555811e4b86176c38e028d1a93e943f872",
+      "kind": "CHANNEL_LIST",
+      "path": "payload/segment_B.csv"
+    },
+    {
+      "digest": "sha256:903f6f4af6710d7406c3c84989404a1038c78a3ff6edcc71565937dfefe93925",
+      "kind": "CHANNEL_LIST",
+      "path": "payload/segment_C.csv"
+    }
+  ],
+  "runtime": {
+    "strict_mode": true,
+    "tick_ms": 10,
+    "ticks_per_meter": 1000
+  },
+  "source": {
+    "backend_profile": "dmf.muxed_ewod.dropbot.v1.0",
+    "commit_profile": "release",
+    "decision_log_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "kln_version": "0.8",
+    "source_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+  }
+}

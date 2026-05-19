@@ -1,0 +1,258 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Signed Conformance Result v1",
+  "type": "object",
+  "required": [
+    "result_version",
+    "overall_status",
+    "checks",
+    "errors",
+    "warnings",
+    "hail_digest",
+    "hail_chain_digest",
+    "manifest_key_ids",
+    "trusted_key_ids",
+    "backend_id",
+    "profile_id",
+    "profile_version",
+    "artifact_hash",
+    "substrate_fingerprint",
+    "identity_status",
+    "backend_registry_id",
+    "backend_registry_hash",
+    "backend_identity_status",
+    "backend_key_status",
+    "registry_key_id",
+    "registry_backend_id",
+    "registry_signed",
+    "registry_signature_status",
+    "registry_provenance_status",
+    "registry_authority_id",
+    "key_lifecycle_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "result_version": {
+      "const": "klein.signed_conformance_result.v1"
+    },
+    "overall_status": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail"
+      ]
+    },
+    "checks": {
+      "type": "object",
+      "required": [
+        "hail_schema_status",
+        "canonicalization_status",
+        "lifecycle_status",
+        "chain_status",
+        "manifest_schema_status",
+        "manifest_payload_status",
+        "signature_status",
+        "trust_status",
+        "backend_identity_registry_status",
+        "backend_identity_resolution_status",
+        "artifact_binding_status",
+        "report_binding_status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "hail_schema_status": {
+          "$ref": "#/definitions/status"
+        },
+        "canonicalization_status": {
+          "$ref": "#/definitions/status"
+        },
+        "lifecycle_status": {
+          "$ref": "#/definitions/status"
+        },
+        "chain_status": {
+          "$ref": "#/definitions/status"
+        },
+        "manifest_schema_status": {
+          "$ref": "#/definitions/status"
+        },
+        "manifest_payload_status": {
+          "$ref": "#/definitions/status"
+        },
+        "signature_status": {
+          "$ref": "#/definitions/status"
+        },
+        "trust_status": {
+          "$ref": "#/definitions/status"
+        },
+        "backend_identity_registry_status": {
+          "$ref": "#/definitions/status"
+        },
+        "backend_identity_resolution_status": {
+          "$ref": "#/definitions/status"
+        },
+        "artifact_binding_status": {
+          "$ref": "#/definitions/status"
+        },
+        "report_binding_status": {
+          "$ref": "#/definitions/status"
+        }
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/diagnostic"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/diagnostic"
+      }
+    },
+    "hail_digest": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hail_chain_digest": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "manifest_key_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "trusted_key_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "backend_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "profile_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "profile_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifact_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "substrate_fingerprint": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "identity_status": {
+      "type": "string"
+    },
+    "backend_registry_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "backend_registry_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "backend_identity_status": {
+      "type": "string"
+    },
+    "backend_key_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "registry_key_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "registry_backend_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "registry_signed": {
+      "type": "boolean"
+    },
+    "registry_signature_status": {
+      "type": "string"
+    },
+    "registry_provenance_status": {
+      "type": "string"
+    },
+    "registry_authority_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "key_lifecycle_status": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "definitions": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "not_applicable",
+        "not_evaluated"
+      ]
+    },
+    "diagnostic": {
+      "type": "object",
+      "required": [
+        "check",
+        "message"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "check": {
+          "type": "string"
+        },
+        "error_code": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

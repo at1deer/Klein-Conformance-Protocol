@@ -1,0 +1,15 @@
+{
+  "frame_sequence_version": "0.1",
+  "frames": [
+    {
+      "dims": {
+        "cols": 1,
+        "rows": 1
+      },
+      "encoding": "SPARSE",
+      "pixels": [],
+      "tick": 0
+    }
+  ],
+  "notes": "Boundary: smallest dims 1x1 with empty pixels list (all off)."
+}

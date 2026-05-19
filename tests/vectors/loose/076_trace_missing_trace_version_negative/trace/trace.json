@@ -1,0 +1,8 @@
+{
+  "ids": {
+    "hardware_channels_or_pixels": "stable",
+    "ops": "stable"
+  },
+  "op_to_plan": [],
+  "plan_to_actuation": []
+}

@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_PADDING_NONZERO", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "BITMAP PAD_TO_BYTE padding bits must be zero for cols=10", "run_id": "R63", "t": 0, "timebase": "DEVICE_TICKS"}

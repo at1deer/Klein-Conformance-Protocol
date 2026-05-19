@@ -1,0 +1,14 @@
+{
+  "id": "006",
+  "name": "006_channel_list_two_ticks",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "PASS",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "purpose": "CHANNEL_LIST payload with two ticks and multiple electrodes",
+  "profile_version": "v1"
+}

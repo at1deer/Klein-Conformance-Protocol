@@ -1,0 +1,14 @@
+{
+  "id": "011",
+  "name": "011_hard_hail_chain_binding",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "PASS",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "purpose": "HARD execution vector proves RUN_END terminal HAIL hash-chain binding",
+  "profile_version": "v1"
+}

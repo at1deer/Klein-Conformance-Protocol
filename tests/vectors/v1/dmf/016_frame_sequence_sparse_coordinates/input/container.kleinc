@@ -1,0 +1,51 @@
+{
+  "klein_container_version": "1.0",
+  "manifest": {
+    "project": {
+      "name": "frame-sequence-sparse-coordinates",
+      "version": "1.0",
+      "authors": [
+        "Klein"
+      ]
+    },
+    "runtime": {
+      "mode": "HARD",
+      "target_substrate": "dmf.muxed_ewod.opendrop.v1.0"
+    }
+  },
+  "payload": {
+    "kind": "FRAME_SEQUENCE",
+    "encoding": "JSON",
+    "data": [
+      {
+        "t": 0,
+        "format": "sparse",
+        "data": [
+          {
+            "x": 1,
+            "y": 1
+          },
+          [
+            2,
+            1
+          ],
+          19
+        ]
+      },
+      {
+        "t": 2,
+        "format": "sparse",
+        "data": [
+          {
+            "x": 3,
+            "y": 2
+          },
+          {
+            "x": 4,
+            "y": 2
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "addressing": {
+    "grid_height": 8,
+    "grid_width": 16,
+    "max_channels": 128,
+    "mode": "channel"
+  },
+  "electrical": {
+    "frequency_max_hz": 50000,
+    "frequency_min_hz": 1,
+    "voltage_max_v": 300,
+    "voltage_min_v": 0
+  },
+  "payloads": {
+    "supported_frame_formats": [
+      "sparse",
+      "bitmap",
+      "delta_tiles"
+    ],
+    "supported_payload_kinds": [
+      "CHANNEL_LIST",
+      "FRAME_SEQUENCE",
+      "BITMAP_SEQUENCE"
+    ],
+    "unsupported_frame_formats": [
+      "rle"
+    ]
+  },
+  "recovery": {
+    "supports_bounded_ecrp_evidence": true,
+    "supports_closed_loop_recovery": false
+  },
+  "sensing": {
+    "sensing_model": "simulated",
+    "supports_physical_sensor_attestation": false,
+    "supports_runtime_observations": true
+  }
+}

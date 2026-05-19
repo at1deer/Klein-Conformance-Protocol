@@ -1,0 +1,34 @@
+{
+  "calibration": {
+    "required": false
+  },
+  "created_utc": "2026-01-03T00:00:00Z",
+  "kap_version": "0.1",
+  "observables": {
+    "declared": [
+      "OCCUPANCY_TRACE",
+      "CORRECTION_EVENT",
+      "DEVICE_EVENT_LOG"
+    ],
+    "strictness": "HARD"
+  },
+  "payloads": [
+    {
+      "digest": "sha256:8ab19984c722459b269ea72b8fe6309e9cce2409d67cab95bec28f60ebfb66a2",
+      "kind": "CHANNEL_LIST",
+      "path": "payload/channel_list.csv"
+    }
+  ],
+  "runtime": {
+    "strict_mode": true,
+    "tick_ms": 10,
+    "ticks_per_meter": 1000
+  },
+  "source": {
+    "backend_profile": "dmf.muxed_ewod.dropbot.v1.0",
+    "commit_profile": "release",
+    "decision_log_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "kln_version": "0.8",
+    "source_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "expected_version": "0.2",
+  "mode": "HARD",
+  "notes": "Harness must SKIP if backend lacks supports.envelope.",
+  "required_capabilities": [
+    "supports.envelope"
+  ]
+}

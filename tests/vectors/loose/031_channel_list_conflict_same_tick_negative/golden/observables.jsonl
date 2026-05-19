@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_CONFLICTING_STATE", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "CHANNEL_LIST has conflicting state for channel 1 at tick 0", "run_id": "R31", "t": 0, "timebase": "DEVICE_TICKS"}

@@ -1,0 +1,21 @@
+{
+  "kind": "KLEIN_PROJECT",
+  "mode": "HARD",
+  "payload": {
+    "data": [
+      {
+        "channel_id": 1,
+        "state": "ON",
+        "t": 0
+      }
+    ],
+    "encoding": "JSON",
+    "kind": "CHANNEL_LIST"
+  },
+  "profile": {
+    "profile_id": "dmf",
+    "profile_version": "v1"
+  },
+  "project_id": "bad-payload",
+  "schema_version": "v1"
+}

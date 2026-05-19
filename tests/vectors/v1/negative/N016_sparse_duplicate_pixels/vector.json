@@ -1,0 +1,14 @@
+{
+  "id": "N016",
+  "name": "N016_sparse_duplicate_pixels",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "PAYLOAD_DUPLICATE_PIXEL",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "FRAME_SEQUENCE sparse rejects duplicate electrode ids",
+  "profile_version": "v1"
+}

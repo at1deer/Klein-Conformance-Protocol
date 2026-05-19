@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_PIXEL_OOB", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "Pixel out-of-bounds: (8,0) for dims 8x8", "run_id": "R87", "t": 0, "timebase": "DEVICE_TICKS"}

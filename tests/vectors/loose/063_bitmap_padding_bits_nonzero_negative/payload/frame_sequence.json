@@ -1,0 +1,16 @@
+{
+  "frame_sequence_version": "0.1",
+  "frames": [
+    {
+      "dims": {
+        "cols": 10,
+        "rows": 8
+      },
+      "encoding": "BITMAP",
+      "packing": "PAD_TO_BYTE",
+      "payload_b64": "AAFAQACAAAAAAAAAAAAAAA==",
+      "tick": 0
+    }
+  ],
+  "notes": "Negative: PAD_TO_BYTE BITMAP with cols=10 but padding bits set nonzero."
+}

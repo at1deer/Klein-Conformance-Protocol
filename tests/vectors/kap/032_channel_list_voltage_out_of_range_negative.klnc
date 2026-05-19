@@ -1,0 +1,33 @@
+{
+  "klein_container_version": "1.0",
+  "manifest": {
+    "project": {
+      "name": "vector_032",
+      "version": "1.0.0",
+      "authors": [
+        "Klein Test Suite"
+      ],
+      "license": "MIT",
+      "description": "Negative: CHANNEL_LIST voltage out-of-range via hint"
+    },
+    "runtime": {
+      "mode": "HARD",
+      "target_substrate": "dmf.muxed_ewod.opendrop.v1.0"
+    }
+  },
+  "payload": {
+    "kind": "CHANNEL_LIST",
+    "data": [
+      {
+        "t": 0,
+        "active": [
+          [
+            9999,
+            9999
+          ]
+        ]
+      }
+    ],
+    "encoding": "JSON"
+  }
+}

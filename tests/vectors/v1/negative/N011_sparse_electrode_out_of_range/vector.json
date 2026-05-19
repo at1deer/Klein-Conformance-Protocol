@@ -1,0 +1,14 @@
+{
+  "id": "N011",
+  "name": "N011_sparse_electrode_out_of_range",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "PAYLOAD_OOB_PIXEL",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "FRAME_SEQUENCE sparse rejects out-of-range electrode ids",
+  "profile_version": "v1"
+}

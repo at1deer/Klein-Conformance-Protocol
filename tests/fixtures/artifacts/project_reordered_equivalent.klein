@@ -1,0 +1,16 @@
+{
+  "kind": "KLEIN_PROJECT",
+  "metadata": {},
+  "mode": "HARD",
+  "payload": {
+    "data": [],
+    "encoding": "JSON",
+    "kind": "CHANNEL_LIST"
+  },
+  "profile": {
+    "profile_id": "dmf",
+    "profile_version": "v1"
+  },
+  "project_id": "artifact-project-minimal",
+  "schema_version": "v1"
+}

@@ -1,0 +1,48 @@
+{
+  "expected_version": "0.1",
+  "frame_decode_expectations": [
+    {
+      "active_pixels": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "tick": 0
+    },
+    {
+      "active_pixels": [
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          3
+        ]
+      ],
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "tick": 1
+    }
+  ],
+  "mode": "HARD"
+}

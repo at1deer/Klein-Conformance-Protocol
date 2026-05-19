@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "KAP_DIGEST_MISMATCH",
+    "message_contains": "payload/frame_sequence.json"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "VALIDATE",
+  "mode": "HARD",
+  "must_fail": true
+}

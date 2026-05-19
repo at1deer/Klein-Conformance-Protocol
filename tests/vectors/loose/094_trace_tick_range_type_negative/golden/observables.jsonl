@@ -1,0 +1,1 @@
+{"code": "TRACE_TYPE_MISMATCH", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "trace tick_range values must be integers", "run_id": "R94", "t": 0, "timebase": "DEVICE_TICKS"}

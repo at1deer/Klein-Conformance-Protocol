@@ -1,0 +1,20 @@
+{
+  "attestation_statement_version": "klein.attestation_statement.v1",
+  "statement_id": "mock-attestation-invalid-backend-001",
+  "statement_kind": "mock",
+  "subject": {
+    "subject_type": "backend",
+    "subject_id": "opendrop_ewod_dry_run",
+    "subject_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+  },
+  "backend": {
+    "backend_id": "other_backend",
+    "backend_version": "0.1.0-alpha"
+  },
+  "hardware_attestation_claimed": false,
+  "hardware_root": null,
+  "quote": null,
+  "measurements": [],
+  "signature": null,
+  "metadata": {}
+}

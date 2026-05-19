@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_INVALID_DELTA", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "DELTA_TILES attempted to remove inactive pixel (0,0) at tick 1", "run_id": "R10", "t": 0, "timebase": "DEVICE_TICKS"}

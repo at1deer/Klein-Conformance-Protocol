@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "DDI_UNSUPPORTED_PROFILE",
+    "message_contains": "backend_profile"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "VALIDATE|UPLOAD|START",
+  "mode": "HARD",
+  "must_fail": true
+}

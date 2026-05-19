@@ -1,0 +1,32 @@
+{
+  "ids": {
+    "hardware_channels_or_pixels": "stable",
+    "ops": "stable"
+  },
+  "op_to_plan": [
+    {
+      "op_id": "op_move_0",
+      "plan_ids": [
+        "move0"
+      ]
+    }
+  ],
+  "plan_to_actuation": [
+    {
+      "actuation_refs": [
+        {
+          "channels": [
+            1,
+            2
+          ],
+          "tick_range": [
+            0,
+            3
+          ]
+        }
+      ],
+      "plan_id": "move0"
+    }
+  ],
+  "trace_version": "0.1"
+}

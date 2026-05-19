@@ -1,0 +1,1 @@
+{"code": "TRACE_OVERLAP", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "Overlapping tick_range for channel 1: [0,5] overlaps [4,7]", "run_id": "R93", "t": 0, "timebase": "DEVICE_TICKS"}

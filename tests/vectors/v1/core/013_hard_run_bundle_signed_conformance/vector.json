@@ -1,0 +1,17 @@
+{
+  "id": "013",
+  "name": "013_hard_run_bundle_signed_conformance",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "PASS",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "run_id": "R012",
+  "run_bundle_path": "bundle/run.kcprun",
+  "bundle_conformance": true,
+  "purpose": "portable KCP Run Bundle v1 packages signed-conformance evidence",
+  "profile_version": "v1"
+}

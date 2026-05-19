@@ -1,0 +1,3 @@
+{"code": "A", "kind": "DEVICE_EVENT", "level": "INFO", "message": "first", "run_id": "R108", "t": 0, "timebase": "DEVICE_TICKS"}
+{"cells": [{"c": 1, "confidence": 1.0, "occupied": true, "r": 1}], "kind": "OCCUPANCY", "regions": [], "run_id": "R108", "t": 0, "timebase": "DEVICE_TICKS"}
+{"code": "B", "kind": "DEVICE_EVENT", "level": "INFO", "message": "third", "run_id": "R108", "t": 0, "timebase": "DEVICE_TICKS"}

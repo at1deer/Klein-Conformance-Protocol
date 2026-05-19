@@ -1,0 +1,14 @@
+{
+  "id": "N019",
+  "name": "N019_bitmap_unsupported_dimensions",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "PAYLOAD_UNSUPPORTED_DIMS",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "BITMAP_SEQUENCE rejects bitmap payloads larger than declared substrate channels",
+  "profile_version": "v1"
+}

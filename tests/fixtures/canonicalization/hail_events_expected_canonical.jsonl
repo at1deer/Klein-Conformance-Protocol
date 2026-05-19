@@ -1,0 +1,4 @@
+{"code":"INIT","kind":"DEVICE_EVENT","level":"INFO","message":"Start","run_id":"R-fixture","t":0,"timebase":"DEVICE_TICKS"}
+{"kind":"RUNTIME_STATE_SNAPSHOT","rimgb_hash":"sha256:a","run_id":"R-fixture","state_fields":{"alpha":1,"zeta":2},"t":0,"timebase":"DEVICE_TICKS","validity_window":{"end_t":1,"start_t":0}}
+{"kind":"RUNTIME_STATE_SNAPSHOT","rimgb_hash":"sha256:z","run_id":"R-fixture","state_fields":{"alpha":1,"zeta":2},"t":0,"timebase":"DEVICE_TICKS","validity_window":{"end_t":1,"start_t":0}}
+{"detector_id":"sensor","kind":"MEASUREMENT","measurement_id":"B","run_id":"R-fixture","t":10,"timebase":"DEVICE_TICKS","value":{"data":1,"type":"F64"}}

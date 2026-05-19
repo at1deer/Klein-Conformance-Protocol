@@ -1,0 +1,34 @@
+{
+  "artifact_hash": "sha256:53fc3ebac5d206418049047ef23f33d850a0903d5c32fe5babddf52084ade01f",
+  "backend": {
+    "backend_id": "full_simulator",
+    "backend_version": "1.0.0a0"
+  },
+  "metadata": {
+    "ecrp_recovery_status": "success"
+  },
+  "profile": {
+    "profile_id": "dmf",
+    "profile_version": "v1"
+  },
+  "run_id": "ecrp-recovery-fixture-run",
+  "runbook_hash": "sha256:110d74c8c11a76cec9a2b74849c1753939da17ec9690fda5237ebeafed179663",
+  "timebase": "DEVICE_TICKS",
+  "trace_id": null,
+  "trace_steps": [
+    {
+      "applied": false,
+      "details": {
+        "recovery_parent_step_id": "step-0001"
+      },
+      "error_code": "FRAME_FAILED",
+      "issued": true,
+      "operation": "DMF_SET_CHANNELS",
+      "runbook_step_id": "step-0001",
+      "status": "FAILED",
+      "step_id": "step-0001-original",
+      "tick": 0
+    }
+  ],
+  "trace_version": "klein.execution_trace.v1"
+}

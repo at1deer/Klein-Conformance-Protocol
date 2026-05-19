@@ -1,0 +1,14 @@
+{
+  "id": "N013",
+  "name": "N013_malformed_frame_sequence",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "PAYLOAD_MALFORMED",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "FRAME_SEQUENCE rejects entries missing required fields",
+  "profile_version": "v1"
+}

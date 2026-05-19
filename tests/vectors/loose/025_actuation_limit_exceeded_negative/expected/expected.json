@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "PAYLOAD_ACTUATION_LIMIT",
+    "message_contains": "max_switches_per_tick"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "VALIDATE|DECODE",
+  "mode": "HARD",
+  "must_fail": true
+}

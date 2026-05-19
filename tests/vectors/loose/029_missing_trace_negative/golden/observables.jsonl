@@ -1,0 +1,1 @@
+{"code": "KAP_MISSING_TRACE", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "Missing required file trace/trace.json", "run_id": "R29", "t": 0, "timebase": "DEVICE_TICKS"}

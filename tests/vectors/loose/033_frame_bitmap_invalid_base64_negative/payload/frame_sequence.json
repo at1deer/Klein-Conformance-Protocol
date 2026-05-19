@@ -1,0 +1,15 @@
+{
+  "frame_sequence_version": "0.1",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "BITMAP",
+      "payload_b64": "!!!not_base64!!!",
+      "tick": 0
+    }
+  ],
+  "notes": "Negative: invalid base64 payload"
+}

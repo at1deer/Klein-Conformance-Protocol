@@ -1,0 +1,11 @@
+{
+  "expected_version": "0.1",
+  "mode": "HARD",
+  "runbook_expectations": [
+    {
+      "chosen": "segment_C",
+      "decision_id": "decide_1",
+      "reason": "TIMEOUT_FALLBACK"
+    }
+  ]
+}

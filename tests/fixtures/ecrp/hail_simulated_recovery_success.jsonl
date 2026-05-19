@@ -1,0 +1,7 @@
+{"code":"INIT","kind":"DEVICE_EVENT","level":"INFO","message":"INIT","run_id":"R023","t":0,"timebase":"DEVICE_TICKS"}
+{"kind":"RUNTIME_STATE_SNAPSHOT","rimgb_hash":"sha256:20460317fb4bfac1372fd9b286790985b2ac49fa3015fa1d3049b01add9d723e","run_id":"R023","state_fields":{"status":"starting"},"t":0,"timebase":"DEVICE_TICKS","validity_window":{"end_t":0,"start_t":0}}
+{"code":"FRAME_FAILED","detail":{"duration_ms":20,"electrodes":[5],"seq":1},"kind":"DEVICE_EVENT","level":"INFO","message":"FRAME_FAILED","run_id":"R023","t":1,"timebase":"DEVICE_TICKS"}
+{"attempt_index":1,"deltas":{"occupancy_shift_cells":1},"kind":"ECRP_ATTEMPT","outcome":"SUCCESS","parameters":{"attempt":1,"strategy":"NUDGE_PULSE"},"run_id":"R023","strategy":"NUDGE_PULSE","t":1,"timebase":"DEVICE_TICKS"}
+{"code":"FRAME_APPLIED","detail":{"duration_ms":20,"electrodes":[5],"recovery_attempt":1,"recovery_retry":true,"seq":1},"kind":"DEVICE_EVENT","level":"INFO","message":"FRAME_APPLIED","run_id":"R023","t":2,"timebase":"DEVICE_TICKS"}
+{"code":"SHUTDOWN","detail":{"frames_executed":1},"kind":"DEVICE_EVENT","level":"INFO","message":"SHUTDOWN","run_id":"R023","t":3,"timebase":"DEVICE_TICKS"}
+{"kind":"RUNTIME_STATE_SNAPSHOT","rimgb_hash":"sha256:20460317fb4bfac1372fd9b286790985b2ac49fa3015fa1d3049b01add9d723e","run_id":"R023","state_fields":{"status":"completed"},"t":3,"timebase":"DEVICE_TICKS","validity_window":{"end_t":3,"start_t":0}}

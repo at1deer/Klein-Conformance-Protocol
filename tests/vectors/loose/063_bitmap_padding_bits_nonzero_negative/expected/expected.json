@@ -1,0 +1,11 @@
+{
+  "expected_error": {
+    "code": "PAYLOAD_PADDING_NONZERO",
+    "message_contains": "padding"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "VALIDATE|DECODE",
+  "mode": "HARD",
+  "must_fail": true,
+  "suite": "extended"
+}

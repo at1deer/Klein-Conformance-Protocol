@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "PAYLOAD_UNSUPPORTED_TILE_ENCODING",
+    "message_contains": "ZSTD"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "VALIDATE|DECODE",
+  "mode": "HARD",
+  "must_fail": true
+}

@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_BASE64_INVALID", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "BITMAP payload_b64 is not valid base64", "run_id": "R33", "t": 0, "timebase": "DEVICE_TICKS"}

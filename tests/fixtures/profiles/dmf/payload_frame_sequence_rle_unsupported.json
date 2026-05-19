@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "data": [
+        1,
+        2
+      ],
+      "format": "rle",
+      "t": 0
+    }
+  ],
+  "encoding": "JSON",
+  "kind": "FRAME_SEQUENCE"
+}

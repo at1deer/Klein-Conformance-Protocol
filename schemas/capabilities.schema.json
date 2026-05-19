@@ -1,0 +1,257 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Backend Capabilities Profile v0.1",
+  "description": "Normative schema for hardware driver negotiation, including v2.0 reserved fields and safety contracts.",
+  "type": "object",
+  "required": [
+    "klein_capabilities_version",
+    "backend",
+    "fingerprint",
+    "supports",
+    "substrate",
+    "actuation",
+    "compare"
+  ],
+  "properties": {
+    "klein_capabilities_version": {
+      "type": "string",
+      "const": "0.1",
+      "description": "Version of the capabilities profile structure itself."
+    },
+    "backend": {
+      "type": "object",
+      "required": ["name", "vendor", "firmware_id"],
+      "properties": {
+        "name": { "type": "string" },
+        "vendor": { "type": "string" },
+        "backend_version": { "type": "string" },
+        "hardware_id": { "type": "string" },
+        "firmware_id": { "type": "string" },
+        "commit": { "type": "string" }
+      }
+    },
+    "fingerprint": {
+      "type": "object",
+      "description": "Cryptographic hash of the capabilities to prevent 'same name, different behavior' liability [Proadvice].",
+      "required": ["algo", "value", "inputs"],
+      "properties": {
+        "algo": { "type": "string", "enum": ["sha256"] },
+        "value": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "inputs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Ordered list of JSON keys hashed to generate the value."
+        }
+      }
+    },
+    "supports": {
+      "type": "object",
+      "description": "Feature flags used for gating conformance vectors.",
+      "required": ["envelope", "diagnostic", "checkpoint_replan"],
+      "properties": {
+        "envelope": {
+          "type": "boolean",
+          "description": "If true, backend supports ENVELOPE mode with declared tolerance bounds."
+        },
+        "diagnostic": {
+          "type": "boolean",
+          "description": "If true, backend continues execution after faults (NONCONFORMANT mode)."
+        },
+        "checkpoint_replan": {
+          "type": "boolean",
+          "description": "If true, backend emits REPLAN_DECISION events at safe checkpoints."
+        },
+        "exact_jsonl_ordering": {
+          "type": "boolean",
+          "description": "If true, guarantees stable line ordering for same-tick events."
+        },
+        "anisotropic_physics": {
+          "type": "boolean",
+          "description": "RESERVED (v2.0): Support for Metric Tensor edge costs [Patch Notes]."
+        },
+        "hamiltonian_solver": {
+          "type": "boolean",
+          "description": "RESERVED (v2.0): Support for Coverage/Cleaning solver modes [Patch Notes]."
+        }
+      }
+    },
+    "substrate": {
+      "type": "object",
+      "description": "Physical topology definition for the Compiler.",
+      "required": ["kind", "electrodes", "addressing"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["dmf", "continuous"] },
+        "electrodes": {
+          "type": "object",
+          "required": ["topology", "max_count"],
+          "properties": {
+            "topology": { "type": "string", "enum": ["grid", "irregular"] },
+            "max_count": { "type": "integer" },
+            "coordinate_system": { "type": "string", "enum": ["row_col", "xy_um", "vendor_defined"] },
+            "grid": {
+              "type": "object",
+              "properties": {
+                "rows": { "type": "integer" },
+                "cols": { "type": "integer" },
+                "pitch_um": { "type": "integer" }
+              }
+            }
+          }
+        },
+        "addressing": {
+          "type": "object",
+          "required": ["mode"],
+          "properties": {
+            "mode": { "type": "string", "enum": ["row_col", "linear_id", "direct"] },
+            "maps": { "type": "object", "description": "References to mapping files." }
+          }
+        }
+      }
+    },
+    "actuation": {
+      "type": "object",
+      "description": "Electrical and timing contract.",
+      "required": ["waveforms", "timing"],
+      "properties": {
+        "waveforms": {
+          "type": "object",
+          "properties": {
+            "modes": {
+              "type": "array",
+              "items": { "type": "string", "enum": ["AC", "DC"] }
+            },
+            "voltage_v": {
+              "type": "object",
+              "required": ["min", "max"],
+              "properties": {
+                "min": { "type": "number" },
+                "max": { "type": "number" },
+                "step": { "type": "number" }
+              }
+            },
+            "frequency_hz": {
+              "type": "object",
+              "properties": { "min": {"type":"number"}, "max": {"type":"number"} }
+            }
+          }
+        },
+        "timing": {
+          "type": "object",
+          "required": ["max_schedule_horizon_ms"],
+          "properties": {
+            "tick_resolution_ms": { "type": "integer" },
+            "min_frame_ms": { "type": "integer" },
+            "max_schedule_horizon_ms": {
+              "type": "integer",
+              "description": "NORMATIVE: Hardware Watchdog timeout. Drivers MUST disengage if no frame received by this limit (Dead Man's Switch) [Source: Substrate API]."
+            },
+            "latency_ms": {
+              "type": "object",
+              "properties": { "p99": {"type":"integer"}, "max": {"type":"integer"} }
+            }
+          }
+        }
+      }
+    },
+    "sensing": {
+      "type": "object",
+      "description": "Available observables for the RSB [Proadvice].",
+      "properties": {
+        "observables_supported": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Strings matching 'required_observables' in test vectors (e.g. 'occupancy')."
+        },
+        "channels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["kind"],
+            "properties": {
+              "kind": { "type": "string", "enum": ["camera", "impedance", "voltage", "thermal"] },
+              "rate_hz": { "type": "number" },
+              "latency_ms": { "type": "integer" }
+            }
+          }
+        },
+        "observation_api": {
+          "type": "object",
+          "properties": {
+            "pull": { "type": "boolean" },
+            "push": { "type": "boolean" },
+            "timebase": { "type": "string", "enum": ["device_ticks", "host_time"] }
+          }
+        }
+      }
+    },
+    "primitives": {
+      "type": "object",
+      "description": "Declares reliability of operations (e.g. split/merge) [Proadvice].",
+      "patternProperties": {
+        "^.*$": {
+          "type": "object",
+          "required": ["supported", "guarantee"],
+          "properties": {
+            "supported": { "type": "boolean" },
+            "guarantee": {
+              "type": "string",
+              "enum": ["guaranteed", "best_effort", "advisory_only"],
+              "description": "'best_effort' implies operation may fail but will report via LCP or Error."
+            }
+          }
+        }
+      }
+    },
+    "faults": {
+      "type": "object",
+      "properties": {
+        "detectable": { "type": "array", "items": { "type": "string" } },
+        "inferable": { "type": "array", "items": { "type": "string" } },
+        "codes_emitted": { 
+          "type": "array", 
+          "items": { "type": "string" },
+          "description": "List of SCI Fault Codes this backend is capable of generating."
+        }
+      }
+    },
+    "compare": {
+      "type": "object",
+      "description": "Canonicalization rules for Conformance Verification [Proadvice].",
+      "properties": {
+        "exact_jsonl": {
+          "type": "object",
+          "properties": {
+            "ordering": { 
+              "type": "string", 
+              "description": "Identifier of the sorting algorithm used for same-tick events." 
+            }
+          }
+        },
+        "set": {
+          "type": "object",
+          "properties": {
+            "canonicalization_algo": { "type": "string" }
+          }
+        },
+        "envelope": {
+          "type": "object",
+          "description": "Required for ENVELOPE mode compliance.",
+          "properties": {
+            "dimensions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["name", "max_error", "unit"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "max_error": { "type": "number" },
+                  "unit": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

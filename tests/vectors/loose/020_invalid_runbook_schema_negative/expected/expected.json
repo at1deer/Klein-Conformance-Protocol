@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "RUNBOOK_SCHEMA_INVALID",
+    "message_contains": "entry"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "VALIDATE",
+  "mode": "HARD",
+  "must_fail": true
+}

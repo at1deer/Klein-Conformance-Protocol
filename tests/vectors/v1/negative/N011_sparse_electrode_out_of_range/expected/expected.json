@@ -1,0 +1,4 @@
+{
+  "expected_result": "FAIL",
+  "expected_error_code": "PAYLOAD_OOB_PIXEL"
+}

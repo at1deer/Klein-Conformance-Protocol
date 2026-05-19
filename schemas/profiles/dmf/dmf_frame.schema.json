@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein DMF/EWOD Frame v1 Alpha",
+  "oneOf": [
+    { "$ref": "#/definitions/sparse_frame" },
+    { "$ref": "#/definitions/bitmap_frame" },
+    { "$ref": "#/definitions/delta_tiles_frame" }
+  ],
+  "definitions": {
+    "tick": { "type": "integer", "minimum": 0 },
+    "pixel": {
+      "oneOf": [
+        { "type": "integer", "minimum": 0 },
+        {
+          "type": "object",
+          "required": ["x", "y"],
+          "additionalProperties": false,
+          "properties": {
+            "x": { "type": "integer", "minimum": 0 },
+            "y": { "type": "integer", "minimum": 0 }
+          }
+        },
+        {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "type": "integer", "minimum": 0 }
+        }
+      ]
+    },
+    "sparse_pixels": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/pixel" }
+    },
+    "sparse_frame": {
+      "type": "object",
+      "required": ["t", "format", "data"],
+      "additionalProperties": false,
+      "properties": {
+        "t": { "$ref": "#/definitions/tick" },
+        "format": { "const": "sparse" },
+        "data": { "$ref": "#/definitions/sparse_pixels" }
+      }
+    },
+    "bitmap_frame": {
+      "type": "object",
+      "required": ["t", "format", "data"],
+      "additionalProperties": false,
+      "properties": {
+        "t": { "$ref": "#/definitions/tick" },
+        "format": { "const": "bitmap" },
+        "data": { "type": "string" }
+      }
+    },
+    "delta_tiles_frame": {
+      "type": "object",
+      "required": ["t", "format", "data"],
+      "additionalProperties": false,
+      "properties": {
+        "t": { "$ref": "#/definitions/tick" },
+        "format": { "const": "delta_tiles" },
+        "data": {
+          "type": "object",
+          "required": ["add", "remove"],
+          "additionalProperties": false,
+          "properties": {
+            "add": { "$ref": "#/definitions/sparse_pixels" },
+            "remove": { "$ref": "#/definitions/sparse_pixels" }
+          }
+        }
+      }
+    }
+  }
+}

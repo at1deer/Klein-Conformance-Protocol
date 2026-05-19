@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein HIL Backend Status v1",
+  "type": "object",
+  "required": [
+    "hil_status_version",
+    "backend_id",
+    "connected",
+    "health",
+    "emergency_stopped",
+    "last_error_code",
+    "details"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "hil_status_version": { "const": "klein.hil_backend_status.v1" },
+    "backend_id": { "type": "string", "minLength": 1 },
+    "connected": { "type": "boolean" },
+    "health": { "type": "string", "enum": ["OK", "DEGRADED", "FAULTED", "UNKNOWN"] },
+    "emergency_stopped": { "type": "boolean" },
+    "last_error_code": { "type": ["string", "null"] },
+    "details": { "type": "object" }
+  }
+}

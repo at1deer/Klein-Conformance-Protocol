@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_OOB_PIXEL", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "SPARSE pixel out-of-bounds: (8,0) for dims 8x8", "run_id": "R11", "t": 0, "timebase": "DEVICE_TICKS"}

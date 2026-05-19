@@ -1,0 +1,37 @@
+{
+  "attestation": {
+    "profiles": [],
+    "supported": false
+  },
+  "backend_id": "opendrop_ewod_dry_run",
+  "backend_version": "0.1.0-alpha",
+  "hil_contract_version": "klein.hil_backend_contract.v1",
+  "limitations": [
+    "Dry-run OpenDrop/EWOD adapter skeleton only.",
+    "No OpenDrop hardware IO.",
+    "No physical droplet movement claimed."
+  ],
+  "observation_sources": [
+    "mock_hardware"
+  ],
+  "profile": {
+    "profile_id": "dmf",
+    "profile_version": "v1"
+  },
+  "safety": {
+    "requires_emergency_stop": true,
+    "requires_reset": true
+  },
+  "supports": {
+    "apply_frame": true,
+    "connect": true,
+    "disconnect": true,
+    "emergency_stop": true,
+    "export_raw_device_log": false,
+    "get_capabilities": true,
+    "get_health": true,
+    "get_topology": true,
+    "read_observation": true,
+    "reset": true
+  }
+}

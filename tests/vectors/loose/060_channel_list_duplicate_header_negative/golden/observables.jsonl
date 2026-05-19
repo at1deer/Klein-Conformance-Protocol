@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_DUPLICATE_COLUMN", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "CHANNEL_LIST duplicate column 'voltage_v'", "run_id": "R60", "t": 0, "timebase": "DEVICE_TICKS"}

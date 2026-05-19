@@ -1,0 +1,15 @@
+{
+  "frame_sequence_version": "0.1",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "RLE",
+      "payload_b64": "ZAE=",
+      "tick": 0
+    }
+  ],
+  "notes": "Negative: RLE expands beyond expected bit-count (overrun)."
+}

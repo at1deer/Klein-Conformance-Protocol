@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Compiled Container (.kleinc)",
+  "description": "Self-contained execution package. File extension: .kleinc (formerly .klnc).",
+  "type": "object",
+  "required": ["klein_container_version", "manifest", "payload"],
+  "properties": {
+    "klein_container_version": { "type": "string", "const": "1.0" },
+    
+    "manifest": {
+      "$ref": "./manifest.schema.json",
+      "description": "Metadata, Runtime Mode (HARD/ENVELOPE), and Biosafety Resources."
+    },
+    
+    "simgb": {
+      "$ref": "./simgb.schema.json",
+      "description": "OPTIONAL. The State Image Bundle (SImgB) this package was compiled for. Formerly known as DSB. If omitted, the driver relies on hash checks."
+    },
+    
+    "runbook": {
+      "$ref": "./runbook.schema.json",
+      "description": "OPTIONAL. The orchestration logic (segments, branches). If omitted, execution is linear."
+    },
+    
+    "payload": {
+      "type": "object",
+      "description": "The actual actuation data (The 'frames').",
+      "required": ["kind", "data"],
+      "properties": {
+        "kind": { 
+          "type": "string", 
+          "enum": ["CHANNEL_LIST", "FRAME_SEQUENCE", "BITMAP_SEQUENCE"] 
+        },
+        "encoding": {
+          "type": "string",
+          "enum": ["JSON", "BASE64_GZIP", "RLE"],
+          "default": "JSON"
+        },
+        "data": { 
+          "type": ["array", "string"],
+          "description": "The raw instructions. If JSON, an array of ticks. If Base64, a binary blob."
+        }
+      }
+    }
+  }
+}

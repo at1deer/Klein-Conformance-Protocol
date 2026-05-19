@@ -1,0 +1,43 @@
+{
+  "klein_container_version": "1.0",
+  "manifest": {
+    "project": {
+      "name": "vector_018",
+      "version": "1.0.0",
+      "authors": [
+        "Klein Test Suite"
+      ],
+      "license": "MIT",
+      "description": "Negative: calibration required but hash missing"
+    },
+    "runtime": {
+      "mode": "HARD",
+      "target_substrate": "dmf.muxed_ewod.opendrop.v1.0"
+    }
+  },
+  "payload": {
+    "kind": "CHANNEL_LIST",
+    "data": [
+      {
+        "t": 0,
+        "channel_id": 0,
+        "state": "ON",
+        "voltage_v": 200.0
+      }
+    ],
+    "encoding": "JSON"
+  },
+  "dsb": {
+    "device_id": "TEST-DEV-001",
+    "geometry_hash": "57bc563acc097371",
+    "defects": {
+      "dead_channels": []
+    },
+    "calibration": {
+      "hash": "aaf773528ee555b9",
+      "map": {
+        "channel_0": 1.0
+      }
+    }
+  }
+}

@@ -1,0 +1,2025 @@
+{
+  "fixture_index_version": "klein.cross_language_fixtures.v1",
+  "fixtures": [
+    {
+      "fixture_id": "canonical-json-object-ordering-v1",
+      "fixture_type": "canonical_json",
+      "description": "Canonical JSON object ordering fixture.",
+      "input_paths": {
+        "input": "tests/fixtures/canonicalization/cross_language/object_ordering_input.json",
+        "expected": "tests/fixtures/canonicalization/cross_language/object_ordering_expected.json",
+        "expected_sha256": "tests/fixtures/canonicalization/cross_language/object_ordering_expected.sha256"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "canonical-json-number-formatting-v1",
+      "fixture_type": "canonical_json",
+      "description": "Canonical JSON number rendering fixture.",
+      "input_paths": {
+        "input": "tests/fixtures/canonicalization/cross_language/number_formatting_input.json",
+        "expected": "tests/fixtures/canonicalization/cross_language/number_formatting_expected.json",
+        "expected_sha256": "tests/fixtures/canonicalization/cross_language/number_formatting_expected.sha256"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "canonical-json-string-unicode-v1",
+      "fixture_type": "canonical_json",
+      "description": "Canonical JSON string escaping and Unicode fixture.",
+      "input_paths": {
+        "input": "tests/fixtures/canonicalization/cross_language/string_unicode_input.json",
+        "expected": "tests/fixtures/canonicalization/cross_language/string_unicode_expected.json",
+        "expected_sha256": "tests/fixtures/canonicalization/cross_language/string_unicode_expected.sha256"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "canonical-json-nested-structures-v1",
+      "fixture_type": "canonical_json",
+      "description": "Canonical JSON nested arrays and objects fixture.",
+      "input_paths": {
+        "input": "tests/fixtures/canonicalization/cross_language/nested_structures_input.json",
+        "expected": "tests/fixtures/canonicalization/cross_language/nested_structures_expected.json",
+        "expected_sha256": "tests/fixtures/canonicalization/cross_language/nested_structures_expected.sha256"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "hail-jsonl-ordering-v1",
+      "fixture_type": "hail_jsonl",
+      "description": "HAIL JSONL canonicalization ordering fixture.",
+      "input_paths": {
+        "input": "tests/fixtures/canonicalization/cross_language/hail_ordering_input.jsonl",
+        "expected": "tests/fixtures/canonicalization/cross_language/hail_ordering_expected.jsonl",
+        "expected_sha256": "tests/fixtures/canonicalization/cross_language/hail_ordering_expected.sha256"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "hail-chain-lifecycle-v1",
+      "fixture_type": "hail_chain",
+      "description": "Lifecycle-bound HAIL chain fixture.",
+      "input_paths": {
+        "hail": "tests/fixtures/hail_chain/lifecycle_stream.jsonl",
+        "expected": "tests/fixtures/hail_chain/expected.json"
+      },
+      "expected_digests": {
+        "hail_chain_digest": "sha256:fd1359a9c1367425b56dd91b49695f26b10a98b427ae967bd34b555c022dec30"
+      },
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": "full_simulator",
+      "expected_profile_id": "dmf",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "signed-run-manifest-v1",
+      "fixture_type": "signed_conformance",
+      "description": "Ed25519 signed Run Manifest v1 fixture with Trust Policy v1 authorization.",
+      "input_paths": {
+        "hail": "tests/fixtures/signed_conformance/hail.jsonl",
+        "manifest": "tests/fixtures/signed_conformance/manifest_signed.json",
+        "trust_policy": "tests/fixtures/signed_conformance/trust_policy.json"
+      },
+      "expected_digests": {
+        "hail_digest": "sha256:6f6601bf97252faf9f39247ac57603040bb700a1b893a9c1322f824c38059568",
+        "hail_chain_digest": "sha256:fd1359a9c1367425b56dd91b49695f26b10a98b427ae967bd34b555c022dec30"
+      },
+      "expected_status": "pass",
+      "expected_key_ids": [
+        "klein-test-backend-001"
+      ],
+      "expected_backend_id": "full_simulator",
+      "expected_profile_id": "dmf",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "valid-kcprun-bundle-v1",
+      "fixture_type": "run_bundle",
+      "description": "Portable .kcprun bundle fixture for independent verifier implementations.",
+      "input_paths": {
+        "bundle": "tests/fixtures/run_bundle/valid_signed_run.kcprun"
+      },
+      "expected_digests": {
+        "artifact_entry_hash": "sha256:bfb5b9edbf33f5328072c0a930699019a02723de968c8a1065b23758a5a32be1",
+        "hail_entry_hash": "sha256:f56eba6e75d87ba550afe6d7d687da7832c88c3757a3b2fbf7360296899cc913",
+        "run_manifest_entry_hash": "sha256:0270eaaabb42561b8529af9eed4db07d75c27b0dc3608f40f867ef8d617829ee",
+        "trust_policy_entry_hash": "sha256:4d24f57ad08d65b5ee57804077f29f9a8889efceef52a23950aa8d37bc4be730"
+      },
+      "expected_status": "pass",
+      "expected_key_ids": [
+        "klein-test-backend-001"
+      ],
+      "expected_backend_id": "full_simulator",
+      "expected_profile_id": "dmf",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "backend-identity-registry-valid-v1",
+      "fixture_type": "backend_identity_registry",
+      "description": "Backend Identity Registry v1 resolves the signed manifest backend/key/profile.",
+      "input_paths": {
+        "registry": "tests/fixtures/crypto/backend_registry_test.json",
+        "manifest": "tests/fixtures/signed_conformance/manifest_signed.json"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_key_ids": [
+        "klein-test-backend-001"
+      ],
+      "expected_backend_id": "full_simulator",
+      "expected_profile_id": "dmf",
+      "expected_identity_status": "resolved",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "valid-kcprun-bundle-with-registry-v1",
+      "fixture_type": "run_bundle",
+      "description": "Portable .kcprun bundle fixture with embedded Backend Identity Registry v1.",
+      "input_paths": {
+        "bundle": "tests/fixtures/run_bundle/valid_signed_run_with_registry.kcprun"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_key_ids": [
+        "klein-test-backend-001"
+      ],
+      "expected_backend_id": "full_simulator",
+      "expected_profile_id": "dmf",
+      "expected_identity_status": "resolved",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "backend-identity-registry-signed-valid-v1",
+      "fixture_type": "backend_identity_registry",
+      "description": "Signed Backend Identity Registry v1 resolves with trusted local registry authority.",
+      "input_paths": {
+        "registry": "tests/fixtures/crypto/backend_registry_signed_test.json",
+        "manifest": "tests/fixtures/signed_conformance/manifest_signed.json",
+        "trust_policy": "tests/fixtures/crypto/trust_policy_registry_authority_test.json"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_key_ids": [
+        "klein-test-backend-001"
+      ],
+      "expected_backend_id": "full_simulator",
+      "expected_profile_id": "dmf",
+      "expected_identity_status": "resolved",
+      "expected_registry_signature_status": "valid",
+      "expected_registry_provenance_status": "trusted",
+      "expected_key_lifecycle_status": "active",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "valid-kcprun-bundle-with-signed-registry-v1",
+      "fixture_type": "run_bundle",
+      "description": "Portable .kcprun bundle fixture with signed Backend Identity Registry v1 provenance.",
+      "input_paths": {
+        "bundle": "tests/fixtures/run_bundle/valid_signed_run_with_signed_registry.kcprun"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_key_ids": [
+        "klein-test-backend-001"
+      ],
+      "expected_backend_id": "full_simulator",
+      "expected_profile_id": "dmf",
+      "expected_identity_status": "resolved",
+      "expected_registry_signature_status": "valid",
+      "expected_registry_provenance_status": "trusted",
+      "expected_key_lifecycle_status": "active",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "backend-capabilities-signed-valid-v1",
+      "fixture_type": "backend_capabilities",
+      "description": "Signed Backend Capability Declaration v1 verifies and supports the DMF HARD run scope.",
+      "input_paths": {
+        "declaration": "tests/fixtures/capabilities/full_simulator_dmf_capabilities_signed.json",
+        "registry": "tests/fixtures/crypto/backend_registry_signed_test.json",
+        "trust_policy": "tests/fixtures/crypto/trust_policy_registry_authority_test.json",
+        "manifest": "tests/fixtures/signed_conformance/manifest_signed.json"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_capability_signature_status": "valid",
+      "expected_capability_scope_status": "pass",
+      "expected_backend_id": "full_simulator",
+      "expected_profile_id": "dmf",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "bundle-with-backend-capabilities-valid-v1",
+      "fixture_type": "run_bundle",
+      "description": "Portable .kcprun bundle fixture with signed backend capabilities.",
+      "input_paths": {
+        "bundle": "tests/fixtures/run_bundle/valid_signed_run_with_capabilities.kcprun"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_capability_signature_status": "valid",
+      "expected_capability_scope_status": "pass",
+      "expected_backend_id": "full_simulator",
+      "expected_profile_id": "dmf",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "conformance-levels-catalog-valid-v1",
+      "fixture_type": "conformance_levels_catalog",
+      "description": "Canonical KCP Conformance Levels Matrix v1 catalog validates.",
+      "input_paths": {
+        "catalog": "specs/catalogs/conformance_levels.v1.json"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "backend-capabilities-signature-invalid-negative-v1",
+      "fixture_type": "backend_capabilities",
+      "description": "Tampered Backend Capability Declaration v1 payload must fail signature verification.",
+      "input_paths": {
+        "declaration": "tests/fixtures/capabilities/full_simulator_dmf_capabilities_tampered.json",
+        "registry": "tests/fixtures/crypto/backend_registry_signed_test.json",
+        "trust_policy": "tests/fixtures/crypto/trust_policy_registry_authority_test.json",
+        "manifest": "tests/fixtures/signed_conformance/manifest_signed.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "BACKEND_CAPABILITY_SIGNATURE_INVALID",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "backend-capability-unknown-level-negative-v1",
+      "fixture_type": "backend_capabilities",
+      "description": "Capability declaration with an unknown conformance level must fail.",
+      "input_paths": {
+        "declaration": "tests/fixtures/conformance_levels/capability_unknown_level.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "CONFORMANCE_LEVEL_UNKNOWN",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "backend-capability-future-level-negative-v1",
+      "fixture_type": "backend_capabilities",
+      "description": "Capability declaration claiming a future HIL level must fail.",
+      "input_paths": {
+        "declaration": "tests/fixtures/conformance_levels/capability_future_level_claim.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "CONFORMANCE_LEVEL_FUTURE_UNSUPPORTED",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "backend-capability-missing-dependency-negative-v1",
+      "fixture_type": "backend_capabilities",
+      "description": "Capability declaration missing a required conformance level dependency must fail.",
+      "input_paths": {
+        "declaration": "tests/fixtures/conformance_levels/capability_missing_dependency.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "CONFORMANCE_LEVEL_DEPENDENCY_MISSING",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "backend-capabilities-wrong-profile-negative-v1",
+      "fixture_type": "backend_capabilities",
+      "description": "Capability declaration without the run profile must fail scope verification.",
+      "input_paths": {
+        "declaration": "tests/fixtures/capabilities/full_simulator_dmf_capabilities_wrong_profile.json",
+        "manifest": "tests/fixtures/signed_conformance/manifest_signed.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "BACKEND_CAPABILITY_PROFILE_UNSUPPORTED",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "backend-capabilities-bad-dmf-ranges-negative-v1",
+      "fixture_type": "backend_capabilities",
+      "description": "Invalid DMF electrical ranges must fail capability validation.",
+      "input_paths": {
+        "declaration": "tests/fixtures/capabilities/full_simulator_dmf_capabilities_bad_dmf_ranges.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "DMF_CAPABILITIES_INVALID",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "dmf-capabilities-valid-v1",
+      "fixture_type": "dmf_capabilities",
+      "description": "DMF/EWOD capability fixture validates basic addressing, electrical, payload, sensing, and recovery constraints.",
+      "input_paths": {
+        "capabilities": "tests/fixtures/profiles/dmf/capabilities_valid.json"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "dmf-capabilities-invalid-ranges-negative-v1",
+      "fixture_type": "dmf_capabilities",
+      "description": "DMF/EWOD capabilities with invalid electrical ranges must fail.",
+      "input_paths": {
+        "capabilities": "tests/fixtures/profiles/dmf/capabilities_invalid_ranges.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "DMF_CAPABILITIES_INVALID",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "dmf-payload-channel-list-valid-v1",
+      "fixture_type": "dmf_payload",
+      "description": "DMF CHANNEL_LIST payload fixture validates shape and basic profile semantics.",
+      "input_paths": {
+        "payload": "tests/fixtures/profiles/dmf/payload_channel_list_valid.json"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "dmf_payload_status": "pass",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "dmf-payload-channel-list-conflict-negative-v1",
+      "fixture_type": "dmf_payload",
+      "description": "DMF CHANNEL_LIST conflicting same-tick channel state must fail.",
+      "input_paths": {
+        "payload": "tests/fixtures/profiles/dmf/payload_channel_list_conflict.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "dmf_payload_status": "fail",
+      "expected_error_code": "PAYLOAD_CONFLICTING_STATE",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "dmf-payload-sparse-valid-v1",
+      "fixture_type": "dmf_payload",
+      "description": "DMF FRAME_SEQUENCE sparse payload fixture validates shape and bounds.",
+      "input_paths": {
+        "payload": "tests/fixtures/profiles/dmf/payload_frame_sequence_sparse_valid.json"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "dmf_payload_status": "pass",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "dmf-payload-sparse-oob-negative-v1",
+      "fixture_type": "dmf_payload",
+      "description": "DMF FRAME_SEQUENCE sparse payload with out-of-range electrode must fail.",
+      "input_paths": {
+        "payload": "tests/fixtures/profiles/dmf/payload_frame_sequence_sparse_oob.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "dmf_payload_status": "fail",
+      "expected_error_code": "PAYLOAD_OOB_PIXEL",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "dmf-payload-rle-unsupported-negative-v1",
+      "fixture_type": "dmf_payload",
+      "description": "DMF FRAME_SEQUENCE rle format is explicitly unsupported in alpha.",
+      "input_paths": {
+        "payload": "tests/fixtures/profiles/dmf/payload_frame_sequence_rle_unsupported.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "dmf_payload_status": "fail",
+      "expected_error_code": "PAYLOAD_UNSUPPORTED_FRAME_FORMAT",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "backend-identity-registry-signature-invalid-negative-v1",
+      "fixture_type": "backend_identity_registry",
+      "description": "Signed registry payload tampering must fail signature verification.",
+      "input_paths": {
+        "registry": "tests/fixtures/crypto/backend_registry_signed_tampered.json",
+        "manifest": "tests/fixtures/signed_conformance/manifest_signed.json",
+        "trust_policy": "tests/fixtures/crypto/trust_policy_registry_authority_test.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "BACKEND_REGISTRY_SIGNATURE_INVALID",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "backend-identity-registry-signed-revoked-key-negative-v1",
+      "fixture_type": "backend_identity_registry",
+      "description": "Signed registry revoked backend key must fail identity resolution.",
+      "input_paths": {
+        "registry": "tests/fixtures/crypto/backend_registry_signed_revoked_key.json",
+        "manifest": "tests/fixtures/signed_conformance/manifest_signed.json",
+        "trust_policy": "tests/fixtures/crypto/trust_policy_registry_authority_test.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "BACKEND_IDENTITY_KEY_REVOKED",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "backend-identity-registry-revoked-key-negative-v1",
+      "fixture_type": "backend_identity_registry",
+      "description": "Registry revoked key must fail identity resolution.",
+      "input_paths": {
+        "registry": "tests/fixtures/crypto/backend_registry_revoked_key.json",
+        "manifest": "tests/fixtures/signed_conformance/manifest_signed.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "BACKEND_IDENTITY_KEY_REVOKED",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "backend-identity-registry-key-mismatch-negative-v1",
+      "fixture_type": "backend_identity_registry",
+      "description": "Registry key mismatch must fail identity resolution.",
+      "input_paths": {
+        "registry": "tests/fixtures/crypto/backend_registry_key_mismatch.json",
+        "manifest": "tests/fixtures/signed_conformance/manifest_signed.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "BACKEND_IDENTITY_KEY_MISMATCH",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "backend-identity-registry-missing-backend-negative-v1",
+      "fixture_type": "backend_identity_registry",
+      "description": "Missing backend identity must fail identity resolution.",
+      "input_paths": {
+        "registry": "tests/fixtures/crypto/backend_registry_missing_backend.json",
+        "manifest": "tests/fixtures/signed_conformance/manifest_signed.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "BACKEND_IDENTITY_NOT_FOUND",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "kcprun-path-traversal-negative-v1",
+      "fixture_type": "run_bundle",
+      "description": "Path traversal in .kcprun archive must be rejected.",
+      "input_paths": {
+        "bundle": "tests/fixtures/run_bundle/path_traversal_attack.kcprun"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "RUN_BUNDLE_PATH_TRAVERSAL",
+      "expected_failing_check": "bundle_schema",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "kcprun-bundle-hash-mismatch-negative-v1",
+      "fixture_type": "run_bundle",
+      "description": "Bundle entry hash mismatch must be rejected.",
+      "input_paths": {
+        "bundle": "tests/fixtures/run_bundle/bundle_hash_mismatch.kcprun"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "RUN_BUNDLE_HASH_MISMATCH",
+      "expected_failing_check": "bundle_entry_hashes",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "kcprun-hail-chain-mismatch-negative-v1",
+      "fixture_type": "run_bundle",
+      "description": "HAIL chain tampering with updated bundle hash must be rejected.",
+      "input_paths": {
+        "bundle": "tests/fixtures/run_bundle/hail_chain_mismatch.kcprun"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "HAIL_CHAIN_MISMATCH",
+      "expected_failing_check": "hail_chain",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "kcprun-manifest-signature-invalid-negative-v1",
+      "fixture_type": "run_bundle",
+      "description": "Run Manifest payload tampering with updated bundle hash must be rejected by signature verification.",
+      "input_paths": {
+        "bundle": "tests/fixtures/run_bundle/manifest_signature_invalid.kcprun"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "RUN_MANIFEST_SIGNATURE_INVALID",
+      "expected_failing_check": "run_manifest_signature",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "kcprun-trust-policy-untrusted-negative-v1",
+      "fixture_type": "run_bundle",
+      "description": "Valid signature with Trust Policy scope mismatch must be rejected.",
+      "input_paths": {
+        "bundle": "tests/fixtures/run_bundle/trust_policy_untrusted.kcprun"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "TRUST_POLICY_SCOPE_MISMATCH",
+      "expected_failing_check": "trust_policy_authorization",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "klein_project_valid_hash",
+      "fixture_type": "artifact",
+      "description": "Canonical .klein project artifact hash fixture.",
+      "input_paths": {
+        "input": "tests/fixtures/artifacts/project_minimal_valid.klein"
+      },
+      "expected_digests": {
+        "artifact_hash": "sha256:8648b58669eb5d0e86b284245c473f2b5c8abe8831cb6e486577437742f0bfe4"
+      },
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "klein_project_reordered_same_hash",
+      "fixture_type": "artifact",
+      "description": "Reordered .klein project artifact has the same canonical hash.",
+      "input_paths": {
+        "input": "tests/fixtures/artifacts/project_reordered_equivalent.klein"
+      },
+      "expected_digests": {
+        "artifact_hash": "sha256:8648b58669eb5d0e86b284245c473f2b5c8abe8831cb6e486577437742f0bfe4"
+      },
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "klein_container_valid_hash",
+      "fixture_type": "artifact",
+      "description": "Canonical .kleinc container artifact hash fixture.",
+      "input_paths": {
+        "input": "tests/fixtures/artifacts/container_minimal_valid.kleinc"
+      },
+      "expected_digests": {
+        "artifact_hash": "sha256:58cda2724d27d468d5b8ea82d1feac39cddd8e8d719c9e91bc7ff47743764a91"
+      },
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "klein_container_reordered_same_hash",
+      "fixture_type": "artifact",
+      "description": "Reordered .kleinc container artifact has the same canonical hash.",
+      "input_paths": {
+        "input": "tests/fixtures/artifacts/container_reordered_equivalent.kleinc"
+      },
+      "expected_digests": {
+        "artifact_hash": "sha256:58cda2724d27d468d5b8ea82d1feac39cddd8e8d719c9e91bc7ff47743764a91"
+      },
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "artifact_invalid_missing_profile",
+      "fixture_type": "artifact",
+      "description": "Artifact validation fixture for missing canonical project profile.",
+      "input_paths": {
+        "input": "tests/fixtures/artifacts/project_invalid_missing_profile.klein"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ],
+      "expected_error_code": "ARTIFACT_PROFILE_MISSING"
+    },
+    {
+      "fixture_id": "artifact_unsupported_version",
+      "fixture_type": "artifact",
+      "description": "Artifact validation fixture for unsupported canonical schema_version.",
+      "input_paths": {
+        "input": "tests/vectors/v1/negative/N030_artifact_unsupported_schema_version/input/project.klein"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ],
+      "expected_error_code": "ARTIFACT_UNSUPPORTED_VERSION"
+    },
+    {
+      "fixture_id": "runbook-valid-hash-v1",
+      "fixture_type": "runbook_trace",
+      "description": "Runbook v1 canonical hash fixture.",
+      "input_paths": {
+        "runbook": "tests/fixtures/execution/runbook_minimal_dmf.json"
+      },
+      "expected_digests": {
+        "runbook_hash": "sha256:69d0986d862ba895ba1aba12e80321b70b0d43e00c2fc1d7de453bde9ed581f4"
+      },
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "trace-valid-hash-v1",
+      "fixture_type": "runbook_trace",
+      "description": "Execution Trace v1 canonical hash fixture.",
+      "input_paths": {
+        "runbook": "tests/fixtures/execution/runbook_minimal_dmf.json",
+        "trace": "tests/fixtures/execution/trace_minimal_dmf.json"
+      },
+      "expected_digests": {
+        "runbook_hash": "sha256:69d0986d862ba895ba1aba12e80321b70b0d43e00c2fc1d7de453bde9ed581f4",
+        "trace_hash": "sha256:4bd3c725af5535bd92f982ea863e9b2fe0051a5282becf9958189d5f3d28d4da"
+      },
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "trace-matches-runbook-v1",
+      "fixture_type": "runbook_trace",
+      "description": "Execution Trace v1 matches Runbook v1 planned steps.",
+      "input_paths": {
+        "runbook": "tests/fixtures/execution/runbook_minimal_dmf.json",
+        "trace": "tests/fixtures/execution/trace_minimal_dmf.json"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "trace-mismatch-detected-negative-v1",
+      "fixture_type": "runbook_trace",
+      "description": "Execution Trace v1 mismatch is detected against Runbook v1.",
+      "input_paths": {
+        "runbook": "tests/fixtures/execution/runbook_minimal_dmf.json",
+        "trace": "tests/fixtures/execution/trace_mismatch_tick.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "TRACE_RUNBOOK_MISMATCH",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "ecrp-policy-valid-v1",
+      "fixture_type": "ecrp",
+      "description": "ECRP Policy v1 bounded failure fixture.",
+      "input_paths": {
+        "policy": "tests/fixtures/ecrp/policy_bounded_failure.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "ecrp-policy-invalid-unknown-strategy-negative-v1",
+      "fixture_type": "ecrp",
+      "description": "ECRP Policy v1 rejects unknown strategy.",
+      "input_paths": {
+        "policy": "tests/fixtures/ecrp/policy_invalid_unknown_strategy.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "ECRP_STRATEGY_UNKNOWN",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "ecrp-hail-bounded-failure-valid-v1",
+      "fixture_type": "ecrp",
+      "description": "ECRP HAIL bounded failure attempt sequence validates.",
+      "input_paths": {
+        "policy": "tests/fixtures/ecrp/policy_bounded_failure.json",
+        "hail": "tests/fixtures/ecrp/hail_bounded_failure.jsonl"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "ecrp-hail-attempts-exceed-policy-negative-v1",
+      "fixture_type": "ecrp",
+      "description": "ECRP HAIL attempts cannot exceed policy max_attempts.",
+      "input_paths": {
+        "policy": "tests/fixtures/ecrp/policy_bounded_failure.json",
+        "hail": "tests/fixtures/ecrp/hail_attempts_exceed_policy.jsonl"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "ECRP_ATTEMPTS_EXCEEDED",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "ecrp-trace-bounded-failure-valid-v1",
+      "fixture_type": "ecrp",
+      "description": "ECRP trace/runbook bounded failure contract validates.",
+      "input_paths": {
+        "policy": "tests/fixtures/ecrp/policy_bounded_failure.json",
+        "runbook": "tests/fixtures/ecrp/runbook_bounded_failure.json",
+        "trace": "tests/fixtures/ecrp/trace_bounded_failure.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "ecrp-trace-missing-terminal-failure-negative-v1",
+      "fixture_type": "ecrp",
+      "description": "ECRP trace missing failed-step evidence is rejected.",
+      "input_paths": {
+        "policy": "tests/fixtures/ecrp/policy_bounded_failure.json",
+        "runbook": "tests/fixtures/ecrp/runbook_bounded_failure.json",
+        "trace": "tests/fixtures/ecrp/trace_missing_terminal_failure.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "ECRP_TRACE_EVIDENCE_MISSING",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "ecrp-policy-simulated-recovery-success-v1",
+      "fixture_type": "ecrp",
+      "description": "ECRP Policy v1 permits simulator-only NUDGE_PULSE retry success.",
+      "input_paths": {
+        "policy": "tests/fixtures/ecrp/policy_simulated_recovery_success.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "ecrp-hail-simulated-recovery-success-v1",
+      "fixture_type": "ecrp",
+      "description": "ECRP HAIL records successful simulator-only NUDGE_PULSE retry.",
+      "input_paths": {
+        "policy": "tests/fixtures/ecrp/policy_simulated_recovery_success.json",
+        "hail": "tests/fixtures/ecrp/hail_simulated_recovery_success.jsonl"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "ecrp-trace-simulated-recovery-success-v1",
+      "fixture_type": "ecrp",
+      "description": "ECRP trace records failed original step and successful retry evidence.",
+      "input_paths": {
+        "policy": "tests/fixtures/ecrp/policy_simulated_recovery_success.json",
+        "runbook": "tests/fixtures/ecrp/runbook_simulated_recovery_success.json",
+        "trace": "tests/fixtures/ecrp/trace_simulated_recovery_success.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "ecrp-recovery-success-not-allowed-negative-v1",
+      "fixture_type": "ecrp",
+      "description": "ECRP HAIL recovery success is rejected when policy does not permit it.",
+      "input_paths": {
+        "policy": "tests/fixtures/ecrp/policy_recovery_success_not_allowed.json",
+        "hail": "tests/fixtures/ecrp/hail_recovery_success_not_allowed.jsonl"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "ECRP_RECOVERY_SUCCESS_NOT_ALLOWED",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "observation-policy-valid-v1",
+      "fixture_type": "observation",
+      "description": "Observation Policy v1 accepts simulator-only DMF observation policy.",
+      "input_paths": {
+        "policy": "tests/fixtures/observation/policy_simulated_dmf.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "observation-snapshot-valid-v1",
+      "fixture_type": "observation",
+      "description": "Observation Snapshot v1 valid simulator DMF snapshot with canonical hash.",
+      "input_paths": {
+        "observation": "tests/fixtures/observation/observation_simulated_dmf.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {
+        "observation_hash": "sha256:a8ed410ca02a7986a41ff5f9eac7df62c837c8cb427cfcf127d2eec600a9b87f"
+      },
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "observation-snapshot-invalid-confidence-negative-v1",
+      "fixture_type": "observation",
+      "description": "Observation Snapshot v1 rejects confidence outside [0, 1].",
+      "input_paths": {
+        "observation": "tests/fixtures/observation/observation_invalid_confidence.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "OBSERVATION_CONFIDENCE_INVALID",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "observation-trace-match-valid-v1",
+      "fixture_type": "observation",
+      "description": "Observation trace_step_id aligns with Execution Trace v1.",
+      "input_paths": {
+        "observation": "tests/fixtures/observation/observation_simulated_dmf.json",
+        "trace": "tests/fixtures/observation/trace_simulated_dmf.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "observation-trace-mismatch-negative-v1",
+      "fixture_type": "observation",
+      "description": "Observation trace_step_id mismatch is rejected.",
+      "input_paths": {
+        "observation": "tests/fixtures/observation/observation_trace_mismatch.json",
+        "trace": "tests/fixtures/observation/trace_simulated_dmf.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "OBSERVATION_TRACE_MISMATCH",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "observation-recovery-contract-valid-v1",
+      "fixture_type": "observation",
+      "description": "Observation fixture aligns with simulator recovery success trace.",
+      "input_paths": {
+        "policy": "tests/fixtures/observation/policy_recovery_requires_observation.json",
+        "observation": "tests/fixtures/observation/observation_simulated_dmf_after_recovery.json",
+        "trace": "tests/fixtures/observation/trace_simulated_recovery_success.json",
+        "runbook": "tests/fixtures/observation/runbook_simulated_recovery_success.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "hil-contract-mock-valid-v1",
+      "fixture_type": "hil",
+      "description": "HIL Backend Contract v1 mock DMF contract validates as interface readiness only.",
+      "input_paths": {
+        "contract": "tests/fixtures/hil/hil_contract_mock_dmf.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "hil-contract-missing-estop-negative-v1",
+      "fixture_type": "hil",
+      "description": "HIL contract without emergency_stop is rejected.",
+      "input_paths": {
+        "contract": "tests/fixtures/hil/hil_contract_invalid_missing_estop.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "HIL_ESTOP_REQUIRED",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "hil-contract-claims-attestation-negative-v1",
+      "fixture_type": "hil",
+      "description": "HIL contract claiming attestation is rejected in current alpha.",
+      "input_paths": {
+        "contract": "tests/fixtures/hil/hil_contract_invalid_claims_attestation.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "HIL_ATTESTATION_UNSUPPORTED",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "hil-status-ok-valid-v1",
+      "fixture_type": "hil",
+      "description": "HIL Backend Status v1 OK status validates.",
+      "input_paths": {
+        "status": "tests/fixtures/hil/hil_status_ok.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "hil-status-faulted-missing-error-negative-v1",
+      "fixture_type": "hil",
+      "description": "HIL Backend Status v1 FAULTED requires last_error_code.",
+      "input_paths": {
+        "status": "tests/fixtures/hil/hil_status_faulted_missing_error.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "HIL_FAULT_MISSING_ERROR",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "recorded-run-mock-valid-v1",
+      "fixture_type": "recorded_run",
+      "description": "Recorded Device Run v1 mock archive index validates without hardware claims.",
+      "input_paths": {
+        "recorded_run": "tests/fixtures/recorded_run/mock_recorded_run/recorded_run.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "recorded-run-hardware-claim-negative-v1",
+      "fixture_type": "recorded_run",
+      "description": "Recorded Device Run v1 rejects hardware claims in current alpha.",
+      "input_paths": {
+        "recorded_run": "tests/fixtures/recorded_run/invalid_hardware_claim/recorded_run.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "RECORDED_RUN_HARDWARE_CLAIM_UNSUPPORTED",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "recorded-run-attestation-claim-negative-v1",
+      "fixture_type": "recorded_run",
+      "description": "Recorded Device Run v1 rejects attestation in current alpha.",
+      "input_paths": {
+        "recorded_run": "tests/fixtures/recorded_run/invalid_attestation_claim/recorded_run.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "RECORDED_RUN_ATTESTATION_UNSUPPORTED",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "raw-device-log-valid-v1",
+      "fixture_type": "raw_device_log",
+      "description": "Raw Device Log v1 JSONL validates with monotonic indexes.",
+      "input_paths": {
+        "raw_log": "tests/fixtures/recorded_run/raw_device_log_valid.jsonl"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "raw-device-log-nonmonotonic-negative-v1",
+      "fixture_type": "raw_device_log",
+      "description": "Raw Device Log v1 rejects nonmonotonic event indexes.",
+      "input_paths": {
+        "raw_log": "tests/fixtures/recorded_run/invalid_raw_log_nonmonotonic.jsonl"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "RAW_DEVICE_LOG_ORDER_INVALID",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "raw-device-log-error-missing-code-negative-v1",
+      "fixture_type": "raw_device_log",
+      "description": "Raw Device Log v1 ERROR events require error_code.",
+      "input_paths": {
+        "raw_log": "tests/fixtures/recorded_run/invalid_raw_log_error_missing_code.jsonl"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "RAW_DEVICE_LOG_ERROR_CODE_MISSING",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "dmf-backend-adapter-config-valid-v1",
+      "fixture_type": "dmf_backend_adapter",
+      "description": "Generic DMF Backend Adapter v1 dry-run config validates.",
+      "input_paths": {
+        "config": "tests/fixtures/backends/dmf/generic_dmf_dry_run_config.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "dmf-backend-adapter-config-hardware-enabled-negative-v1",
+      "fixture_type": "dmf_backend_adapter",
+      "description": "Generic DMF Backend Adapter v1 rejects hardware IO in current alpha.",
+      "input_paths": {
+        "config": "tests/fixtures/backends/dmf/generic_dmf_invalid_hardware_enabled.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "DMF_ADAPTER_HARDWARE_IO_UNSUPPORTED",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "dmf-backend-adapter-status-valid-v1",
+      "fixture_type": "dmf_backend_adapter",
+      "description": "Generic DMF Backend Adapter v1 status validates.",
+      "input_paths": {
+        "status": "tests/fixtures/backends/dmf/generic_dmf_dry_run_status_unknown.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "dmf-backend-adapter-recorded-run-valid-v1",
+      "fixture_type": "recorded_run",
+      "description": "Recorded Device Run v1 package index generated through Generic DMF Dry-Run Adapter validates.",
+      "input_paths": {
+        "recorded_run": "tests/fixtures/recorded_run/dmf_dry_run_recorded_run/recorded_run.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "opendrop-adapter-config-valid-v1",
+      "fixture_type": "opendrop_backend_adapter",
+      "description": "OpenDrop/EWOD Adapter Skeleton v1 dry-run config validates.",
+      "input_paths": {
+        "config": "tests/fixtures/backends/dmf/opendrop/opendrop_dry_run_config.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "opendrop-adapter-config-hardware-enabled-negative-v1",
+      "fixture_type": "opendrop_backend_adapter",
+      "description": "OpenDrop/EWOD Adapter Skeleton v1 rejects hardware IO in current alpha.",
+      "input_paths": {
+        "config": "tests/fixtures/backends/dmf/opendrop/opendrop_invalid_hardware_enabled.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "OPENDROP_HARDWARE_IO_UNSUPPORTED",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "opendrop-adapter-config-transport-negative-v1",
+      "fixture_type": "opendrop_backend_adapter",
+      "description": "OpenDrop/EWOD Adapter Skeleton v1 rejects serial transport in current alpha.",
+      "input_paths": {
+        "config": "tests/fixtures/backends/dmf/opendrop/opendrop_invalid_transport_serial.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "OPENDROP_TRANSPORT_UNSUPPORTED",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "opendrop-command-intent-valid-v1",
+      "fixture_type": "opendrop_backend_adapter",
+      "description": "OpenDrop/EWOD command intent validates.",
+      "input_paths": {
+        "intent": "tests/fixtures/backends/dmf/opendrop/command_intent_channel_list.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "opendrop-command-intent-oob-negative-v1",
+      "fixture_type": "opendrop_backend_adapter",
+      "description": "OpenDrop/EWOD command intent rejects out-of-range channels.",
+      "input_paths": {
+        "intent": "tests/fixtures/backends/dmf/opendrop/command_intent_invalid_oob_channel.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "OPENDROP_CHANNEL_OOB",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "opendrop-recorded-run-valid-v1",
+      "fixture_type": "recorded_run",
+      "description": "Recorded Device Run v1 package index generated through OpenDrop/EWOD dry-run skeleton validates.",
+      "input_paths": {
+        "recorded_run": "tests/fixtures/recorded_run/opendrop_dry_run_recorded_run/recorded_run.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "timestamp-profile-mock-valid-v1",
+      "fixture_type": "timestamp_profile",
+      "description": "Trusted Timestamp Profile v1 stub accepts mock/local current-alpha profiles.",
+      "input_paths": {
+        "profile": "tests/fixtures/timestamp/profile_mock_local.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "timestamp-profile-claims-trusted-invalid-v1",
+      "fixture_type": "timestamp_profile",
+      "description": "Trusted Timestamp Profile v1 stub rejects mock/local profiles that claim trusted time.",
+      "input_paths": {
+        "profile": "tests/fixtures/timestamp/profile_invalid_claims_trusted_time.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "TIMESTAMP_TRUSTED_TIME_UNSUPPORTED",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "timestamp-token-mock-valid-v1",
+      "fixture_type": "timestamp_token",
+      "description": "Trusted Timestamp Profile v1 stub accepts mock/local tokens bound to target hashes.",
+      "input_paths": {
+        "token": "tests/fixtures/timestamp/token_mock_bundle.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {
+        "target_hash": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "timestamp-token-claims-trusted-invalid-v1",
+      "fixture_type": "timestamp_token",
+      "description": "Trusted Timestamp Profile v1 stub rejects mock/local tokens that claim trusted time.",
+      "input_paths": {
+        "token": "tests/fixtures/timestamp/token_invalid_claims_trusted_time.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "TIMESTAMP_TRUSTED_TIME_UNSUPPORTED",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "timestamp-token-tsa-current-alpha-invalid-v1",
+      "fixture_type": "timestamp_token",
+      "description": "Trusted Timestamp Profile v1 stub rejects TSA source tokens in current alpha.",
+      "input_paths": {
+        "token": "tests/fixtures/timestamp/token_invalid_tsa_current_alpha.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "TIMESTAMP_TSA_UNSUPPORTED",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "timestamp-token-hash-mismatch-invalid-v1",
+      "fixture_type": "timestamp_token",
+      "description": "Trusted Timestamp Profile v1 stub rejects token target hash binding mismatch.",
+      "input_paths": {
+        "token": "tests/fixtures/timestamp/token_invalid_hash_mismatch.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "TIMESTAMP_TARGET_HASH_MISMATCH",
+      "expected_digests": {
+        "target_hash": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+      },
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "attestation-profile-mock-valid-v1",
+      "fixture_type": "attestation_profile",
+      "description": "Attestation Profile v1 stub accepts mock/null current-alpha profiles.",
+      "input_paths": {
+        "profile": "tests/fixtures/attestation/profile_mock_none.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "attestation-profile-claims-hardware-invalid-v1",
+      "fixture_type": "attestation_profile",
+      "description": "Attestation Profile v1 stub rejects mock/null profiles that claim hardware attestation.",
+      "input_paths": {
+        "profile": "tests/fixtures/attestation/profile_invalid_claims_hardware_attestation.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "ATTESTATION_HARDWARE_UNSUPPORTED",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "attestation-statement-none-valid-v1",
+      "fixture_type": "attestation_statement",
+      "description": "Attestation Profile v1 stub accepts explicit no-attestation statements.",
+      "input_paths": {
+        "statement": "tests/fixtures/attestation/statement_none_recorded_run.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {
+        "subject_hash": "sha256:5555555555555555555555555555555555555555555555555555555555555555"
+      },
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "attestation-statement-mock-valid-v1",
+      "fixture_type": "attestation_statement",
+      "description": "Attestation Profile v1 stub accepts mock statements bound to backend identity and target hash.",
+      "input_paths": {
+        "statement": "tests/fixtures/attestation/statement_mock_backend.json"
+      },
+      "expected_status": "pass",
+      "expected_digests": {
+        "subject_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      },
+      "expected_key_ids": [],
+      "expected_backend_id": "opendrop_ewod_dry_run",
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "attestation-statement-claims-hardware-invalid-v1",
+      "fixture_type": "attestation_statement",
+      "description": "Attestation Profile v1 stub rejects statements that claim hardware attestation.",
+      "input_paths": {
+        "statement": "tests/fixtures/attestation/statement_invalid_claims_hardware_attestation.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "ATTESTATION_HARDWARE_UNSUPPORTED",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "attestation-statement-quote-current-alpha-invalid-v1",
+      "fixture_type": "attestation_statement",
+      "description": "Attestation Profile v1 stub rejects quote material in current alpha.",
+      "input_paths": {
+        "statement": "tests/fixtures/attestation/statement_invalid_quote_current_alpha.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "ATTESTATION_QUOTE_UNSUPPORTED",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "attestation-statement-hash-mismatch-invalid-v1",
+      "fixture_type": "attestation_statement",
+      "description": "Attestation Profile v1 stub rejects subject hash binding mismatch.",
+      "input_paths": {
+        "statement": "tests/fixtures/attestation/statement_invalid_hash_mismatch.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "ATTESTATION_SUBJECT_HASH_MISMATCH",
+      "expected_digests": {
+        "subject_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666"
+      },
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "attestation-statement-backend-mismatch-invalid-v1",
+      "fixture_type": "attestation_statement",
+      "description": "Attestation Profile v1 stub rejects backend identity binding mismatch.",
+      "input_paths": {
+        "statement": "tests/fixtures/attestation/statement_invalid_backend_mismatch.json"
+      },
+      "expected_status": "fail",
+      "expected_error_code": "ATTESTATION_BACKEND_MISMATCH",
+      "expected_digests": {},
+      "expected_key_ids": [],
+      "expected_backend_id": "opendrop_ewod_dry_run",
+      "expected_profile_id": null,
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "opendrop-transport-none-valid-v1",
+      "fixture_type": "opendrop_transport",
+      "description": "OpenDrop transport planning config with transport_kind none.",
+      "input_paths": {
+        "transport": "tests/fixtures/backends/dmf/opendrop/opendrop_transport_none.json"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": "dmf",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "opendrop-transport-serial-disabled-valid-v1",
+      "fixture_type": "opendrop_transport",
+      "description": "OpenDrop serial_experimental transport plan with hardware IO disabled.",
+      "input_paths": {
+        "transport": "tests/fixtures/backends/dmf/opendrop/opendrop_transport_serial_experimental_disabled.json"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": "dmf",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "opendrop-transport-hardware-enabled-invalid-v1",
+      "fixture_type": "opendrop_transport",
+      "description": "OpenDrop transport planning rejects hardware_io_enabled in current alpha.",
+      "input_paths": {
+        "transport": "tests/fixtures/backends/dmf/opendrop/opendrop_transport_invalid_hardware_enabled.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "OPENDROP_HARDWARE_IO_UNSUPPORTED",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": "dmf",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "opendrop-transport-endpoint-current-alpha-invalid-v1",
+      "fixture_type": "opendrop_transport",
+      "description": "OpenDrop transport planning rejects endpoint and baud_rate in strict current alpha.",
+      "input_paths": {
+        "transport": "tests/fixtures/backends/dmf/opendrop/opendrop_transport_invalid_endpoint_current_alpha.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "OPENDROP_ENDPOINT_UNSUPPORTED_CURRENT_ALPHA",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": "dmf",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "opendrop-serial-command-valid-v1",
+      "fixture_type": "opendrop_transport",
+      "description": "OpenDrop serial command planning artifact generated from a dry-run intent.",
+      "input_paths": {
+        "command": "tests/fixtures/backends/dmf/opendrop/serial_command_set_electrodes.json"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": "dmf",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "opendrop-serial-command-hardware-allowed-invalid-v1",
+      "fixture_type": "opendrop_transport",
+      "description": "OpenDrop serial command planning rejects hardware_io_allowed in current alpha.",
+      "input_paths": {
+        "command": "tests/fixtures/backends/dmf/opendrop/serial_command_invalid_hardware_allowed.json"
+      },
+      "expected_digests": {},
+      "expected_status": "fail",
+      "expected_error_code": "OPENDROP_HARDWARE_IO_UNSUPPORTED",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": "dmf",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    },
+    {
+      "fixture_id": "opendrop-command-stream-valid-v1",
+      "fixture_type": "opendrop_transport",
+      "description": "OpenDrop command stream JSONL planning artifact with no device IO.",
+      "input_paths": {
+        "command_stream": "tests/fixtures/backends/dmf/opendrop/command_stream_minimal.jsonl"
+      },
+      "expected_digests": {},
+      "expected_status": "pass",
+      "expected_key_ids": [],
+      "expected_backend_id": null,
+      "expected_profile_id": "dmf",
+      "target_implementations": [
+        "python",
+        "rust",
+        "typescript-future"
+      ]
+    }
+  ]
+}

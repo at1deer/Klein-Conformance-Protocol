@@ -1,0 +1,25 @@
+{
+  "command_id": "cmd-0001",
+  "command_kind": "SET_ELECTRODES",
+  "encoding": "json",
+  "hardware_io_allowed": true,
+  "intent_id": "intent-0001",
+  "payload": {
+    "command": "SET_ELECTRODES",
+    "electrodes": [
+      {
+        "channel_id": 1,
+        "electrode_id": "E0001",
+        "frequency_hz": 1000,
+        "state": "ON",
+        "voltage_v": 120,
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "tick": 0
+  },
+  "raw_line": "{\"command\":\"SET_ELECTRODES\",\"electrodes\":[{\"channel_id\":1,\"electrode_id\":\"E0001\",\"frequency_hz\":1000,\"state\":\"ON\",\"voltage_v\":120,\"x\":0,\"y\":0}],\"tick\":0}",
+  "serial_command_version": "klein.opendrop_serial_command.v1",
+  "tick": 0
+}

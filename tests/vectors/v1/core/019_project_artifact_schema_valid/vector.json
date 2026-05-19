@@ -1,0 +1,13 @@
+{
+  "id": "019",
+  "name": "019_project_artifact_schema_valid",
+  "schema_version": "v1",
+  "profile": "core",
+  "mode": "HARD",
+  "expected_result": "PASS",
+  "input_type": "project",
+  "input_path": "input/project.klein",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "purpose": ".klein Project v1 compatibility artifact validates before execution"
+}

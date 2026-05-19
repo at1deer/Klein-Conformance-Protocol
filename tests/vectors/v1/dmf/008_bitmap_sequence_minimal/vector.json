@@ -1,0 +1,14 @@
+{
+  "id": "008",
+  "name": "008_bitmap_sequence_minimal",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "PASS",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "purpose": "BITMAP_SEQUENCE minimal valid base64 bitmap payload",
+  "profile_version": "v1"
+}

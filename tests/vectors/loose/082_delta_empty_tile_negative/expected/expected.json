@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "PAYLOAD_EMPTY_TILE",
+    "message_contains": "empty"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "VALIDATE|DECODE",
+  "mode": "HARD",
+  "must_fail": true
+}

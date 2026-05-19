@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Timestamp Token v1",
+  "type": "object",
+  "required": [
+    "timestamp_token_version",
+    "token_id",
+    "token_kind",
+    "target",
+    "claimed_time",
+    "time_source",
+    "trusted_time_claimed",
+    "signature",
+    "metadata"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "timestamp_token_version": { "const": "klein.timestamp_token.v1" },
+    "token_id": { "type": "string", "minLength": 1 },
+    "token_kind": { "type": "string", "enum": ["mock_local", "rfc3161_future"] },
+    "target": {
+      "type": "object",
+      "required": ["target_type", "target_hash", "target_canonicalization"],
+      "additionalProperties": false,
+      "properties": {
+        "target_type": {
+          "type": "string",
+          "enum": ["run_bundle", "run_manifest", "hail_chain", "recorded_run"]
+        },
+        "target_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "target_canonicalization": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "claimed_time": { "type": ["string", "null"] },
+    "time_source": {
+      "type": "object",
+      "required": ["source_type", "authority_id"],
+      "additionalProperties": false,
+      "properties": {
+        "source_type": { "type": "string", "enum": ["local_clock", "mock", "tsa"] },
+        "authority_id": { "type": ["string", "null"] }
+      }
+    },
+    "trusted_time_claimed": { "type": "boolean" },
+    "signature": { "type": ["object", "null"] },
+    "metadata": { "type": "object" }
+  }
+}

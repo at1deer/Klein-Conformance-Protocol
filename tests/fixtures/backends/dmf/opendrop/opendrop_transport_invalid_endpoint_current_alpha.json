@@ -1,0 +1,14 @@
+{
+  "baud_rate": 115200,
+  "command_encoding": "jsonl",
+  "endpoint": "COM3",
+  "hardware_io_enabled": false,
+  "limitations": [
+    "Invalid fixture: endpoint is configured in current alpha strict mode."
+  ],
+  "protocol_family": "opendrop_arduino_style",
+  "requires_explicit_enable": true,
+  "transport_config_version": "klein.opendrop_transport_config.v1",
+  "transport_kind": "serial_experimental",
+  "untested_hardware_warning": true
+}

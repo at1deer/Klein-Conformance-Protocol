@@ -1,0 +1,14 @@
+{
+  "id": "002",
+  "name": "002_hard_minimal_container",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "PASS",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "purpose": "HARD minimal .kleinc container executes through the full execution engine",
+  "profile_version": "v1"
+}

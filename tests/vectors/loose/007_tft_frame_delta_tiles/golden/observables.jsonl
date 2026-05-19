@@ -1,0 +1,4 @@
+{"code": "START", "kind": "DEVICE_EVENT", "level": "INFO", "message": "Run started", "run_id": "R7", "t": 0, "timebase": "DEVICE_TICKS"}
+{"cells": [{"c": 1, "confidence": 1.0, "occupied": true, "r": 1}, {"c": 2, "confidence": 1.0, "occupied": true, "r": 1}, {"c": 2, "confidence": 1.0, "occupied": true, "r": 2}], "kind": "OCCUPANCY", "regions": [], "run_id": "R7", "t": 0, "timebase": "DEVICE_TICKS"}
+{"cells": [{"c": 2, "confidence": 1.0, "occupied": true, "r": 1}, {"c": 2, "confidence": 1.0, "occupied": true, "r": 2}, {"c": 3, "confidence": 1.0, "occupied": true, "r": 3}], "kind": "OCCUPANCY", "regions": [], "run_id": "R7", "t": 1, "timebase": "DEVICE_TICKS"}
+{"code": "COMPLETE", "kind": "DEVICE_EVENT", "level": "INFO", "message": "Run completed", "run_id": "R7", "t": 2, "timebase": "DEVICE_TICKS"}

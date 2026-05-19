@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "TRACE_INVALID_RANGE",
+    "message_contains": "tick_range"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "VALIDATE",
+  "mode": "HARD",
+  "must_fail": true
+}

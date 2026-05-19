@@ -1,0 +1,48 @@
+{
+  "confidence": 1.0,
+  "metadata": {
+    "hil_readiness_mock": true,
+    "physical_hardware": false
+  },
+  "observation_id": "hil-obs-0001",
+  "observation_model": "simulated",
+  "observation_version": "klein.observation_snapshot.v1",
+  "profile": {
+    "profile_id": "dmf",
+    "profile_version": "v1"
+  },
+  "run_id": "mock-hil-run",
+  "runbook_step_id": "step-0001",
+  "source": {
+    "attestation": null,
+    "source_id": "mock_hil_dmf",
+    "source_type": "simulator",
+    "source_version": "0.0.0"
+  },
+  "state": {
+    "dmf": {
+      "active_channels": [
+        1,
+        2,
+        3
+      ],
+      "active_tiles": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ]
+    }
+  },
+  "tick": 1,
+  "timebase": "DEVICE_TICKS",
+  "trace_step_id": "step-0001"
+}

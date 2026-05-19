@@ -1,0 +1,1603 @@
+{
+  "index": {
+    "created_utc": "2026-01-03T00:00:00Z",
+    "dsb": [
+      {
+        "file": "device_state_bundles/dsb_muxed_example.json",
+        "purpose": "Muxed dead channels + calibration hash"
+      },
+      {
+        "file": "device_state_bundles/dsb_tft_example.json",
+        "purpose": "TFT dead pixels sparse map + calibration hash"
+      }
+    ],
+    "equivalence_sets": [
+      {
+        "active_pixels": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ]
+        ],
+        "expect_same_active_pixels": [
+          "005_tft_frame_bitmap",
+          "006_tft_frame_sparse",
+          "008_tft_frame_rle_equivalence"
+        ],
+        "name": "tft_frame_equivalence_tick0",
+        "tick": 0
+      }
+    ],
+    "extended_suite": [
+      "062",
+      "063"
+    ],
+    "harness_scenarios": [
+      {
+        "file": "ddi_scenarios/capabilities_negotiation.json",
+        "purpose": "DDI GetCapabilities() negotiation tests"
+      }
+    ],
+    "kaps": [
+      {
+        "file": "kap/001_minimal_muxed.klnc",
+        "id": "001",
+        "purpose": "HARD baseline muxed CHANNEL_LIST"
+      },
+      {
+        "file": "kap/002_corrupt_digest.klnc",
+        "id": "002",
+        "purpose": "Validate() digest mismatch failure"
+      },
+      {
+        "file": "kap/003_runbook_segments.klnc",
+        "id": "003",
+        "purpose": "Adaptive runbook segments + BRANCH_DECISION"
+      },
+      {
+        "file": "kap/004_lcp_envelope.klnc",
+        "id": "004",
+        "purpose": "ENVELOPE + ECRP correction events"
+      },
+      {
+        "file": "kap/005_tft_frame_bitmap.klnc",
+        "id": "005",
+        "purpose": "TFT FRAME_SEQUENCE BITMAP decode determinism"
+      },
+      {
+        "file": "kap/006_tft_frame_sparse.klnc",
+        "id": "006",
+        "purpose": "TFT FRAME_SEQUENCE SPARSE decode determinism (equivalent to 005)"
+      },
+      {
+        "file": "kap/007_tft_frame_delta_tiles.klnc",
+        "id": "007",
+        "purpose": "TFT FRAME_SEQUENCE DELTA_TILES determinism (2-frame delta apply)"
+      },
+      {
+        "file": "kap/008_tft_frame_rle_equivalence.klnc",
+        "id": "008",
+        "purpose": "TFT FRAME_SEQUENCE RLE decode; equivalence to BITMAP test vector 005"
+      },
+      {
+        "file": "kap/009_tft_delta_tiles_rle_combo.klnc",
+        "id": "009",
+        "purpose": "DELTA_TILES + RLE tile payload; combined compression equivalence"
+      },
+      {
+        "file": "kap/010_tft_delta_invalid_remove_negative.klnc",
+        "id": "010",
+        "purpose": "Negative: invalid delta remove (inactive pixel) should deterministically fail in strict mode"
+      },
+      {
+        "file": "kap/011_tft_sparse_oob_pixel_negative.klnc",
+        "id": "011",
+        "purpose": "Negative: SPARSE out-of-bounds pixel"
+      },
+      {
+        "file": "kap/012_tft_sparse_noncanonical_order_negative.klnc",
+        "id": "012",
+        "purpose": "Negative: SPARSE non-canonical ordering"
+      },
+      {
+        "file": "kap/013_tft_sparse_duplicate_pixels_negative.klnc",
+        "id": "013",
+        "purpose": "Negative: SPARSE duplicate pixels"
+      },
+      {
+        "file": "kap/014_tft_rle_length_mismatch_negative.klnc",
+        "id": "014",
+        "purpose": "Negative: RLE length mismatch"
+      },
+      {
+        "file": "kap/015_muxed_channel_list_nonmonotonic_ticks_negative.klnc",
+        "id": "015",
+        "purpose": "Negative: CHANNEL_LIST non-monotonic ticks"
+      },
+      {
+        "file": "kap/016_muxed_channel_list_unsupported_waveform_negative.klnc",
+        "id": "016",
+        "purpose": "Negative: CHANNEL_LIST unsupported waveform"
+      },
+      {
+        "file": "kap/017_muxed_channel_id_oob_negative.klnc",
+        "id": "017",
+        "purpose": "Negative: CHANNEL_LIST channel_id exceeds declared channel_id_space"
+      },
+      {
+        "file": "kap/018_tft_missing_calibration_hash_negative.klnc",
+        "id": "018",
+        "purpose": "Negative: calibration required but hash missing"
+      },
+      {
+        "file": "kap/019_runbook_timeout_fallback.klnc",
+        "id": "019",
+        "purpose": "Runbook timeout deterministic fallback + BRANCH_DECISION"
+      },
+      {
+        "file": "kap/020_invalid_runbook_schema_negative.klnc",
+        "id": "020",
+        "purpose": "Negative: invalid runbook schema"
+      },
+      {
+        "file": "kap/021_lcp_bounds_exceeded_negative.klnc",
+        "id": "021",
+        "purpose": "Negative: ECRP bounds exceeded -> abort"
+      },
+      {
+        "file": "kap/022_dsb_hash_mismatch_negative.klnc",
+        "id": "022",
+        "purpose": "Negative: SImgB hash mismatch gating"
+      },
+      {
+        "file": "kap/023_dsb_remap_logging_positive.klnc",
+        "id": "023",
+        "purpose": "Positive: deterministic remap logging under SImgB"
+      },
+      {
+        "file": "kap/024_unsupported_payload_kind_negative.klnc",
+        "id": "024",
+        "purpose": "Negative: unsupported payload kind RUNBOOK_FSM"
+      },
+      {
+        "file": "kap/025_actuation_limit_exceeded_negative.klnc",
+        "id": "025",
+        "purpose": "Negative: actuation limit exceeded via max_switches_per_tick"
+      },
+      {
+        "file": "kap/026_calibration_hash_mismatch_negative.klnc",
+        "id": "026",
+        "purpose": "Negative: calibration hash mismatch gating"
+      },
+      {
+        "file": "kap/027_unsupported_profile_negative.klnc",
+        "id": "027",
+        "purpose": "Negative: unsupported backend_profile"
+      },
+      {
+        "file": "kap/028_manifest_unknown_fields_forward_compat_positive.klnc",
+        "id": "028",
+        "purpose": "Positive: unknown manifest fields forward-compat"
+      },
+      {
+        "file": "kap/029_missing_trace_negative.klnc",
+        "id": "029",
+        "purpose": "Negative: missing trace/trace.json"
+      },
+      {
+        "file": "kap/030_envelope_tolerance_occupancy_positive.klnc",
+        "id": "030",
+        "purpose": "Positive: ENVELOPE occupancy within tolerance"
+      },
+      {
+        "file": "kap/031_channel_list_conflict_same_tick_negative.klnc",
+        "id": "031",
+        "purpose": "Negative: CHANNEL_LIST conflicting state same tick"
+      },
+      {
+        "file": "kap/032_channel_list_voltage_out_of_range_negative.klnc",
+        "id": "032",
+        "purpose": "Negative: CHANNEL_LIST voltage out-of-range via hint"
+      },
+      {
+        "file": "kap/033_frame_bitmap_invalid_base64_negative.klnc",
+        "id": "033",
+        "purpose": "Negative: BITMAP invalid base64"
+      },
+      {
+        "file": "kap/034_delta_tiles_tile_oob_negative.klnc",
+        "id": "034",
+        "purpose": "Negative: DELTA_TILES tile origin out-of-bounds"
+      },
+      {
+        "file": "kap/035_envelope_outside_tolerance_negative.klnc",
+        "id": "035",
+        "purpose": "Negative: ENVELOPE outside tolerance"
+      },
+      {
+        "file": "kap/036_frame_nonmonotonic_ticks_negative.klnc",
+        "id": "036",
+        "purpose": "Negative: FRAME_SEQUENCE non-monotonic ticks"
+      },
+      {
+        "file": "kap/037_frame_duplicate_tick_negative.klnc",
+        "id": "037",
+        "purpose": "Negative: FRAME_SEQUENCE duplicate tick"
+      },
+      {
+        "file": "kap/038_delta_add_remove_conflict_negative.klnc",
+        "id": "038",
+        "purpose": "Negative: DELTA_TILES add/remove conflict"
+      },
+      {
+        "file": "kap/039_delta_overlapping_tiles_negative.klnc",
+        "id": "039",
+        "purpose": "Negative: DELTA_TILES overlapping tiles"
+      },
+      {
+        "file": "kap/040_delta_invalid_tile_payload_encoding_negative.klnc",
+        "id": "040",
+        "purpose": "Negative: unsupported tile_payload_encoding"
+      },
+      {
+        "file": "kap/041_channel_list_missing_column_negative.klnc",
+        "id": "041",
+        "purpose": "Negative: CHANNEL_LIST missing column"
+      },
+      {
+        "file": "kap/042_channel_list_frequency_oob_negative.klnc",
+        "id": "042",
+        "purpose": "Negative: CHANNEL_LIST frequency out-of-range via hint"
+      },
+      {
+        "file": "kap/043_channel_list_invalid_state_negative.klnc",
+        "id": "043",
+        "purpose": "Negative: CHANNEL_LIST invalid state"
+      },
+      {
+        "file": "kap/044_observables_nonmonotonic_time_negative.klnc",
+        "id": "044",
+        "purpose": "Negative: observables non-monotonic time"
+      },
+      {
+        "file": "kap/045_observables_invalid_schema_negative.klnc",
+        "id": "045",
+        "purpose": "Negative: observables schema invalid"
+      },
+      {
+        "file": "kap/046_trace_invalid_json_negative.klnc",
+        "id": "046",
+        "purpose": "Negative: trace.json invalid JSON"
+      },
+      {
+        "file": "kap/047_payload_digest_mismatch_channel_list_negative.klnc",
+        "id": "047",
+        "purpose": "Negative: payload digest mismatch (CHANNEL_LIST)"
+      },
+      {
+        "file": "kap/048_payload_digest_mismatch_frame_sequence_negative.klnc",
+        "id": "048",
+        "purpose": "Negative: payload digest mismatch (FRAME_SEQUENCE)"
+      },
+      {
+        "file": "kap/049_channel_list_lenient_whitespace_headers_positive.klnc",
+        "id": "049",
+        "purpose": "Positive: LENIENT CSV whitespace/header case"
+      },
+      {
+        "file": "kap/050_channel_list_empty_voltage_negative.klnc",
+        "id": "050",
+        "purpose": "Negative: CSV empty voltage"
+      },
+      {
+        "file": "kap/051_channel_list_scientific_notation_positive.klnc",
+        "id": "051",
+        "purpose": "Positive: LENIENT CSV scientific notation"
+      },
+      {
+        "file": "kap/052_bitmap_unsupported_cols_negative.klnc",
+        "id": "052",
+        "purpose": "Negative: BITMAP unsupported cols"
+      },
+      {
+        "file": "kap/053_bitmap_length_mismatch_negative.klnc",
+        "id": "053",
+        "purpose": "Negative: BITMAP length mismatch"
+      },
+      {
+        "file": "kap/054_observables_invalid_timebase_negative.klnc",
+        "id": "054",
+        "purpose": "Negative: invalid observables timebase"
+      },
+      {
+        "file": "kap/055_observables_unsupported_kind_negative.klnc",
+        "id": "055",
+        "purpose": "Negative: unsupported observables kind"
+      },
+      {
+        "file": "kap/056_observables_same_tick_order_positive.klnc",
+        "id": "056",
+        "purpose": "Positive: stable ordering for same-t events (EXACT_JSONL)"
+      },
+      {
+        "file": "kap/057_channel_list_bom_and_comments_positive.klnc",
+        "id": "057",
+        "purpose": "Positive: LENIENT CSV BOM + comments"
+      },
+      {
+        "file": "kap/058_channel_list_thousands_separator_negative.klnc",
+        "id": "058",
+        "purpose": "Negative: CSV thousands separator"
+      },
+      {
+        "file": "kap/059_channel_list_extra_column_positive.klnc",
+        "id": "059",
+        "purpose": "Positive: CSV extra column ignored"
+      },
+      {
+        "file": "kap/060_channel_list_duplicate_header_negative.klnc",
+        "id": "060",
+        "purpose": "Negative: CSV duplicate header"
+      },
+      {
+        "file": "kap/061_requires_capability_skip_semantics.klnc",
+        "id": "061",
+        "purpose": "Contract: capability missing => SKIP"
+      },
+      {
+        "file": "kap/062_bitmap_padded_cols10_positive.klnc",
+        "id": "062",
+        "purpose": "Extended: BITMAP PAD_TO_BYTE cols=10"
+      },
+      {
+        "file": "kap/063_bitmap_padding_bits_nonzero_negative.klnc",
+        "id": "063",
+        "purpose": "Extended negative: padding bits nonzero"
+      },
+      {
+        "file": "kap/064_observables_type_mismatch_negative.klnc",
+        "id": "064",
+        "purpose": "Negative: observables type mismatch"
+      },
+      {
+        "file": "kap/065_requires_payload_kind_fail_semantics.klnc",
+        "id": "065",
+        "purpose": "Contract: capability missing => FAIL"
+      },
+      {
+        "file": "kap/066_channel_list_csv_quoted_embedded_comma_positive.klnc",
+        "id": "066",
+        "purpose": "Positive: LENIENT CSV quoted embedded comma"
+      },
+      {
+        "file": "kap/067_channel_list_csv_escaped_quote_positive.klnc",
+        "id": "067",
+        "purpose": "Positive: LENIENT CSV escaped quotes"
+      },
+      {
+        "file": "kap/068_channel_list_csv_malformed_quote_negative.klnc",
+        "id": "068",
+        "purpose": "Negative: CSV unterminated quote"
+      },
+      {
+        "file": "kap/069_tft_rle_odd_length_negative.klnc",
+        "id": "069",
+        "purpose": "Negative: RLE odd-length/truncated stream"
+      },
+      {
+        "file": "kap/070_delta_tiles_invalid_opcode_negative.klnc",
+        "id": "070",
+        "purpose": "Negative: DELTA_TILES invalid opcode"
+      },
+      {
+        "file": "kap/071_delta_tiles_truncated_rle_negative.klnc",
+        "id": "071",
+        "purpose": "Negative: DELTA_TILES truncated RLE"
+      },
+      {
+        "file": "kap/072_observables_device_event_missing_level_negative.klnc",
+        "id": "072",
+        "purpose": "Negative: DEVICE_EVENT missing level"
+      },
+      {
+        "file": "kap/073_observables_invalid_level_enum_negative.klnc",
+        "id": "073",
+        "purpose": "Negative: DEVICE_EVENT invalid level enum"
+      },
+      {
+        "file": "kap/074_observables_missing_run_id_negative.klnc",
+        "id": "074",
+        "purpose": "Negative: observables missing run_id"
+      },
+      {
+        "file": "kap/075_observables_negative_t_negative.klnc",
+        "id": "075",
+        "purpose": "Negative: observables negative t"
+      },
+      {
+        "file": "kap/076_trace_missing_trace_version_negative.klnc",
+        "id": "076",
+        "purpose": "Negative: trace missing trace_version"
+      },
+      {
+        "file": "kap/077_rle_zero_count_negative.klnc",
+        "id": "077",
+        "purpose": "Negative: RLE count=0 invalid"
+      },
+      {
+        "file": "kap/078_rle_overrun_negative.klnc",
+        "id": "078",
+        "purpose": "Negative: RLE overrun (expands > expected)"
+      },
+      {
+        "file": "kap/079_rle_underrun_negative.klnc",
+        "id": "079",
+        "purpose": "Negative: RLE underrun (expands < expected)"
+      },
+      {
+        "file": "kap/080_sparse_duplicate_pixel_negative.klnc",
+        "id": "080",
+        "purpose": "Negative: SPARSE duplicate pixel"
+      },
+      {
+        "file": "kap/081_delta_duplicate_pixel_across_tiles_negative.klnc",
+        "id": "081",
+        "purpose": "Negative: DELTA_TILES duplicate pixel across tiles"
+      },
+      {
+        "file": "kap/082_delta_empty_tile_negative.klnc",
+        "id": "082",
+        "purpose": "Negative: DELTA_TILES empty tile"
+      },
+      {
+        "file": "kap/083_trace_invalid_tick_range_negative.klnc",
+        "id": "083",
+        "purpose": "Negative: trace tick_range invalid"
+      },
+      {
+        "file": "kap/084_trace_channel_id_type_negative.klnc",
+        "id": "084",
+        "purpose": "Negative: trace channels type mismatch"
+      },
+      {
+        "file": "kap/085_trace_channel_not_in_device_map_negative.klnc",
+        "id": "085",
+        "purpose": "Negative: trace unknown channel vs device_map"
+      },
+      {
+        "file": "kap/086_delta_tile_order_canonicalization_positive.klnc",
+        "id": "086",
+        "purpose": "Positive: DELTA_TILES canonical tile ordering"
+      },
+      {
+        "file": "kap/087_sparse_pixel_oob_negative.klnc",
+        "id": "087",
+        "purpose": "Negative: SPARSE pixel out-of-bounds"
+      },
+      {
+        "file": "kap/088_delta_pixel_oob_negative.klnc",
+        "id": "088",
+        "purpose": "Negative: DELTA_TILES pixel out-of-bounds"
+      },
+      {
+        "file": "kap/089_delta_duplicate_pixel_in_add_negative.klnc",
+        "id": "089",
+        "purpose": "Negative: DELTA_TILES duplicate in add list"
+      },
+      {
+        "file": "kap/090_delta_pixel_list_canonicalization_positive.klnc",
+        "id": "090",
+        "purpose": "Positive: DELTA_TILES pixel list canonicalization"
+      },
+      {
+        "file": "kap/091_trace_ids_invalid_enum_negative.klnc",
+        "id": "091",
+        "purpose": "Negative: trace.ids invalid enum"
+      },
+      {
+        "file": "kap/092_trace_missing_plan_mapping_negative.klnc",
+        "id": "092",
+        "purpose": "Negative: trace plan mapping missing"
+      },
+      {
+        "file": "kap/093_trace_overlapping_actuation_ranges_negative.klnc",
+        "id": "093",
+        "purpose": "Negative: trace overlapping actuation ranges"
+      },
+      {
+        "file": "kap/094_trace_tick_range_type_negative.klnc",
+        "id": "094",
+        "purpose": "Negative: trace tick_range type mismatch"
+      },
+      {
+        "file": "kap/095_observables_device_event_missing_message_negative.klnc",
+        "id": "095",
+        "purpose": "Negative: DEVICE_EVENT missing message"
+      },
+      {
+        "file": "kap/096_observables_occupancy_missing_cells_negative.klnc",
+        "id": "096",
+        "purpose": "Negative: OCCUPANCY missing cells"
+      },
+      {
+        "file": "kap/097_observables_occupancy_cell_type_negative.klnc",
+        "id": "097",
+        "purpose": "Negative: OCCUPANCY cell type mismatch"
+      },
+      {
+        "file": "kap/098_observables_device_event_code_type_negative.klnc",
+        "id": "098",
+        "purpose": "Negative: DEVICE_EVENT code type mismatch"
+      },
+      {
+        "file": "kap/099_observables_device_ticks_float_t_negative.klnc",
+        "id": "099",
+        "purpose": "Negative: DEVICE_TICKS float t"
+      },
+      {
+        "file": "kap/100_observables_occupancy_confidence_range_negative.klnc",
+        "id": "100",
+        "purpose": "Negative: OCCUPANCY confidence range"
+      },
+      {
+        "file": "kap/101_trace_duplicate_plan_id_negative.klnc",
+        "id": "101",
+        "purpose": "Negative: trace duplicate plan_id"
+      },
+      {
+        "file": "kap/102_trace_duplicate_op_id_negative.klnc",
+        "id": "102",
+        "purpose": "Negative: trace duplicate op_id"
+      },
+      {
+        "file": "kap/103_trace_empty_actuation_refs_negative.klnc",
+        "id": "103",
+        "purpose": "Negative: trace empty actuation_refs"
+      },
+      {
+        "file": "kap/104_delta_duplicate_pixel_in_remove_negative.klnc",
+        "id": "104",
+        "purpose": "Negative: DELTA_TILES duplicate in remove"
+      },
+      {
+        "file": "kap/105_delta_add_remove_conflict_negative.klnc",
+        "id": "105",
+        "purpose": "Negative: DELTA_TILES add/remove conflict"
+      },
+      {
+        "file": "kap/106_delta_remove_nonexistent_pixel_negative.klnc",
+        "id": "106",
+        "purpose": "Negative: DELTA_TILES remove miss"
+      },
+      {
+        "file": "kap/107_delta_empty_tiles_list_negative.klnc",
+        "id": "107",
+        "purpose": "Negative: DELTA_TILES empty tiles list"
+      },
+      {
+        "file": "kap/108_observables_mixed_kinds_order_positive.klnc",
+        "id": "108",
+        "purpose": "Positive: EXACT_JSONL mixed-kind ordering"
+      },
+      {
+        "file": "kap/109_boundary_sparse_1x1_positive.klnc",
+        "id": "109",
+        "purpose": "Positive: boundary 1x1 sparse active"
+      },
+      {
+        "file": "kap/110_boundary_sparse_empty_pixels_positive.klnc",
+        "id": "110",
+        "purpose": "Positive: boundary 1x1 sparse empty"
+      },
+      {
+        "file": "kap/111_trace_minimal_positive.klnc",
+        "id": "111",
+        "purpose": "Positive: minimal trace"
+      },
+      {
+        "file": "kap/112_delta_noop_remove_list_positive.klnc",
+        "id": "112",
+        "purpose": "Positive: DELTA_TILES add-only tile"
+      }
+    ],
+    "negative_tests": [
+      {
+        "expected_error_code": "PAYLOAD_INVALID_DELTA",
+        "id": "010",
+        "notes": "Decoder/validator should fail deterministically; stage may be VALIDATE or START depending on implementation, but MUST fail in strict_mode."
+      },
+      {
+        "expected_error_code": "PAYLOAD_OOB_PIXEL",
+        "id": "011"
+      },
+      {
+        "expected_error_code": "PAYLOAD_NONCANONICAL_ORDER",
+        "id": "012"
+      },
+      {
+        "expected_error_code": "PAYLOAD_DUPLICATE_PIXEL",
+        "id": "013"
+      },
+      {
+        "expected_error_code": "PAYLOAD_RLE_LENGTH",
+        "id": "014"
+      },
+      {
+        "expected_error_code": "PAYLOAD_NONMONOTONIC_TICKS",
+        "id": "015"
+      },
+      {
+        "expected_error_code": "PAYLOAD_UNSUPPORTED_WAVEFORM",
+        "id": "016"
+      },
+      {
+        "expected_error_code": "PAYLOAD_CHANNEL_OOB",
+        "id": "017"
+      },
+      {
+        "expected_error_code": "DDI_CALIBRATION_REQUIRED",
+        "id": "018"
+      },
+      {
+        "expected_error_code": "RUNBOOK_SCHEMA_INVALID",
+        "id": "020"
+      },
+      {
+        "expected_error_code": "LCP_BOUNDS_EXCEEDED",
+        "id": "021"
+      },
+      {
+        "expected_error_code": "DDI_DSB_MISMATCH",
+        "id": "022"
+      },
+      {
+        "expected_error_code": "DDI_UNSUPPORTED_PAYLOAD",
+        "id": "024"
+      },
+      {
+        "expected_error_code": "PAYLOAD_ACTUATION_LIMIT",
+        "id": "025"
+      },
+      {
+        "expected_error_code": "DDI_CALIBRATION_MISMATCH",
+        "id": "026"
+      },
+      {
+        "expected_error_code": "DDI_UNSUPPORTED_PROFILE",
+        "id": "027"
+      },
+      {
+        "expected_error_code": "KAP_MISSING_TRACE",
+        "id": "029"
+      },
+      {
+        "expected_error_code": "PAYLOAD_CONFLICTING_STATE",
+        "id": "031"
+      },
+      {
+        "expected_error_code": "PAYLOAD_VOLTAGE_OOB",
+        "id": "032"
+      },
+      {
+        "expected_error_code": "PAYLOAD_BASE64_INVALID",
+        "id": "033"
+      },
+      {
+        "expected_error_code": "PAYLOAD_TILE_OOB",
+        "id": "034"
+      },
+      {
+        "expected_error_code": "ENVELOPE_VIOLATION",
+        "id": "035"
+      },
+      {
+        "expected_error_code": "PAYLOAD_NONMONOTONIC_TICKS",
+        "id": "036"
+      },
+      {
+        "expected_error_code": "PAYLOAD_DUPLICATE_TICK",
+        "id": "037"
+      },
+      {
+        "expected_error_code": "PAYLOAD_DELTA_CONFLICT",
+        "id": "038"
+      },
+      {
+        "expected_error_code": "PAYLOAD_TILE_OVERLAP",
+        "id": "039"
+      },
+      {
+        "expected_error_code": "PAYLOAD_UNSUPPORTED_TILE_ENCODING",
+        "id": "040"
+      },
+      {
+        "expected_error_code": "PAYLOAD_MISSING_COLUMN",
+        "id": "041"
+      },
+      {
+        "expected_error_code": "PAYLOAD_FREQUENCY_OOB",
+        "id": "042"
+      },
+      {
+        "expected_error_code": "PAYLOAD_INVALID_STATE",
+        "id": "043"
+      },
+      {
+        "expected_error_code": "OBS_NONMONOTONIC_TIME",
+        "id": "044"
+      },
+      {
+        "expected_error_code": "OBS_SCHEMA_INVALID",
+        "id": "045"
+      },
+      {
+        "expected_error_code": "TRACE_JSON_INVALID",
+        "id": "046"
+      },
+      {
+        "expected_error_code": "KAP_DIGEST_MISMATCH",
+        "id": "047"
+      },
+      {
+        "expected_error_code": "KAP_DIGEST_MISMATCH",
+        "id": "048"
+      },
+      {
+        "expected_error_code": "PAYLOAD_INVALID_VALUE",
+        "id": "050"
+      },
+      {
+        "expected_error_code": "PAYLOAD_UNSUPPORTED_DIMS",
+        "id": "052"
+      },
+      {
+        "expected_error_code": "PAYLOAD_BITMAP_LENGTH",
+        "id": "053"
+      },
+      {
+        "expected_error_code": "OBS_INVALID_TIMEBASE",
+        "id": "054"
+      },
+      {
+        "expected_error_code": "OBS_UNSUPPORTED_KIND",
+        "id": "055"
+      },
+      {
+        "expected_error_code": "PAYLOAD_INVALID_VALUE",
+        "id": "058"
+      },
+      {
+        "expected_error_code": "PAYLOAD_DUPLICATE_COLUMN",
+        "id": "060"
+      },
+      {
+        "expected_error_code": "PAYLOAD_PADDING_NONZERO",
+        "id": "063"
+      },
+      {
+        "expected_error_code": "OBS_TYPE_MISMATCH",
+        "id": "064"
+      },
+      {
+        "expected_error_code": "DDI_CAPABILITY_MISSING",
+        "id": "065"
+      },
+      {
+        "expected_error_code": "PAYLOAD_CSV_PARSE",
+        "id": "068"
+      },
+      {
+        "expected_error_code": "PAYLOAD_RLE_FORMAT",
+        "id": "069"
+      },
+      {
+        "expected_error_code": "PAYLOAD_INVALID_OPCODE",
+        "id": "070"
+      },
+      {
+        "expected_error_code": "PAYLOAD_RLE_FORMAT",
+        "id": "071"
+      },
+      {
+        "expected_error_code": "OBS_SCHEMA_INVALID",
+        "id": "072"
+      },
+      {
+        "expected_error_code": "OBS_INVALID_ENUM",
+        "id": "073"
+      },
+      {
+        "expected_error_code": "OBS_SCHEMA_INVALID",
+        "id": "074"
+      },
+      {
+        "expected_error_code": "OBS_INVALID_VALUE",
+        "id": "075"
+      },
+      {
+        "expected_error_code": "TRACE_SCHEMA_INVALID",
+        "id": "076"
+      },
+      {
+        "expected_error_code": "PAYLOAD_RLE_INVALID_COUNT",
+        "id": "077"
+      },
+      {
+        "expected_error_code": "PAYLOAD_RLE_OVERRUN",
+        "id": "078"
+      },
+      {
+        "expected_error_code": "PAYLOAD_RLE_UNDERRUN",
+        "id": "079"
+      },
+      {
+        "expected_error_code": "PAYLOAD_DUPLICATE_PIXEL",
+        "id": "080"
+      },
+      {
+        "expected_error_code": "PAYLOAD_DUPLICATE_PIXEL",
+        "id": "081"
+      },
+      {
+        "expected_error_code": "PAYLOAD_EMPTY_TILE",
+        "id": "082"
+      },
+      {
+        "expected_error_code": "TRACE_INVALID_RANGE",
+        "id": "083"
+      },
+      {
+        "expected_error_code": "TRACE_TYPE_MISMATCH",
+        "id": "084"
+      },
+      {
+        "expected_error_code": "TRACE_UNKNOWN_CHANNEL",
+        "id": "085"
+      },
+      {
+        "expected_error_code": "PAYLOAD_PIXEL_OOB",
+        "id": "087"
+      },
+      {
+        "expected_error_code": "PAYLOAD_PIXEL_OOB",
+        "id": "088"
+      },
+      {
+        "expected_error_code": "PAYLOAD_DUPLICATE_PIXEL",
+        "id": "089"
+      },
+      {
+        "expected_error_code": "TRACE_INVALID_ENUM",
+        "id": "091"
+      },
+      {
+        "expected_error_code": "TRACE_MISSING_MAPPING",
+        "id": "092"
+      },
+      {
+        "expected_error_code": "TRACE_OVERLAP",
+        "id": "093"
+      },
+      {
+        "expected_error_code": "TRACE_TYPE_MISMATCH",
+        "id": "094"
+      },
+      {
+        "expected_error_code": "OBS_SCHEMA_INVALID",
+        "id": "095"
+      },
+      {
+        "expected_error_code": "OBS_SCHEMA_INVALID",
+        "id": "096"
+      },
+      {
+        "expected_error_code": "OBS_TYPE_MISMATCH",
+        "id": "097"
+      },
+      {
+        "expected_error_code": "OBS_TYPE_MISMATCH",
+        "id": "098"
+      },
+      {
+        "expected_error_code": "OBS_TYPE_MISMATCH",
+        "id": "099"
+      },
+      {
+        "expected_error_code": "OBS_INVALID_VALUE",
+        "id": "100"
+      },
+      {
+        "expected_error_code": "TRACE_DUPLICATE_ID",
+        "id": "101"
+      },
+      {
+        "expected_error_code": "TRACE_DUPLICATE_ID",
+        "id": "102"
+      },
+      {
+        "expected_error_code": "TRACE_EMPTY",
+        "id": "103"
+      },
+      {
+        "expected_error_code": "PAYLOAD_DUPLICATE_PIXEL",
+        "id": "104"
+      },
+      {
+        "expected_error_code": "PAYLOAD_DELTA_CONFLICT",
+        "id": "105"
+      },
+      {
+        "expected_error_code": "PAYLOAD_DELTA_REMOVE_MISS",
+        "id": "106"
+      },
+      {
+        "expected_error_code": "PAYLOAD_EMPTY_DELTA",
+        "id": "107"
+      }
+    ],
+    "pack": "Klein Test Vector Pack",
+    "rpt": [
+      {
+        "file": "reagent_physics/rpt_example.json",
+        "purpose": "Example reagent physics entries"
+      }
+    ],
+    "version": "1.5"
+  },
+  "index_exp": {
+    "created_utc": "2026-01-03T00:00:00Z",
+    "kaps": [
+      {
+        "file": "kap/113_rsb_runtime_state_snapshot_positive.klnc",
+        "id": "113",
+        "purpose": "Positive: RUNTIME_STATE_SNAPSHOT required in HARD mode"
+      },
+      {
+        "file": "kap/114_lcp_attempt_evidence_positive.klnc",
+        "id": "114",
+        "purpose": "Positive: ECRP_ATTEMPT evidence emission for correction attempts"
+      },
+      {
+        "file": "kap/115_replan_decision_checkpoint_positive.klnc",
+        "id": "115",
+        "purpose": "Positive: REPLAN_DECISION at checkpoint with deterministic seed"
+      },
+      {
+        "file": "kap/116_required_capability_envelope_skip.klnc",
+        "id": "116",
+        "purpose": "Contract: supports.envelope missing => SKIP"
+      },
+      {
+        "file": "kap/117_diagnostic_mode_nonconformant_positive.klnc",
+        "id": "117",
+        "purpose": "Positive: DIAGNOSTIC mode labels run NONCONFORMANT"
+      },
+      {
+        "file": "kap/118_replan_without_checkpoint_negative.klnc",
+        "id": "118",
+        "purpose": "Negative: REPLAN_NOT_AT_CHECKPOINT error"
+      },
+      {
+        "file": "kap/119_lcp_missing_evidence_negative.klnc",
+        "id": "119",
+        "purpose": "Negative: ECRP invoked without ECRP_ATTEMPT emission"
+      },
+      {
+        "file": "kap/120_exact_jsonl_ordering_violation_negative.klnc",
+        "id": "120",
+        "purpose": "Negative: EXACT_JSONL ordering mismatch at compare"
+      }
+    ],
+    "version": "exp_v0.1"
+  },
+  "kaps_combined": [
+    {
+      "file": "kap/001_minimal_muxed.klnc",
+      "id": "001",
+      "purpose": "HARD baseline muxed CHANNEL_LIST"
+    },
+    {
+      "file": "kap/002_corrupt_digest.klnc",
+      "id": "002",
+      "purpose": "Validate() digest mismatch failure"
+    },
+    {
+      "file": "kap/003_runbook_segments.klnc",
+      "id": "003",
+      "purpose": "Adaptive runbook segments + BRANCH_DECISION"
+    },
+    {
+      "file": "kap/004_lcp_envelope.klnc",
+      "id": "004",
+      "purpose": "ENVELOPE + ECRP correction events"
+    },
+    {
+      "file": "kap/005_tft_frame_bitmap.klnc",
+      "id": "005",
+      "purpose": "TFT FRAME_SEQUENCE BITMAP decode determinism"
+    },
+    {
+      "file": "kap/006_tft_frame_sparse.klnc",
+      "id": "006",
+      "purpose": "TFT FRAME_SEQUENCE SPARSE decode determinism (equivalent to 005)"
+    },
+    {
+      "file": "kap/007_tft_frame_delta_tiles.klnc",
+      "id": "007",
+      "purpose": "TFT FRAME_SEQUENCE DELTA_TILES determinism (2-frame delta apply)"
+    },
+    {
+      "file": "kap/008_tft_frame_rle_equivalence.klnc",
+      "id": "008",
+      "purpose": "TFT FRAME_SEQUENCE RLE decode; equivalence to BITMAP test vector 005"
+    },
+    {
+      "file": "kap/009_tft_delta_tiles_rle_combo.klnc",
+      "id": "009",
+      "purpose": "DELTA_TILES + RLE tile payload; combined compression equivalence"
+    },
+    {
+      "file": "kap/010_tft_delta_invalid_remove_negative.klnc",
+      "id": "010",
+      "purpose": "Negative: invalid delta remove (inactive pixel) should deterministically fail in strict mode"
+    },
+    {
+      "file": "kap/011_tft_sparse_oob_pixel_negative.klnc",
+      "id": "011",
+      "purpose": "Negative: SPARSE out-of-bounds pixel"
+    },
+    {
+      "file": "kap/012_tft_sparse_noncanonical_order_negative.klnc",
+      "id": "012",
+      "purpose": "Negative: SPARSE non-canonical ordering"
+    },
+    {
+      "file": "kap/013_tft_sparse_duplicate_pixels_negative.klnc",
+      "id": "013",
+      "purpose": "Negative: SPARSE duplicate pixels"
+    },
+    {
+      "file": "kap/014_tft_rle_length_mismatch_negative.klnc",
+      "id": "014",
+      "purpose": "Negative: RLE length mismatch"
+    },
+    {
+      "file": "kap/015_muxed_channel_list_nonmonotonic_ticks_negative.klnc",
+      "id": "015",
+      "purpose": "Negative: CHANNEL_LIST non-monotonic ticks"
+    },
+    {
+      "file": "kap/016_muxed_channel_list_unsupported_waveform_negative.klnc",
+      "id": "016",
+      "purpose": "Negative: CHANNEL_LIST unsupported waveform"
+    },
+    {
+      "file": "kap/017_muxed_channel_id_oob_negative.klnc",
+      "id": "017",
+      "purpose": "Negative: CHANNEL_LIST channel_id exceeds declared channel_id_space"
+    },
+    {
+      "file": "kap/018_tft_missing_calibration_hash_negative.klnc",
+      "id": "018",
+      "purpose": "Negative: calibration required but hash missing"
+    },
+    {
+      "file": "kap/019_runbook_timeout_fallback.klnc",
+      "id": "019",
+      "purpose": "Runbook timeout deterministic fallback + BRANCH_DECISION"
+    },
+    {
+      "file": "kap/020_invalid_runbook_schema_negative.klnc",
+      "id": "020",
+      "purpose": "Negative: invalid runbook schema"
+    },
+    {
+      "file": "kap/021_lcp_bounds_exceeded_negative.klnc",
+      "id": "021",
+      "purpose": "Negative: ECRP bounds exceeded -> abort"
+    },
+    {
+      "file": "kap/022_dsb_hash_mismatch_negative.klnc",
+      "id": "022",
+      "purpose": "Negative: SImgB hash mismatch gating"
+    },
+    {
+      "file": "kap/023_dsb_remap_logging_positive.klnc",
+      "id": "023",
+      "purpose": "Positive: deterministic remap logging under SImgB"
+    },
+    {
+      "file": "kap/024_unsupported_payload_kind_negative.klnc",
+      "id": "024",
+      "purpose": "Negative: unsupported payload kind RUNBOOK_FSM"
+    },
+    {
+      "file": "kap/025_actuation_limit_exceeded_negative.klnc",
+      "id": "025",
+      "purpose": "Negative: actuation limit exceeded via max_switches_per_tick"
+    },
+    {
+      "file": "kap/026_calibration_hash_mismatch_negative.klnc",
+      "id": "026",
+      "purpose": "Negative: calibration hash mismatch gating"
+    },
+    {
+      "file": "kap/027_unsupported_profile_negative.klnc",
+      "id": "027",
+      "purpose": "Negative: unsupported backend_profile"
+    },
+    {
+      "file": "kap/028_manifest_unknown_fields_forward_compat_positive.klnc",
+      "id": "028",
+      "purpose": "Positive: unknown manifest fields forward-compat"
+    },
+    {
+      "file": "kap/029_missing_trace_negative.klnc",
+      "id": "029",
+      "purpose": "Negative: missing trace/trace.json"
+    },
+    {
+      "file": "kap/030_envelope_tolerance_occupancy_positive.klnc",
+      "id": "030",
+      "purpose": "Positive: ENVELOPE occupancy within tolerance"
+    },
+    {
+      "file": "kap/031_channel_list_conflict_same_tick_negative.klnc",
+      "id": "031",
+      "purpose": "Negative: CHANNEL_LIST conflicting state same tick"
+    },
+    {
+      "file": "kap/032_channel_list_voltage_out_of_range_negative.klnc",
+      "id": "032",
+      "purpose": "Negative: CHANNEL_LIST voltage out-of-range via hint"
+    },
+    {
+      "file": "kap/033_frame_bitmap_invalid_base64_negative.klnc",
+      "id": "033",
+      "purpose": "Negative: BITMAP invalid base64"
+    },
+    {
+      "file": "kap/034_delta_tiles_tile_oob_negative.klnc",
+      "id": "034",
+      "purpose": "Negative: DELTA_TILES tile origin out-of-bounds"
+    },
+    {
+      "file": "kap/035_envelope_outside_tolerance_negative.klnc",
+      "id": "035",
+      "purpose": "Negative: ENVELOPE outside tolerance"
+    },
+    {
+      "file": "kap/036_frame_nonmonotonic_ticks_negative.klnc",
+      "id": "036",
+      "purpose": "Negative: FRAME_SEQUENCE non-monotonic ticks"
+    },
+    {
+      "file": "kap/037_frame_duplicate_tick_negative.klnc",
+      "id": "037",
+      "purpose": "Negative: FRAME_SEQUENCE duplicate tick"
+    },
+    {
+      "file": "kap/038_delta_add_remove_conflict_negative.klnc",
+      "id": "038",
+      "purpose": "Negative: DELTA_TILES add/remove conflict"
+    },
+    {
+      "file": "kap/039_delta_overlapping_tiles_negative.klnc",
+      "id": "039",
+      "purpose": "Negative: DELTA_TILES overlapping tiles"
+    },
+    {
+      "file": "kap/040_delta_invalid_tile_payload_encoding_negative.klnc",
+      "id": "040",
+      "purpose": "Negative: unsupported tile_payload_encoding"
+    },
+    {
+      "file": "kap/041_channel_list_missing_column_negative.klnc",
+      "id": "041",
+      "purpose": "Negative: CHANNEL_LIST missing column"
+    },
+    {
+      "file": "kap/042_channel_list_frequency_oob_negative.klnc",
+      "id": "042",
+      "purpose": "Negative: CHANNEL_LIST frequency out-of-range via hint"
+    },
+    {
+      "file": "kap/043_channel_list_invalid_state_negative.klnc",
+      "id": "043",
+      "purpose": "Negative: CHANNEL_LIST invalid state"
+    },
+    {
+      "file": "kap/044_observables_nonmonotonic_time_negative.klnc",
+      "id": "044",
+      "purpose": "Negative: observables non-monotonic time"
+    },
+    {
+      "file": "kap/045_observables_invalid_schema_negative.klnc",
+      "id": "045",
+      "purpose": "Negative: observables schema invalid"
+    },
+    {
+      "file": "kap/046_trace_invalid_json_negative.klnc",
+      "id": "046",
+      "purpose": "Negative: trace.json invalid JSON"
+    },
+    {
+      "file": "kap/047_payload_digest_mismatch_channel_list_negative.klnc",
+      "id": "047",
+      "purpose": "Negative: payload digest mismatch (CHANNEL_LIST)"
+    },
+    {
+      "file": "kap/048_payload_digest_mismatch_frame_sequence_negative.klnc",
+      "id": "048",
+      "purpose": "Negative: payload digest mismatch (FRAME_SEQUENCE)"
+    },
+    {
+      "file": "kap/049_channel_list_lenient_whitespace_headers_positive.klnc",
+      "id": "049",
+      "purpose": "Positive: LENIENT CSV whitespace/header case"
+    },
+    {
+      "file": "kap/050_channel_list_empty_voltage_negative.klnc",
+      "id": "050",
+      "purpose": "Negative: CSV empty voltage"
+    },
+    {
+      "file": "kap/051_channel_list_scientific_notation_positive.klnc",
+      "id": "051",
+      "purpose": "Positive: LENIENT CSV scientific notation"
+    },
+    {
+      "file": "kap/052_bitmap_unsupported_cols_negative.klnc",
+      "id": "052",
+      "purpose": "Negative: BITMAP unsupported cols"
+    },
+    {
+      "file": "kap/053_bitmap_length_mismatch_negative.klnc",
+      "id": "053",
+      "purpose": "Negative: BITMAP length mismatch"
+    },
+    {
+      "file": "kap/054_observables_invalid_timebase_negative.klnc",
+      "id": "054",
+      "purpose": "Negative: invalid observables timebase"
+    },
+    {
+      "file": "kap/055_observables_unsupported_kind_negative.klnc",
+      "id": "055",
+      "purpose": "Negative: unsupported observables kind"
+    },
+    {
+      "file": "kap/056_observables_same_tick_order_positive.klnc",
+      "id": "056",
+      "purpose": "Positive: stable ordering for same-t events (EXACT_JSONL)"
+    },
+    {
+      "file": "kap/057_channel_list_bom_and_comments_positive.klnc",
+      "id": "057",
+      "purpose": "Positive: LENIENT CSV BOM + comments"
+    },
+    {
+      "file": "kap/058_channel_list_thousands_separator_negative.klnc",
+      "id": "058",
+      "purpose": "Negative: CSV thousands separator"
+    },
+    {
+      "file": "kap/059_channel_list_extra_column_positive.klnc",
+      "id": "059",
+      "purpose": "Positive: CSV extra column ignored"
+    },
+    {
+      "file": "kap/060_channel_list_duplicate_header_negative.klnc",
+      "id": "060",
+      "purpose": "Negative: CSV duplicate header"
+    },
+    {
+      "file": "kap/061_requires_capability_skip_semantics.klnc",
+      "id": "061",
+      "purpose": "Contract: capability missing => SKIP"
+    },
+    {
+      "file": "kap/062_bitmap_padded_cols10_positive.klnc",
+      "id": "062",
+      "purpose": "Extended: BITMAP PAD_TO_BYTE cols=10"
+    },
+    {
+      "file": "kap/063_bitmap_padding_bits_nonzero_negative.klnc",
+      "id": "063",
+      "purpose": "Extended negative: padding bits nonzero"
+    },
+    {
+      "file": "kap/064_observables_type_mismatch_negative.klnc",
+      "id": "064",
+      "purpose": "Negative: observables type mismatch"
+    },
+    {
+      "file": "kap/065_requires_payload_kind_fail_semantics.klnc",
+      "id": "065",
+      "purpose": "Contract: capability missing => FAIL"
+    },
+    {
+      "file": "kap/066_channel_list_csv_quoted_embedded_comma_positive.klnc",
+      "id": "066",
+      "purpose": "Positive: LENIENT CSV quoted embedded comma"
+    },
+    {
+      "file": "kap/067_channel_list_csv_escaped_quote_positive.klnc",
+      "id": "067",
+      "purpose": "Positive: LENIENT CSV escaped quotes"
+    },
+    {
+      "file": "kap/068_channel_list_csv_malformed_quote_negative.klnc",
+      "id": "068",
+      "purpose": "Negative: CSV unterminated quote"
+    },
+    {
+      "file": "kap/069_tft_rle_odd_length_negative.klnc",
+      "id": "069",
+      "purpose": "Negative: RLE odd-length/truncated stream"
+    },
+    {
+      "file": "kap/070_delta_tiles_invalid_opcode_negative.klnc",
+      "id": "070",
+      "purpose": "Negative: DELTA_TILES invalid opcode"
+    },
+    {
+      "file": "kap/071_delta_tiles_truncated_rle_negative.klnc",
+      "id": "071",
+      "purpose": "Negative: DELTA_TILES truncated RLE"
+    },
+    {
+      "file": "kap/072_observables_device_event_missing_level_negative.klnc",
+      "id": "072",
+      "purpose": "Negative: DEVICE_EVENT missing level"
+    },
+    {
+      "file": "kap/073_observables_invalid_level_enum_negative.klnc",
+      "id": "073",
+      "purpose": "Negative: DEVICE_EVENT invalid level enum"
+    },
+    {
+      "file": "kap/074_observables_missing_run_id_negative.klnc",
+      "id": "074",
+      "purpose": "Negative: observables missing run_id"
+    },
+    {
+      "file": "kap/075_observables_negative_t_negative.klnc",
+      "id": "075",
+      "purpose": "Negative: observables negative t"
+    },
+    {
+      "file": "kap/076_trace_missing_trace_version_negative.klnc",
+      "id": "076",
+      "purpose": "Negative: trace missing trace_version"
+    },
+    {
+      "file": "kap/077_rle_zero_count_negative.klnc",
+      "id": "077",
+      "purpose": "Negative: RLE count=0 invalid"
+    },
+    {
+      "file": "kap/078_rle_overrun_negative.klnc",
+      "id": "078",
+      "purpose": "Negative: RLE overrun (expands > expected)"
+    },
+    {
+      "file": "kap/079_rle_underrun_negative.klnc",
+      "id": "079",
+      "purpose": "Negative: RLE underrun (expands < expected)"
+    },
+    {
+      "file": "kap/080_sparse_duplicate_pixel_negative.klnc",
+      "id": "080",
+      "purpose": "Negative: SPARSE duplicate pixel"
+    },
+    {
+      "file": "kap/081_delta_duplicate_pixel_across_tiles_negative.klnc",
+      "id": "081",
+      "purpose": "Negative: DELTA_TILES duplicate pixel across tiles"
+    },
+    {
+      "file": "kap/082_delta_empty_tile_negative.klnc",
+      "id": "082",
+      "purpose": "Negative: DELTA_TILES empty tile"
+    },
+    {
+      "file": "kap/083_trace_invalid_tick_range_negative.klnc",
+      "id": "083",
+      "purpose": "Negative: trace tick_range invalid"
+    },
+    {
+      "file": "kap/084_trace_channel_id_type_negative.klnc",
+      "id": "084",
+      "purpose": "Negative: trace channels type mismatch"
+    },
+    {
+      "file": "kap/085_trace_channel_not_in_device_map_negative.klnc",
+      "id": "085",
+      "purpose": "Negative: trace unknown channel vs device_map"
+    },
+    {
+      "file": "kap/086_delta_tile_order_canonicalization_positive.klnc",
+      "id": "086",
+      "purpose": "Positive: DELTA_TILES canonical tile ordering"
+    },
+    {
+      "file": "kap/087_sparse_pixel_oob_negative.klnc",
+      "id": "087",
+      "purpose": "Negative: SPARSE pixel out-of-bounds"
+    },
+    {
+      "file": "kap/088_delta_pixel_oob_negative.klnc",
+      "id": "088",
+      "purpose": "Negative: DELTA_TILES pixel out-of-bounds"
+    },
+    {
+      "file": "kap/089_delta_duplicate_pixel_in_add_negative.klnc",
+      "id": "089",
+      "purpose": "Negative: DELTA_TILES duplicate in add list"
+    },
+    {
+      "file": "kap/090_delta_pixel_list_canonicalization_positive.klnc",
+      "id": "090",
+      "purpose": "Positive: DELTA_TILES pixel list canonicalization"
+    },
+    {
+      "file": "kap/091_trace_ids_invalid_enum_negative.klnc",
+      "id": "091",
+      "purpose": "Negative: trace.ids invalid enum"
+    },
+    {
+      "file": "kap/092_trace_missing_plan_mapping_negative.klnc",
+      "id": "092",
+      "purpose": "Negative: trace plan mapping missing"
+    },
+    {
+      "file": "kap/093_trace_overlapping_actuation_ranges_negative.klnc",
+      "id": "093",
+      "purpose": "Negative: trace overlapping actuation ranges"
+    },
+    {
+      "file": "kap/094_trace_tick_range_type_negative.klnc",
+      "id": "094",
+      "purpose": "Negative: trace tick_range type mismatch"
+    },
+    {
+      "file": "kap/095_observables_device_event_missing_message_negative.klnc",
+      "id": "095",
+      "purpose": "Negative: DEVICE_EVENT missing message"
+    },
+    {
+      "file": "kap/096_observables_occupancy_missing_cells_negative.klnc",
+      "id": "096",
+      "purpose": "Negative: OCCUPANCY missing cells"
+    },
+    {
+      "file": "kap/097_observables_occupancy_cell_type_negative.klnc",
+      "id": "097",
+      "purpose": "Negative: OCCUPANCY cell type mismatch"
+    },
+    {
+      "file": "kap/098_observables_device_event_code_type_negative.klnc",
+      "id": "098",
+      "purpose": "Negative: DEVICE_EVENT code type mismatch"
+    },
+    {
+      "file": "kap/099_observables_device_ticks_float_t_negative.klnc",
+      "id": "099",
+      "purpose": "Negative: DEVICE_TICKS float t"
+    },
+    {
+      "file": "kap/100_observables_occupancy_confidence_range_negative.klnc",
+      "id": "100",
+      "purpose": "Negative: OCCUPANCY confidence range"
+    },
+    {
+      "file": "kap/101_trace_duplicate_plan_id_negative.klnc",
+      "id": "101",
+      "purpose": "Negative: trace duplicate plan_id"
+    },
+    {
+      "file": "kap/102_trace_duplicate_op_id_negative.klnc",
+      "id": "102",
+      "purpose": "Negative: trace duplicate op_id"
+    },
+    {
+      "file": "kap/103_trace_empty_actuation_refs_negative.klnc",
+      "id": "103",
+      "purpose": "Negative: trace empty actuation_refs"
+    },
+    {
+      "file": "kap/104_delta_duplicate_pixel_in_remove_negative.klnc",
+      "id": "104",
+      "purpose": "Negative: DELTA_TILES duplicate in remove"
+    },
+    {
+      "file": "kap/105_delta_add_remove_conflict_negative.klnc",
+      "id": "105",
+      "purpose": "Negative: DELTA_TILES add/remove conflict"
+    },
+    {
+      "file": "kap/106_delta_remove_nonexistent_pixel_negative.klnc",
+      "id": "106",
+      "purpose": "Negative: DELTA_TILES remove miss"
+    },
+    {
+      "file": "kap/107_delta_empty_tiles_list_negative.klnc",
+      "id": "107",
+      "purpose": "Negative: DELTA_TILES empty tiles list"
+    },
+    {
+      "file": "kap/108_observables_mixed_kinds_order_positive.klnc",
+      "id": "108",
+      "purpose": "Positive: EXACT_JSONL mixed-kind ordering"
+    },
+    {
+      "file": "kap/109_boundary_sparse_1x1_positive.klnc",
+      "id": "109",
+      "purpose": "Positive: boundary 1x1 sparse active"
+    },
+    {
+      "file": "kap/110_boundary_sparse_empty_pixels_positive.klnc",
+      "id": "110",
+      "purpose": "Positive: boundary 1x1 sparse empty"
+    },
+    {
+      "file": "kap/111_trace_minimal_positive.klnc",
+      "id": "111",
+      "purpose": "Positive: minimal trace"
+    },
+    {
+      "file": "kap/112_delta_noop_remove_list_positive.klnc",
+      "id": "112",
+      "purpose": "Positive: DELTA_TILES add-only tile"
+    },
+    {
+      "file": "kap/113_rsb_runtime_state_snapshot_positive.klnc",
+      "id": "113",
+      "purpose": "Positive: RUNTIME_STATE_SNAPSHOT required in HARD mode"
+    },
+    {
+      "file": "kap/114_lcp_attempt_evidence_positive.klnc",
+      "id": "114",
+      "purpose": "Positive: ECRP_ATTEMPT evidence emission for correction attempts"
+    },
+    {
+      "file": "kap/115_replan_decision_checkpoint_positive.klnc",
+      "id": "115",
+      "purpose": "Positive: REPLAN_DECISION at checkpoint with deterministic seed"
+    },
+    {
+      "file": "kap/116_required_capability_envelope_skip.klnc",
+      "id": "116",
+      "purpose": "Contract: supports.envelope missing => SKIP"
+    },
+    {
+      "file": "kap/117_diagnostic_mode_nonconformant_positive.klnc",
+      "id": "117",
+      "purpose": "Positive: DIAGNOSTIC mode labels run NONCONFORMANT"
+    },
+    {
+      "file": "kap/118_replan_without_checkpoint_negative.klnc",
+      "id": "118",
+      "purpose": "Negative: REPLAN_NOT_AT_CHECKPOINT error"
+    },
+    {
+      "file": "kap/119_lcp_missing_evidence_negative.klnc",
+      "id": "119",
+      "purpose": "Negative: ECRP invoked without ECRP_ATTEMPT emission"
+    },
+    {
+      "file": "kap/120_exact_jsonl_ordering_violation_negative.klnc",
+      "id": "120",
+      "purpose": "Negative: EXACT_JSONL ordering mismatch at compare"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein HIL Backend Contract v1",
+  "type": "object",
+  "required": [
+    "hil_contract_version",
+    "backend_id",
+    "backend_version",
+    "profile",
+    "supports",
+    "observation_sources",
+    "attestation",
+    "safety",
+    "limitations"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "hil_contract_version": { "const": "klein.hil_backend_contract.v1" },
+    "backend_id": { "type": "string", "minLength": 1 },
+    "backend_version": { "type": "string", "minLength": 1 },
+    "profile": {
+      "type": "object",
+      "required": ["profile_id", "profile_version"],
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": { "type": "string", "minLength": 1 },
+        "profile_version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "supports": {
+      "type": "object",
+      "required": [
+        "connect",
+        "disconnect",
+        "get_capabilities",
+        "get_topology",
+        "get_health",
+        "apply_frame",
+        "read_observation",
+        "emergency_stop",
+        "reset",
+        "export_raw_device_log"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "connect": { "type": "boolean" },
+        "disconnect": { "type": "boolean" },
+        "get_capabilities": { "type": "boolean" },
+        "get_topology": { "type": "boolean" },
+        "get_health": { "type": "boolean" },
+        "apply_frame": { "type": "boolean" },
+        "read_observation": { "type": "boolean" },
+        "emergency_stop": { "type": "boolean" },
+        "reset": { "type": "boolean" },
+        "export_raw_device_log": { "type": "boolean" }
+      }
+    },
+    "observation_sources": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "enum": ["simulator", "mock_hardware", "hardware_sensor"] }
+    },
+    "attestation": {
+      "type": "object",
+      "required": ["supported", "profiles"],
+      "additionalProperties": false,
+      "properties": {
+        "supported": { "type": "boolean" },
+        "profiles": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "safety": {
+      "type": "object",
+      "required": ["requires_emergency_stop", "requires_reset"],
+      "additionalProperties": false,
+      "properties": {
+        "requires_emergency_stop": { "type": "boolean" },
+        "requires_reset": { "type": "boolean" }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

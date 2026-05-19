@@ -1,0 +1,51 @@
+{
+  "artifact_hash": "sha256:429d769742fe14b65941593e3bdf17e9b87c33e1bdd3f7f26dc6d1d69cd45f2a",
+  "backend_id": "full_simulator",
+  "backend_identity_status": "not_evaluated",
+  "backend_key_status": null,
+  "backend_registry_hash": null,
+  "backend_registry_id": null,
+  "checks": {
+    "artifact_binding_status": "pass",
+    "backend_identity_registry_status": "not_applicable",
+    "backend_identity_resolution_status": "not_applicable",
+    "canonicalization_status": "pass",
+    "chain_status": "pass",
+    "hail_schema_status": "pass",
+    "lifecycle_status": "pass",
+    "manifest_payload_status": "pass",
+    "manifest_schema_status": "pass",
+    "report_binding_status": "not_applicable",
+    "signature_status": "pass",
+    "trust_status": "pass"
+  },
+  "errors": [],
+  "hail_chain_digest": "sha256:fd1359a9c1367425b56dd91b49695f26b10a98b427ae967bd34b555c022dec30",
+  "hail_digest": "sha256:6f6601bf97252faf9f39247ac57603040bb700a1b893a9c1322f824c38059568",
+  "identity_status": "not_evaluated",
+  "key_lifecycle_status": null,
+  "manifest_key_ids": [
+    "klein-test-backend-001"
+  ],
+  "overall_status": "pass",
+  "profile_id": "dmf",
+  "profile_version": "v1",
+  "registry_authority_id": null,
+  "registry_backend_id": null,
+  "registry_key_id": null,
+  "registry_provenance_status": "not_evaluated",
+  "registry_signature_status": "not_applicable",
+  "registry_signed": false,
+  "result_version": "klein.signed_conformance_result.v1",
+  "substrate_fingerprint": "sha256:8258d5b8a612dc21efc011543aee1513864840467caa7a8e3b2255be11b2087e",
+  "trusted_key_ids": [
+    "klein-test-backend-001"
+  ],
+  "warnings": [
+    {
+      "check": "artifact_binding_status",
+      "code": "artifact_not_supplied",
+      "message": "artifact path not supplied; verifier checked declared lifecycle hash presence only"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "N030",
+  "name": "N030_artifact_unsupported_schema_version",
+  "schema_version": "v1",
+  "profile": "core",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "ARTIFACT_UNSUPPORTED_VERSION",
+  "input_type": "project",
+  "input_path": "input/project.klein",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "Artifact rejects unsupported canonical schema_version"
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Raw Device Log v1 Event",
+  "type": "object",
+  "required": [
+    "raw_log_version",
+    "event_index",
+    "source_type",
+    "operation",
+    "status",
+    "tick",
+    "details"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "raw_log_version": { "const": "klein.raw_device_log.v1" },
+    "event_index": { "type": "integer", "minimum": 1 },
+    "source_type": { "type": "string", "enum": ["simulator", "mock_hardware", "hardware"] },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "connect",
+        "apply_frame",
+        "read_observation",
+        "emergency_stop",
+        "reset",
+        "disconnect"
+      ]
+    },
+    "status": { "type": "string", "enum": ["OK", "ERROR"] },
+    "error_code": { "type": "string", "minLength": 1 },
+    "tick": { "type": "integer", "minimum": 0 },
+    "details": { "type": "object" }
+  }
+}

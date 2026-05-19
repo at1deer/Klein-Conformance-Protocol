@@ -1,0 +1,45 @@
+{
+  "klein_container_version": "1.0",
+  "manifest": {
+    "project": {
+      "name": "frame-sequence-delta-tiles",
+      "version": "1.0",
+      "authors": [
+        "Klein"
+      ]
+    },
+    "runtime": {
+      "mode": "HARD",
+      "target_substrate": "dmf.muxed_ewod.opendrop.v1.0"
+    }
+  },
+  "payload": {
+    "kind": "FRAME_SEQUENCE",
+    "encoding": "JSON",
+    "data": [
+      {
+        "t": 0,
+        "format": "delta_tiles",
+        "data": {
+          "add": [
+            1,
+            2
+          ],
+          "remove": []
+        }
+      },
+      {
+        "t": 1,
+        "format": "delta_tiles",
+        "data": {
+          "add": [
+            3
+          ],
+          "remove": [
+            1
+          ]
+        }
+      }
+    ]
+  }
+}

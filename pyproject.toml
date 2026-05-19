@@ -1,0 +1,125 @@
+[build-system]
+requires = ["setuptools>=77.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "klein-protocol"
+version = "1.0.0a0"
+description = "A substrate conformance protocol for physical execution under uncertainty"
+readme = "README.md"
+license = "MIT"
+authors = [
+    {name = "at1deer"}
+]
+keywords = [
+    "microfluidics",
+    "dmf",
+    "ewod",
+    "digital-microfluidics",
+    "programmable-matter",
+    "fault-tolerance",
+    "conformance-testing",
+    "geodesic-routing"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Topic :: Software Development :: Testing",
+    "Typing :: Typed"
+]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "pydantic>=2.0.0,<3.0.0",
+    "numpy>=1.24.0,<2.0.0",
+    "networkx>=3.0,<4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "mypy>=1.0.0",
+    "ruff>=0.1.0",
+    "jsonschema>=4.0.0",
+    "cryptography>=42",
+    "build>=1.0.0",
+    "twine>=5.0.0",
+]
+crypto = [
+    "cryptography>=42",
+]
+
+[project.urls]
+Homepage = "https://github.com/at1deer/klein"
+Documentation = "https://github.com/at1deer/klein#readme"
+Repository = "https://github.com/at1deer/klein.git"
+Issues = "https://github.com/at1deer/klein/issues"
+
+[project.scripts]
+klein-sim = "klein.sim.runner:main"
+klein-conform = "klein.conformance.harness:main"
+pack-kleinc = "klein.tools.pack_kleinc:main"
+klein-hail-canon = "klein.tools.hail_canon:main"
+klein-hash-artifact = "klein.tools.hash_artifact:main"
+klein-regen-v1-goldens = "klein.tools.regen_v1_goldens:main"
+klein-export-clean-repo = "klein.tools.export_clean_repo:main"
+klein-run-manifest = "klein.tools.run_manifest:main"
+klein-verify-run = "klein.tools.verify_run:main"
+klein-run-bundle = "klein.tools.run_bundle:main"
+klein-verify-bundle = "klein.tools.verify_bundle:main"
+klein-backend-registry = "klein.tools.backend_registry:main"
+klein-backend-capabilities = "klein.tools.backend_capabilities:main"
+klein-conformance-levels = "klein.tools.conformance_levels:main"
+klein-artifact = "klein.tools.artifact:main"
+klein-runbook = "klein.tools.runbook:main"
+klein-trace = "klein.tools.trace:main"
+klein-ecrp = "klein.tools.ecrp:main"
+klein-observation = "klein.tools.observation:main"
+klein-hil = "klein.tools.hil:main"
+klein-recorded-run = "klein.tools.recorded_run:main"
+klein-dmf-backend = "klein.tools.dmf_backend:main"
+klein-opendrop-backend = "klein.tools.opendrop_backend:main"
+klein-timestamp = "klein.tools.timestamp:main"
+klein-attestation = "klein.tools.attestation:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+klein = ["py.typed", "catalogs/*.json"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_return_any = true
+warn_unused_ignores = true
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "DTZ", "T10", "ISC"]
+ignore = ["E501"]  # Line length handled separately
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+markers = [
+    "conformance: Klein conformance suite tests",
+    "smoke: Smoke tests (run by default)",
+    "positive: Positive conformance cases",
+    "negative: Negative conformance cases",
+]

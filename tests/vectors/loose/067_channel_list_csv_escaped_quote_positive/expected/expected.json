@@ -1,0 +1,6 @@
+{
+  "expected_version": "0.1",
+  "mode": "HARD",
+  "must_pass": true,
+  "notes": "Escaped quotes (double-quote doubling) parsed in LENIENT mode."
+}

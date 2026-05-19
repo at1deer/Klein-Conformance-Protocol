@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_UNSUPPORTED_WAVEFORM", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "Unsupported waveform 'TRIANGLE' (allowed: AC_SINE, AC_SQUARE, DC)", "run_id": "R16", "t": 0, "timebase": "DEVICE_TICKS"}

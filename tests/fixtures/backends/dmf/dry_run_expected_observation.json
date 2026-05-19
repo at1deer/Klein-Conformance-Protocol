@@ -1,0 +1,38 @@
+{
+  "confidence": 1.0,
+  "metadata": {
+    "dmf_backend_adapter": "generic-dmf-dry-run",
+    "physical_hardware": false
+  },
+  "observation_id": "dmf-adapter-obs-0001",
+  "observation_model": "simulated",
+  "observation_version": "klein.observation_snapshot.v1",
+  "profile": {
+    "profile_id": "dmf",
+    "profile_version": "v1"
+  },
+  "run_id": "dmf-dry-run",
+  "runbook_step_id": "step-0001",
+  "source": {
+    "attestation": null,
+    "source_id": "generic_dmf_dry_run",
+    "source_type": "simulator",
+    "source_version": "0.1.0-alpha"
+  },
+  "state": {
+    "dmf": {
+      "active_channels": [
+        0
+      ],
+      "active_tiles": [
+        [
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  "tick": 0,
+  "timebase": "DEVICE_TICKS",
+  "trace_step_id": "step-0001"
+}

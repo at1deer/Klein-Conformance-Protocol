@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein OpenDrop EWOD Adapter Status v1",
+  "type": "object",
+  "required": [
+    "adapter_status_version",
+    "adapter_id",
+    "connected",
+    "hardware_io_enabled",
+    "transport_status",
+    "health",
+    "emergency_stopped",
+    "last_error_code"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "adapter_status_version": { "const": "klein.opendrop_adapter_status.v1" },
+    "adapter_id": { "type": "string", "minLength": 1 },
+    "connected": { "const": false },
+    "hardware_io_enabled": { "const": false },
+    "transport_status": { "type": "string", "enum": ["NONE", "DRY_RUN"] },
+    "health": { "type": "string", "enum": ["OK", "DEGRADED", "FAULTED", "UNKNOWN"] },
+    "emergency_stopped": { "type": "boolean" },
+    "last_error_code": { "type": ["string", "null"] }
+  }
+}

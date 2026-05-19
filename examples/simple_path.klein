@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "version": "1.0",
+    "target_substrate": "dmf.muxed_ewod.opendrop.v1.0",
+    "author": "Klein Project",
+    "biosafety_level": 1,
+    "solver_mode": "GEODESIC"
+  },
+  "nodes": [
+    { "id": "source", "type": "Source", "pos": [0, 0, 0] },
+    { "id": "A", "type": "Junction", "pos": [10, 0, 0] },
+    { "id": "B", "type": "Junction", "pos": [20, 0, 0] },
+    { "id": "C", "type": "Junction", "pos": [20, 10, 0] },
+    { "id": "sink", "type": "Sink", "pos": [30, 10, 0] }
+  ],
+  "edges": [
+    { "from": "source", "to": "A", "type": "rail", "impedance": 0.5 },
+    { "from": "A", "to": "B", "type": "rail", "impedance": 1.0 },
+    { "from": "B", "to": "C", "type": "rail", "impedance": 0.8 },
+    { "from": "C", "to": "sink", "type": "rail", "impedance": 0.5 }
+  ],
+  "fields": []
+}

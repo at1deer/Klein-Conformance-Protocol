@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_DELTA_REMOVE_MISS", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "DELTA_TILES remove pixel (1,1) not present in prior frame", "run_id": "R106", "t": 0, "timebase": "DEVICE_TICKS"}

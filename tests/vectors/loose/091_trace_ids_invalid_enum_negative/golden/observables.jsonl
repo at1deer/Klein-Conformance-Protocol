@@ -1,0 +1,1 @@
+{"code": "TRACE_INVALID_ENUM", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "trace ids.hardware_channels_or_pixels invalid enum 'maybe'", "run_id": "R91", "t": 0, "timebase": "DEVICE_TICKS"}

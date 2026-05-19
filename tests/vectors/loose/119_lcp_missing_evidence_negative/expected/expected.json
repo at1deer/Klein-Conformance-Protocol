@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "LCP_MISSING_EVIDENCE",
+    "message_contains": "LCP_ATTEMPT"
+  },
+  "expected_version": "0.2",
+  "fail_stage": "RUN|COMPARE",
+  "mode": "HARD",
+  "must_fail": true
+}

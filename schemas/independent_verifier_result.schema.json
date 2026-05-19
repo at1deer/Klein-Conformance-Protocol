@@ -1,0 +1,352 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Independent Verifier Result v1",
+  "type": "object",
+  "required": [
+    "result_version",
+    "overall_status",
+    "bundle_format",
+    "bundle_path",
+    "checks",
+    "bindings",
+    "errors",
+    "warnings"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "result_version": {
+      "const": "klein.independent_verifier_result.v1"
+    },
+    "overall_status": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail"
+      ]
+    },
+    "bundle_format": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "zip",
+        "directory",
+        null
+      ]
+    },
+    "bundle_path": {
+      "type": "string"
+    },
+    "checks": {
+      "type": "object",
+      "required": [
+        "bundle_schema",
+        "bundle_entry_hashes",
+        "hail_schema",
+        "hail_canonicalization",
+        "hail_ordering",
+        "hail_lifecycle",
+        "hail_chain",
+        "run_manifest_schema",
+        "run_manifest_payload",
+        "run_manifest_signature",
+        "trust_policy_schema",
+        "trust_policy_authorization",
+        "backend_identity_registry",
+        "backend_identity_resolution",
+        "conformance_report"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "bundle_schema": {
+          "$ref": "#/definitions/status"
+        },
+        "bundle_entry_hashes": {
+          "$ref": "#/definitions/status"
+        },
+        "hail_schema": {
+          "$ref": "#/definitions/status"
+        },
+        "hail_canonicalization": {
+          "$ref": "#/definitions/status"
+        },
+        "hail_ordering": {
+          "$ref": "#/definitions/status"
+        },
+        "hail_lifecycle": {
+          "$ref": "#/definitions/status"
+        },
+        "hail_chain": {
+          "$ref": "#/definitions/status"
+        },
+        "run_manifest_schema": {
+          "$ref": "#/definitions/status"
+        },
+        "run_manifest_payload": {
+          "$ref": "#/definitions/status"
+        },
+        "run_manifest_signature": {
+          "$ref": "#/definitions/status"
+        },
+        "trust_policy_schema": {
+          "$ref": "#/definitions/status"
+        },
+        "trust_policy_authorization": {
+          "$ref": "#/definitions/status"
+        },
+        "backend_identity_registry": {
+          "$ref": "#/definitions/status"
+        },
+        "backend_identity_resolution": {
+          "$ref": "#/definitions/status"
+        },
+        "conformance_report": {
+          "$ref": "#/definitions/status"
+        }
+      }
+    },
+    "bindings": {
+      "type": "object",
+      "required": [
+        "artifact_hash",
+        "hail_digest",
+        "hail_chain_digest",
+        "backend_id",
+        "backend_version",
+        "profile_id",
+        "profile_version",
+        "substrate_fingerprint",
+        "trusted_key_ids",
+        "identity_status",
+        "backend_registry_id",
+        "backend_registry_hash",
+        "backend_identity_status",
+        "backend_key_status",
+        "registry_key_id",
+        "registry_backend_id",
+        "registry_signed",
+        "registry_signature_status",
+        "registry_provenance_status",
+        "registry_authority_id",
+        "key_lifecycle_status",
+        "backend_capabilities_present",
+        "backend_capability_declaration_hash",
+        "backend_capability_signature_status",
+        "backend_capability_trust_status",
+        "backend_capability_scope_status",
+        "backend_capability_error_code",
+        "declared_conformance_levels",
+        "verified_conformance_levels",
+        "conformance_level_catalog_status",
+        "conformance_level_dependency_status",
+        "conformance_level_error_code"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "artifact_hash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hail_digest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hail_chain_digest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backend_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backend_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "profile_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "profile_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "substrate_fingerprint": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "trusted_key_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "identity_status": {
+          "type": "string"
+        },
+        "backend_registry_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backend_registry_hash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backend_identity_status": {
+          "type": "string"
+        },
+        "backend_key_status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "registry_key_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "registry_backend_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "registry_signed": {
+          "type": "boolean"
+        },
+        "registry_signature_status": {
+          "type": "string"
+        },
+        "registry_provenance_status": {
+          "type": "string"
+        },
+        "registry_authority_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "key_lifecycle_status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backend_capabilities_present": {
+          "type": "boolean"
+        },
+        "backend_capability_declaration_hash": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backend_capability_signature_status": {
+          "type": "string"
+        },
+        "backend_capability_trust_status": {
+          "type": "string"
+        },
+        "backend_capability_scope_status": {
+          "type": "string"
+        },
+        "backend_capability_error_code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "declared_conformance_levels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "verified_conformance_levels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "conformance_level_catalog_status": {
+          "type": "string"
+        },
+        "conformance_level_dependency_status": {
+          "type": "string"
+        },
+        "conformance_level_error_code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "errors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/diagnostic"
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/diagnostic"
+      }
+    }
+  },
+  "definitions": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "not_evaluated",
+        "not_applicable"
+      ]
+    },
+    "diagnostic": {
+      "type": "object",
+      "required": [
+        "check",
+        "error_code",
+        "message"
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "check": {
+          "type": "string"
+        },
+        "error_code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

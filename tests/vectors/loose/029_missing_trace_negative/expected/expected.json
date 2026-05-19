@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "KAP_MISSING_TRACE",
+    "message_contains": "trace/trace.json"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "VALIDATE",
+  "mode": "HARD",
+  "must_fail": true
+}

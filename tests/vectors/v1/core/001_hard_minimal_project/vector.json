@@ -1,0 +1,13 @@
+{
+  "id": "001",
+  "name": "001_hard_minimal_project",
+  "schema_version": "v1",
+  "profile": "core",
+  "mode": "HARD",
+  "expected_result": "PASS",
+  "input_type": "project",
+  "input_path": "input/project.klein",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "purpose": "HARD minimal .klein project executes through the geodesic simulator"
+}

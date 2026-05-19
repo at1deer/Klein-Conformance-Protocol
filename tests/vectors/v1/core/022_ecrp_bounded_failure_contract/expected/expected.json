@@ -1,0 +1,5 @@
+{
+  "expected_result": "FAIL",
+  "expected_error_code": "CHANNEL_DEAD",
+  "comparison_mode": "EXACT_JSONL"
+}

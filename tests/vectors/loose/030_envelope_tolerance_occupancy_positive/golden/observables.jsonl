@@ -1,0 +1,2 @@
+{"cells": [{"c": 2, "confidence": 1.0, "occupied": true, "r": 2}], "kind": "OCCUPANCY", "regions": [], "run_id": "R30", "t": 0, "timebase": "DEVICE_TICKS"}
+{"cells": [{"c": 3, "confidence": 1.0, "occupied": true, "r": 2}], "kind": "OCCUPANCY", "regions": [], "run_id": "R30", "t": 1, "timebase": "DEVICE_TICKS"}

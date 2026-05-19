@@ -1,0 +1,14 @@
+{
+  "id": "016",
+  "name": "016_frame_sequence_sparse_coordinates",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "profile_version": "v1",
+  "mode": "HARD",
+  "expected_result": "PASS",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "purpose": "FRAME_SEQUENCE sparse payload with multiple coordinate-addressed frames inside declared grid bounds"
+}

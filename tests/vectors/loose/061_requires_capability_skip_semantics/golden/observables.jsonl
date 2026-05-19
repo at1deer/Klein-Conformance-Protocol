@@ -1,0 +1,1 @@
+{"code": "SKIP_UNSUPPORTED_CAPABILITY", "kind": "DEVICE_EVENT", "level": "WARN", "message": "Required sensor OCCUPANCY_CAM not present; skipping vector 061", "run_id": "R61", "t": 0, "timebase": "DEVICE_TICKS"}

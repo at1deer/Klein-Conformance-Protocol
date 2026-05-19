@@ -1,0 +1,13 @@
+{
+  "id": "N005",
+  "name": "N005_malformed_artifact_json",
+  "schema_version": "v1",
+  "profile": "core",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "ARTIFACT_JSON_INVALID",
+  "input_type": "invalid_artifact",
+  "input_path": "input/bad.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "malformed artifact JSON is rejected before schema validation"
+}

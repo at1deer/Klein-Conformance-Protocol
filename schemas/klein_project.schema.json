@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Project v1",
+  "oneOf": [
+    { "$ref": "#/definitions/canonical_project" },
+    { "$ref": "#/definitions/graph_project" }
+  ],
+  "definitions": {
+    "profile": {
+      "type": "object",
+      "required": ["profile_id", "profile_version"],
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": { "type": "string", "minLength": 1 },
+        "profile_version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "canonical_project": {
+      "type": "object",
+      "required": ["kind", "schema_version", "project_id", "profile", "mode", "payload"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "KLEIN_PROJECT" },
+        "schema_version": { "const": "v1" },
+        "project_id": { "type": "string", "minLength": 1 },
+        "profile": { "$ref": "#/definitions/profile" },
+        "mode": { "type": "string", "enum": ["HARD", "ENVELOPE", "DIAGNOSTIC"] },
+        "payload": { "type": "object" },
+        "metadata": { "type": "object" }
+      }
+    },
+    "graph_project": {
+      "type": "object",
+      "required": ["meta", "nodes", "edges"],
+      "additionalProperties": false,
+      "properties": {
+        "meta": {
+          "type": "object",
+          "required": ["version", "target_substrate"],
+          "additionalProperties": true,
+          "properties": {
+            "version": { "type": "string", "minLength": 1 },
+            "target_substrate": { "type": "string", "minLength": 1 }
+          }
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "type", "pos"],
+            "additionalProperties": true,
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "type": { "type": "string", "minLength": 1 },
+              "pos": {
+                "type": "array",
+                "minItems": 3,
+                "maxItems": 3,
+                "items": { "type": "number" }
+              }
+            }
+          }
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["from", "to", "type"],
+            "additionalProperties": true,
+            "properties": {
+              "from": { "type": "string", "minLength": 1 },
+              "to": { "type": "string", "minLength": 1 },
+              "type": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "fields": { "type": "array" }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "frame_sequence_version": "0.1",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "RLE",
+      "payload_b64": "AQABYAEgBQA=",
+      "tick": 0
+    }
+  ],
+  "notes": "Test vector RLE encoding for 8x8 BITMAP rows. Payload is pairs (count,value) uint8; expands to 8 row-bytes. MSB=col0."
+}

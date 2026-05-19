@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein OpenDrop EWOD Adapter Config v1",
+  "type": "object",
+  "required": [
+    "adapter_config_version",
+    "adapter_id",
+    "adapter_kind",
+    "backend_id",
+    "backend_version",
+    "profile",
+    "mode",
+    "hardware_io_enabled",
+    "transport",
+    "electrode_layout",
+    "electrical_limits",
+    "safety",
+    "limitations"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "adapter_config_version": { "const": "klein.opendrop_adapter_config.v1" },
+    "adapter_id": { "type": "string", "minLength": 1 },
+    "adapter_kind": { "const": "opendrop_ewod" },
+    "backend_id": { "type": "string", "minLength": 1 },
+    "backend_version": { "type": "string", "minLength": 1 },
+    "profile": {
+      "type": "object",
+      "required": ["profile_id", "profile_version"],
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": { "const": "dmf" },
+        "profile_version": { "const": "v1" }
+      }
+    },
+    "mode": { "const": "dry_run" },
+    "hardware_io_enabled": { "const": false },
+    "transport": {
+      "type": "object",
+      "required": ["transport_kind", "endpoint"],
+      "additionalProperties": false,
+      "properties": {
+        "transport_kind": { "const": "none" },
+        "endpoint": { "const": null },
+        "baud_rate": { "const": null }
+      }
+    },
+    "electrode_layout": {
+      "type": "object",
+      "required": ["layout_id", "grid_width", "grid_height", "channel_count", "mapping"],
+      "additionalProperties": false,
+      "properties": {
+        "layout_id": { "type": "string", "minLength": 1 },
+        "grid_width": { "type": "integer", "minimum": 1 },
+        "grid_height": { "type": "integer", "minimum": 1 },
+        "channel_count": { "type": "integer", "minimum": 1 },
+        "mapping": { "type": "string", "enum": ["row_major", "explicit"] },
+        "explicit_mapping": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/electrode" }
+        }
+      }
+    },
+    "electrical_limits": {
+      "type": "object",
+      "required": ["voltage_min_v", "voltage_max_v", "frequency_min_hz", "frequency_max_hz"],
+      "additionalProperties": false,
+      "properties": {
+        "voltage_min_v": { "type": "number" },
+        "voltage_max_v": { "type": "number" },
+        "frequency_min_hz": { "type": "number" },
+        "frequency_max_hz": { "type": "number" }
+      }
+    },
+    "safety": {
+      "type": "object",
+      "required": ["require_estop", "allow_hardware_io"],
+      "additionalProperties": false,
+      "properties": {
+        "require_estop": { "const": true },
+        "allow_hardware_io": { "const": false }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "definitions": {
+    "electrode": {
+      "type": "object",
+      "required": ["channel_id", "electrode_id", "x", "y"],
+      "additionalProperties": false,
+      "properties": {
+        "channel_id": { "type": "integer", "minimum": 1 },
+        "electrode_id": { "type": "string", "minLength": 1 },
+        "x": { "type": "integer", "minimum": 0 },
+        "y": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

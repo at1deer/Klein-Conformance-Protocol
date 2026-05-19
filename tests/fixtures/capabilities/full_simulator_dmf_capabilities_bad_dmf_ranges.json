@@ -1,0 +1,124 @@
+{
+  "capability_declaration_version": "klein.backend_capability_declaration.v1",
+  "payload": {
+    "backend_id": "full_simulator",
+    "backend_version": "1.0.0a0",
+    "declaration_id": "klein-full-simulator-dmf-v1-capabilities",
+    "issued_at": null,
+    "limitations": [
+      "Reference simulator only.",
+      "No hardware attestation.",
+      "No trusted timestamp.",
+      "No physical sensor proof.",
+      "Closed-loop recovery not implemented."
+    ],
+    "not_after": null,
+    "not_before": null,
+    "profile_capabilities": {
+      "dmf": {
+        "addressing": {
+          "grid_height": 8,
+          "grid_width": 16,
+          "max_channels": 128,
+          "mode": "channel"
+        },
+        "electrical": {
+          "frequency_max_hz": 50000,
+          "frequency_min_hz": 1,
+          "voltage_max_v": 300,
+          "voltage_min_v": 400
+        },
+        "payloads": {
+          "supported_frame_formats": [
+            "sparse",
+            "bitmap",
+            "delta_tiles"
+          ],
+          "supported_payload_kinds": [
+            "CHANNEL_LIST",
+            "FRAME_SEQUENCE",
+            "BITMAP_SEQUENCE"
+          ],
+          "unsupported_frame_formats": [
+            "rle"
+          ]
+        },
+        "recovery": {
+          "supports_bounded_ecrp_evidence": true,
+          "supports_closed_loop_recovery": false
+        },
+        "sensing": {
+          "sensing_model": "simulated",
+          "supports_physical_sensor_attestation": false,
+          "supports_runtime_observations": true
+        }
+      }
+    },
+    "substrates": [
+      {
+        "fingerprint_canonicalization": "klein.canon.json.v1",
+        "substrate_capabilities_hash": "sha256:c29a5d7866fffb2a5c3637c7458d32b7dcb5f2f7a1b41cdc6750855fe1e62028",
+        "substrate_fingerprint": "sha256:8258d5b8a612dc21efc011543aee1513864840467caa7a8e3b2255be11b2087e",
+        "substrate_id": "virtual-dmf-16x8",
+        "substrate_topology_hash": "sha256:bc1dec5c5b8c6ba0c5c97501fb1940ac6a615897f0db2b28294ff980020ef7e3"
+      }
+    ],
+    "supported_conformance_levels": [
+      "KCP-Core-HAIL-v1",
+      "KCP-Core-Canonical-v1",
+      "KCP-Core-Lifecycle-v1",
+      "KCP-Core-Chain-v1",
+      "KCP-Core-RunManifest-v1",
+      "KCP-Core-TrustPolicy-v1",
+      "KCP-Core-BackendRegistry-v1",
+      "KCP-Core-SignedRegistry-v1",
+      "KCP-Core-BackendCapabilities-v1",
+      "KCP-Core-Signed-Conformance-v1",
+      "KCP-Core-RunBundle-v1",
+      "KCP-Core-Bundled-Verification-v1",
+      "KCP-Core-IndependentVerifier-v1",
+      "KCP-Core-RustVerifier-Fixture-v1",
+      "KCP-Profile-DMF-Payload-v1",
+      "KCP-Profile-DMF-Simulator-v1"
+    ],
+    "supported_evidence_features": {
+      "backend_identity_registry_v1": true,
+      "independent_verifier_v1": true,
+      "run_bundle_v1": true,
+      "run_manifest_v1": true,
+      "signed_backend_registry": true,
+      "trust_policy_v1": true
+    },
+    "supported_execution_modes": [
+      "HARD",
+      "ENVELOPE",
+      "DIAGNOSTIC"
+    ],
+    "supported_hail_features": {
+      "hail_chain_v1": true,
+      "hail_v1": true,
+      "preclose_digest": true,
+      "run_end": true,
+      "run_start": true
+    },
+    "supported_profiles": [
+      {
+        "profile_capability_set": "klein.profile.dmf.ewod.alpha",
+        "profile_id": "dmf",
+        "profile_versions": [
+          "v1"
+        ]
+      }
+    ]
+  },
+  "signatures": [
+    {
+      "key_id": "klein-test-backend-001",
+      "public_key": "A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=",
+      "public_key_encoding": "base64.raw.ed25519",
+      "signature": "Lv29KLsYOJhFMe7Vgt9Wx4tI08ILCZqjkG37PBvvHeRbVJDrBXlsM8Zc4zDzRjF+AgTTtZI/lbOXhkJ9JDxDAQ==",
+      "signature_algorithm": "Ed25519",
+      "signature_encoding": "base64.raw.ed25519"
+    }
+  ]
+}

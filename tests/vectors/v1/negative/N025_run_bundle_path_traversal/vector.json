@@ -1,0 +1,19 @@
+{
+  "id": "N025",
+  "name": "N025_run_bundle_path_traversal",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "run_id": "R012",
+  "run_bundle_path": "bundle/run.kcprun",
+  "bundle_conformance": true,
+  "purpose": "bundle zip path traversal is rejected",
+  "expected_error_code": "RUN_BUNDLE_PATH_TRAVERSAL",
+  "expected_validation_stage": "bundle_conformance",
+  "profile_version": "v1"
+}

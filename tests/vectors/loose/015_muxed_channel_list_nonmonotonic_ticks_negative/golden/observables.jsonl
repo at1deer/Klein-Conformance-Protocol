@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_NONMONOTONIC_TICKS", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "CHANNEL_LIST tick sequence not non-decreasing (found 2 then 1)", "run_id": "R15", "t": 0, "timebase": "DEVICE_TICKS"}

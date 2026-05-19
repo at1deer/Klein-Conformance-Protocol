@@ -1,0 +1,2 @@
+{"code": "FIRST", "kind": "DEVICE_EVENT", "level": "INFO", "message": "first", "run_id": "R56", "t": 0, "timebase": "DEVICE_TICKS"}
+{"code": "SECOND", "kind": "DEVICE_EVENT", "level": "INFO", "message": "second", "run_id": "R56", "t": 0, "timebase": "DEVICE_TICKS"}

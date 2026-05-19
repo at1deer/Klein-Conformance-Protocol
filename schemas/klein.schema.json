@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Project File (.klein)",
+  "description": "Graph definition for geodesic pathfinding. File extension: .klein (formerly .kln).",
+  "type": "object",
+  "required": ["meta", "nodes", "edges"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["version", "target_substrate"],
+      "properties": {
+        "version": { "type": "string" },
+        "author": { "type": "string" },
+        "target_substrate": { "type": "string" },
+        "resources": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Liability: List of required physical reagents (e.g. ['Water', 'H2SO4'])." 
+        },
+        "biosafety_level": {
+          "type": "integer",
+          "enum": [1, 2, 3, 4],
+          "default": 1
+        },
+        "solver_mode": {
+          "type": "string",
+          "enum": ["GEODESIC", "HAMILTONIAN"],
+          "default": "GEODESIC",
+          "description": "RESERVED (v2.0): Defines if solver seeks Shortest Path (Geodesic) or Coverage (Hamiltonian)."
+        }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "pos"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string" },
+          "pos": {
+            "type": "array",
+            "items": { "type": "integer" },
+            "minItems": 3,
+            "maxItems": 3,
+            "description": "[x, y, z]"
+          },
+          "ports": {
+            "type": "object",
+            "patternProperties": {
+              "^.*$": { "type": "string", "enum": ["North", "South", "East", "West", "Up", "Down"] }
+            }
+          },
+          "state": { "description": "Initial state (0/1 for Tetra, float for Sphere)" }
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "type"],
+        "properties": {
+          "from": { "type": "string" },
+          "from_port": { "type": "string" },
+          "to": { "type": "string" },
+          "to_port": { "type": "string" },
+          "type": { "type": "string" },
+          "impedance": { 
+            "type": "number",
+            "description": "Scalar resistance (v1.0 Standard)" 
+          },
+          "metric_tensor": {
+            "type": "array",
+            "description": "RESERVED (v2.0): 3x3 Anisotropic cost matrix for directional resistance.",
+            "items": {
+              "type": "array",
+              "items": { "type": "number" },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "minItems": 3,
+            "maxItems": 3
+          }
+        }
+      }
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "center", "strength"],
+        "properties": {
+          "type": { "type": "string" },
+          "center": { "type": "array", "minItems": 3, "maxItems": 3 },
+          "strength": { "type": "number" },
+          "radius": { "type": "number" },
+          "tensor_components": {
+            "type": "array",
+            "description": "RESERVED (v2.0): Vector components for anisotropic field effects.",
+            "items": { "type": "number" }
+          }
+        }
+      }
+    }
+  }
+}
+

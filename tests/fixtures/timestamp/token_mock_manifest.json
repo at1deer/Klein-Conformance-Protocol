@@ -1,0 +1,18 @@
+{
+  "timestamp_token_version": "klein.timestamp_token.v1",
+  "token_id": "mock-token-manifest-001",
+  "token_kind": "mock_local",
+  "target": {
+    "target_type": "run_manifest",
+    "target_hash": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "target_canonicalization": "klein.canon.json.v1"
+  },
+  "claimed_time": "2026-05-18T00:00:00Z",
+  "time_source": {
+    "source_type": "mock",
+    "authority_id": null
+  },
+  "trusted_time_claimed": false,
+  "signature": null,
+  "metadata": {}
+}

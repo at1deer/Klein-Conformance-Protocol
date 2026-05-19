@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_TILE_OOB", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "DELTA_TILES tile origin out-of-bounds: (r0=8,c0=0) for dims 8x8", "run_id": "R34", "t": 0, "timebase": "DEVICE_TICKS"}

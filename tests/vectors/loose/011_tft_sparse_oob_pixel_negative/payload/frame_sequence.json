@@ -1,0 +1,24 @@
+{
+  "frame_sequence_version": "0.1",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "SPARSE",
+      "pixels": [
+        [
+          1,
+          1
+        ],
+        [
+          8,
+          0
+        ]
+      ],
+      "tick": 0
+    }
+  ],
+  "notes": "Negative test: SPARSE contains out-of-bounds pixel [8,0] for dims 8x8. Must fail in strict mode."
+}

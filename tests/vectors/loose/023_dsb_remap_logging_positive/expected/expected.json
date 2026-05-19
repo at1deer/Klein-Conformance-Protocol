@@ -1,0 +1,9 @@
+{
+  "expected_version": "0.1",
+  "mode": "HARD",
+  "remap_expectation": {
+    "from": 12,
+    "policy": "DETERMINISTIC_FIRST_FREE",
+    "to": 13
+  }
+}

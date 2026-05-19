@@ -1,0 +1,1 @@
+{"code": "DDI_CALIBRATION_REQUIRED", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "Calibration required but manifest.calibration.hash missing/empty", "run_id": "R18", "t": 0, "timebase": "DEVICE_TICKS"}

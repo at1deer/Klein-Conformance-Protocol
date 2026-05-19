@@ -1,0 +1,15 @@
+{
+  "frame_sequence_version": "0.1",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "RLE",
+      "payload_b64": "CgE=",
+      "tick": 0
+    }
+  ],
+  "notes": "Negative: RLE expands to fewer bits than expected (underrun)."
+}

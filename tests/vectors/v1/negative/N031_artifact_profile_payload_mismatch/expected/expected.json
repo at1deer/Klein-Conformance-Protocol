@@ -1,0 +1,5 @@
+{
+  "expected_result": "FAIL",
+  "expected_error_code": "ARTIFACT_PROFILE_MISMATCH",
+  "comparison_mode": "EXACT_JSONL"
+}

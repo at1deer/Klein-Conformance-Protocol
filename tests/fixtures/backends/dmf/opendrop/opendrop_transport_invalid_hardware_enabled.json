@@ -1,0 +1,14 @@
+{
+  "baud_rate": null,
+  "command_encoding": "jsonl",
+  "endpoint": null,
+  "hardware_io_enabled": true,
+  "limitations": [
+    "Invalid fixture: hardware IO is enabled."
+  ],
+  "protocol_family": "opendrop_arduino_style",
+  "requires_explicit_enable": true,
+  "transport_config_version": "klein.opendrop_transport_config.v1",
+  "transport_kind": "serial_experimental",
+  "untested_hardware_warning": true
+}

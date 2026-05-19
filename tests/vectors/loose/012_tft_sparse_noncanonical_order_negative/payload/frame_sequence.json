@@ -1,0 +1,28 @@
+{
+  "frame_sequence_version": "0.1",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "SPARSE",
+      "pixels": [
+        [
+          2,
+          2
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "tick": 0
+    }
+  ],
+  "notes": "Negative test: SPARSE pixel list is non-canonically ordered. In strict mode, validator MUST fail or canonicalize deterministically; this vector asserts FAIL for strict validators."
+}

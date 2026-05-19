@@ -1,0 +1,14 @@
+{
+  "allowed_observation_models": [
+    "simulated"
+  ],
+  "allowed_sources": [
+    "simulator"
+  ],
+  "observation_policy_version": "klein.observation_policy.v1",
+  "policy_id": "simulated-dmf-alpha",
+  "required_for_recovery_success": false,
+  "requires_attestation": false,
+  "requires_runbook_alignment": false,
+  "requires_trace_alignment": true
+}

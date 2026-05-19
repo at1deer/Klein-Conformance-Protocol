@@ -1,0 +1,7 @@
+{
+  "compare_mode": "EXACT_JSONL",
+  "expected_version": "0.1",
+  "mode": "HARD",
+  "must_pass": true,
+  "notes": "Stable ordering across mixed kinds at same t (file order)."
+}

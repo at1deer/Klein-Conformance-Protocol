@@ -1,0 +1,29 @@
+{
+  "klein_container_version": "1.0",
+  "manifest": {
+    "project": {
+      "name": "signed-run-manifest-container",
+      "version": "1.0",
+      "authors": [
+        "Klein"
+      ]
+    },
+    "runtime": {
+      "mode": "HARD",
+      "target_substrate": "dmf.muxed_ewod.opendrop.v1.0"
+    }
+  },
+  "payload": {
+    "kind": "CHANNEL_LIST",
+    "encoding": "JSON",
+    "data": [
+      {
+        "t": 1,
+        "channel_id": 3,
+        "state": "ON",
+        "voltage_v": 120.0,
+        "frequency_hz": 1000.0
+      }
+    ]
+  }
+}

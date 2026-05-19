@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "KAP_DIGEST_MISMATCH",
+    "message_contains": "payload/channel_list.csv"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "VALIDATE",
+  "mode": "HARD",
+  "must_fail": true
+}

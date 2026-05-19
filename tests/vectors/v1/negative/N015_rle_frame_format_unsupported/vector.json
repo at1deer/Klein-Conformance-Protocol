@@ -1,0 +1,14 @@
+{
+  "id": "N015",
+  "name": "N015_rle_frame_format_unsupported",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "PAYLOAD_UNSUPPORTED_FRAME_FORMAT",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "DMF v1 alpha rejects FRAME_SEQUENCE rle format instead of silently simplifying it",
+  "profile_version": "v1"
+}

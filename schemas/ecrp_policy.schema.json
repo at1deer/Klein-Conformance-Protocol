@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein ECRP Policy v1",
+  "type": "object",
+  "required": [
+    "ecrp_policy_version",
+    "policy_id",
+    "mode",
+    "max_attempts",
+    "allowed_strategies",
+    "allow_replan",
+    "allow_success_after_replan",
+    "requires_trace_evidence",
+    "terminal_failure_required"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "ecrp_policy_version": { "const": "klein.ecrp_policy.v1" },
+    "policy_id": { "type": "string", "minLength": 1 },
+    "mode": { "type": "string", "enum": ["HARD", "ENVELOPE", "DIAGNOSTIC"] },
+    "max_attempts": { "type": "integer", "minimum": 0 },
+    "allowed_strategies": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["NUDGE_PULSE", "NO_CHANGE", "RETRY_SAME_STEP", "REPLAN_AROUND_FAULT", "ABORT"]
+      }
+    },
+    "allow_replan": { "type": "boolean" },
+    "allow_success_after_replan": { "type": "boolean" },
+    "allow_success_after_retry": { "type": "boolean", "default": false },
+    "allowed_success_strategies": {
+      "type": "array",
+      "uniqueItems": true,
+      "default": [],
+      "items": {
+        "type": "string",
+        "enum": ["NUDGE_PULSE", "NO_CHANGE", "RETRY_SAME_STEP", "REPLAN_AROUND_FAULT", "ABORT"]
+      }
+    },
+    "requires_trace_evidence": { "type": "boolean" },
+    "terminal_failure_required": { "type": "boolean" }
+  }
+}

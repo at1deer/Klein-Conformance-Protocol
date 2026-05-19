@@ -1,0 +1,15 @@
+{
+  "frame_sequence_version": "0.1",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "BITMAP",
+      "payload_b64": "AGAgAAAAAAA=",
+      "tick": 0
+    }
+  ],
+  "notes": "Test vector BITMAP encoding. MSB=col0 per row; 1 byte per row; rows=8 cols=8."
+}

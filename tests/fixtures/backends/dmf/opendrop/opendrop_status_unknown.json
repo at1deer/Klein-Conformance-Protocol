@@ -1,0 +1,10 @@
+{
+  "adapter_id": "opendrop-ewod-dry-run",
+  "adapter_status_version": "klein.opendrop_adapter_status.v1",
+  "connected": false,
+  "emergency_stopped": false,
+  "hardware_io_enabled": false,
+  "health": "UNKNOWN",
+  "last_error_code": null,
+  "transport_status": "NONE"
+}

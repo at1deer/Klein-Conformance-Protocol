@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_NONCANONICAL_ORDER", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "SPARSE pixels not in canonical row-major order", "run_id": "R12", "t": 0, "timebase": "DEVICE_TICKS"}

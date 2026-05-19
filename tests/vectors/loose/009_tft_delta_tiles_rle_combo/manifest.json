@@ -1,0 +1,35 @@
+{
+  "calibration": {
+    "hash": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+    "profile": "device_calibration.v1",
+    "required": true
+  },
+  "created_utc": "2026-01-03T00:00:00Z",
+  "kap_version": "0.1",
+  "observables": {
+    "declared": [
+      "OCCUPANCY_TRACE",
+      "DEVICE_EVENT_LOG"
+    ],
+    "strictness": "HARD"
+  },
+  "payloads": [
+    {
+      "digest": "sha256:00dbe4e3376d3179280d1318a878188ea9a7ce060f8f4bfa4ab1f1a27ab68a48",
+      "kind": "FRAME_SEQUENCE",
+      "path": "payload/frame_sequence.json"
+    }
+  ],
+  "runtime": {
+    "strict_mode": true,
+    "tick_ms": 10,
+    "ticks_per_meter": 1000
+  },
+  "source": {
+    "backend_profile": "dmf.active_matrix_ewod.fpda.v1.0",
+    "commit_profile": "release",
+    "decision_log_digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "kln_version": "0.8",
+    "source_digest": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+  }
+}

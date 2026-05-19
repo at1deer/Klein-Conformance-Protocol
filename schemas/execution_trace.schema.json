@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Execution Trace v1",
+  "type": "object",
+  "required": [
+    "trace_version",
+    "run_id",
+    "runbook_hash",
+    "artifact_hash",
+    "profile",
+    "backend",
+    "timebase",
+    "trace_steps"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "trace_version": { "const": "klein.execution_trace.v1" },
+    "trace_id": { "type": ["string", "null"] },
+    "run_id": { "type": "string", "minLength": 1 },
+    "runbook_hash": { "$ref": "#/definitions/sha256_ref" },
+    "artifact_hash": { "$ref": "#/definitions/sha256_ref" },
+    "profile": { "$ref": "#/definitions/profile" },
+    "backend": {
+      "type": "object",
+      "required": ["backend_id", "backend_version"],
+      "additionalProperties": false,
+      "properties": {
+        "backend_id": { "type": "string", "minLength": 1 },
+        "backend_version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "timebase": { "const": "DEVICE_TICKS" },
+    "trace_steps": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/trace_step" }
+    },
+    "metadata": { "type": "object" }
+  },
+  "definitions": {
+    "sha256_ref": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "profile": {
+      "type": "object",
+      "required": ["profile_id", "profile_version"],
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": { "type": "string", "minLength": 1 },
+        "profile_version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "trace_step": {
+      "type": "object",
+      "required": [
+        "step_id",
+        "runbook_step_id",
+        "tick",
+        "operation",
+        "issued",
+        "applied",
+        "status",
+        "error_code",
+        "details"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "step_id": { "type": "string", "minLength": 1 },
+        "runbook_step_id": { "type": "string", "minLength": 1 },
+        "tick": { "type": "integer", "minimum": 0 },
+        "operation": {
+          "type": "string",
+          "enum": ["DMF_SET_CHANNELS", "DMF_APPLY_FRAME", "DMF_APPLY_BITMAP"]
+        },
+        "issued": { "type": "boolean" },
+        "applied": { "type": "boolean" },
+        "status": { "type": "string", "enum": ["APPLIED", "SKIPPED", "FAILED"] },
+        "error_code": { "type": ["string", "null"] },
+        "details": { "type": "object" }
+      }
+    }
+  }
+}

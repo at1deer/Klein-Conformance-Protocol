@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "data": {
+        "add": [
+          1,
+          2
+        ],
+        "remove": []
+      },
+      "format": "delta_tiles",
+      "t": 0
+    },
+    {
+      "data": {
+        "add": [
+          3
+        ],
+        "remove": [
+          1
+        ]
+      },
+      "format": "delta_tiles",
+      "t": 1
+    }
+  ],
+  "encoding": "JSON",
+  "kind": "FRAME_SEQUENCE"
+}

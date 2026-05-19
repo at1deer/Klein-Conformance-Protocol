@@ -1,0 +1,21 @@
+{
+  "klein_container_version": "1.0",
+  "manifest": {
+    "project": {
+      "name": "bad-payload-kind",
+      "version": "1.0",
+      "authors": [
+        "Klein"
+      ]
+    },
+    "runtime": {
+      "mode": "HARD",
+      "target_substrate": "dmf.muxed_ewod.opendrop.v1.0"
+    }
+  },
+  "payload": {
+    "kind": "RUNBOOK_FSM",
+    "encoding": "JSON",
+    "data": []
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "timestamp_token_version": "klein.timestamp_token.v1",
+  "token_id": "mock-token-bundle-001",
+  "token_kind": "mock_local",
+  "target": {
+    "target_type": "run_bundle",
+    "target_hash": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "target_canonicalization": "klein.canon.json.v1"
+  },
+  "claimed_time": "2026-05-18T00:00:00Z",
+  "time_source": {
+    "source_type": "local_clock",
+    "authority_id": null
+  },
+  "trusted_time_claimed": false,
+  "signature": null,
+  "metadata": {}
+}

@@ -1,0 +1,21 @@
+{
+  "data": [
+    {
+      "data": [
+        1,
+        {
+          "x": 2,
+          "y": 0
+        },
+        [
+          3,
+          0
+        ]
+      ],
+      "format": "sparse",
+      "t": 0
+    }
+  ],
+  "encoding": "JSON",
+  "kind": "FRAME_SEQUENCE"
+}

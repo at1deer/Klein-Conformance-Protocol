@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_TILE_OVERLAP", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "DELTA_TILES contains overlapping tiles (0,0) and (2,2) for tile_size=4", "run_id": "R39", "t": 0, "timebase": "DEVICE_TICKS"}

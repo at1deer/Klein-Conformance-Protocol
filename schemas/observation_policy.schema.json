@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Observation Policy v1",
+  "type": "object",
+  "required": [
+    "observation_policy_version",
+    "policy_id",
+    "required_for_recovery_success",
+    "allowed_sources",
+    "allowed_observation_models",
+    "requires_trace_alignment",
+    "requires_runbook_alignment",
+    "requires_attestation"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "observation_policy_version": { "const": "klein.observation_policy.v1" },
+    "policy_id": { "type": "string", "minLength": 1 },
+    "required_for_recovery_success": { "type": "boolean" },
+    "allowed_sources": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "enum": ["simulator", "hardware_sensor"] }
+    },
+    "allowed_observation_models": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "enum": ["simulated"] }
+    },
+    "requires_trace_alignment": { "type": "boolean" },
+    "requires_runbook_alignment": { "type": "boolean" },
+    "requires_attestation": { "type": "boolean" }
+  }
+}

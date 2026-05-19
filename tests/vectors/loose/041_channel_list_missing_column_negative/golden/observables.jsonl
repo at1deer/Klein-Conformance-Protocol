@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_MISSING_COLUMN", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "CHANNEL_LIST missing required column 'voltage_v'", "run_id": "R41", "t": 0, "timebase": "DEVICE_TICKS"}

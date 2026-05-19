@@ -1,0 +1,2 @@
+{"attempt_index": 1, "deltas": {"occupancy_shift_cells": 0}, "kind": "LCP_ATTEMPT", "lcp_id": "unstick_jiggle_v1", "outcome": "NO_CHANGE", "parameters": {"pulse_ms": 50, "voltage_v": 120}, "run_id": "R114", "t": 5, "timebase": "DEVICE_TICKS"}
+{"attempt_index": 2, "deltas": {"occupancy_shift_cells": 1}, "kind": "LCP_ATTEMPT", "lcp_id": "unstick_jiggle_v1", "outcome": "RECOVERED", "parameters": {"pulse_ms": 75, "voltage_v": 120}, "run_id": "R114", "t": 6, "timebase": "DEVICE_TICKS"}

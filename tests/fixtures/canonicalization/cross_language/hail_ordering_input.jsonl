@@ -1,0 +1,4 @@
+{"kind":"DEVICE_EVENT","t":1,"timebase":"DEVICE_TICKS","run_id":"RX","code":"SHUTDOWN","level":"INFO","message":"Stop"}
+{"kind":"DEVICE_EVENT","t":0,"timebase":"DEVICE_TICKS","run_id":"RX","code":"INIT","level":"INFO","message":"Start"}
+{"kind":"RUNTIME_STATE_SNAPSHOT","t":0,"timebase":"DEVICE_TICKS","run_id":"RX","rimgb_hash":"sha256:b","state_fields":{"status":"b"},"validity_window":{"start_t":0,"end_t":0}}
+{"kind":"RUNTIME_STATE_SNAPSHOT","t":0,"timebase":"DEVICE_TICKS","run_id":"RX","rimgb_hash":"sha256:a","state_fields":{"status":"a"},"validity_window":{"start_t":0,"end_t":0}}

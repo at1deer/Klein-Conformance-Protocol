@@ -1,0 +1,19 @@
+{
+  "expected_error": {
+    "code": "DDI_CAPABILITY_MISSING",
+    "message_contains": "FRAME_SEQUENCE"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "START|VALIDATE",
+  "if_missing_capability": {
+    "action": "FAIL",
+    "code": "DDI_CAPABILITY_MISSING"
+  },
+  "mode": "HARD",
+  "must_fail": true,
+  "requires_capabilities": {
+    "supported_payloads": [
+      "FRAME_SEQUENCE"
+    ]
+  }
+}

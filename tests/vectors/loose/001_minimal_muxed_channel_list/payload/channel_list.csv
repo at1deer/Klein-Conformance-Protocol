@@ -1,0 +1,7 @@
+tick,channel_id,state,voltage_v,frequency_hz,waveform
+0,12,1,120,1000,AC_SINE
+0,13,1,120,1000,AC_SINE
+1,12,0,120,1000,AC_SINE
+1,13,0,120,1000,AC_SINE
+2,13,1,120,1000,AC_SINE
+3,13,0,120,1000,AC_SINE

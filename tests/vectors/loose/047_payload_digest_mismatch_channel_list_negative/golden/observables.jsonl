@@ -1,0 +1,1 @@
+{"code": "KAP_DIGEST_MISMATCH", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "Digest mismatch for payload/channel_list.csv", "run_id": "R47", "t": 0, "timebase": "DEVICE_TICKS"}

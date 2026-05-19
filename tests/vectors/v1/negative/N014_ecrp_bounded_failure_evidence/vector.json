@@ -1,0 +1,56 @@
+{
+  "id": "N014",
+  "name": "N014_ecrp_bounded_failure_evidence",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "CHANNEL_DEAD",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "ecrp_enabled": true,
+  "ecrp_max_attempts": 1,
+  "fault_injection": {
+    "type": "dead_channel",
+    "channels": [
+      5
+    ]
+  },
+  "required_event_kinds": [
+    "ECRP_ATTEMPT"
+  ],
+  "required_event_codes": [
+    "FRAME_FAILED",
+    "CHANNEL_DEAD"
+  ],
+  "evidence_assertions": [
+    {
+      "kind": "DEVICE_EVENT",
+      "where": {
+        "code": "FRAME_FAILED",
+        "level": "INFO"
+      }
+    },
+    {
+      "kind": "ECRP_ATTEMPT",
+      "where": {
+        "attempt_index": 1,
+        "outcome": "PARTIAL",
+        "strategy": "NUDGE_PULSE",
+        "parameters.attempt": 1,
+        "parameters.strategy": "NUDGE_PULSE"
+      }
+    },
+    {
+      "kind": "DEVICE_EVENT",
+      "where": {
+        "code": "CHANNEL_DEAD",
+        "level": "ERROR",
+        "detail.electrode_id": 5
+      }
+    }
+  ],
+  "purpose": "ECRP emits bounded attempt evidence and fails explicitly when recovery does not occur",
+  "profile_version": "v1"
+}

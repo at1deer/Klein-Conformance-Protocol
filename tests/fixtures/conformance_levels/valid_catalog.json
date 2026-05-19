@@ -1,0 +1,787 @@
+{
+  "catalog_version": "klein.conformance_levels.v1",
+  "levels": [
+    {
+      "category": "core",
+      "evidence": {
+        "fixtures": [
+          "tests/fixtures/hail_chain/lifecycle_stream.jsonl"
+        ],
+        "specs": [
+          "specs/core/hail-v1.md"
+        ],
+        "tests": [
+          "tests/test_hail_core.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Core-HAIL-v1",
+      "name": "KCP Core HAIL v1",
+      "required_artifacts": [
+        "hail_jsonl"
+      ],
+      "required_checks": [
+        "hail_schema_valid",
+        "hail_event_ordering_valid"
+      ],
+      "required_tools": [
+        "klein-hail-canon"
+      ],
+      "requires": [],
+      "status": "implemented"
+    },
+    {
+      "category": "core",
+      "evidence": {
+        "fixtures": [
+          "tests/fixtures/canonicalization/"
+        ],
+        "specs": [
+          "specs/core/canonical-jsonl-v1.md"
+        ],
+        "tests": [
+          "tests/test_jcs_canonicalization.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Core-Canonical-v1",
+      "name": "KCP Core Canonical JSON v1",
+      "required_artifacts": [
+        "canonical_json",
+        "canonical_jsonl"
+      ],
+      "required_checks": [
+        "jcs_canonicalization_valid",
+        "sha256_digest_valid"
+      ],
+      "required_tools": [
+        "klein-hail-canon",
+        "klein-hash-artifact"
+      ],
+      "requires": [],
+      "status": "implemented"
+    },
+    {
+      "category": "core",
+      "evidence": {
+        "fixtures": [
+          "tests/fixtures/hail_chain/lifecycle_stream.jsonl"
+        ],
+        "specs": [
+          "specs/core/hail-v1.md"
+        ],
+        "tests": [
+          "tests/test_hail_core.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Core-Lifecycle-v1",
+      "name": "KCP Core Lifecycle v1",
+      "required_artifacts": [
+        "hail_jsonl"
+      ],
+      "required_checks": [
+        "run_start_present",
+        "run_end_present",
+        "lifecycle_order_valid"
+      ],
+      "required_tools": [],
+      "requires": [
+        "KCP-Core-HAIL-v1"
+      ],
+      "status": "implemented"
+    },
+    {
+      "category": "core",
+      "evidence": {
+        "fixtures": [
+          "tests/fixtures/hail_chain/"
+        ],
+        "specs": [
+          "specs/core/hail-digest-chain-v1.md"
+        ],
+        "tests": [
+          "tests/test_hail_chain.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Core-Chain-v1",
+      "name": "KCP Core HAIL Chain v1",
+      "required_artifacts": [
+        "hail_jsonl"
+      ],
+      "required_checks": [
+        "hail_chain_digest_valid",
+        "preclose_digest_valid"
+      ],
+      "required_tools": [],
+      "requires": [
+        "KCP-Core-HAIL-v1",
+        "KCP-Core-Canonical-v1",
+        "KCP-Core-Lifecycle-v1"
+      ],
+      "status": "implemented"
+    },
+    {
+      "category": "core",
+      "evidence": {
+        "fixtures": [
+          "tests/fixtures/signed_conformance/manifest_signed.json"
+        ],
+        "specs": [
+          "specs/core/run-manifest-v1.md"
+        ],
+        "tests": [
+          "tests/test_run_manifest.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Core-RunManifest-v1",
+      "name": "KCP Core Run Manifest v1",
+      "required_artifacts": [
+        "run_manifest_json"
+      ],
+      "required_checks": [
+        "run_manifest_schema_valid",
+        "run_manifest_payload_bound"
+      ],
+      "required_tools": [
+        "klein-run-manifest"
+      ],
+      "requires": [
+        "KCP-Core-HAIL-v1",
+        "KCP-Core-Canonical-v1",
+        "KCP-Core-Chain-v1"
+      ],
+      "status": "implemented"
+    },
+    {
+      "category": "core",
+      "evidence": {
+        "fixtures": [
+          "tests/fixtures/crypto/trust_policy_registry_authority_test.json"
+        ],
+        "specs": [
+          "specs/core/trust-policy-v1.md"
+        ],
+        "tests": [
+          "tests/test_run_manifest.py",
+          "tests/test_registry_trust_policy.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Core-TrustPolicy-v1",
+      "name": "KCP Core Trust Policy v1",
+      "required_artifacts": [
+        "trust_policy_json"
+      ],
+      "required_checks": [
+        "trust_policy_schema_valid",
+        "trust_policy_authorization_valid"
+      ],
+      "required_tools": [],
+      "requires": [
+        "KCP-Core-RunManifest-v1"
+      ],
+      "status": "implemented"
+    },
+    {
+      "category": "core",
+      "evidence": {
+        "fixtures": [
+          "tests/fixtures/crypto/backend_registry_test.json"
+        ],
+        "specs": [
+          "specs/core/backend-identity-registry-v1.md"
+        ],
+        "tests": [
+          "tests/test_backend_identity_registry.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Core-BackendRegistry-v1",
+      "name": "KCP Core Backend Identity Registry v1",
+      "required_artifacts": [
+        "backend_registry_json"
+      ],
+      "required_checks": [
+        "backend_registry_schema_valid",
+        "backend_identity_resolution_valid"
+      ],
+      "required_tools": [
+        "klein-backend-registry"
+      ],
+      "requires": [
+        "KCP-Core-TrustPolicy-v1"
+      ],
+      "status": "implemented"
+    },
+    {
+      "category": "core",
+      "evidence": {
+        "fixtures": [
+          "tests/fixtures/crypto/backend_registry_signed_test.json"
+        ],
+        "specs": [
+          "specs/core/backend-identity-registry-v1.md"
+        ],
+        "tests": [
+          "tests/test_signed_backend_registry.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Core-SignedRegistry-v1",
+      "name": "KCP Core Signed Backend Registry v1",
+      "required_artifacts": [
+        "backend_registry_json",
+        "trust_policy_json"
+      ],
+      "required_checks": [
+        "backend_registry_signature_valid",
+        "registry_provenance_trusted"
+      ],
+      "required_tools": [
+        "klein-backend-registry"
+      ],
+      "requires": [
+        "KCP-Core-BackendRegistry-v1"
+      ],
+      "status": "implemented"
+    },
+    {
+      "category": "core",
+      "evidence": {
+        "fixtures": [
+          "tests/fixtures/capabilities/full_simulator_dmf_capabilities_signed.json"
+        ],
+        "specs": [
+          "specs/core/backend-capability-declaration-v1.md"
+        ],
+        "tests": [
+          "tests/test_backend_capabilities.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Core-BackendCapabilities-v1",
+      "name": "KCP Core Backend Capabilities v1",
+      "required_artifacts": [
+        "backend_capabilities_json"
+      ],
+      "required_checks": [
+        "backend_capability_signature_valid",
+        "backend_capability_scope_valid"
+      ],
+      "required_tools": [
+        "klein-backend-capabilities"
+      ],
+      "requires": [
+        "KCP-Core-SignedRegistry-v1"
+      ],
+      "status": "implemented"
+    },
+    {
+      "category": "verifier",
+      "evidence": {
+        "fixtures": [
+          "tests/fixtures/signed_conformance/"
+        ],
+        "specs": [
+          "specs/core/signed-conformance-v1.md"
+        ],
+        "tests": [
+          "tests/test_signed_conformance.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Core-Signed-Conformance-v1",
+      "name": "KCP Core Signed Conformance v1",
+      "required_artifacts": [
+        "hail_jsonl",
+        "run_manifest_json",
+        "trust_policy_json"
+      ],
+      "required_checks": [
+        "signed_conformance_pass"
+      ],
+      "required_tools": [
+        "klein-verify-run"
+      ],
+      "requires": [
+        "KCP-Core-HAIL-v1",
+        "KCP-Core-Canonical-v1",
+        "KCP-Core-Lifecycle-v1",
+        "KCP-Core-Chain-v1",
+        "KCP-Core-RunManifest-v1",
+        "KCP-Core-TrustPolicy-v1",
+        "KCP-Core-BackendRegistry-v1"
+      ],
+      "status": "implemented"
+    },
+    {
+      "category": "verifier",
+      "evidence": {
+        "fixtures": [
+          "tests/fixtures/run_bundle/valid_signed_run_with_capabilities.kcprun"
+        ],
+        "specs": [
+          "specs/core/run-bundle-v1.md"
+        ],
+        "tests": [
+          "tests/test_run_bundle.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Core-RunBundle-v1",
+      "name": "KCP Core Run Bundle v1",
+      "required_artifacts": [
+        "kcprun_bundle"
+      ],
+      "required_checks": [
+        "bundle_schema_valid",
+        "bundle_entry_hashes_valid"
+      ],
+      "required_tools": [
+        "klein-run-bundle",
+        "klein-verify-bundle"
+      ],
+      "requires": [
+        "KCP-Core-Signed-Conformance-v1"
+      ],
+      "status": "implemented"
+    },
+    {
+      "category": "verifier",
+      "evidence": {
+        "fixtures": [
+          "tests/fixtures/run_bundle/valid_signed_run.kcprun"
+        ],
+        "specs": [
+          "specs/core/run-bundle-v1.md"
+        ],
+        "tests": [
+          "tests/test_independent_verifier.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Core-Bundled-Verification-v1",
+      "name": "KCP Core Bundled Verification v1",
+      "required_artifacts": [
+        "kcprun_bundle"
+      ],
+      "required_checks": [
+        "independent_verifier_pass"
+      ],
+      "required_tools": [
+        "klein-verify-bundle"
+      ],
+      "requires": [
+        "KCP-Core-RunBundle-v1"
+      ],
+      "status": "implemented"
+    },
+    {
+      "category": "verifier",
+      "evidence": {
+        "fixtures": [
+          "tests/fixtures/run_bundle/valid_signed_run.kcprun"
+        ],
+        "specs": [
+          "specs/core/independent-verifier-v1.md",
+          "specs/core/independent-verifier-result-v1.md"
+        ],
+        "tests": [
+          "tests/test_independent_verifier.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Core-IndependentVerifier-v1",
+      "name": "KCP Core Independent Verifier v1",
+      "required_artifacts": [
+        "independent_verifier_result_json"
+      ],
+      "required_checks": [
+        "independent_verifier_result_schema_valid"
+      ],
+      "required_tools": [
+        "klein-verify-bundle"
+      ],
+      "requires": [
+        "KCP-Core-RunBundle-v1"
+      ],
+      "status": "implemented"
+    },
+    {
+      "category": "verifier",
+      "evidence": {
+        "fixtures": [
+          "tests/fixtures/cross_language/fixtures.json"
+        ],
+        "specs": [
+          "verifiers/rust/README.md"
+        ],
+        "tests": [
+          "tests/test_rust_verifier.py",
+          "tests/test_rust_python_verifier_parity.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Core-RustVerifier-Fixture-v1",
+      "name": "KCP Core Rust Verifier Fixture v1",
+      "required_artifacts": [
+        "cross_language_fixture_index"
+      ],
+      "required_checks": [
+        "rust_fixture_cli_pass"
+      ],
+      "required_tools": [],
+      "requires": [
+        "KCP-Core-IndependentVerifier-v1"
+      ],
+      "status": "partial"
+    },
+    {
+      "category": "profile",
+      "evidence": {
+        "fixtures": [
+          "tests/vectors/v1/dmf/"
+        ],
+        "specs": [
+          "specs/profiles/dmf/dmf-core-v1.md"
+        ],
+        "tests": [
+          "tests/test_hash_binding.py",
+          "tests/test_schema_parity.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Profile-DMF-Payload-v1",
+      "name": "KCP Profile DMF Payload v1",
+      "required_artifacts": [
+        "dmf_payload"
+      ],
+      "required_checks": [
+        "dmf_payload_schema_valid"
+      ],
+      "required_tools": [],
+      "requires": [
+        "KCP-Core-HAIL-v1",
+        "KCP-Core-Canonical-v1"
+      ],
+      "status": "implemented"
+    },
+    {
+      "category": "profile",
+      "evidence": {
+        "fixtures": [
+          "tests/vectors/v1/dmf/"
+        ],
+        "specs": [
+          "specs/profiles/dmf/dmf-ewod-v1.md"
+        ],
+        "tests": [
+          "tests/test_conformance.py",
+          "tests/test_backend_capabilities.py"
+        ]
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "CURRENT_ALPHA",
+      "level_id": "KCP-Profile-DMF-Simulator-v1",
+      "name": "KCP Profile DMF Simulator v1",
+      "required_artifacts": [
+        "dmf_container",
+        "observables_jsonl"
+      ],
+      "required_checks": [
+        "dmf_simulator_observables_valid"
+      ],
+      "required_tools": [],
+      "requires": [
+        "KCP-Profile-DMF-Payload-v1",
+        "KCP-Core-BackendCapabilities-v1"
+      ],
+      "status": "implemented"
+    },
+    {
+      "category": "recovery",
+      "evidence": {
+        "fixtures": [],
+        "specs": [
+          "docs/TARGET_V1_TEST_PLAN.md"
+        ],
+        "tests": []
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "TARGET_V1",
+      "level_id": "KCP-Profile-DMF-Recovery-Sim-v1",
+      "name": "KCP Profile DMF Recovery Simulation v1",
+      "required_artifacts": [
+        "recovery_trace"
+      ],
+      "required_checks": [
+        "bounded_recovery_evidence_valid"
+      ],
+      "required_tools": [],
+      "requires": [
+        "KCP-Profile-DMF-Simulator-v1"
+      ],
+      "status": "target"
+    },
+    {
+      "category": "profile",
+      "evidence": {
+        "fixtures": [],
+        "specs": [
+          "docs/TARGET_V1_TEST_PLAN.md"
+        ],
+        "tests": []
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "TARGET_V1",
+      "level_id": "KCP-Profile-DMF-Observation-v1",
+      "name": "KCP Profile DMF Observation v1",
+      "required_artifacts": [
+        "observation_trace"
+      ],
+      "required_checks": [
+        "observation_binding_valid"
+      ],
+      "required_tools": [],
+      "requires": [
+        "KCP-Profile-DMF-Simulator-v1"
+      ],
+      "status": "target"
+    },
+    {
+      "category": "hardware",
+      "evidence": {
+        "fixtures": [],
+        "specs": [
+          "docs/TARGET_V1_TEST_PLAN.md"
+        ],
+        "tests": []
+      },
+      "forbidden_claims": [
+        "certified_hardware_capability",
+        "physical_truth"
+      ],
+      "layer": "TARGET_V1",
+      "level_id": "KCP-Profile-DMF-HIL-L0",
+      "name": "KCP Profile DMF HIL L0",
+      "required_artifacts": [
+        "hil_report"
+      ],
+      "required_checks": [
+        "hil_smoke_valid"
+      ],
+      "required_tools": [],
+      "requires": [
+        "KCP-Profile-DMF-Observation-v1"
+      ],
+      "status": "target"
+    },
+    {
+      "category": "hardware",
+      "evidence": {
+        "fixtures": [],
+        "specs": [
+          "docs/TARGET_V1_TEST_PLAN.md"
+        ],
+        "tests": []
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "LONG_HORIZON",
+      "level_id": "KCP-Profile-DMF-HIL-L1",
+      "name": "KCP Profile DMF HIL L1",
+      "required_artifacts": [
+        "hil_report",
+        "sensor_trace"
+      ],
+      "required_checks": [
+        "hil_closed_loop_valid"
+      ],
+      "required_tools": [],
+      "requires": [
+        "KCP-Profile-DMF-HIL-L0"
+      ],
+      "status": "future"
+    },
+    {
+      "category": "core",
+      "evidence": {
+        "fixtures": [],
+        "specs": [
+          "docs/TARGET_V1_TEST_PLAN.md"
+        ],
+        "tests": []
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "TARGET_V1",
+      "level_id": "KCP-Core-TrustedTimestamp-v1",
+      "name": "KCP Core Trusted Timestamp v1",
+      "required_artifacts": [
+        "timestamp_token"
+      ],
+      "required_checks": [
+        "trusted_timestamp_valid"
+      ],
+      "required_tools": [],
+      "requires": [
+        "KCP-Core-Signed-Conformance-v1"
+      ],
+      "status": "target"
+    },
+    {
+      "category": "hardware",
+      "evidence": {
+        "fixtures": [],
+        "specs": [
+          "docs/TARGET_V1_TEST_PLAN.md"
+        ],
+        "tests": []
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "LONG_HORIZON",
+      "level_id": "KCP-Core-AttestationProfile-v1",
+      "name": "KCP Core Attestation Profile v1",
+      "required_artifacts": [
+        "attestation_statement"
+      ],
+      "required_checks": [
+        "attestation_chain_valid"
+      ],
+      "required_tools": [],
+      "requires": [
+        "KCP-Core-TrustedTimestamp-v1"
+      ],
+      "status": "future"
+    },
+    {
+      "category": "hardware",
+      "evidence": {
+        "fixtures": [],
+        "specs": [
+          "docs/TARGET_V1_TEST_PLAN.md"
+        ],
+        "tests": []
+      },
+      "forbidden_claims": [
+        "physical_truth",
+        "hardware_attestation",
+        "certified_hardware_capability"
+      ],
+      "layer": "LONG_HORIZON",
+      "level_id": "KCP-Core-HardwareBackedEvidence-v1",
+      "name": "KCP Core Hardware-Backed Evidence v1",
+      "required_artifacts": [
+        "hardware_evidence_bundle"
+      ],
+      "required_checks": [
+        "hardware_evidence_valid"
+      ],
+      "required_tools": [],
+      "requires": [
+        "KCP-Core-AttestationProfile-v1"
+      ],
+      "status": "future"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "decisions": {
+    "decide_1": {
+      "if_false": "segment_C",
+      "if_true": "segment_B",
+      "predicate": {
+        "kind": "MEASUREMENT_LT",
+        "measurement_id": "M0",
+        "threshold": 0.25
+      },
+      "timeout_fallback": "segment_C",
+      "timeout_ticks": 5
+    }
+  },
+  "entry": "segment_A",
+  "runbook_version": "0.1",
+  "segments": {
+    "segment_A": {
+      "on_complete": "decide_1",
+      "payload": "payload/segment_A.csv"
+    },
+    "segment_B": {
+      "on_complete": "done",
+      "payload": "payload/segment_B.csv"
+    },
+    "segment_C": {
+      "on_complete": "done",
+      "payload": "payload/segment_C.csv"
+    }
+  }
+}

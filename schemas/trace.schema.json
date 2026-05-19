@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Trace Artifact",
+  "description": "Maps high-level logical plans/ops to low-level physical actuations.",
+  "type": "object",
+  "required": ["trace_version", "tick_range", "plans"],
+  "properties": {
+    "trace_version": {
+      "type": "string",
+      "description": "Must be present per Vector 076."
+    },
+    "tick_range": {
+      "type": "object",
+      "description": "Global tick range for the trace. Validated by Vector 083/094.",
+      "required": ["start", "end"],
+      "properties": {
+        "start": { "type": "integer", "minimum": 0 },
+        "end": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "plans": {
+      "type": "array",
+      "description": "List of logical plans. Validated by Vector 092 (missing_plan_mapping).",
+      "items": {
+        "type": "object",
+        "required": ["plan_id", "ops"],
+        "properties": {
+          "plan_id": {
+            "type": "string",
+            "description": "Must be unique per Vector 101."
+          },
+          "ops": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["op_id", "actuation_refs"],
+              "properties": {
+                "op_id": {
+                  "type": "string",
+                  "description": "Must be unique within plan per Vector 102."
+                },
+                "actuation_refs": {
+                  "type": "array",
+                  "description": "Physical actuations. Must not be empty per Vector 103.",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "required": ["channel_id", "tick_range"],
+                    "properties": {
+                      "channel_id": {
+                        "type": "integer",
+                        "description": "Must be integer per Vector 084. Must exist in Device Map per Vector 085."
+                      },
+                      "tick_range": {
+                         "type": "object",
+                         "required": ["start", "end"],
+                         "properties": {
+                            "start": { "type": "integer" },
+                            "end": { "type": "integer" }
+                         }
+                      },
+                      "kind": {
+                        "type": "string",
+                        "enum": ["ACTUATION", "SENSING"],
+                        "description": "Inferred from Vector 091 (trace_ids_invalid_enum)."
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

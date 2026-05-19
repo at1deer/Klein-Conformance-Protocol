@@ -1,0 +1,15 @@
+{
+  "frame_sequence_version": "0.1",
+  "frames": [
+    {
+      "dims": {
+        "cols": 10,
+        "rows": 8
+      },
+      "encoding": "BITMAP",
+      "payload_b64": "AAAAAAAAAAA=",
+      "tick": 0
+    }
+  ],
+  "notes": "Negative: BITMAP with cols not multiple-of-8 (cols=10) not supported in v0.x vectors"
+}

@@ -1,0 +1,13 @@
+{
+  "kind": "FRAME_SEQUENCE",
+  "encoding": "JSON",
+  "data": [
+    {
+      "t": 0,
+      "format": "sparse",
+      "data": [
+        128
+      ]
+    }
+  ]
+}

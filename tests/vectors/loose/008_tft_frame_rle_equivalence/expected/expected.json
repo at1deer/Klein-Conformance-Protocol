@@ -1,0 +1,33 @@
+{
+  "equivalence_hints": [
+    {
+      "equivalent_to": "005_tft_frame_bitmap",
+      "reason": "RLE expands to same row-bytes as BITMAP test vector 005."
+    }
+  ],
+  "expected_version": "0.1",
+  "frame_decode_expectations": [
+    {
+      "active_pixels": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "tick": 0
+    }
+  ],
+  "mode": "HARD"
+}

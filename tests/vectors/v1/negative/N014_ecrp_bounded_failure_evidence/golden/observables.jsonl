@@ -1,0 +1,1 @@
+{"kind":"ECRP_ATTEMPT","t":1,"timebase":"DEVICE_TICKS","run_id":"RN014","attempt_index":1,"strategy":"NUDGE_PULSE","outcome":"PARTIAL","deltas":{"occupancy_shift_cells":1},"parameters":{"strategy":"NUDGE_PULSE","attempt":1}}

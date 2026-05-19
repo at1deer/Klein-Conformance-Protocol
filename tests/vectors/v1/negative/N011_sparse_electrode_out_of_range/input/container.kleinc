@@ -1,0 +1,12 @@
+{
+  "klein_container_version": "1.0",
+  "manifest": {
+    "project": {"name": "bad-sparse", "version": "1.0", "authors": ["Klein"]},
+    "runtime": {"mode": "HARD", "target_substrate": "dmf.muxed_ewod.opendrop.v1.0"}
+  },
+  "payload": {
+    "kind": "FRAME_SEQUENCE",
+    "encoding": "JSON",
+    "data": [{"t": 0, "format": "sparse", "data": [128]}]
+  }
+}

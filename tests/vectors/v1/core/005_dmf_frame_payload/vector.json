@@ -1,0 +1,14 @@
+{
+  "id": "005",
+  "name": "005_dmf_frame_payload",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "PASS",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "purpose": "DMF/EWOD CHANNEL_LIST payload emits frame application evidence",
+  "profile_version": "v1"
+}

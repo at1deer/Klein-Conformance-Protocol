@@ -1,0 +1,35 @@
+{
+  "confidence": 1.0,
+  "metadata": {},
+  "observation_id": "obs-invalid-hardware-source",
+  "observation_model": "simulated",
+  "observation_version": "klein.observation_snapshot.v1",
+  "profile": {
+    "profile_id": "dmf",
+    "profile_version": "v1"
+  },
+  "run_id": "observation-fixture-run",
+  "runbook_step_id": "step-0001",
+  "source": {
+    "attestation": null,
+    "source_id": "hardware-sensor-001",
+    "source_type": "hardware_sensor",
+    "source_version": "1.0.0a0"
+  },
+  "state": {
+    "dmf": {
+      "active_channels": [
+        5
+      ],
+      "active_tiles": [
+        [
+          5,
+          0
+        ]
+      ]
+    }
+  },
+  "tick": 1,
+  "timebase": "DEVICE_TICKS",
+  "trace_step_id": "step-0001"
+}

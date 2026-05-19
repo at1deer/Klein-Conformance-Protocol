@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_RLE_OVERRUN", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "RLE expands to 100 bits, exceeds expected 64", "run_id": "R78", "t": 0, "timebase": "DEVICE_TICKS"}

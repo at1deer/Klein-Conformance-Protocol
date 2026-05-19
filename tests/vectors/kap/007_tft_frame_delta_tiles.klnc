@@ -1,0 +1,33 @@
+{
+  "klein_container_version": "1.0",
+  "manifest": {
+    "project": {
+      "name": "vector_007",
+      "version": "1.0.0",
+      "authors": [
+        "Klein Test Suite"
+      ],
+      "license": "MIT",
+      "description": "TFT FRAME_SEQUENCE DELTA_TILES determinism (2-frame delta apply)"
+    },
+    "runtime": {
+      "mode": "HARD",
+      "target_substrate": "dmf.muxed_ewod.opendrop.v1.0"
+    }
+  },
+  "payload": {
+    "kind": "FRAME_SEQUENCE",
+    "data": [
+      {
+        "t": 0,
+        "active": [
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    ],
+    "encoding": "JSON"
+  }
+}

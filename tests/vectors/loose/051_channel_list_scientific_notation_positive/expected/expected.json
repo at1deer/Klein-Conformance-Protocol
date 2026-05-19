@@ -1,0 +1,6 @@
+{
+  "expected_version": "0.1",
+  "mode": "HARD",
+  "must_pass": true,
+  "notes": "LENIENT CSV allows scientific notation."
+}

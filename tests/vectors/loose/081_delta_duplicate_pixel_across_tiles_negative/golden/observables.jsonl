@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_DUPLICATE_PIXEL", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "DELTA_TILES applies duplicate pixel (1,1) across tiles", "run_id": "R81", "t": 0, "timebase": "DEVICE_TICKS"}

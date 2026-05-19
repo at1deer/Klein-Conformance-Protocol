@@ -1,0 +1,14 @@
+{
+  "id": "N004",
+  "name": "N004_invalid_container_payload_kind",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "DDI_UNSUPPORTED_PAYLOAD",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "unsupported container payload kind is rejected with the legacy canonical payload error code",
+  "profile_version": "v1"
+}

@@ -1,0 +1,12 @@
+{
+  "backend_id": "mock_hil_dmf",
+  "connected": true,
+  "details": {
+    "mock": true,
+    "physical_hardware": false
+  },
+  "emergency_stopped": false,
+  "health": "OK",
+  "hil_status_version": "klein.hil_backend_status.v1",
+  "last_error_code": null
+}

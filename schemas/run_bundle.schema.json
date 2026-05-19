@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "KCP Run Bundle v1",
+  "type": "object",
+  "required": ["bundle_version", "created_by", "entries", "hashes"],
+  "additionalProperties": false,
+  "properties": {
+    "bundle_version": { "const": "klein.run_bundle.v1" },
+    "bundle_id": { "type": ["string", "null"] },
+    "created_by": { "type": "string", "minLength": 1 },
+    "created_at": { "type": ["string", "null"] },
+    "entries": {
+      "type": "object",
+      "required": ["artifact", "hail", "run_manifest", "trust_policy"],
+      "additionalProperties": false,
+      "properties": {
+        "artifact": { "$ref": "#/definitions/bundle_path" },
+        "hail": { "$ref": "#/definitions/bundle_path" },
+        "run_manifest": { "$ref": "#/definitions/bundle_path" },
+        "trust_policy": { "$ref": "#/definitions/bundle_path" },
+        "conformance_report": { "$ref": "#/definitions/nullable_bundle_path" },
+        "signed_conformance_report": { "$ref": "#/definitions/nullable_bundle_path" },
+        "backend_registry": { "$ref": "#/definitions/nullable_bundle_path" },
+        "backend_capabilities": { "$ref": "#/definitions/nullable_bundle_path" }
+      }
+    },
+    "hashes": {
+      "type": "object",
+      "required": ["artifact", "hail", "run_manifest", "trust_policy"],
+      "additionalProperties": false,
+      "properties": {
+        "artifact": { "$ref": "#/definitions/sha256_ref" },
+        "hail": { "$ref": "#/definitions/sha256_ref" },
+        "run_manifest": { "$ref": "#/definitions/sha256_ref" },
+        "trust_policy": { "$ref": "#/definitions/sha256_ref" },
+        "conformance_report": { "$ref": "#/definitions/nullable_sha256_ref" },
+        "signed_conformance_report": { "$ref": "#/definitions/nullable_sha256_ref" },
+        "backend_registry": { "$ref": "#/definitions/nullable_sha256_ref" },
+        "backend_capabilities": { "$ref": "#/definitions/nullable_sha256_ref" }
+      }
+    }
+  },
+  "definitions": {
+    "bundle_path": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$))(?!.*\\\\)(?!.*:).+$"
+    },
+    "nullable_bundle_path": {
+      "anyOf": [
+        { "$ref": "#/definitions/bundle_path" },
+        { "type": "null" }
+      ]
+    },
+    "sha256_ref": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "nullable_sha256_ref": {
+      "anyOf": [
+        { "$ref": "#/definitions/sha256_ref" },
+        { "type": "null" }
+      ]
+    }
+  }
+}

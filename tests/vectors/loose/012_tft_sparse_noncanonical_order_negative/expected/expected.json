@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "PAYLOAD_NONCANONICAL_ORDER",
+    "message_contains": "canonical"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "VALIDATE|DECODE",
+  "mode": "HARD",
+  "must_fail": true
+}

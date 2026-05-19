@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein DMF/EWOD Payload v1 Alpha",
+  "oneOf": [
+    { "$ref": "#/definitions/channel_list_payload" },
+    { "$ref": "#/definitions/frame_sequence_payload" },
+    { "$ref": "#/definitions/bitmap_sequence_payload" }
+  ],
+  "definitions": {
+    "encoding": { "type": "string", "enum": ["JSON", "BASE64_GZIP"] },
+    "tick": { "type": "integer", "minimum": 0 },
+    "channel_entry": {
+      "type": "object",
+      "required": ["t", "channel_id", "state", "voltage_v"],
+      "additionalProperties": false,
+      "properties": {
+        "t": { "$ref": "#/definitions/tick" },
+        "channel_id": { "type": "integer", "minimum": 0 },
+        "state": { "type": "string", "enum": ["ON", "OFF"] },
+        "voltage_v": { "type": "number" },
+        "frequency_hz": { "type": "number" }
+      }
+    },
+    "pixel": {
+      "oneOf": [
+        { "type": "integer", "minimum": 0 },
+        {
+          "type": "object",
+          "required": ["x", "y"],
+          "additionalProperties": false,
+          "properties": {
+            "x": { "type": "integer", "minimum": 0 },
+            "y": { "type": "integer", "minimum": 0 }
+          }
+        },
+        {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "type": "integer", "minimum": 0 }
+        }
+      ]
+    },
+    "sparse_pixels": { "type": "array", "items": { "$ref": "#/definitions/pixel" } },
+    "frame": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["t", "format", "data"],
+          "additionalProperties": false,
+          "properties": {
+            "t": { "$ref": "#/definitions/tick" },
+            "format": { "const": "sparse" },
+            "data": { "$ref": "#/definitions/sparse_pixels" }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["t", "format", "data"],
+          "additionalProperties": false,
+          "properties": {
+            "t": { "$ref": "#/definitions/tick" },
+            "format": { "const": "bitmap" },
+            "data": { "type": "string" }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["t", "format", "data"],
+          "additionalProperties": false,
+          "properties": {
+            "t": { "$ref": "#/definitions/tick" },
+            "format": { "const": "delta_tiles" },
+            "data": {
+              "type": "object",
+              "required": ["add", "remove"],
+              "additionalProperties": false,
+              "properties": {
+                "add": { "$ref": "#/definitions/sparse_pixels" },
+                "remove": { "$ref": "#/definitions/sparse_pixels" }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "channel_list_payload": {
+      "type": "object",
+      "required": ["kind", "data"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "CHANNEL_LIST" },
+        "encoding": { "$ref": "#/definitions/encoding" },
+        "data": { "type": "array", "items": { "$ref": "#/definitions/channel_entry" } }
+      }
+    },
+    "frame_sequence_payload": {
+      "type": "object",
+      "required": ["kind", "data"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "FRAME_SEQUENCE" },
+        "encoding": { "$ref": "#/definitions/encoding" },
+        "data": { "type": "array", "items": { "$ref": "#/definitions/frame" } }
+      }
+    },
+    "bitmap_sequence_payload": {
+      "type": "object",
+      "required": ["kind", "data"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "BITMAP_SEQUENCE" },
+        "encoding": { "$ref": "#/definitions/encoding" },
+        "data": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

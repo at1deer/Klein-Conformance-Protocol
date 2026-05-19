@@ -1,0 +1,14 @@
+{
+  "compare_mode": "EXACT_JSONL",
+  "expected_error": {
+    "code": "COMPARE_MISMATCH",
+    "message_contains": "ordering"
+  },
+  "expected_version": "0.2",
+  "fail_stage": "COMPARE",
+  "mode": "HARD",
+  "must_fail": true,
+  "required_capabilities": [
+    "sci.compare.EXACT_JSONL"
+  ]
+}

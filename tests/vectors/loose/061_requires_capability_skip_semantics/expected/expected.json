@@ -1,0 +1,14 @@
+{
+  "expected_version": "0.1",
+  "if_missing_capability": {
+    "action": "SKIP",
+    "code": "SKIP_UNSUPPORTED_CAPABILITY"
+  },
+  "mode": "HARD",
+  "must_skip": true,
+  "requires_capabilities": {
+    "sensors": [
+      "OCCUPANCY_CAM"
+    ]
+  }
+}

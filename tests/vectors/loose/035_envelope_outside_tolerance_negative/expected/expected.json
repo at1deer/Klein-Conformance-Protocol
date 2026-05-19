@@ -1,0 +1,16 @@
+{
+  "expected_error": {
+    "code": "ENVELOPE_VIOLATION",
+    "message_contains": "spatial_cells"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "COMPARE|RUN",
+  "mode": "ENVELOPE",
+  "must_fail": true,
+  "occupancy_trace": {
+    "tolerance": {
+      "spatial_cells": 1,
+      "time_ticks": 1
+    }
+  }
+}

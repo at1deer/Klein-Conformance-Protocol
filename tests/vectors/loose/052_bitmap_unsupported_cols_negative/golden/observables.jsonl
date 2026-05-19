@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_UNSUPPORTED_DIMS", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "BITMAP cols=10 unsupported (expected multiple of 8)", "run_id": "R52", "t": 0, "timebase": "DEVICE_TICKS"}

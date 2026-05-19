@@ -1,0 +1,3 @@
+{"details":{"mock":true},"event_index":1,"operation":"connect","raw_log_version":"klein.raw_device_log.v1","source_type":"mock_hardware","status":"OK","tick":0}
+{"details":{"active_electrodes":[1,2,3],"seq":1},"event_index":2,"operation":"apply_frame","raw_log_version":"klein.raw_device_log.v1","source_type":"mock_hardware","status":"OK","tick":1}
+{"details":{"observation_id":"hil-obs-0001"},"event_index":3,"operation":"read_observation","raw_log_version":"klein.raw_device_log.v1","source_type":"mock_hardware","status":"OK","tick":1}

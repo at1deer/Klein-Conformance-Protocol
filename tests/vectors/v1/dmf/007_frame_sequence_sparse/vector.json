@@ -1,0 +1,14 @@
+{
+  "id": "007",
+  "name": "007_frame_sequence_sparse",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "PASS",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "purpose": "FRAME_SEQUENCE sparse payload with valid electrode ids",
+  "profile_version": "v1"
+}

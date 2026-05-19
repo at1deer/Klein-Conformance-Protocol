@@ -1,0 +1,271 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Backend Identity Registry v1",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": [
+        "registry_version",
+        "registry_id",
+        "description",
+        "issued_at",
+        "backends"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "registry_version": {
+          "const": "klein.backend_identity_registry.v1"
+        },
+        "registry_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "issued_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "backends": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/backend"
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "registry_version",
+        "payload",
+        "signatures"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "registry_version": {
+          "const": "klein.backend_identity_registry.v1"
+        },
+        "payload": {
+          "type": "object",
+          "required": [
+            "registry_id",
+            "description",
+            "issued_at",
+            "backends"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "registry_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": {
+              "type": "string"
+            },
+            "issued_at": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "backends": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/definitions/backend"
+              }
+            }
+          }
+        },
+        "signatures": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/registry_signature"
+          }
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "backend": {
+      "type": "object",
+      "required": [
+        "backend_id",
+        "backend_name",
+        "backend_vendor",
+        "backend_versions",
+        "profiles",
+        "keys",
+        "metadata"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "backend_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "backend_name": {
+          "type": "string"
+        },
+        "backend_vendor": {
+          "type": "string"
+        },
+        "backend_versions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "profiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/profile"
+          }
+        },
+        "keys": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/key"
+          }
+        },
+        "metadata": {
+          "type": "object"
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "required": [
+        "profile_id",
+        "profile_versions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile_versions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "key": {
+      "type": "object",
+      "required": [
+        "key_id",
+        "signature_algorithm",
+        "public_key_encoding",
+        "public_key",
+        "status",
+        "not_before",
+        "not_after",
+        "notes"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "key_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "signature_algorithm": {
+          "const": "Ed25519"
+        },
+        "public_key_encoding": {
+          "const": "base64.raw.ed25519"
+        },
+        "public_key": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9+/]{43}=$"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "revoked",
+            "retired"
+          ]
+        },
+        "not_before": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "not_after": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        },
+        "rotated_to": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "revoked_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "revocation_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "registry_signature": {
+      "type": "object",
+      "required": [
+        "signature_algorithm",
+        "authority_id",
+        "public_key_encoding",
+        "public_key",
+        "signature_encoding",
+        "signature"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "signature_algorithm": {
+          "const": "Ed25519"
+        },
+        "authority_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "public_key_encoding": {
+          "const": "base64.raw.ed25519"
+        },
+        "public_key": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9+/]{43}=$"
+        },
+        "signature_encoding": {
+          "const": "base64.raw.ed25519"
+        },
+        "signature": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

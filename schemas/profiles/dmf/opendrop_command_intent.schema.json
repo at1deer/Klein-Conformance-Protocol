@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein OpenDrop Command Intent v1",
+  "type": "object",
+  "required": [
+    "command_intent_version",
+    "intent_id",
+    "tick",
+    "operation",
+    "electrodes",
+    "metadata"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "command_intent_version": { "const": "klein.opendrop_command_intent.v1" },
+    "intent_id": { "type": "string", "minLength": 1 },
+    "tick": { "type": "integer", "minimum": 0 },
+    "operation": {
+      "type": "string",
+      "enum": ["SET_ELECTRODES", "APPLY_FRAME", "CLEAR_ELECTRODES", "ESTOP", "RESET"]
+    },
+    "electrodes": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/electrode_intent" }
+    },
+    "metadata": { "type": "object" }
+  },
+  "definitions": {
+    "electrode_intent": {
+      "type": "object",
+      "required": ["electrode_id", "channel_id", "x", "y", "state", "voltage_v", "frequency_hz"],
+      "additionalProperties": false,
+      "properties": {
+        "electrode_id": { "type": "string", "minLength": 1 },
+        "channel_id": { "type": "integer", "minimum": 1 },
+        "x": { "type": "integer", "minimum": 0 },
+        "y": { "type": "integer", "minimum": 0 },
+        "state": { "type": "string", "enum": ["ON", "OFF"] },
+        "voltage_v": { "type": "number" },
+        "frequency_hz": { "type": ["number", "null"] }
+      }
+    }
+  }
+}

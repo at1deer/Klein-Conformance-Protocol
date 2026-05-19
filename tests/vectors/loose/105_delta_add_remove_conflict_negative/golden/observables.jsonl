@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_DELTA_CONFLICT", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "DELTA_TILES conflict: pixel (1,1) present in both add and remove", "run_id": "R105", "t": 0, "timebase": "DEVICE_TICKS"}

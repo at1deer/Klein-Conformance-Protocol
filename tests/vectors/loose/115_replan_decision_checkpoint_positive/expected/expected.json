@@ -1,0 +1,12 @@
+{
+  "expected_version": "0.2",
+  "mode": "HARD",
+  "must_pass": true,
+  "notes": "Checkpoint replans must be evidenced with REPLAN_DECISION.",
+  "required_capabilities": [
+    "supports.checkpoint_replan"
+  ],
+  "required_observables_kinds": [
+    "REPLAN_DECISION"
+  ]
+}

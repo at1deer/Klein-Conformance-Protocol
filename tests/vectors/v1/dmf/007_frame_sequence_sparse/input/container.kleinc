@@ -1,0 +1,40 @@
+{
+  "klein_container_version": "1.0",
+  "manifest": {
+    "project": {
+      "name": "frame-sequence-sparse",
+      "version": "1.0",
+      "authors": [
+        "Klein"
+      ]
+    },
+    "runtime": {
+      "mode": "HARD",
+      "target_substrate": "dmf.muxed_ewod.opendrop.v1.0"
+    }
+  },
+  "payload": {
+    "kind": "FRAME_SEQUENCE",
+    "encoding": "JSON",
+    "data": [
+      {
+        "t": 0,
+        "format": "sparse",
+        "data": [
+          10,
+          11
+        ]
+      },
+      {
+        "t": 1,
+        "format": "sparse",
+        "data": [
+          {
+            "x": 12,
+            "y": 0
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "PAYLOAD_OOB_PIXEL",
+    "message_contains": "out-of-bounds"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "DECODE|VALIDATE|START",
+  "mode": "HARD",
+  "must_fail": true
+}

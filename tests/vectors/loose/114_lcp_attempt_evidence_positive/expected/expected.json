@@ -1,0 +1,9 @@
+{
+  "expected_version": "0.2",
+  "mode": "HARD",
+  "must_pass": true,
+  "notes": "If LCP invoked, must emit LCP_ATTEMPT evidence deterministically.",
+  "required_observables_kinds": [
+    "LCP_ATTEMPT"
+  ]
+}

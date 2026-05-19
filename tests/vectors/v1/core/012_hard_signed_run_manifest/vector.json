@@ -1,0 +1,17 @@
+{
+  "id": "012",
+  "name": "012_hard_signed_run_manifest",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "PASS",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "run_manifest_path": "manifest/run_manifest_signed.json",
+  "trust_policy_path": "manifest/trust_policy.json",
+  "signed_conformance": true,
+  "purpose": "HARD execution vector proves signed Run Manifest v1 and trusted backend policy binding",
+  "profile_version": "v1"
+}

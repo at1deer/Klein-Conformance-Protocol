@@ -1,0 +1,15 @@
+{
+  "frame_sequence_version": "0.1",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "RLE",
+      "payload_b64": "AQABYAEgBAA=",
+      "tick": 0
+    }
+  ],
+  "notes": "Negative test: RLE expands to 7 row-bytes for dims rows=8. Must fail in strict mode."
+}

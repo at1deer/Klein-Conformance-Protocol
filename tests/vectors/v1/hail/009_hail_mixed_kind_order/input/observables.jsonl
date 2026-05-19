@@ -1,0 +1,4 @@
+{"kind":"MEASUREMENT","t":10,"timebase":"DEVICE_TICKS","run_id":"R009","detector_id":"sensor","measurement_id":"B","value":{"type":"F64","data":1.0}}
+{"kind":"RUNTIME_STATE_SNAPSHOT","t":10,"timebase":"DEVICE_TICKS","run_id":"R009","rimgb_hash":"sha256:009","state_fields":{"status":"ready"},"validity_window":{"start_t":10,"end_t":10}}
+{"kind":"DEVICE_EVENT","t":5,"timebase":"DEVICE_TICKS","run_id":"R009","code":"INIT","level":"INFO","message":"init"}
+{"kind":"MEASUREMENT","t":10,"timebase":"DEVICE_TICKS","run_id":"R009","detector_id":"sensor","measurement_id":"A","value":{"type":"F64","data":2.0}}

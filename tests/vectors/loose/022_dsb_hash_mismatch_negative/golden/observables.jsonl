@@ -1,0 +1,1 @@
+{"code": "DDI_DSB_MISMATCH", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "Device State Bundle hash mismatch (required sha256:89bf602072eb4fe8938f0724a70a4ca8e5188e2555da80389c17e0f95f7e2d53)", "run_id": "R22", "t": 0, "timebase": "DEVICE_TICKS"}

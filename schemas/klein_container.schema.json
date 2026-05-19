@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Container v1",
+  "oneOf": [
+    { "$ref": "#/definitions/current_container" },
+    { "$ref": "#/definitions/canonical_container" }
+  ],
+  "definitions": {
+    "profile": {
+      "type": "object",
+      "required": ["profile_id", "profile_version"],
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": { "type": "string", "minLength": 1 },
+        "profile_version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "manifest": {
+      "type": "object",
+      "required": ["project", "runtime"],
+      "additionalProperties": true,
+      "properties": {
+        "project": {
+          "type": "object",
+          "required": ["name", "version", "authors"],
+          "additionalProperties": true,
+          "properties": {
+            "name": { "type": "string", "minLength": 1 },
+            "version": { "type": "string", "minLength": 1 },
+            "authors": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "runtime": {
+          "type": "object",
+          "required": ["mode", "target_substrate"],
+          "additionalProperties": true,
+          "properties": {
+            "mode": { "type": "string", "enum": ["HARD", "ENVELOPE", "DIAGNOSTIC"] },
+            "target_substrate": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    },
+    "current_container": {
+      "type": "object",
+      "required": ["klein_container_version", "manifest", "payload"],
+      "additionalProperties": true,
+      "properties": {
+        "klein_container_version": { "const": "1.0" },
+        "manifest": { "$ref": "#/definitions/manifest" },
+        "payload": { "type": "object" },
+        "simgb": { "type": "object" },
+        "dsb": { "type": "object" },
+        "runbook": { "type": "object" }
+      }
+    },
+    "canonical_container": {
+      "type": "object",
+      "required": ["kind", "schema_version", "container_id", "profile", "mode", "payloads"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "KLEIN_CONTAINER" },
+        "schema_version": { "const": "v1" },
+        "container_id": { "type": "string", "minLength": 1 },
+        "profile": { "$ref": "#/definitions/profile" },
+        "mode": { "type": "string", "enum": ["HARD", "ENVELOPE", "DIAGNOSTIC"] },
+        "payloads": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["payload_id", "payload_kind", "encoding", "data"],
+            "additionalProperties": false,
+            "properties": {
+              "payload_id": { "type": "string", "minLength": 1 },
+              "payload_kind": {
+                "type": "string",
+                "enum": ["CHANNEL_LIST", "FRAME_SEQUENCE", "BITMAP_SEQUENCE"]
+              },
+              "encoding": { "type": "string", "enum": ["json", "JSON", "BASE64_GZIP"] },
+              "data": {}
+            }
+          }
+        },
+        "metadata": { "type": "object" }
+      }
+    }
+  }
+}

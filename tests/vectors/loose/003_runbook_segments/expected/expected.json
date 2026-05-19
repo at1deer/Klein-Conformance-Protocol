@@ -1,0 +1,15 @@
+{
+  "expected_version": "0.1",
+  "measurement_stream": [
+    {
+      "detector_id": "D0",
+      "measurement_id": "M0",
+      "t": 20,
+      "value": {
+        "data": 0.1,
+        "type": "F64"
+      }
+    }
+  ],
+  "mode": "HARD"
+}

@@ -1,0 +1,2 @@
+{"details":{},"event_index":1,"operation":"connect","raw_log_version":"klein.raw_device_log.v1","source_type":"mock_hardware","status":"OK","tick":0}
+{"details":{"seq":1},"event_index":3,"operation":"apply_frame","raw_log_version":"klein.raw_device_log.v1","source_type":"mock_hardware","status":"OK","tick":1}

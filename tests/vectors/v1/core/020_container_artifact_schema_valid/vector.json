@@ -1,0 +1,14 @@
+{
+  "id": "020",
+  "name": "020_container_artifact_schema_valid",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "profile_version": "v1",
+  "mode": "HARD",
+  "expected_result": "PASS",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "purpose": ".kleinc Container v1 current artifact validates before execution"
+}

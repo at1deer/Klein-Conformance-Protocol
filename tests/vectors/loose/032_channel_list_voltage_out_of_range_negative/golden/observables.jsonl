@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_VOLTAGE_OOB", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "voltage_v=200 out of declared voltage_range_v=[0,150]", "run_id": "R32", "t": 0, "timebase": "DEVICE_TICKS"}

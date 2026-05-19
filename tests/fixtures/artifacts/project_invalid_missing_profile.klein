@@ -1,0 +1,11 @@
+{
+  "kind": "KLEIN_PROJECT",
+  "mode": "HARD",
+  "payload": {
+    "data": [],
+    "encoding": "JSON",
+    "kind": "CHANNEL_LIST"
+  },
+  "project_id": "bad",
+  "schema_version": "v1"
+}

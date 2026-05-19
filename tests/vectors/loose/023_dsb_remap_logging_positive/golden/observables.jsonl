@@ -1,0 +1,3 @@
+{"code": "START", "kind": "DEVICE_EVENT", "level": "INFO", "message": "Run started", "run_id": "R23", "t": 0, "timebase": "DEVICE_TICKS"}
+{"code": "REMAP_APPLIED", "details": {"from": 12, "to": 13}, "kind": "DEVICE_EVENT", "level": "INFO", "message": "dead channel 12 remapped to 13 by policy DETERMINISTIC_FIRST_FREE", "run_id": "R23", "t": 0, "timebase": "DEVICE_TICKS"}
+{"code": "COMPLETE", "kind": "DEVICE_EVENT", "level": "INFO", "message": "Run completed", "run_id": "R23", "t": 2, "timebase": "DEVICE_TICKS"}

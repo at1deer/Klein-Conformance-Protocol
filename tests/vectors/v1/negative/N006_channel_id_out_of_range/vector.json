@@ -1,0 +1,14 @@
+{
+  "id": "N006",
+  "name": "N006_channel_id_out_of_range",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "PAYLOAD_CHANNEL_OOB",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "CHANNEL_LIST rejects channel ids outside substrate max_channels",
+  "profile_version": "v1"
+}

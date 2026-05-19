@@ -1,0 +1,4 @@
+{"code": "START", "kind": "DEVICE_EVENT", "level": "INFO", "message": "segment_A started", "run_id": "R3", "t": 0, "timebase": "DEVICE_TICKS"}
+{"detector_id": "D0", "kind": "MEASUREMENT", "measurement_id": "M0", "op_id": "op_detect_0", "run_id": "R3", "t": 20, "timebase": "DEVICE_TICKS", "value": {"data": 0.1, "type": "F64"}}
+{"chosen": "segment_B", "confidence": 1.0, "decision_id": "decide_1", "kind": "BRANCH_DECISION", "predicate": {"details": {"measurement_id": "M0", "threshold": 0.25, "value": 0.1}, "kind": "MEASUREMENT_LT"}, "run_id": "R3", "t": 21, "timebase": "DEVICE_TICKS"}
+{"code": "COMPLETE", "kind": "DEVICE_EVENT", "level": "INFO", "message": "segment_B completed", "run_id": "R3", "t": 22, "timebase": "DEVICE_TICKS"}

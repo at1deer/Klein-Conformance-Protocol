@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_INVALID_VALUE", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "Invalid numeric value for voltage_v (empty)", "run_id": "R50", "t": 0, "timebase": "DEVICE_TICKS"}

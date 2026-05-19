@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "version": "1.0",
+    "target_substrate": "dmf.muxed_ewod.opendrop.v1.0",
+    "author": "Klein Project",
+    "biosafety_level": 1,
+    "solver_mode": "GEODESIC"
+  },
+  "nodes": [
+    { "id": "source", "type": "Source", "pos": [0, 5, 0] },
+    { "id": "N1", "type": "Junction", "pos": [10, 0, 0] },
+    { "id": "N2", "type": "Junction", "pos": [10, 5, 0] },
+    { "id": "N3", "type": "Junction", "pos": [10, 10, 0] },
+    { "id": "N4", "type": "Junction", "pos": [20, 0, 0] },
+    { "id": "N5", "type": "Junction", "pos": [20, 5, 0] },
+    { "id": "N6", "type": "Junction", "pos": [20, 10, 0] },
+    { "id": "N7", "type": "Junction", "pos": [30, 0, 0] },
+    { "id": "N8", "type": "Junction", "pos": [30, 5, 0] },
+    { "id": "N9", "type": "Junction", "pos": [30, 10, 0] },
+    { "id": "sink", "type": "Sink", "pos": [40, 5, 0] }
+  ],
+  "edges": [
+    { "from": "source", "to": "N1", "type": "rail", "impedance": 1.0 },
+    { "from": "source", "to": "N2", "type": "rail", "impedance": 1.0 },
+    { "from": "source", "to": "N3", "type": "rail", "impedance": 1.0 },
+    { "from": "N1", "to": "N2", "type": "rail", "impedance": 1.0 },
+    { "from": "N2", "to": "N3", "type": "rail", "impedance": 1.0 },
+    { "from": "N1", "to": "N4", "type": "rail", "impedance": 1.0 },
+    { "from": "N2", "to": "N5", "type": "rail", "impedance": 1.0 },
+    { "from": "N3", "to": "N6", "type": "rail", "impedance": 1.0 },
+    { "from": "N4", "to": "N5", "type": "rail", "impedance": 1.0 },
+    { "from": "N5", "to": "N6", "type": "rail", "impedance": 1.0 },
+    { "from": "N4", "to": "N7", "type": "rail", "impedance": 1.0 },
+    { "from": "N5", "to": "N8", "type": "rail", "impedance": 1.0 },
+    { "from": "N6", "to": "N9", "type": "rail", "impedance": 1.0 },
+    { "from": "N7", "to": "N8", "type": "rail", "impedance": 1.0 },
+    { "from": "N8", "to": "N9", "type": "rail", "impedance": 1.0 },
+    { "from": "N7", "to": "sink", "type": "rail", "impedance": 1.0 },
+    { "from": "N8", "to": "sink", "type": "rail", "impedance": 1.0 },
+    { "from": "N9", "to": "sink", "type": "rail", "impedance": 1.0 }
+  ],
+  "fields": [
+    {
+      "type": "repulsor",
+      "center": [20, 5, 0],
+      "strength": 0.8,
+      "radius": 8.0
+    }
+  ]
+}

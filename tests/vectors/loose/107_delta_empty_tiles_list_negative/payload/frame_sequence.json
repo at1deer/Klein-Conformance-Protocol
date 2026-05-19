@@ -1,0 +1,30 @@
+{
+  "frame_sequence_version": "0.2",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "SPARSE",
+      "pixels": [
+        [
+          0,
+          0
+        ]
+      ],
+      "tick": 0
+    },
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "DELTA_TILES",
+      "tick": 1,
+      "tiles": []
+    }
+  ],
+  "notes": "Negative (policy): DELTA_TILES frame with empty tiles list is invalid (no effect).",
+  "tile_size": 4
+}

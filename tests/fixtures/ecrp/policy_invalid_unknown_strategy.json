@@ -1,0 +1,13 @@
+{
+  "allow_replan": false,
+  "allow_success_after_replan": false,
+  "allowed_strategies": [
+    "MAGIC_REPAIR"
+  ],
+  "ecrp_policy_version": "klein.ecrp_policy.v1",
+  "max_attempts": 1,
+  "mode": "HARD",
+  "policy_id": "invalid-unknown-strategy",
+  "requires_trace_evidence": true,
+  "terminal_failure_required": true
+}

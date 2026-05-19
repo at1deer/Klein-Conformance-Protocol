@@ -1,0 +1,13 @@
+{
+  "id": "N031",
+  "name": "N031_artifact_profile_payload_mismatch",
+  "schema_version": "v1",
+  "profile": "core",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "ARTIFACT_PROFILE_MISMATCH",
+  "input_type": "project",
+  "input_path": "input/project.klein",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "Artifact rejects unsupported profile/payload binding"
+}

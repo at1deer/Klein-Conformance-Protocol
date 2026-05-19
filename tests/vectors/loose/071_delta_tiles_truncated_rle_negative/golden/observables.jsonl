@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_RLE_FORMAT", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "Tile payload RLE truncated (expected count/value pairs)", "run_id": "R71", "t": 0, "timebase": "DEVICE_TICKS"}

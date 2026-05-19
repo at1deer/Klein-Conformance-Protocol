@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Attestation Statement v1",
+  "type": "object",
+  "required": [
+    "attestation_statement_version",
+    "statement_id",
+    "statement_kind",
+    "subject",
+    "backend",
+    "hardware_attestation_claimed",
+    "hardware_root",
+    "quote",
+    "measurements",
+    "signature",
+    "metadata"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "attestation_statement_version": { "const": "klein.attestation_statement.v1" },
+    "statement_id": { "type": "string", "minLength": 1 },
+    "statement_kind": { "type": "string", "enum": ["none", "mock", "hardware_future"] },
+    "subject": {
+      "type": "object",
+      "required": ["subject_type", "subject_id", "subject_hash"],
+      "additionalProperties": false,
+      "properties": {
+        "subject_type": {
+          "type": "string",
+          "enum": ["backend", "run_bundle", "recorded_run", "device"]
+        },
+        "subject_id": { "type": ["string", "null"] },
+        "subject_hash": {
+          "type": ["string", "null"],
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
+    },
+    "backend": {
+      "type": "object",
+      "required": ["backend_id", "backend_version"],
+      "additionalProperties": false,
+      "properties": {
+        "backend_id": { "type": ["string", "null"] },
+        "backend_version": { "type": ["string", "null"] }
+      }
+    },
+    "hardware_attestation_claimed": { "type": "boolean" },
+    "hardware_root": { "type": ["object", "null"] },
+    "quote": { "type": ["object", "string", "null"] },
+    "measurements": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "signature": { "type": ["object", "null"] },
+    "metadata": { "type": "object" }
+  }
+}

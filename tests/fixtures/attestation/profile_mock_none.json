@@ -1,0 +1,16 @@
+{
+  "attestation_profile_version": "klein.attestation_profile.v1",
+  "profile_id": "mock-attestation-alpha",
+  "profile_kind": "mock_none",
+  "hardware_attestation_claimed": false,
+  "allowed_statement_kinds": [
+    "none",
+    "mock"
+  ],
+  "requires_hardware_root": false,
+  "trust_roots": [],
+  "limitations": [
+    "Mock/null attestation profile only.",
+    "No hardware attestation proof is claimed."
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "frame_sequence_version": "0.2",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "SPARSE",
+      "pixels": [
+        [
+          1,
+          1
+        ]
+      ],
+      "tick": 0
+    },
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "DELTA_TILES",
+      "tick": 1,
+      "tiles": [
+        {
+          "add": [
+            [
+              1,
+              2
+            ]
+          ],
+          "c0": 0,
+          "r0": 0,
+          "remove": []
+        },
+        {
+          "add": [
+            [
+              3,
+              3
+            ]
+          ],
+          "c0": 2,
+          "r0": 2,
+          "remove": []
+        }
+      ]
+    }
+  ],
+  "notes": "Negative: two tiles overlap in spatial coverage (tile origins 0,0 and 2,2 overlap for size 4)",
+  "tile_size": 4
+}

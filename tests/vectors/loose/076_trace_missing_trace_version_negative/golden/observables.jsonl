@@ -1,0 +1,1 @@
+{"code": "TRACE_SCHEMA_INVALID", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "trace/trace.json missing required field 'trace_version'", "run_id": "R76", "t": 0, "timebase": "DEVICE_TICKS"}

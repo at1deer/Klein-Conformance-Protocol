@@ -1,0 +1,38 @@
+{
+  "attestation": {
+    "profiles": [
+      "example-attestation"
+    ],
+    "supported": true
+  },
+  "backend_id": "mock_hil_dmf",
+  "backend_version": "0.0.0",
+  "hil_contract_version": "klein.hil_backend_contract.v1",
+  "limitations": [
+    "Interface contract only.",
+    "No physical device is claimed."
+  ],
+  "observation_sources": [
+    "mock_hardware"
+  ],
+  "profile": {
+    "profile_id": "dmf",
+    "profile_version": "v1"
+  },
+  "safety": {
+    "requires_emergency_stop": true,
+    "requires_reset": true
+  },
+  "supports": {
+    "apply_frame": true,
+    "connect": true,
+    "disconnect": true,
+    "emergency_stop": true,
+    "export_raw_device_log": false,
+    "get_capabilities": true,
+    "get_health": true,
+    "get_topology": true,
+    "read_observation": true,
+    "reset": true
+  }
+}

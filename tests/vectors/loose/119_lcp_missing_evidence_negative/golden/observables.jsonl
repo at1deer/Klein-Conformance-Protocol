@@ -1,0 +1,1 @@
+{"code": "LCP_MISSING_EVIDENCE", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "LCP invoked but no LCP_ATTEMPT evidence emitted", "run_id": "R119", "t": 0, "timebase": "DEVICE_TICKS"}

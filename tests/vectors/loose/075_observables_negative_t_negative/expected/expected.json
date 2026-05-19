@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "OBS_INVALID_VALUE",
+    "message_contains": "t"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "COMPARE|LOG_VALIDATE",
+  "mode": "HARD",
+  "must_fail": true
+}

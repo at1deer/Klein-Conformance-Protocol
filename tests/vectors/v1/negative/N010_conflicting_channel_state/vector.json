@@ -1,0 +1,14 @@
+{
+  "id": "N010",
+  "name": "N010_conflicting_channel_state",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "PAYLOAD_CONFLICTING_STATE",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "CHANNEL_LIST rejects conflicting same tick/channel states",
+  "profile_version": "v1"
+}

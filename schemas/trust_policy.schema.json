@@ -1,0 +1,251 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Trust Policy v1",
+  "type": "object",
+  "required": [
+    "policy_version",
+    "policy_id",
+    "description",
+    "trusted_keys",
+    "revoked_keys"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "policy_version": {
+      "const": "klein.trust_policy.v1"
+    },
+    "policy_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "trusted_keys": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/trusted_key"
+      }
+    },
+    "revoked_keys": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/revoked_key"
+      }
+    },
+    "trusted_registry_authorities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/trusted_registry_authority"
+      }
+    }
+  },
+  "definitions": {
+    "raw_ed25519_public_key": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9+/]{43}=$"
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "backend_ids",
+        "profile_ids",
+        "profile_versions",
+        "manifest_versions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "backend_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "profile_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "profile_versions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "manifest_versions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "key_base": {
+      "type": "object",
+      "required": [
+        "key_id",
+        "signature_algorithm"
+      ],
+      "properties": {
+        "key_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "public_key_encoding": {
+          "const": "base64.raw.ed25519"
+        },
+        "public_key": {
+          "$ref": "#/definitions/raw_ed25519_public_key"
+        },
+        "signature_algorithm": {
+          "const": "Ed25519"
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "registry"
+          ]
+        },
+        "not_before": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "not_after": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "trusted_key": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/key_base"
+        },
+        {
+          "type": "object",
+          "required": [
+            "trust_scope",
+            "status"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "key_id": true,
+            "public_key_encoding": true,
+            "public_key": true,
+            "signature_algorithm": true,
+            "source": true,
+            "trust_scope": {
+              "$ref": "#/definitions/scope"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "trusted",
+                "disabled"
+              ]
+            },
+            "not_before": true,
+            "not_after": true,
+            "notes": true
+          }
+        }
+      ]
+    },
+    "revoked_key": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/key_base"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "key_id": true,
+            "public_key_encoding": true,
+            "public_key": true,
+            "signature_algorithm": true,
+            "not_before": true,
+            "not_after": true,
+            "notes": true
+          }
+        }
+      ]
+    },
+    "trusted_registry_authority": {
+      "type": "object",
+      "required": [
+        "authority_id",
+        "signature_algorithm",
+        "public_key_encoding",
+        "public_key",
+        "registry_ids",
+        "status",
+        "not_before",
+        "not_after",
+        "notes"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "authority_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "signature_algorithm": {
+          "const": "Ed25519"
+        },
+        "public_key_encoding": {
+          "const": "base64.raw.ed25519"
+        },
+        "public_key": {
+          "$ref": "#/definitions/raw_ed25519_public_key"
+        },
+        "registry_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "trusted",
+            "disabled"
+          ]
+        },
+        "not_before": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "not_after": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

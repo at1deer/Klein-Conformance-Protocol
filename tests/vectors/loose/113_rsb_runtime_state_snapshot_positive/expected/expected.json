@@ -1,0 +1,9 @@
+{
+  "expected_version": "0.2",
+  "mode": "HARD",
+  "must_pass": true,
+  "notes": "Must emit RUNTIME_STATE_SNAPSHOT in HARD.",
+  "required_observables_kinds": [
+    "RUNTIME_STATE_SNAPSHOT"
+  ]
+}

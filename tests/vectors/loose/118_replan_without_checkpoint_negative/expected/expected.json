@@ -1,0 +1,13 @@
+{
+  "expected_error": {
+    "code": "REPLAN_NOT_AT_CHECKPOINT",
+    "message_contains": "checkpoint"
+  },
+  "expected_version": "0.2",
+  "fail_stage": "RUN",
+  "mode": "HARD",
+  "must_fail": true,
+  "required_capabilities": [
+    "supports.checkpoint_replan"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein OpenDrop Serial Command v1",
+  "type": "object",
+  "required": [
+    "serial_command_version",
+    "command_id",
+    "intent_id",
+    "tick",
+    "command_kind",
+    "encoding",
+    "payload",
+    "raw_line",
+    "hardware_io_allowed"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "serial_command_version": { "const": "klein.opendrop_serial_command.v1" },
+    "command_id": { "type": "string", "minLength": 1 },
+    "intent_id": { "type": "string", "minLength": 1 },
+    "tick": { "type": "integer", "minimum": 0 },
+    "command_kind": {
+      "type": "string",
+      "enum": ["SET_ELECTRODES", "APPLY_FRAME", "CLEAR_ELECTRODES", "ESTOP", "RESET"]
+    },
+    "encoding": { "type": "string", "enum": ["json", "text"] },
+    "payload": { "type": "object" },
+    "raw_line": { "type": "string", "minLength": 1 },
+    "hardware_io_allowed": { "const": false }
+  }
+}

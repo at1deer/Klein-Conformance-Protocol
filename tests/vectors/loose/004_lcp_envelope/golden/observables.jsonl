@@ -1,0 +1,5 @@
+{"code": "START", "kind": "DEVICE_EVENT", "level": "INFO", "message": "Run started", "run_id": "R4", "t": 0, "timebase": "DEVICE_TICKS"}
+{"cells": [], "kind": "OCCUPANCY", "regions": [{"confidence": 0.9, "occupied": true, "region_id": "R_MIX"}], "run_id": "R4", "t": 15, "timebase": "DEVICE_TICKS"}
+{"attempt": 1, "correction_id": "NUDGE_PULSE", "kind": "CORRECTION_EVENT", "notes": "stall_detected", "result": "APPLIED", "run_id": "R4", "t": 20, "target": {"region_id": "R_MIX"}, "timebase": "DEVICE_TICKS"}
+{"cells": [], "kind": "OCCUPANCY", "regions": [{"confidence": 0.95, "occupied": true, "region_id": "R_MIX"}], "run_id": "R4", "t": 25, "timebase": "DEVICE_TICKS"}
+{"detector_id": "D0", "kind": "MEASUREMENT", "measurement_id": "M0", "op_id": "op_detect_0", "run_id": "R4", "t": 40, "timebase": "DEVICE_TICKS", "value": {"data": 0.55, "type": "F64"}}

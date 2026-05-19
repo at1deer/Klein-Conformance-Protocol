@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "PAYLOAD_PIXEL_OOB",
+    "message_contains": "(9,0)"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "VALIDATE|DECODE",
+  "mode": "HARD",
+  "must_fail": true
+}

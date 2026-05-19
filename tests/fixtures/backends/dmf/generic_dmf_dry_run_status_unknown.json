@@ -1,0 +1,9 @@
+{
+  "adapter_id": "generic-dmf-dry-run",
+  "adapter_status_version": "klein.dmf_backend_adapter_status.v1",
+  "connected": false,
+  "emergency_stopped": false,
+  "hardware_io_enabled": false,
+  "health": "UNKNOWN",
+  "last_error_code": null
+}

@@ -1,0 +1,30 @@
+{
+  "klein_container_version": "1.0",
+  "manifest": {
+    "project": {
+      "name": "vector_068",
+      "version": "1.0.0",
+      "authors": [
+        "Klein Test Suite"
+      ],
+      "license": "MIT",
+      "description": "Negative: CSV unterminated quote"
+    },
+    "runtime": {
+      "mode": "HARD",
+      "target_substrate": "dmf.muxed_ewod.opendrop.v1.0"
+    }
+  },
+  "payload": {
+    "kind": "CHANNEL_LIST",
+    "data": [
+      {
+        "t": 0,
+        "channel_id": 0,
+        "state": "ON",
+        "voltage_v": 200.0
+      }
+    ],
+    "encoding": "JSON"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "N017",
+  "name": "N017_delta_add_remove_conflict",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "PAYLOAD_DELTA_CONFLICT",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "FRAME_SEQUENCE delta_tiles rejects add/remove conflicts",
+  "profile_version": "v1"
+}

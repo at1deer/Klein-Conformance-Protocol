@@ -1,0 +1,294 @@
+# Klein Protocol CI
+# Runs tests, linting, and conformance checks on all branches and PRs
+
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  # Lint and type check
+  lint:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev]
+      
+      - name: Run Ruff linter for cleaned v1 surface
+        run: ruff check src/klein/hail src/klein/profiles src/klein/tools src/klein/conformance tests/test_hail_core.py tests/test_schema_parity.py tests/test_jcs_canonicalization.py tests/test_hash_binding.py
+      
+      - name: Run type checker
+        run: mypy src/klein --ignore-missing-imports
+        continue-on-error: true
+
+  # Unit tests
+  test:
+    name: Test Python ${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev]
+
+      - name: Compile Python files
+        run: python -m compileall -q src tests
+      
+      - name: Run unit and core conformance tests
+        run: python -m pytest -q
+
+      - name: Check v1 suite integrity
+        run: klein-conform --suite tests/vectors/v1 --check-suite-integrity
+
+      - name: Check whitespace
+        run: git diff --check
+      
+      - name: Run v1 smoke conformance
+        run: klein-conform --suite tests/vectors/v1 --smoke --backend full_simulator --json > results.json
+      
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results-${{ matrix.os }}-py${{ matrix.python-version }}
+          path: results.json
+
+  # Conformance test suite
+  conformance:
+    name: Conformance Suite
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev]
+
+      - name: Compile Python files
+        run: python -m compileall -q src tests
+
+      - name: Check v1 suite integrity
+        run: klein-conform --suite tests/vectors/v1 --check-suite-integrity
+      
+      - name: Run v1 simulator backend conformance
+        run: |
+          klein-conform --suite tests/vectors/v1 --backend full_simulator --json > conform-results.json
+          cat conform-results.json
+
+      - name: Run v1 negative conformance
+        run: |
+          klein-conform --suite tests/vectors/v1 --category negative --backend full_simulator --json > negative-results.json
+          cat negative-results.json
+
+      - name: Check v1 golden freshness
+        run: klein-regen-v1-goldens --suite tests/vectors/v1 --backend full_simulator --check
+      
+      - name: Run legacy experimental conformance report
+        run: |
+          klein-conform --suite tests/vectors --legacy --backend full_simulator --json > legacy-results.json
+        continue-on-error: true
+      
+      - name: Upload conformance results
+        uses: actions/upload-artifact@v4
+        with:
+          name: conformance-results
+          path: |
+            conform-results.json
+            negative-results.json
+            legacy-results.json
+
+  rust-verifier:
+    name: Rust Independent Verifier
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Run Rust verifier tests
+        run: cargo test --manifest-path verifiers/rust/Cargo.toml
+
+      - name: Verify cross-language fixtures
+        run: cargo run --manifest-path verifiers/rust/Cargo.toml -- verify-fixtures tests/fixtures/cross_language/fixtures.json
+
+      - name: Verify valid run bundle
+        run: cargo run --manifest-path verifiers/rust/Cargo.toml -- verify-bundle tests/fixtures/run_bundle/valid_signed_run.kcprun
+
+      - name: Verify valid run bundle JSON
+        run: cargo run --manifest-path verifiers/rust/Cargo.toml -- verify-bundle tests/fixtures/run_bundle/valid_signed_run.kcprun --json
+
+      - name: Verify registry-backed run bundle
+        run: cargo run --manifest-path verifiers/rust/Cargo.toml -- verify-bundle tests/fixtures/run_bundle/valid_signed_run_with_registry.kcprun
+
+      - name: Verify signed-registry run bundle
+        run: cargo run --manifest-path verifiers/rust/Cargo.toml -- verify-bundle tests/fixtures/run_bundle/valid_signed_run_with_signed_registry.kcprun
+
+      - name: Verify backend-capability run bundle
+        run: cargo run --manifest-path verifiers/rust/Cargo.toml -- verify-bundle tests/fixtures/run_bundle/valid_signed_run_with_capabilities.kcprun
+
+      - name: Verify conformance level catalog
+        run: klein-conformance-levels validate-catalog
+
+  # Example validation
+  examples:
+    name: Validate Examples
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+      
+      - name: Run simple_path example
+        run: |
+          python -m klein.sim.runner examples/simple_path.klein \
+            --source source --sink sink --seed 42 -o simple_path.jsonl
+          echo "=== Events ==="
+          head -20 simple_path.jsonl
+      
+      - name: Run gravity_well example
+        run: |
+          python -m klein.sim.runner examples/gravity_well.klein \
+            --source source --sink sink --seed 42 -o gravity_well.jsonl
+          echo "=== Events ==="
+          head -20 gravity_well.jsonl
+      
+      - name: Run obstacle_avoidance example
+        run: |
+          python -m klein.sim.runner examples/obstacle_avoidance.klein \
+            --source source --sink sink --seed 42 -o obstacle_avoidance.jsonl
+          echo "=== Events ==="
+          head -20 obstacle_avoidance.jsonl
+      
+      - name: Upload example outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: example-outputs
+          path: |
+            simple_path.jsonl
+            gravity_well.jsonl
+            obstacle_avoidance.jsonl
+
+  # Schema validation
+  schemas:
+    name: Validate Schemas
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev]
+      
+      - name: Validate Pydantic models match schemas
+        run: |
+          python -c "
+          import json
+          from pathlib import Path
+          from klein.common.models import (
+              KleinProject, DeviceStateBundle, Manifest,
+              Runbook, Capabilities, Trace, Container
+          )
+          print('All Pydantic models imported successfully')
+          
+          # Test basic validation
+          project = KleinProject.model_validate({
+              'meta': {'version': '1.0', 'target_substrate': 'test'},
+              'nodes': [{'id': 'A', 'type': 'X', 'pos': [0,0,0]}],
+              'edges': [],
+          })
+          print(f'KleinProject validated: {len(project.nodes)} nodes')
+          "
+
+  # Build check
+  build:
+    name: Build Package
+    runs-on: ubuntu-latest
+    needs: [lint, test]
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install build tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+      
+      - name: Build package
+        run: python -m build
+      
+      - name: Check package
+        run: twine check dist/*
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/

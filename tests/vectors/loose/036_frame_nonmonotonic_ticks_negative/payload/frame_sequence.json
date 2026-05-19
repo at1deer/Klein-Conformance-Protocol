@@ -1,0 +1,34 @@
+{
+  "frame_sequence_version": "0.1",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "SPARSE",
+      "pixels": [
+        [
+          1,
+          1
+        ]
+      ],
+      "tick": 1
+    },
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "SPARSE",
+      "pixels": [
+        [
+          1,
+          2
+        ]
+      ],
+      "tick": 0
+    }
+  ],
+  "notes": "Negative: non-monotonic ticks 1 then 0"
+}

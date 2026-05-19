@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "PAYLOAD_INVALID_DELTA",
+    "message_contains": "remove inactive"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "DECODE|VALIDATE|START",
+  "mode": "HARD",
+  "must_fail": true
+}

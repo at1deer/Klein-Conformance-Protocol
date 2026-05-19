@@ -1,0 +1,15 @@
+{
+  "timestamp_profile_version": "klein.timestamp_profile.v1",
+  "profile_id": "mock-local-alpha",
+  "profile_kind": "mock_local",
+  "trusted_time_claimed": false,
+  "allowed_token_kinds": [
+    "mock_local"
+  ],
+  "requires_external_time_authority": false,
+  "trust_roots": [],
+  "limitations": [
+    "Mock/local timestamp profile only.",
+    "No trusted timestamp proof is claimed."
+  ]
+}

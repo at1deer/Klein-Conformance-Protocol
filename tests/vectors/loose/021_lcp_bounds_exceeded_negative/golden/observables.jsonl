@@ -1,0 +1,3 @@
+{"code": "START", "kind": "DEVICE_EVENT", "level": "INFO", "message": "Run started", "run_id": "R21", "t": 0, "timebase": "DEVICE_TICKS"}
+{"attempt": 1, "correction_id": "NUDGE_PULSE", "kind": "CORRECTION_EVENT", "result": "APPLIED", "run_id": "R21", "t": 5, "target": {"region_id": "R_MIX"}, "timebase": "DEVICE_TICKS"}
+{"code": "LCP_BOUNDS_EXCEEDED", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "LCP NUDGE_PULSE exceeded max_attempts=1; aborting strict run", "run_id": "R21", "t": 12, "timebase": "DEVICE_TICKS"}

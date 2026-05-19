@@ -1,0 +1,13 @@
+{
+  "id": "004",
+  "name": "004_runtime_snapshot_v1",
+  "schema_version": "v1",
+  "profile": "core",
+  "mode": "HARD",
+  "expected_result": "PASS",
+  "input_type": "hail_jsonl",
+  "input_path": "input/observables.jsonl",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "purpose": "RUNTIME_STATE_SNAPSHOT uses rimgb_hash, state_fields, and validity_window"
+}

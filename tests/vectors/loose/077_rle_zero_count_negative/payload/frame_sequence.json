@@ -1,0 +1,15 @@
+{
+  "frame_sequence_version": "0.1",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "RLE",
+      "payload_b64": "AAE=",
+      "tick": 0
+    }
+  ],
+  "notes": "Negative: RLE includes count=0 (invalid)."
+}

@@ -1,0 +1,17 @@
+{
+  "corrections": {
+    "correction_id": "NUDGE_PULSE",
+    "limits": {
+      "max_attempts": 1,
+      "max_extra_ticks": 10
+    }
+  },
+  "expected_error": {
+    "code": "LCP_BOUNDS_EXCEEDED",
+    "message_contains": "max_attempts"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "RUN",
+  "mode": "HARD",
+  "must_fail": true
+}

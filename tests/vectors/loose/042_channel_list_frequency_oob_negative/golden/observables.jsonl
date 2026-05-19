@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_FREQUENCY_OOB", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "frequency_hz=5000 out of declared frequency_range_hz=[0,2000]", "run_id": "R42", "t": 0, "timebase": "DEVICE_TICKS"}

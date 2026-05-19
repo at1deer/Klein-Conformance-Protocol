@@ -1,0 +1,1 @@
+{"code": "DDI_CAPABILITY_MISSING", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "Required capability supported_payloads includes FRAME_SEQUENCE, but device reports it missing", "run_id": "R65", "t": 0, "timebase": "DEVICE_TICKS"}

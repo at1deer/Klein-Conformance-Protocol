@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_NONMONOTONIC_TICKS", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "FRAME_SEQUENCE ticks not non-decreasing (found 1 then 0)", "run_id": "R36", "t": 0, "timebase": "DEVICE_TICKS"}

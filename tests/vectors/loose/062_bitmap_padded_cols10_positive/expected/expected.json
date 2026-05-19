@@ -1,0 +1,35 @@
+{
+  "decoder_requirements": [
+    {
+      "bytes_per_row": 2,
+      "encoding": "BITMAP",
+      "packing": "PAD_TO_BYTE"
+    }
+  ],
+  "expected_version": "0.1",
+  "frame_decode_expectations": [
+    {
+      "active_pixels": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          9
+        ],
+        [
+          2,
+          8
+        ]
+      ],
+      "dims": {
+        "cols": 10,
+        "rows": 8
+      },
+      "tick": 0
+    }
+  ],
+  "mode": "HARD",
+  "suite": "extended"
+}

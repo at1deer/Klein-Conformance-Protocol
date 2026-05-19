@@ -1,0 +1,10 @@
+{
+  "expected_error": {
+    "code": "TRACE_EMPTY",
+    "message_contains": "actuation_refs"
+  },
+  "expected_version": "0.1",
+  "fail_stage": "VALIDATE",
+  "mode": "HARD",
+  "must_fail": true
+}

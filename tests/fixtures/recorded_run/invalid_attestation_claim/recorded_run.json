@@ -1,0 +1,37 @@
+{
+  "artifact_hash": "sha256:45f839857a27a2447299adcfe8e1996c546119f2cba8f92f2f9603ad7853d967",
+  "attestation": {
+    "type": "fixture-attestation"
+  },
+  "bundle_ref": {
+    "path": "run/run.kcprun",
+    "sha256": "sha256:fe9749227f94888f460830884b04d7a4cfe44774b948b31634f1f5e944919ca3"
+  },
+  "hardware_claimed": false,
+  "hil_contract_hash": "sha256:ba59db72183dd1f18321352cd498ceb04e103a44c423db1d3582c17fb31b9d27",
+  "hil_status_hash": "sha256:1fc17128d914e79ed7a2d7fcd625bde8d2dfc1e4bf392af336e97b9b18285ddf",
+  "media": [],
+  "notes": [
+    "Mock recorded run fixture. No hardware, attestation, timestamp, or physical proof is claimed."
+  ],
+  "observation_hashes": [
+    "sha256:7d0accb8e6e977a7a4202f2049d1930f1b10632c4f850b15983ac569efeb9940"
+  ],
+  "raw_device_logs": [
+    {
+      "log_format": "jsonl",
+      "log_id": "log-0001",
+      "path": "raw/device-log.jsonl",
+      "sha256": "sha256:9fe5894ed0218a77c5ce8c6bec094ad580b6edbcccde72b0b2a2ef0bc46f4e57",
+      "source_type": "mock_hardware"
+    }
+  ],
+  "recorded_run_id": "mock-recorded-run",
+  "recorded_run_version": "klein.recorded_device_run.v1",
+  "runbook_hash": null,
+  "source_id": "mock_hil_dmf",
+  "source_type": "mock_hardware",
+  "source_version": "0.0.0",
+  "trace_hash": null,
+  "trusted_timestamp": null
+}

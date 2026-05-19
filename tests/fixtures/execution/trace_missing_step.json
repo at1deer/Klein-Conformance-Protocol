@@ -1,0 +1,30 @@
+{
+  "artifact_hash": "sha256:097f173d4ac0f32803ba99aa642be8d73db7bd503e6347f84a8a4c9b7e207c12",
+  "backend": {
+    "backend_id": "full_simulator",
+    "backend_version": "1.0.0a0"
+  },
+  "metadata": {},
+  "profile": {
+    "profile_id": "dmf",
+    "profile_version": "v1"
+  },
+  "run_id": "fixture-run-001",
+  "runbook_hash": "sha256:69d0986d862ba895ba1aba12e80321b70b0d43e00c2fc1d7de453bde9ed581f4",
+  "timebase": "DEVICE_TICKS",
+  "trace_id": null,
+  "trace_steps": [
+    {
+      "applied": true,
+      "details": {},
+      "error_code": null,
+      "issued": true,
+      "operation": "DMF_SET_CHANNELS",
+      "runbook_step_id": "step-0001",
+      "status": "APPLIED",
+      "step_id": "step-0001",
+      "tick": 0
+    }
+  ],
+  "trace_version": "klein.execution_trace.v1"
+}

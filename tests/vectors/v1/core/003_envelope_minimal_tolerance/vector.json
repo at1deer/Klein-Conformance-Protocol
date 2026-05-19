@@ -1,0 +1,13 @@
+{
+  "id": "003",
+  "name": "003_envelope_minimal_tolerance",
+  "schema_version": "v1",
+  "profile": "core",
+  "mode": "ENVELOPE",
+  "expected_result": "PASS",
+  "input_type": "hail_jsonl",
+  "input_path": "input/observables.jsonl",
+  "comparison_mode": "ENVELOPE",
+  "normalize_run_metadata": false,
+  "purpose": "ENVELOPE comparison accepts only declared tick tolerance"
+}

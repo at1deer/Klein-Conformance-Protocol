@@ -1,0 +1,8 @@
+{
+  "canonicalization": {
+    "pixel_list_sort": "r_then_c"
+  },
+  "expected_version": "0.1",
+  "mode": "HARD",
+  "must_pass": true
+}

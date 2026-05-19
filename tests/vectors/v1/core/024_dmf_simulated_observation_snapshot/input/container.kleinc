@@ -1,0 +1,28 @@
+{
+  "klein_container_version": "1.0",
+  "manifest": {
+    "project": {
+      "name": "frame-container",
+      "version": "1.0",
+      "authors": [
+        "Klein"
+      ]
+    },
+    "runtime": {
+      "mode": "HARD",
+      "target_substrate": "dmf.muxed_ewod.opendrop.v1.0"
+    }
+  },
+  "payload": {
+    "kind": "CHANNEL_LIST",
+    "encoding": "JSON",
+    "data": [
+      {
+        "t": 0,
+        "channel_id": 5,
+        "state": "ON",
+        "voltage_v": 200.0
+      }
+    ]
+  }
+}

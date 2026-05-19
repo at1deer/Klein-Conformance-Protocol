@@ -1,0 +1,27 @@
+{
+  "metadata": {},
+  "mode": "HARD",
+  "planned_steps": [
+    {
+      "expected_effect": {
+        "details": {},
+        "type": "simulated"
+      },
+      "frame_ref": "frame-0001",
+      "operation": "DMF_SET_CHANNELS",
+      "payload_ref": "payload-001",
+      "step_id": "step-0001",
+      "tick": 0
+    }
+  ],
+  "profile": {
+    "profile_id": "dmf",
+    "profile_version": "v1"
+  },
+  "runbook_id": null,
+  "runbook_version": "klein.runbook.v1",
+  "source_artifact_hash": "sha256:bf52bd8c8cc1bbc3296d03fe1b512785ba96e164a78b55a8f8955daf81cd7743",
+  "source_artifact_type": "container",
+  "substrate_fingerprint": "sha256:8258d5b8a612dc21efc011543aee1513864840467caa7a8e3b2255be11b2087e",
+  "timebase": "DEVICE_TICKS"
+}

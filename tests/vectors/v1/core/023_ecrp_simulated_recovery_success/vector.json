@@ -1,0 +1,58 @@
+{
+  "id": "023",
+  "name": "023_ecrp_simulated_recovery_success",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "ENVELOPE",
+  "expected_result": "PASS",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "ecrp_enabled": true,
+  "ecrp_max_attempts": 1,
+  "fault_injection": {
+    "type": "transient_channel_failure",
+    "channels": [
+      5
+    ]
+  },
+  "required_event_kinds": [
+    "ECRP_ATTEMPT"
+  ],
+  "required_event_codes": [
+    "FRAME_FAILED",
+    "FRAME_APPLIED"
+  ],
+  "evidence_assertions": [
+    {
+      "kind": "DEVICE_EVENT",
+      "where": {
+        "code": "FRAME_FAILED",
+        "level": "INFO"
+      }
+    },
+    {
+      "kind": "ECRP_ATTEMPT",
+      "where": {
+        "attempt_index": 1,
+        "outcome": "SUCCESS",
+        "strategy": "NUDGE_PULSE",
+        "parameters.attempt": 1,
+        "parameters.strategy": "NUDGE_PULSE"
+      }
+    },
+    {
+      "kind": "RUN_END",
+      "where": {
+        "status": "SUCCESS",
+        "error_code": null
+      }
+    }
+  ],
+  "purpose": "ECRP permits one simulator-only transient DMF channel failure to recover through NUDGE_PULSE retry evidence",
+  "profile_version": "v1",
+  "ecrp_allow_success_after_retry": true,
+  "ecrp_allowed_success_strategies": [
+    "NUDGE_PULSE"
+  ]
+}

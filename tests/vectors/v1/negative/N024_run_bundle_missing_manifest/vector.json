@@ -1,0 +1,19 @@
+{
+  "id": "N024",
+  "name": "N024_run_bundle_missing_manifest",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "run_id": "R012",
+  "run_bundle_path": "bundle/run.kcprun",
+  "bundle_conformance": true,
+  "purpose": "bundle missing declared manifest is rejected",
+  "expected_error_code": "RUN_BUNDLE_MISSING_ENTRY",
+  "expected_validation_stage": "bundle_conformance",
+  "profile_version": "v1"
+}

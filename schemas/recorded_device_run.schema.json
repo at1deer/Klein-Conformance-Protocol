@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Recorded Device Run v1",
+  "type": "object",
+  "required": [
+    "recorded_run_version",
+    "recorded_run_id",
+    "source_type",
+    "source_id",
+    "source_version",
+    "hardware_claimed",
+    "attestation",
+    "trusted_timestamp",
+    "bundle_ref",
+    "artifact_hash",
+    "runbook_hash",
+    "trace_hash",
+    "observation_hashes",
+    "hil_contract_hash",
+    "hil_status_hash",
+    "raw_device_logs",
+    "media",
+    "notes"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "recorded_run_version": { "const": "klein.recorded_device_run.v1" },
+    "recorded_run_id": { "type": "string", "minLength": 1 },
+    "source_type": { "type": "string", "enum": ["simulator", "mock_hardware", "hardware"] },
+    "source_id": { "type": "string", "minLength": 1 },
+    "source_version": { "type": "string", "minLength": 1 },
+    "hardware_claimed": { "type": "boolean" },
+    "attestation": { "type": ["object", "null"] },
+    "trusted_timestamp": { "type": ["object", "null"] },
+    "bundle_ref": {
+      "type": ["object", "null"],
+      "required": ["path", "sha256"],
+      "additionalProperties": false,
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/definitions/sha256_ref" }
+      }
+    },
+    "artifact_hash": { "$ref": "#/definitions/sha256_ref" },
+    "runbook_hash": {
+      "anyOf": [
+        { "$ref": "#/definitions/sha256_ref" },
+        { "type": "null" }
+      ]
+    },
+    "trace_hash": {
+      "anyOf": [
+        { "$ref": "#/definitions/sha256_ref" },
+        { "type": "null" }
+      ]
+    },
+    "observation_hashes": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/sha256_ref" }
+    },
+    "hil_contract_hash": {
+      "anyOf": [
+        { "$ref": "#/definitions/sha256_ref" },
+        { "type": "null" }
+      ]
+    },
+    "hil_status_hash": {
+      "anyOf": [
+        { "$ref": "#/definitions/sha256_ref" },
+        { "type": "null" }
+      ]
+    },
+    "raw_device_logs": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/raw_log_ref" }
+    },
+    "media": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "definitions": {
+    "raw_log_ref": {
+      "type": "object",
+      "required": ["log_id", "path", "sha256", "log_format", "source_type"],
+      "additionalProperties": false,
+      "properties": {
+        "log_id": { "type": "string", "minLength": 1 },
+        "path": { "type": "string", "minLength": 1 },
+        "sha256": { "$ref": "#/definitions/sha256_ref" },
+        "log_format": { "const": "jsonl" },
+        "source_type": { "type": "string", "enum": ["simulator", "mock_hardware", "hardware"] }
+      }
+    },
+    "sha256_ref": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
+  }
+}

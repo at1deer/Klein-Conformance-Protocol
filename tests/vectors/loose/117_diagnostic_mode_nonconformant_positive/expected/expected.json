@@ -1,0 +1,12 @@
+{
+  "expected_version": "0.2",
+  "mode": "DIAGNOSTIC",
+  "must_pass": true,
+  "notes": "DIAGNOSTIC must label NONCONFORMANT and may continue.",
+  "required_capabilities": [
+    "supports.diagnostic"
+  ],
+  "required_observables_kinds": [
+    "NONCONFORMANT"
+  ]
+}

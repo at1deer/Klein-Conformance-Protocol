@@ -1,0 +1,13 @@
+{
+  "id": "009",
+  "name": "009_hail_mixed_kind_order",
+  "schema_version": "v1",
+  "profile": "core",
+  "mode": "HARD",
+  "expected_result": "PASS",
+  "input_type": "hail_jsonl",
+  "input_path": "input/observables.jsonl",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "purpose": "HAIL canonicalization sorts mixed event kinds by t, kind, and kind-specific tie breaker"
+}

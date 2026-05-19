@@ -1,0 +1,21 @@
+{
+  "id": "N026",
+  "name": "N026_channel_list_missing_voltage",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "profile_version": "v1",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "PAYLOAD_MALFORMED",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "CHANNEL_LIST rejects entries missing required voltage_v field",
+  "evidence_assertions": [
+    {
+      "kind": "DEVICE_EVENT",
+      "code": "PAYLOAD_MALFORMED",
+      "level": "ERROR"
+    }
+  ]
+}

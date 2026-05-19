@@ -1,0 +1,21 @@
+{
+  "command_intent_version": "klein.opendrop_command_intent.v1",
+  "electrodes": [
+    {
+      "channel_id": 128,
+      "electrode_id": "E0128",
+      "frequency_hz": 1000,
+      "state": "ON",
+      "voltage_v": 120,
+      "x": 15,
+      "y": 7
+    }
+  ],
+  "intent_id": "intent-0002",
+  "metadata": {
+    "source_operation": "DMF_APPLY_FRAME",
+    "source_runbook_step_id": "step-0002"
+  },
+  "operation": "APPLY_FRAME",
+  "tick": 1
+}

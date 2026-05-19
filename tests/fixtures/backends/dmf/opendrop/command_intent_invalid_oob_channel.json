@@ -1,0 +1,18 @@
+{
+  "command_intent_version": "klein.opendrop_command_intent.v1",
+  "electrodes": [
+    {
+      "channel_id": 129,
+      "electrode_id": "E0129",
+      "frequency_hz": 1000,
+      "state": "ON",
+      "voltage_v": 120,
+      "x": 16,
+      "y": 7
+    }
+  ],
+  "intent_id": "intent-oob",
+  "metadata": {},
+  "operation": "SET_ELECTRODES",
+  "tick": 0
+}

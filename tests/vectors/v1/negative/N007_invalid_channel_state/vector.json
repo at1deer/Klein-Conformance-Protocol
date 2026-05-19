@@ -1,0 +1,14 @@
+{
+  "id": "N007",
+  "name": "N007_invalid_channel_state",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "PAYLOAD_INVALID_STATE",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "CHANNEL_LIST rejects states outside ON/OFF",
+  "profile_version": "v1"
+}

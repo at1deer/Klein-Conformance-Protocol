@@ -1,0 +1,218 @@
+{
+  "suite_version": "v1",
+  "description": "Klein Core v1 executable alpha vectors",
+  "vectors": [
+    {
+      "id": "001",
+      "folder": "core/001_hard_minimal_project"
+    },
+    {
+      "id": "002",
+      "folder": "core/002_hard_minimal_container"
+    },
+    {
+      "id": "003",
+      "folder": "core/003_envelope_minimal_tolerance"
+    },
+    {
+      "id": "004",
+      "folder": "hail/004_runtime_snapshot_v1"
+    },
+    {
+      "id": "005",
+      "folder": "core/005_dmf_frame_payload"
+    },
+    {
+      "id": "006",
+      "folder": "dmf/006_channel_list_two_ticks"
+    },
+    {
+      "id": "007",
+      "folder": "dmf/007_frame_sequence_sparse"
+    },
+    {
+      "id": "008",
+      "folder": "dmf/008_bitmap_sequence_minimal"
+    },
+    {
+      "id": "009",
+      "folder": "hail/009_hail_mixed_kind_order"
+    },
+    {
+      "id": "010",
+      "folder": "core/010_hard_run_lifecycle_binding"
+    },
+    {
+      "id": "011",
+      "folder": "core/011_hard_hail_chain_binding"
+    },
+    {
+      "id": "012",
+      "folder": "core/012_hard_signed_run_manifest"
+    },
+    {
+      "id": "N001",
+      "folder": "negative/N001_missing_input_artifact"
+    },
+    {
+      "id": "014",
+      "folder": "dmf/014_frame_sequence_delta_tiles"
+    },
+    {
+      "id": "015",
+      "folder": "dmf/015_channel_list_multi_tick_unsorted"
+    },
+    {
+      "id": "016",
+      "folder": "dmf/016_frame_sequence_sparse_coordinates"
+    },
+    {
+      "id": "N002",
+      "folder": "negative/N002_hail_missing_device_message"
+    },
+    {
+      "id": "N003",
+      "folder": "negative/N003_legacy_runtime_snapshot_rejected"
+    },
+    {
+      "id": "N004",
+      "folder": "negative/N004_invalid_container_payload_kind"
+    },
+    {
+      "id": "N005",
+      "folder": "negative/N005_malformed_artifact_json"
+    },
+    {
+      "id": "N006",
+      "folder": "negative/N006_channel_id_out_of_range"
+    },
+    {
+      "id": "N007",
+      "folder": "negative/N007_invalid_channel_state"
+    },
+    {
+      "id": "N008",
+      "folder": "negative/N008_voltage_out_of_range"
+    },
+    {
+      "id": "N009",
+      "folder": "negative/N009_frequency_out_of_range"
+    },
+    {
+      "id": "N010",
+      "folder": "negative/N010_conflicting_channel_state"
+    },
+    {
+      "id": "N011",
+      "folder": "negative/N011_sparse_electrode_out_of_range"
+    },
+    {
+      "id": "N012",
+      "folder": "negative/N012_invalid_bitmap_base64"
+    },
+    {
+      "id": "N013",
+      "folder": "negative/N013_malformed_frame_sequence"
+    },
+    {
+      "id": "N014",
+      "folder": "negative/N014_ecrp_bounded_failure_evidence"
+    },
+    {
+      "id": "N015",
+      "folder": "negative/N015_rle_frame_format_unsupported"
+    },
+    {
+      "id": "N016",
+      "folder": "negative/N016_sparse_duplicate_pixels"
+    },
+    {
+      "id": "N017",
+      "folder": "negative/N017_delta_add_remove_conflict"
+    },
+    {
+      "id": "N018",
+      "folder": "negative/N018_delta_remove_inactive_pixel"
+    },
+    {
+      "id": "N019",
+      "folder": "negative/N019_bitmap_unsupported_dimensions"
+    },
+    {
+      "id": "N020",
+      "folder": "negative/N020_signed_manifest_tampered_payload"
+    },
+    {
+      "id": "N021",
+      "folder": "negative/N021_signed_manifest_untrusted_key"
+    },
+    {
+      "id": "N022",
+      "folder": "negative/N022_signed_manifest_wrong_hail_digest"
+    },
+    {
+      "id": "013",
+      "folder": "core/013_hard_run_bundle_signed_conformance"
+    },
+    {
+      "id": "N023",
+      "folder": "negative/N023_run_bundle_hash_mismatch"
+    },
+    {
+      "id": "N024",
+      "folder": "negative/N024_run_bundle_missing_manifest"
+    },
+    {
+      "id": "N025",
+      "folder": "negative/N025_run_bundle_path_traversal"
+    },
+    {
+      "id": "N026",
+      "folder": "negative/N026_channel_list_missing_voltage"
+    },
+    {
+      "id": "N027",
+      "folder": "negative/N027_sparse_coordinate_out_of_grid"
+    },
+    {
+      "id": "019",
+      "folder": "core/019_project_artifact_schema_valid"
+    },
+    {
+      "id": "020",
+      "folder": "core/020_container_artifact_schema_valid"
+    },
+    {
+      "id": "N028",
+      "folder": "negative/N028_project_missing_profile"
+    },
+    {
+      "id": "N029",
+      "folder": "negative/N029_container_missing_payload"
+    },
+    {
+      "id": "N030",
+      "folder": "negative/N030_artifact_unsupported_schema_version"
+    },
+    {
+      "id": "N031",
+      "folder": "negative/N031_artifact_profile_payload_mismatch"
+    },
+    {
+      "id": "021",
+      "folder": "core/021_runbook_trace_generated_for_container"
+    },
+    {
+      "id": "022",
+      "folder": "core/022_ecrp_bounded_failure_contract"
+    },
+    {
+      "id": "023",
+      "folder": "core/023_ecrp_simulated_recovery_success"
+    },
+    {
+      "id": "024",
+      "folder": "core/024_dmf_simulated_observation_snapshot"
+    }
+  ]
+}

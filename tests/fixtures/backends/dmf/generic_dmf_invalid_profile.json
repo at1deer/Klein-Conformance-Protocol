@@ -1,0 +1,29 @@
+{
+  "adapter_config_version": "klein.dmf_backend_adapter_config.v1",
+  "adapter_id": "generic-dmf-dry-run",
+  "adapter_kind": "generic_dmf",
+  "backend_id": "generic_dmf_dry_run",
+  "backend_version": "0.1.0-alpha",
+  "capabilities_path": "backend_capabilities.json",
+  "hardware_io_enabled": false,
+  "hil_contract_path": "hil_contract.json",
+  "limitations": [
+    "Dry-run adapter skeleton only.",
+    "No physical device IO."
+  ],
+  "mode": "dry_run",
+  "profile": {
+    "profile_id": "other",
+    "profile_version": "v1"
+  },
+  "safety": {
+    "allow_hardware_io": false,
+    "require_estop": true
+  },
+  "substrate": {
+    "grid_height": 8,
+    "grid_width": 16,
+    "max_channels": 128,
+    "substrate_id": "virtual-dmf-16x8"
+  }
+}

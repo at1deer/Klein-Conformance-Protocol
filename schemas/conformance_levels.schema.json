@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Conformance Levels Catalog v1",
+  "type": "object",
+  "required": ["catalog_version", "levels"],
+  "additionalProperties": false,
+  "properties": {
+    "catalog_version": { "const": "klein.conformance_levels.v1" },
+    "levels": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/level" }
+    }
+  },
+  "definitions": {
+    "level": {
+      "type": "object",
+      "required": [
+        "level_id",
+        "name",
+        "layer",
+        "category",
+        "status",
+        "requires",
+        "required_artifacts",
+        "required_checks",
+        "evidence",
+        "forbidden_claims"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "level_id": { "type": "string", "minLength": 1 },
+        "name": { "type": "string", "minLength": 1 },
+        "layer": { "type": "string", "enum": ["CURRENT_ALPHA", "TARGET_V1", "LONG_HORIZON"] },
+        "category": { "type": "string", "enum": ["core", "profile", "verifier", "hardware", "recovery"] },
+        "status": { "type": "string", "enum": ["implemented", "partial", "target", "future"] },
+        "requires": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "required_artifacts": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "required_checks": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "required_tools": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "evidence": {
+          "type": "object",
+          "required": ["specs", "tests", "fixtures"],
+          "additionalProperties": false,
+          "properties": {
+            "specs": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+            "tests": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+            "fixtures": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+          }
+        },
+        "forbidden_claims": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

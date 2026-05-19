@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein DMF Backend Adapter Config v1",
+  "type": "object",
+  "required": [
+    "adapter_config_version",
+    "adapter_id",
+    "adapter_kind",
+    "backend_id",
+    "backend_version",
+    "profile",
+    "mode",
+    "hardware_io_enabled",
+    "hil_contract_path",
+    "capabilities_path",
+    "substrate",
+    "safety",
+    "limitations"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "adapter_config_version": { "const": "klein.dmf_backend_adapter_config.v1" },
+    "adapter_id": { "type": "string", "minLength": 1 },
+    "adapter_kind": { "const": "generic_dmf" },
+    "backend_id": { "type": "string", "minLength": 1 },
+    "backend_version": { "type": "string", "minLength": 1 },
+    "profile": {
+      "type": "object",
+      "required": ["profile_id", "profile_version"],
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": { "const": "dmf" },
+        "profile_version": { "const": "v1" }
+      }
+    },
+    "mode": { "type": "string", "enum": ["dry_run", "mock", "hardware"] },
+    "hardware_io_enabled": { "type": "boolean" },
+    "hil_contract_path": { "type": ["string", "null"] },
+    "capabilities_path": { "type": ["string", "null"] },
+    "substrate": {
+      "type": "object",
+      "required": ["substrate_id", "grid_width", "grid_height", "max_channels"],
+      "additionalProperties": false,
+      "properties": {
+        "substrate_id": { "type": "string", "minLength": 1 },
+        "grid_width": { "type": "integer", "minimum": 1 },
+        "grid_height": { "type": "integer", "minimum": 1 },
+        "max_channels": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "safety": {
+      "type": "object",
+      "required": ["require_estop", "allow_hardware_io"],
+      "additionalProperties": false,
+      "properties": {
+        "require_estop": { "type": "boolean" },
+        "allow_hardware_io": { "type": "boolean" }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

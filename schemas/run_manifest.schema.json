@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein Run Manifest v1",
+  "type": "object",
+  "required": ["manifest_version", "payload", "signatures"],
+  "additionalProperties": false,
+  "properties": {
+    "manifest_version": { "const": "klein.run_manifest.v1" },
+    "payload": {
+      "type": "object",
+      "required": [
+        "run_id",
+        "created_by",
+        "created_at",
+        "hail_canonicalization",
+        "hail_digest",
+        "hail_chain_algorithm",
+        "hail_chain_digest",
+        "preclose_hail_digest",
+        "preclose_hail_chain_digest",
+        "event_count",
+        "event_count_preclose",
+        "artifact_type",
+        "artifact_hash",
+        "artifact_canonicalization",
+        "profile_id",
+        "profile_version",
+        "backend_id",
+        "backend_version",
+        "mode",
+        "substrate_capabilities_hash",
+        "substrate_topology_hash",
+        "substrate_fingerprint",
+        "run_status",
+        "error_code",
+        "conformance_summary_hash"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "run_id": { "type": "string", "minLength": 1 },
+        "created_by": { "type": "string", "minLength": 1 },
+        "created_at": { "type": ["string", "null"] },
+        "hail_canonicalization": { "const": "klein.canon.jsonl.v1" },
+        "hail_digest": { "$ref": "#/definitions/sha256_ref" },
+        "hail_chain_algorithm": { "const": "klein.hail.chain.v1" },
+        "hail_chain_digest": { "$ref": "#/definitions/sha256_ref" },
+        "preclose_hail_digest": { "$ref": "#/definitions/sha256_ref" },
+        "preclose_hail_chain_digest": { "$ref": "#/definitions/sha256_ref" },
+        "event_count": { "type": "integer", "minimum": 0 },
+        "event_count_preclose": { "type": "integer", "minimum": 0 },
+        "artifact_type": {
+          "type": "string",
+          "enum": ["project", "container", "hail_jsonl", "invalid_artifact", "unknown"]
+        },
+        "artifact_hash": { "$ref": "#/definitions/sha256_ref" },
+        "artifact_canonicalization": {
+          "type": "string",
+          "enum": ["klein.canon.json.v1", "klein.canon.jsonl.v1", "raw-bytes"]
+        },
+        "profile_id": { "type": "string", "minLength": 1 },
+        "profile_version": { "type": "string", "minLength": 1 },
+        "backend_id": { "type": "string", "minLength": 1 },
+        "backend_version": { "type": "string", "minLength": 1 },
+        "mode": { "type": "string", "enum": ["HARD", "ENVELOPE", "DIAGNOSTIC"] },
+        "substrate_capabilities_hash": {
+          "anyOf": [{ "$ref": "#/definitions/sha256_ref" }, { "type": "null" }]
+        },
+        "substrate_topology_hash": {
+          "anyOf": [{ "$ref": "#/definitions/sha256_ref" }, { "type": "null" }]
+        },
+        "substrate_fingerprint": {
+          "anyOf": [{ "$ref": "#/definitions/sha256_ref" }, { "type": "null" }]
+        },
+        "run_status": { "type": "string", "enum": ["SUCCESS", "FAIL", "ERROR"] },
+        "error_code": { "type": ["string", "null"] },
+        "conformance_summary_hash": {
+          "anyOf": [{ "$ref": "#/definitions/sha256_ref" }, { "type": "null" }]
+        }
+      }
+    },
+    "signatures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "signature_algorithm",
+          "key_id",
+          "public_key_encoding",
+          "public_key",
+          "signature_encoding",
+          "signature"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "signature_algorithm": { "const": "Ed25519" },
+          "key_id": { "type": "string", "minLength": 1 },
+          "public_key_encoding": { "const": "base64.raw.ed25519" },
+          "public_key": { "type": "string", "pattern": "^[A-Za-z0-9+/]{43}=$" },
+          "signature_encoding": { "const": "base64.raw.ed25519" },
+          "signature": { "type": "string", "pattern": "^[A-Za-z0-9+/]{86}==$" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "sha256_ref": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
+  }
+}

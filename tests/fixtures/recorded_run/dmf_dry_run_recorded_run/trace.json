@@ -1,0 +1,56 @@
+{
+  "artifact_hash": "sha256:097f173d4ac0f32803ba99aa642be8d73db7bd503e6347f84a8a4c9b7e207c12",
+  "backend": {
+    "backend_id": "generic_dmf_dry_run",
+    "backend_version": "0.1.0-alpha"
+  },
+  "metadata": {
+    "dmf_backend_adapter": "generic-dmf-dry-run",
+    "dry_run": true
+  },
+  "profile": {
+    "profile_id": "dmf",
+    "profile_version": "v1"
+  },
+  "run_id": "dmf-dry-run",
+  "runbook_hash": "sha256:69d0986d862ba895ba1aba12e80321b70b0d43e00c2fc1d7de453bde9ed581f4",
+  "timebase": "DEVICE_TICKS",
+  "trace_id": null,
+  "trace_steps": [
+    {
+      "applied": true,
+      "details": {
+        "active_electrodes": [
+          0
+        ],
+        "adapter_command": "apply_frame",
+        "dry_run": true
+      },
+      "error_code": null,
+      "issued": true,
+      "operation": "DMF_SET_CHANNELS",
+      "runbook_step_id": "step-0001",
+      "status": "APPLIED",
+      "step_id": "step-0001",
+      "tick": 0
+    },
+    {
+      "applied": true,
+      "details": {
+        "active_electrodes": [
+          1
+        ],
+        "adapter_command": "apply_frame",
+        "dry_run": true
+      },
+      "error_code": null,
+      "issued": true,
+      "operation": "DMF_SET_CHANNELS",
+      "runbook_step_id": "step-0002",
+      "status": "APPLIED",
+      "step_id": "step-0002",
+      "tick": 1
+    }
+  ],
+  "trace_version": "klein.execution_trace.v1"
+}

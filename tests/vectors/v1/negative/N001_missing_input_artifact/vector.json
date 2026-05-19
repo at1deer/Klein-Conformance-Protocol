@@ -1,0 +1,13 @@
+{
+  "id": "N001",
+  "name": "N001_missing_input_artifact",
+  "schema_version": "v1",
+  "profile": "core",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "VECTOR_INPUT_MISSING",
+  "input_type": "project",
+  "input_path": "input/missing.klein",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "v1 vectors fail when declared input artifacts are missing"
+}

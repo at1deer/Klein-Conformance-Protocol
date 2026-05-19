@@ -1,0 +1,13 @@
+{
+  "id": "N029",
+  "name": "N029_container_missing_payload",
+  "schema_version": "v1",
+  "profile": "core",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "ARTIFACT_PAYLOAD_MISSING",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "Container artifact rejects missing payload"
+}

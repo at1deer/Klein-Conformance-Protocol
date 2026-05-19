@@ -1,0 +1,5 @@
+{
+  "expected_result": "FAIL",
+  "expected_error_code": "HAIL_SCHEMA_INVALID",
+  "expected_validation_stage": "hail_schema"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "024",
+  "name": "024_dmf_simulated_observation_snapshot",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "PASS",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "normalize_run_metadata": false,
+  "purpose": "DMF simulator emits separate Observation v1 contract details for applied channel state",
+  "profile_version": "v1",
+  "observation_required": true
+}

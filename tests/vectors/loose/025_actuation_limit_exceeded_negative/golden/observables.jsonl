@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_ACTUATION_LIMIT", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "Tick 0 has 2 switches > max_switches_per_tick=1", "run_id": "R25", "t": 0, "timebase": "DEVICE_TICKS"}

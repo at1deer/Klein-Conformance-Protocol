@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Klein State Image Bundle (SImgB)",
+  "description": "Static hardware definition used for compile-time routing and runtime verification. Formerly known as Device State Bundle (DSB).",
+  "type": "object",
+  "required": ["device_id", "geometry_hash", "defects"],
+  "properties": {
+    "device_id": { 
+      "type": "string",
+      "description": "Matches the hardware ID in capabilities.json."
+    },
+    "geometry_hash": {
+      "type": "string",
+      "description": "SHA256 of the factory electrode topology. Ensures code matches the board (Vector 022)."
+    },
+    "calibration": {
+      "type": "object",
+      "required": ["hash", "map"],
+      "properties": {
+        "hash": { 
+          "type": "string",
+          "description": "Hash of the calibration coefficients (Vector 026)."
+        },
+        "map": {
+          "type": "object",
+          "description": "Per-electrode calibration data (e.g., voltage offsets).",
+          "patternProperties": {
+            "^[0-9]+$": { "type": "number" }
+          }
+        }
+      }
+    },
+    "defects": {
+      "type": "object",
+      "required": ["dead_channels"],
+      "properties": {
+        "dead_channels": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "description": "List of electrode IDs permanently disabled."
+        },
+        "high_impedance_regions": {
+          "type": "array",
+          "items": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+{"code": "PAYLOAD_BITMAP_LENGTH", "kind": "DEVICE_EVENT", "level": "ERROR", "message": "BITMAP payload length 7 does not match rows=8", "run_id": "R53", "t": 0, "timebase": "DEVICE_TICKS"}

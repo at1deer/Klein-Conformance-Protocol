@@ -1,0 +1,49 @@
+{
+  "klein_container_version": "1.0",
+  "manifest": {
+    "project": {
+      "name": "channel-list-multi-tick-unsorted",
+      "version": "1.0",
+      "authors": [
+        "Klein"
+      ]
+    },
+    "runtime": {
+      "mode": "HARD",
+      "target_substrate": "dmf.muxed_ewod.opendrop.v1.0"
+    }
+  },
+  "payload": {
+    "kind": "CHANNEL_LIST",
+    "encoding": "JSON",
+    "data": [
+      {
+        "t": 2,
+        "channel_id": 8,
+        "state": "ON",
+        "voltage_v": 150.0,
+        "frequency_hz": 1000.0
+      },
+      {
+        "t": 0,
+        "channel_id": 5,
+        "state": "ON",
+        "voltage_v": 200.0,
+        "frequency_hz": 500.0
+      },
+      {
+        "t": 1,
+        "channel_id": 5,
+        "state": "OFF",
+        "voltage_v": 0.0
+      },
+      {
+        "t": 1,
+        "channel_id": 6,
+        "state": "ON",
+        "voltage_v": 180.0,
+        "frequency_hz": 2000.0
+      }
+    ]
+  }
+}

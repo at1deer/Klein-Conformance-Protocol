@@ -1,0 +1,35 @@
+{
+  "adapter_config_version": "klein.opendrop_adapter_config.v1",
+  "adapter_id": "opendrop-ewod-dry-run",
+  "adapter_kind": "opendrop_ewod",
+  "backend_id": "opendrop_ewod_dry_run",
+  "backend_version": "0.1.0-alpha",
+  "electrical_limits": {
+    "frequency_max_hz": 50000,
+    "frequency_min_hz": 1,
+    "voltage_max_v": 300,
+    "voltage_min_v": 0
+  },
+  "electrode_layout": {
+    "channel_count": 128,
+    "grid_height": 8,
+    "grid_width": 16,
+    "layout_id": "opendrop-demo-16x8",
+    "mapping": "row_major"
+  },
+  "hardware_io_enabled": false,
+  "limitations": ["Invalid fixture: serial transport is target work."],
+  "mode": "dry_run",
+  "profile": {
+    "profile_id": "dmf",
+    "profile_version": "v1"
+  },
+  "safety": {
+    "allow_hardware_io": false,
+    "require_estop": true
+  },
+  "transport": {
+    "endpoint": "COM3",
+    "transport_kind": "serial"
+  }
+}

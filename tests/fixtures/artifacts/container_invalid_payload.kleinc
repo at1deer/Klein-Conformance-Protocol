@@ -1,0 +1,27 @@
+{
+  "klein_container_version": "1.0",
+  "manifest": {
+    "project": {
+      "authors": [
+        "Klein"
+      ],
+      "name": "artifact-container-minimal",
+      "version": "1.0"
+    },
+    "runtime": {
+      "mode": "HARD",
+      "target_substrate": "dmf.muxed_ewod.opendrop.v1.0"
+    }
+  },
+  "payload": {
+    "data": [
+      {
+        "channel_id": 1,
+        "state": "ON",
+        "t": 0
+      }
+    ],
+    "encoding": "JSON",
+    "kind": "CHANNEL_LIST"
+  }
+}

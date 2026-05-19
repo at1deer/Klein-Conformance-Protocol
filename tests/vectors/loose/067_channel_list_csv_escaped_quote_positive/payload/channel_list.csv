@@ -1,0 +1,2 @@
+tick,channel_id,state,voltage_v,frequency_hz,waveform,note
+0,1,1,120,1000,AC_SINE,"he said ""hi"""

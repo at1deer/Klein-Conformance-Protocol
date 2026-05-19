@@ -1,0 +1,28 @@
+{
+  "frame_sequence_version": "0.1",
+  "frames": [
+    {
+      "dims": {
+        "cols": 8,
+        "rows": 8
+      },
+      "encoding": "SPARSE",
+      "pixels": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "tick": 0
+    }
+  ],
+  "notes": "Negative test: SPARSE contains duplicate pixel entries. Must fail in strict mode."
+}

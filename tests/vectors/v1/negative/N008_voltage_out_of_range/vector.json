@@ -1,0 +1,14 @@
+{
+  "id": "N008",
+  "name": "N008_voltage_out_of_range",
+  "schema_version": "v1",
+  "profile": "dmf",
+  "mode": "HARD",
+  "expected_result": "FAIL",
+  "expected_error_code": "PAYLOAD_VOLTAGE_OOB",
+  "input_type": "container",
+  "input_path": "input/container.kleinc",
+  "comparison_mode": "EXACT_JSONL",
+  "purpose": "CHANNEL_LIST rejects voltages outside substrate capabilities",
+  "profile_version": "v1"
+}

@@ -1,0 +1,51 @@
+{
+  "payload": {
+    "backends": [
+      {
+        "backend_id": "full_simulator",
+        "backend_name": "Klein Full Simulator",
+        "backend_vendor": "Klein Reference",
+        "backend_versions": [
+          "1.0.0a0"
+        ],
+        "keys": [
+          {
+            "key_id": "klein-test-backend-001",
+            "not_after": null,
+            "not_before": null,
+            "notes": "Public test key. Not production.",
+            "public_key": "A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=",
+            "public_key_encoding": "base64.raw.ed25519",
+            "signature_algorithm": "Ed25519",
+            "status": "active"
+          }
+        ],
+        "metadata": {
+          "test_fixture": true
+        },
+        "profiles": [
+          {
+            "profile_id": "dmf",
+            "profile_versions": [
+              "v1"
+            ]
+          }
+        ]
+      }
+    ],
+    "description": "Tampered registry fixture.",
+    "issued_at": null,
+    "registry_id": "klein-test-registry"
+  },
+  "registry_version": "klein.backend_identity_registry.v1",
+  "signatures": [
+    {
+      "authority_id": "klein-test-registry-root",
+      "public_key": "6kpsY+KcUgq+9VB7Ey7F+ZVHdq6+vnuSQh7qaRRG0iw=",
+      "public_key_encoding": "base64.raw.ed25519",
+      "signature": "QgB0VDnNaNn2oIfOVBrGl9uF0CnarHgQngyX5BdxkrCMkHC8zJymLvUemp10wP20rfWanQ4fyCP4vVXAmw9qDA==",
+      "signature_algorithm": "Ed25519",
+      "signature_encoding": "base64.raw.ed25519"
+    }
+  ]
+}
