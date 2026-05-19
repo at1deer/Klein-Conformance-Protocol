@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "klein-protocol"
-version = "1.0.0a0"
+version = "1.0.0a1"
 description = "A substrate conformance protocol for physical execution under uncertainty"
 readme = "README.md"
 license = "MIT"
