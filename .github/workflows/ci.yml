@@ -199,12 +199,12 @@ jobs:
           echo "=== Events ==="
           head -20 simple_path.jsonl
       
-      - name: Run gravity_well example
+      - name: Run attractor example
         run: |
-          python -m klein.sim.runner examples/gravity_well.klein \
-            --source source --sink sink --seed 42 -o gravity_well.jsonl
+          python -m klein.sim.runner examples/attractor.klein \
+            --source source --sink sink --seed 42 -o attractor.jsonl
           echo "=== Events ==="
-          head -20 gravity_well.jsonl
+          head -20 attractor.jsonl
       
       - name: Run obstacle_avoidance example
         run: |
@@ -219,7 +219,7 @@ jobs:
           name: example-outputs
           path: |
             simple_path.jsonl
-            gravity_well.jsonl
+            attractor.jsonl
             obstacle_avoidance.jsonl
 
   # Schema validation

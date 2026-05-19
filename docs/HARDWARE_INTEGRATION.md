@@ -485,27 +485,29 @@ def phi_to_voltage(phi: float, v_max: float = 300.0) -> float:
 # phi=0.95 → 292V (97% of max)
 ```
 
-### Action → Duration
+### Optical-path cost → Duration
 
-The "cost" of a path edge translates to actuation duration:
+The optical-path cost of an edge (Geodesic Meters; see
+`specs/physics_engine.md`) can be mapped to actuation duration on a
+backend-suggested basis:
 
 ```python
-def action_to_duration_ms(action_gm: float, k_viscosity: float = 10.0) -> int:
+def path_cost_to_duration_ms(cost_gm: float, k_viscosity: float = 10.0) -> int:
     """
-    Convert action cost (Geodesic Meters) to actuation duration.
-    
+    Convert optical-path cost (Geodesic Meters) to actuation duration.
+
     Formula: Duration_ms = S_edge * k_viscosity
-    
+
     Args:
-        action_gm: Action cost in Geodesic Meters
+        cost_gm: Discrete Fermat optical-path cost in Geodesic Meters
         k_viscosity: Hardware-specific viscosity constant (ms/Gm)
-        
+
     Returns:
         Duration in milliseconds
     """
-    return int(action_gm * k_viscosity)
+    return int(cost_gm * k_viscosity)
 
-# Example: action=2.0 Gm with k=10 → 20ms actuation
+# Example: cost = 2.0 Gm with k = 10 → 20 ms actuation
 ```
 
 ---

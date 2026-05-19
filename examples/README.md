@@ -28,18 +28,21 @@ python -m klein.sim.runner examples/simple_path.klein --source source --sink sin
 - Impedance values
 - Source → Sink pathfinding
 
-### 2. Gravity Well (`gravity_well.klein`)
+### 2. Attractor (`attractor.klein`)
 
-A graph with multiple paths where a gravity well attracts the solver toward one route.
+A graph with multiple paths where an attractor (refractive-index well) bends
+the optical-path solver toward one route. Fermat's principle: the discrete
+optical path minimizes ∫ n_eff ds where n_eff = (Z + ε)(1 − Φ), and the
+attractor lowers Φ near its centre so paths through it become "cheaper".
 
 ```bash
-python -m klein.sim.runner examples/gravity_well.klein --source source --sink sink
+python -m klein.sim.runner examples/attractor.klein --source source --sink sink
 ```
 
 **Features demonstrated:**
 - Multiple path options
-- Gravity well field effect
-- Cost optimization with field potential
+- Attractor (Gaussian refractive-index well) field effect
+- Cost optimization with refractive-index modulation
 
 ### 3. Obstacle Avoidance (`obstacle_avoidance.klein`)
 
@@ -108,7 +111,7 @@ python -m klein.sim.runner examples/simple_path.klein -s source -t sink --seed 4
   ],
   "fields": [
     {
-      "type": "gravity_well",
+      "type": "attractor",
       "center": [15, 0, 0],
       "strength": 0.5,
       "radius": 10.0
@@ -121,22 +124,28 @@ python -m klein.sim.runner examples/simple_path.klein -s source -t sink --seed 4
 
 ## Field Types
 
-### Gravity Well
+Fields modify the local refractive index n_eff = (Z + ε)(1 − Φ) of the
+discrete graph that the solvers traverse. Attractors lower n_eff and bend the
+optical path toward themselves; repulsors raise n_eff and push the path away.
 
-Attracts the solver path toward its center. Reduces action cost for nearby edges.
+### Attractor (refractive-index well)
+
+Attracts the solver path toward its centre by lowering the local
+optical-path cost. Gaussian falloff: Φ(p) = strength · exp(−||p − C||² / R²).
 
 ```json
 {
-  "type": "gravity_well",
+  "type": "attractor",
   "center": [x, y, z],
   "strength": 0.0 - 1.0,
   "radius": falloff_distance
 }
 ```
 
-### Repulsor
+### Repulsor (refractive-index barrier)
 
-Repels the solver path away from its center. Increases action cost for nearby edges.
+Repels the solver path away from its centre by raising the local
+optical-path cost. Inverse-square: Φ(p) = −strength / ||p − C||².
 
 ```json
 {

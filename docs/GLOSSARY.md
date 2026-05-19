@@ -160,41 +160,79 @@ Use case: Debugging, calibration, new substrate development.
 
 ## Physics & Routing
 
-### Geodesic Routing
+### Geodesic Routing (Discrete Fermat / Optical Path)
 
-Treating execution as finding the **Path of Least Action** through a physical cost surface.
+Treating planning as finding the **Path of Least Optical Path Length** on a
+weighted graph, in the spirit of Fermat's principle: a light ray (and this
+solver) minimizes ∫ n_eff ds, where n_eff is a spatially-varying refractive
+index.
 
 Formula:
 ```
-S(P) = Σ [ L × (Z + ε) × (1 - Φ) ]
+S(P) = Σ [ L × (Z + ε) × (1 − Φ) ]
+     = Σ [ L × n_eff(midpoint) ]
 ```
 
 Where:
 - `L` = Edge length (Euclidean distance)
 - `Z` = Impedance (0.0 = superconductor, 1.0 = standard)
-- `ε` = Base action constant (0.001)
-- `Φ` = Field potential (gravity wells, repulsors)
+- `ε` = Base path-cost constant (0.001)
+- `Φ` = Refractive-index modulator at the edge midpoint
+- `n_eff` = (Z + ε) × (1 − Φ); the discrete effective refractive index
+
+The unit of cost is the **Geodesic Meter (Gm)**, the effective optical-path
+length on the graph after impedance and refractive-index modulation.
+
+This is the *planning* prior. The KCP evidence stack
+(runbook → trace → HAIL → manifest) verifies what was actually executed on
+substrate.
 
 ---
 
-### Gravity Well
+### Random Walk on the Impedance Graph (Doyle-Snell)
 
-A volumetric field that attracts paths toward its center by reducing action cost.
+The stochastic counterpart to geodesic routing. Each edge is treated as a
+resistor with conductance `c_ij = 1 / edge_cost(i → j)`. The transition
+probability out of node `i` is the Doyle-Snell conductance form for a random
+walk on a resistor network:
+
+```
+P(i → j) = c_ij / Σ_k c_ik
+```
+
+This is the textbook reversible Markov chain on the impedance graph
+(Doyle & Snell, *Random Walks and Electric Networks*). It is **not**
+quantum-mechanical wave mechanics; there are no complex amplitudes and
+no interference.
+
+---
+
+### Attractor (refractive-index well)
+
+A volumetric field that attracts paths toward its centre by lowering the
+local refractive index `n_eff`. Gaussian falloff.
 
 ```json
 {
-  "type": "gravity_well",
+  "type": "attractor",
   "center": [x, y, z],
   "strength": 0.0-1.0,
   "radius": falloff_distance
 }
 ```
 
+> **Note (v1.0.0a1 reframe):** Previously called "gravity_well" / "gravity";
+> renamed in 1.0.0a1 because the Gaussian additive-Φ model does not match
+> any gravitational analogue. The schema string `"gravity"` (and the
+> documentation-only string `"gravity_well"`) is broken cleanly to
+> `"attractor"`; no deprecation alias is provided in alpha.
+
 ---
 
-### Repulsor
+### Repulsor (refractive-index barrier)
 
-A volumetric field that repels paths away from its center by increasing action cost.
+A volumetric field that repels paths away from its centre by raising the
+local refractive index `n_eff`. Inverse-square falloff.
 
 ```json
 {

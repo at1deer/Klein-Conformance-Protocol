@@ -1,21 +1,62 @@
 """
 Klein Physics & Math Engine v1.0
 
-Discrete Geodesic Optimization for the Klein Protocol.
+Discrete optical pathfinding plus reversible random walk on the same weighted
+graph, intended for the Klein Protocol's *planning* side. None of this is a
+claim about substrate execution; see CLAIMS_LEDGER.md for the evidence side.
 
-This module implements the physics engine that computes optimal paths through
-a graph using the Principle of Least Action. It treats code as physical action,
-finding paths that minimize the total Action cost.
+Two analogies are honored by the math here and used as the design vocabulary:
 
-Core Equation (Discrete Action):
-    S(P) = Σ (L_i · (Z_i + ε) · (1 - Φ_local)) + H(n_end)
+1.  GeodesicSolver. Fermat's Principle of Least Optical Path on a discrete
+    graph. The deterministic solver minimizes the sum of edge optical-path
+    lengths
+
+        L_edge = L_i · (Z_i + ε) · (1 − Φ_local)
+
+    where ``n_eff(midpoint) = (Z + ε)(1 − Φ)`` plays the role of a
+    spatially-varying refractive index. ``Z`` is local resistance to traversal,
+    ``Φ`` is a refractive-index modulator field, attractors lower n_eff, and
+    repulsor barriers raise it. Light minimizes ∫ n ds; this solver minimizes
+    its discrete graph analogue with A*.
+
+2.  WaveSolver. Natural reversible random walk on the same weighted graph,
+    Doyle-Snell conductance form for a resistor network. Treat each edge as a
+    resistor with conductance ``c_ij = 1 / edge_cost``. The transition law is
+
+        P(i → j) = c_ij / Σ_k c_ik
+
+    This is the standard reversible Markov chain on the impedance graph
+    (Doyle & Snell, *Random Walks and Electric Networks*). It is **not**
+    quantum-mechanical wave mechanics; nothing here uses complex amplitudes
+    or interference.
+
+Core Equation (Discrete Fermat / Optical Path):
+    S(P) = Σ_i [ L_i · (Z_i + ε) · (1 − Φ_local) ] + H(n_end)
 
 Where:
     - L_i: Euclidean edge length
     - Z_i: Scalar impedance (0.0 = superconductor, 1.0 = standard)
-    - ε: Base action constant (~0.001), prevents zero-cost paths
-    - Φ_local: Field potential at edge midpoint, clamped to [−∞, 0.95]
-    - H(n): Admissible heuristic = EuclideanDist(n, goal) × Z_min_global
+    - ε: Base path-cost constant (~0.001); prevents zero-cost paths
+    - Φ_local: Refractive-index modulator at the edge midpoint, clamped to
+      (−∞, 0.95]
+    - n_eff(midpoint) = (Z + ε)(1 − Φ) is the discrete effective refractive
+      index
+    - H(n): Admissible A* heuristic = EuclideanDist(n, goal) × Z_min_global
+
+The unit of cost is the **Geodesic Meter (Gm)**, the effective optical-path
+length on a graph after impedance and refractive-index modulation. This is the
+*planning* prior. KCP evidence (runbook → trace → HAIL → manifest) verifies
+what was actually done; the planning prior here does not.
+
+Why this vocabulary changed (v1.0.0a1 reframe): earlier drafts called S(P) a
+"Discrete Action" minimized by a "Principle of Least Action" and called the
+attractor field a "gravity well". Those names borrowed prestige from
+Lagrangian mechanics and quantum wave mechanics that the math does not
+support: real action is stationary (not minimized), real potentials are
+additive (not multiplicative), and quantum wave mechanics requires complex
+amplitudes (not real-valued inverse-cost weights). The new names (Fermat;
+Doyle-Snell conductance) correspond exactly to what this code does and
+connect to standard literature.
 """
 
 from __future__ import annotations
@@ -37,8 +78,8 @@ from klein.common.models import KleinProject, KleinNode, KleinEdge, KleinField
 # Constants
 # =============================================================================
 
-EPSILON: float = 0.001  # Base action constant (prevents zero-cost paths)
-PHI_MAX: float = 0.95   # Maximum field potential (prevents negative edge weights)
+EPSILON: float = 0.001  # Base path-cost constant (prevents zero-cost paths)
+PHI_MAX: float = 0.95   # Refractive-index modulator clamp (prevents negative edge weights)
 DEFAULT_IMPEDANCE: float = 1.0  # Default impedance for edges without explicit value
 
 
@@ -47,9 +88,16 @@ DEFAULT_IMPEDANCE: float = 1.0  # Default impedance for edges without explicit v
 # =============================================================================
 
 class FieldType(str, Enum):
-    """Supported field types for volumetric modifiers."""
-    GRAVITY = "gravity"      # Attractor (Gaussian)
-    REPULSOR = "repulsor"    # Barrier (Inverse-square)
+    """Supported refractive-index modulator field types.
+
+    Each field type lowers or raises the local effective refractive index
+    n_eff(p) = (Z + ε)(1 − Φ(p)) at points near its centre, which in turn
+    raises or lowers the discrete Fermat optical-path length of any edge that
+    passes through that region.
+    """
+
+    ATTRACTOR = "attractor"  # Refractive-index well (Gaussian; lowers n_eff)
+    REPULSOR = "repulsor"    # Refractive-index barrier (inverse-square; raises n_eff)
 
 
 @dataclass
@@ -65,10 +113,13 @@ class FieldEffect:
 
 class FieldManager:
     """
-    Manages volumetric field effects that modify path costs.
-    
-    Fields are the mechanism by which the user "programs" the path without
-    touching nodes directly. They modify the Φ value in the Action equation.
+    Manages volumetric refractive-index modulator fields that bias path costs.
+
+    Fields are the mechanism by which the caller "programs" the path without
+    touching nodes directly: they modify the Φ value in the discrete Fermat
+    edge-cost expression L · (Z + ε) · (1 − Φ_local). Attractors lower n_eff
+    near a centre and pull the optical path toward themselves; repulsor
+    barriers raise n_eff and push the optical path away.
     """
     
     def __init__(self, fields: Sequence[KleinField] | None = None):
@@ -84,45 +135,49 @@ class FieldManager:
     
     def compute_phi(self, position: NDArray[np.floating]) -> FieldEffect:
         """
-        Compute the total field potential Φ at a given position.
-        
+        Compute the total refractive-index modulator Φ at a given position.
+
         Args:
             position: 3D position vector [x, y, z]
-            
+
         Returns:
             FieldEffect with clamped phi value and list of contributors
         """
         total_phi = 0.0
         contributors: list[str] = []
-        
+
         for f in self._fields:
             center = np.array(f.center, dtype=np.float64)
             dist_sq = float(np.sum((position - center) ** 2))
             dist = math.sqrt(dist_sq) if dist_sq > 0 else 1e-10
-            
+
             field_type = f.type.lower()
-            
-            if field_type == FieldType.GRAVITY.value:
-                # Gravity Well (Attractor): Gaussian function
-                # Φ_grav(p) = S_strength · exp(-||p - C||² / R²)
+
+            if field_type == FieldType.ATTRACTOR.value:
+                # Attractor (refractive-index well): Gaussian
+                # Φ_attr(p) = S_strength · exp(-||p − C||² / R²)
+                # Lowers n_eff = (Z + ε)(1 − Φ) near the centre, shortening
+                # the discrete Fermat optical-path length of nearby edges.
                 radius = f.radius if f.radius and f.radius > 0 else 1.0
                 phi_contribution = f.strength * math.exp(-dist_sq / (radius ** 2))
                 total_phi += phi_contribution
                 if abs(phi_contribution) > 1e-6:
-                    contributors.append(FieldType.GRAVITY.value)
-                    
+                    contributors.append(FieldType.ATTRACTOR.value)
+
             elif field_type == FieldType.REPULSOR.value:
-                # Repulsor (Barrier): Inverse-square function
-                # Φ_rep(p) = -1 · S_strength / ||p - C||²
-                # As distance → 0, cost → ∞
+                # Repulsor (refractive-index barrier): inverse-square
+                # Φ_rep(p) = −1 · S_strength / ||p − C||²
+                # As distance → 0, n_eff → large, so the optical-path
+                # length diverges and the solver routes around the region.
                 phi_contribution = -f.strength / max(dist_sq, 1e-6)
                 total_phi += phi_contribution
                 if abs(phi_contribution) > 1e-6:
                     contributors.append(FieldType.REPULSOR.value)
-        
-        # Clamp Φ to maximum of PHI_MAX (0.95) to prevent negative edge weights
+
+        # Clamp Φ to maximum of PHI_MAX (0.95) to keep (1 − Φ) ≥ 0.05 and
+        # therefore n_eff strictly positive, which A* admissibility requires.
         clamped_phi = min(total_phi, PHI_MAX)
-        
+
         return FieldEffect(phi=clamped_phi, contributors=contributors)
 
 
@@ -199,30 +254,31 @@ def compute_edge_cost(
     epsilon: float = EPSILON,
 ) -> float:
     """
-    Compute the Action cost for traversing an edge.
-    
-    Formula: Cost = L · (Z + ε) · (1 - Φ_local)
-    
+    Compute the discrete Fermat optical-path cost of traversing an edge.
+
+    Formula: Cost = L · (Z + ε) · (1 − Φ_local), which is the same as
+    L · n_eff(midpoint) where n_eff = (Z + ε)(1 − Φ).
+
     Args:
         edge_data: The edge properties
-        field_manager: Manager for field effects
-        epsilon: Base action constant
-        
+        field_manager: Manager for refractive-index modulator fields
+        epsilon: Base path-cost constant
+
     Returns:
-        The action cost in Geodesic Meters (Gm)
+        The optical-path cost in Geodesic Meters (Gm).
     """
     L = edge_data.length
     Z = edge_data.impedance
-    
-    # Get field effect at edge midpoint
+
+    # Get the local refractive-index modulator at the edge midpoint
     field_effect = field_manager.compute_phi(edge_data.midpoint)
     phi = field_effect.phi
-    
-    # Compute cost: L · (Z + ε) · (1 - Φ)
-    # Note: Φ is already clamped to 0.95, so (1 - Φ) >= 0.05
+
+    # Compute cost: L · (Z + ε) · (1 − Φ)
+    # Φ is already clamped to PHI_MAX so (1 − Φ) ≥ 0.05 and n_eff > 0.
     cost = L * (Z + epsilon) * (1.0 - phi)
-    
-    return max(cost, epsilon)  # Ensure positive cost
+
+    return max(cost, epsilon)  # Ensure strictly positive cost
 
 
 def compute_heuristic(
@@ -259,7 +315,7 @@ class PathResult:
     """Result of a pathfinding operation."""
     success: bool
     path: list[str]                          # Sequence of node IDs
-    total_cost: float                        # Total action cost (Gm)
+    total_cost: float                        # Total optical-path cost (Gm)
     explored_count: int                      # Number of nodes explored
     edge_costs: dict[tuple[str, str], float] = field(default_factory=dict)
     
@@ -276,9 +332,9 @@ class PathResult:
 
 @dataclass
 class WaveResult:
-    """Result of wave mechanics (stochastic) analysis."""
+    """Result of reversible random-walk reachability analysis."""
     probabilities: dict[str, float]  # Node ID → probability of reaching
-    expected_cost: float             # Expected action cost
+    expected_cost: float             # Expected optical-path cost
     paths: list[tuple[list[str], float]]  # (path, probability) pairs
 
 
@@ -288,10 +344,13 @@ class WaveResult:
 
 class GeodesicSolver:
     """
-    A* pathfinding solver modified by volumetric fields.
-    
-    This implements the Discrete Geodesic Optimization algorithm from the
-    Klein Physics Engine specification.
+    A* pathfinding solver that minimizes the discrete Fermat optical-path
+    length on a graph whose edges have refractive index n_eff = (Z + ε)(1 − Φ).
+
+    This is the deterministic side of the Klein Physics Engine: Fermat's
+    Principle of Least Optical Path applied to a graph. Volumetric attractor
+    and repulsor fields modify n_eff locally so the optimal path is "bent"
+    just as a light ray would be in a medium with a spatially-varying index.
     """
     
     def __init__(
@@ -461,18 +520,40 @@ class GeodesicSolver:
 
 
 # =============================================================================
-# Wave Mechanics (Stochastic Mode)
+# Random Walk on Impedance Graph (Doyle-Snell conductance form)
 # =============================================================================
 
 class WaveSolver:
     """
-    Stochastic reachability analysis using Markov Chain probability.
-    
-    In "unsafe" debugging mode, we compute probability distributions
-    instead of single optimal paths. At each fork, probability splits
-    inversely proportional to action cost.
-    
-    Formula: P(A) = (1/S(A)) / (1/S(A) + 1/S(B))
+    Natural reversible random walk on the same weighted graph used by
+    ``GeodesicSolver``.
+
+    Treat each directed edge ``(i → j)`` as a resistor with conductance
+    ``c_ij = 1 / edge_cost(i → j)``. The transition probability out of node
+    ``i`` is then the Doyle-Snell conductance form for a random walk on a
+    resistor network:
+
+        P(i → j) = c_ij / Σ_k c_ik
+                 = (1 / cost(i → j)) / Σ_k (1 / cost(i → k))
+
+    This is a textbook reversible Markov chain on the impedance graph
+    (Doyle & Snell, *Random Walks and Electric Networks*). It is **not**
+    quantum-mechanical wave mechanics; there are no complex amplitudes and
+    no interference. The name "WaveSolver" is retained for API stability;
+    it could equivalently be called ``ResistorNetworkSolver`` or
+    ``RandomWalkSolver``.
+
+    Use this instead of the deterministic GeodesicSolver when you want
+    stochastic reachability or to model fork-then-merge behaviour where
+    "more conductive" branches simply attract more walkers.
+
+    TODO(reframe/fermat-conductance): expose an optional temperature-like
+    knob ``beta`` so transition probabilities become
+    ``P(i → j) ∝ (1 / cost(i → j))^beta`` with ``beta = 1`` reproducing the
+    current Doyle-Snell behaviour exactly. Any real ``beta > 0`` is still a
+    valid conductance on a transformed edge weight, so this stays inside
+    the resistor-network interpretation. (Flagged for review; do not ship
+    until requested.)
     """
     
     def __init__(
@@ -488,38 +569,47 @@ class WaveSolver:
     def compute_transition_probabilities(self, node: str) -> dict[str, float]:
         """
         Compute transition probabilities from a node to its successors.
-        
-        Uses inverse action cost weighting:
-        P(neighbor) = (1/cost_to_neighbor) / Σ(1/cost_to_all_neighbors)
-        
+
+        Each outgoing edge ``(node → j)`` is treated as a resistor with
+        conductance ``c_j = 1 / edge_cost(node → j)``. The Doyle-Snell
+        transition law for a reversible random walk on a resistor network
+        then gives
+
+            P(node → j) = c_j / Σ_k c_k
+
+        i.e. the conductance of the chosen edge divided by the total
+        conductance leaving ``node``. More conductive edges (cheaper
+        optical-path cost) attract proportionally more probability mass.
+
         Args:
             node: Current node ID
-            
+
         Returns:
-            Dict mapping successor node ID → transition probability
+            Dict mapping successor node ID → transition probability.
         """
         if node not in self._graph:
             return {}
-        
+
         successors = list(self._graph.successors(node))
         if not successors:
             return {}
-        
-        # Compute inverse costs
-        inverse_costs: dict[str, float] = {}
+
+        # Edge conductances: c_j = 1 / cost(node → j)
+        conductances: dict[str, float] = {}
         for neighbor in successors:
             edge_data: EdgeData = self._graph[node][neighbor]['data']
             cost = compute_edge_cost(edge_data, self._field_manager)
-            inverse_costs[neighbor] = 1.0 / max(cost, EPSILON)
-        
-        # Normalize to probabilities
-        total_inverse = sum(inverse_costs.values())
-        if total_inverse <= 0:
-            # Uniform distribution fallback
+            conductances[neighbor] = 1.0 / max(cost, EPSILON)
+
+        # Total node conductance Σ_k c_k
+        total_conductance = sum(conductances.values())
+        if total_conductance <= 0:
+            # Degenerate case: fall back to uniform.
             uniform_p = 1.0 / len(successors)
             return {n: uniform_p for n in successors}
-        
-        return {n: inv / total_inverse for n, inv in inverse_costs.items()}
+
+        # P(node → j) = c_j / Σ_k c_k
+        return {n: c / total_conductance for n, c in conductances.items()}
     
     def compute_reachability(
         self,
@@ -641,35 +731,36 @@ def solve_geodesic(
     return solver.solve(source, sink)
 
 
-def compute_action(
+def compute_path_cost(
     project: KleinProject,
     path: list[str],
 ) -> float:
     """
-    Compute the total action cost for a given path.
-    
+    Compute the total discrete Fermat optical-path cost of a given path.
+
     Args:
         project: The Klein project definition
         path: Sequence of node IDs
-        
+
     Returns:
-        Total action cost in Geodesic Meters (Gm)
+        Total optical-path cost in Geodesic Meters (Gm); ``inf`` if the
+        path references an edge that does not exist in the project graph.
     """
     if len(path) < 2:
         return 0.0
-    
+
     graph, _ = build_graph(project)
     field_manager = FieldManager(project.fields)
-    
+
     total_cost = 0.0
     for i in range(len(path) - 1):
         from_id, to_id = path[i], path[i + 1]
         if not graph.has_edge(from_id, to_id):
             return float('inf')  # Invalid path
-        
+
         edge_data: EdgeData = graph[from_id][to_id]['data']
         total_cost += compute_edge_cost(edge_data, field_manager)
-    
+
     return total_cost
 
 
@@ -722,6 +813,6 @@ __all__ = [
     "WaveSolver",
     # High-level API
     "solve_geodesic",
-    "compute_action",
+    "compute_path_cost",
     "analyze_wave",
 ]

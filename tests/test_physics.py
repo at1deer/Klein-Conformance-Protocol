@@ -98,17 +98,17 @@ def test_impedance_routing():
     print("  PASSED!")
 
 
-def test_gravity_well():
-    """Test gravity well field effect on routing."""
-    print("\nTest 3: Gravity well field effect")
-    
-    # Create graph with gravity well
+def test_attractor():
+    """Test attractor (refractive-index well) field effect on routing."""
+    print("\nTest 3: Attractor field effect")
+
+    # Create graph with an attractor (refractive-index well)
     project = KleinProject(
         meta={"version": "1.0", "target_substrate": "test"},
         nodes=[
             KleinNode(id="A", type="source", pos=[0, 0, 0]),
-            KleinNode(id="B", type="relay", pos=[1, 1, 0]),  # Upper path
-            KleinNode(id="C", type="relay", pos=[1, -1, 0]), # Lower path (gravity well here)
+            KleinNode(id="B", type="relay", pos=[1, 1, 0]),   # Upper path
+            KleinNode(id="C", type="relay", pos=[1, -1, 0]),  # Lower path (attractor here)
             KleinNode(id="D", type="sink", pos=[2, 0, 0]),
         ],
         edges=[
@@ -118,26 +118,26 @@ def test_gravity_well():
             KleinEdge(**{"from": "C", "to": "D", "type": "rail", "impedance": 1.0}),
         ],
         fields=[
-            KleinField(type="gravity", center=[1, -1, 0], strength=0.8, radius=1.0)
+            KleinField(type="attractor", center=[1, -1, 0], strength=0.8, radius=1.0)
         ]
     )
-    
+
     graph, positions = build_graph(project)
     field_manager = FieldManager(project.fields)
     solver = GeodesicSolver(graph, positions, field_manager)
-    
-    # Check field effect at C
+
+    # Check refractive-index modulator at C
     c_pos = np.array([1.0, -1.0, 0.0])
     effect = field_manager.compute_phi(c_pos)
     print(f"  Field Phi at C: {effect.phi:.4f}")
     print(f"  Contributors: {effect.contributors}")
-    
+
     result = solver.solve("A", "D")
     print(f"  Path: {' -> '.join(result.path)}")
     print(f"  Cost: {result.total_cost:.4f} Gm")
-    
-    # Gravity well should make the C path cheaper
-    assert "C" in result.path, "Should route through gravity well at C"
+
+    # The attractor should lower n_eff near C and pull the optical path through C.
+    assert "C" in result.path, "Should route through attractor at C"
     print("  PASSED!")
 
 
@@ -183,8 +183,8 @@ def test_repulsor():
 
 
 def test_wave_solver():
-    """Test stochastic wave solver."""
-    print("\nTest 5: Wave mechanics (stochastic solver)")
+    """Test reversible random walk (Doyle-Snell conductance form) solver."""
+    print("\nTest 5: Random walk on impedance graph (Doyle-Snell conductances)")
     
     project = KleinProject(
         meta={"version": "1.0", "target_substrate": "test"},
@@ -291,18 +291,18 @@ def test_no_path():
 def test_phi_clamping():
     """Test that Phi is correctly clamped to PHI_MAX."""
     print("\nTest 8: Phi clamping to 0.95")
-    
-    # Create a very strong gravity well
+
+    # Create a very strong refractive-index attractor well
     field_manager = FieldManager([
-        KleinField(type="gravity", center=[0, 0, 0], strength=10.0, radius=1.0)
+        KleinField(type="attractor", center=[0, 0, 0], strength=10.0, radius=1.0)
     ])
-    
+
     effect = field_manager.compute_phi(np.array([0.0, 0.0, 0.0]))
     print(f"  Phi at center of strong well: {effect.phi:.4f}")
     print(f"  PHI_MAX constant: {PHI_MAX}")
-    
+
     assert effect.phi <= PHI_MAX, f"Phi should be clamped to {PHI_MAX}"
-    assert effect.phi == PHI_MAX, f"Strong well should hit the cap"
+    assert effect.phi == PHI_MAX, "Strong attractor well should hit the cap"
     print("  PASSED!")
 
 
@@ -314,7 +314,7 @@ def main():
     
     project, graph, positions = test_basic_pathfinding()
     test_impedance_routing(project, graph, positions)
-    test_gravity_well()
+    test_attractor()
     test_repulsor()
     test_wave_solver()
     test_potential_map()

@@ -16,7 +16,7 @@ from klein.sim.physics import (
     build_graph,
     compute_edge_cost,
     solve_geodesic,
-    compute_action,
+    compute_path_cost,
 )
 
 from klein.sim.virtual_substrate import (
@@ -45,7 +45,7 @@ __all__ = [
     "build_graph",
     "compute_edge_cost",
     "solve_geodesic",
-    "compute_action",
+    "compute_path_cost",
     # Virtual Substrate
     "VirtualSubstrate",
     "Droplet",

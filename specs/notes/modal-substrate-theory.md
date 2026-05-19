@@ -12,7 +12,7 @@ The useful mapping is:
 - valid downstream execution paths -> reachable future state-space
 - impedance, defects, drift, uncertainty -> resistance
 - loss of reachable safe execution paths -> contraction or harm
-- bounded path selection -> geodesic action cost
+- bounded path selection -> discrete Fermat optical-path cost
 - HAIL -> evidence
 - ECRP -> bounded repair evidence
 

@@ -58,7 +58,7 @@ project = KleinProject.model_validate({
         {"from": "B", "to": "C", "type": "rail", "impedance": 1.0},
     ],
     "fields": [
-        {"type": "gravity_well", "center": [15, 0, 0], "strength": 0.5, "radius": 5.0},
+        {"type": "attractor", "center": [15, 0, 0], "strength": 0.5, "radius": 5.0},
     ]
 })
 ```
@@ -98,7 +98,7 @@ project = KleinProject.model_validate({
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
-| `type` | `str` | required | `gravity_well` or `repulsor` |
+| `type` | `str` | required | `attractor` or `repulsor` |
 | `center` | `list[float]` | required | 3D position |
 | `strength` | `float` | required | Field strength |
 | `radius` | `float` | `None` | Falloff radius |
@@ -257,8 +257,8 @@ Module: `klein.sim.physics`
 ### Constants
 
 ```python
-EPSILON = 0.001       # Base action constant
-PHI_CLAMP_MAX = 0.95  # Maximum field potential
+EPSILON = 0.001       # Base path-cost constant
+PHI_CLAMP_MAX = 0.95  # Refractive-index modulator clamp
 ```
 
 ### FieldManager
@@ -270,7 +270,7 @@ from klein.sim.physics import FieldManager
 from klein.common.models import KleinField
 
 fields = [
-    KleinField(type="gravity_well", center=[10, 0, 0], strength=0.5, radius=5.0),
+    KleinField(type="attractor", center=[10, 0, 0], strength=0.5, radius=5.0),
     KleinField(type="repulsor", center=[5, 5, 0], strength=0.3, radius=3.0),
 ]
 
@@ -320,17 +320,23 @@ probs = wave_solver.compute_reachability(source="A", steps=10)
 # probs: dict[node_id, probability]
 ```
 
-### Action Cost Formula
+### Optical-Path Cost Formula (Discrete Fermat)
 
 ```
 S(edge) = L * (Z + epsilon) * (1 - Phi)
+        = L * n_eff(midpoint)
 
 Where:
-  L = Euclidean distance between nodes
-  Z = Edge impedance (0.0 = superconductor, 1.0 = standard)
-  epsilon = 0.001 (prevents division by zero)
-  Phi = Field potential at edge midpoint (clamped to 0.95)
+  L        = Euclidean distance between nodes
+  Z        = Edge impedance (0.0 = superconductor, 1.0 = standard)
+  epsilon  = 0.001 (prevents zero-cost edges)
+  Phi      = Refractive-index modulator at edge midpoint (clamped to 0.95)
+  n_eff    = (Z + epsilon) * (1 - Phi); the effective refractive index of
+             the edge under Fermat's principle of least optical path.
 ```
+
+The unit of cost is the **Geodesic Meter (Gm)**, the effective optical-path
+length on the graph after impedance and refractive-index modulation.
 
 ---
 

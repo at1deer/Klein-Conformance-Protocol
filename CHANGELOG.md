@@ -4,6 +4,111 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+### Physics-engine vocabulary reframe (planning side only, no numerical changes)
+
+Reframed the planning-side physics engine away from "Principle of Least Action +
+inverted gravity / wave mechanics" and toward two precise analogies the math
+already honors:
+
+1. **Fermat's Principle of Least Optical Path on a discrete graph** for the
+   deterministic `GeodesicSolver`. The edge cost
+   `L_i * (Z_i + epsilon) * (1 - Phi_local)` is the discretized optical-path
+   length where `n_eff(midpoint) = (Z + epsilon)(1 - Phi)` plays the role of
+   a spatially-varying refractive index. Attractor fields lower `n_eff`;
+   repulsor barriers raise it. Light (and the solver) minimizes `int n ds`.
+2. **Natural reversible random walk on a weighted graph with conductances
+   `c_ij = 1 / edge_cost`** (Doyle-Snell / Kirchhoff form) for the stochastic
+   `WaveSolver`. The transition law `P(i -> j) = c_ij / sum_k c_ik` is the
+   textbook resistor-network random walk (Doyle & Snell, *Random Walks and
+   Electric Networks*). This is **not** quantum-mechanical wave mechanics;
+   nothing here uses complex amplitudes or interference. The class name
+   `WaveSolver` is retained for API stability.
+
+Concrete renames in `src/klein/sim/physics.py`:
+
+- Module docstring rewritten with Fermat + Doyle-Snell framing.
+- Core equation relabelled from `Discrete Action` to
+  `Discrete Fermat / Optical Path`; `n_eff = (Z + epsilon)(1 - Phi)`
+  annotated.
+- `FieldType.GRAVITY = "gravity"` → `FieldType.ATTRACTOR = "attractor"`.
+  **Breaking schema-string change** for `KleinField.type`. No deprecation
+  alias is provided in alpha; a clean break is cheaper than a deprecation
+  path at this stage. The repo-wide JSON schema for `KleinField.type` is
+  declared as `{"type": "string", "minLength": 1}` (no enum), so this is a
+  semantic break in the Python `FieldType` enum and in the documented
+  vocabulary, not a JSON-schema enum break. Whether to bump a schema
+  version marker (e.g. introduce `KleinField` v2) is **flagged for review**;
+  the patch does not bump any schema version itself.
+- Comments referring to "Gravity Well", "Φ_grav", "gravity well attractor"
+  → "Attractor (Gaussian refractive-index well)", "Φ_attr", etc. The
+  Gaussian functional form is unchanged.
+- `FieldType.REPULSOR` docstring rewritten as a refractive-index barrier
+  (`n_eff` large in the singular region) instead of using force language.
+  The inverse-square functional form is unchanged.
+- `compute_action(...)` → `compute_path_cost(...)`. `__all__` and the
+  package re-export in `src/klein/sim/__init__.py` updated. No other call
+  sites in the repo referenced `compute_action`.
+- Docstring / comment phrase "Action cost" → "path cost" / "optical-path
+  cost" throughout. Unit name **Geodesic Meter (Gm)** retained.
+- `WaveSolver` class docstring and `compute_transition_probabilities`
+  docstring rewritten in terms of conductances (Doyle-Snell), with the
+  `P(A) = (1/S(A)) / (1/S(A) + 1/S(B))` formula reframed as
+  `c_A / (c_A + c_B)`.
+- Added a `TODO(reframe/fermat-conductance)` note in `WaveSolver` for an
+  optional future temperature-like knob `P proportional to (1/cost)^beta`
+  with `beta = 1` matching current behaviour. Not implemented; **flagged
+  for review** as a future extension consistent with the conductance
+  interpretation.
+
+Documentation, examples, schemas, and fixtures:
+
+- `examples/gravity_well.klein` renamed to `examples/attractor.klein` and
+  its `KleinField.type` string changed from `"gravity_well"` to
+  `"attractor"`. `.github/workflows/ci.yml` and `examples/README.md`
+  updated to follow.
+- `tests/test_physics.py`: `KleinField(type="gravity", ...)` fixtures
+  changed to `KleinField(type="attractor", ...)`; the
+  `test_gravity_well` function renamed to `test_attractor`. Numerical
+  output is **identical** before and after the rename because both the
+  old `FieldType.GRAVITY.value = "gravity"` and the new
+  `FieldType.ATTRACTOR.value = "attractor"` triggered the same Gaussian
+  branch in `FieldManager.compute_phi`.
+- `docs/API.md`, `docs/GLOSSARY.md`, `docs/HARDWARE_INTEGRATION.md`, and
+  `specs/notes/modal-substrate-theory.md` reframed to use Fermat /
+  Doyle-Snell language. The math display is unchanged.
+- `specs/physics_engine.md` substantially rewritten under the new
+  vocabulary; all numerical formulas, clamps, constants, and the A*
+  heuristic are unchanged.
+
+Numerical behaviour intentionally **not** changed:
+
+- Edge cost formula `L * (Z + epsilon) * (1 - Phi_local)`.
+- `PHI_MAX = 0.95` clamp.
+- `EPSILON = 0.001` floor.
+- `compute_heuristic` (admissible A* heuristic with `Z_min_global`).
+- Gaussian / inverse-square functional forms of the two field types.
+- `WaveSolver` `1/cost` transition probability (i.e. Doyle-Snell `beta = 1`).
+- Unit name `Geodesic Meters (Gm)`.
+
+Full `pytest -q` passes (`439 passed, 3 skipped`) on this branch; HAIL
+goldens, vector intent, and claim boundaries are unchanged.
+
+> **Reviewer note: latent docs/code mismatch fixed as a side-effect.**
+> Prior to this reframe, `FieldType.GRAVITY.value` was the string
+> `"gravity"`, while every checked-in example fixture (e.g.
+> `examples/gravity_well.klein`) and every doc snippet
+> (`docs/API.md`, `docs/GLOSSARY.md`, `examples/README.md`) used
+> `"gravity_well"`. `FieldManager.compute_phi` compares
+> `f.type.lower() == FieldType.GRAVITY.value`, so `"gravity_well"` never
+> matched and the example's "gravity well" was silently a no-op. After this
+> reframe both the enum value and the example fixture are the string
+> `"attractor"`, so the example now actually applies the attractor it
+> always claimed to. The example is a CI smoke artifact (uploaded JSONL,
+> no golden comparison), so this surfaces as a slightly different path /
+> cost in CI logs only and does not affect any test assertion or HAIL
+> golden. Flagged here so reviewers can confirm intent rather than be
+> surprised by the JSONL diff in the artifact upload.
+
 ### Public-alpha mirror patch (post `1.0.0a0`)
 
 - Anchored the setuptools `MANIFEST` entry in `.gitignore` to `/MANIFEST`. The unanchored
