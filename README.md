@@ -1,9 +1,7 @@
 # Klein Conformance Protocol (KCP)
 
 KCP is a protocol stack for producing, packaging, signing, and independently verifying evidence of
-physical-substrate execution attempts under uncertainty. It is aimed at the "TCP/IP-for-matter"
-problem: making heterogeneous programmable-matter substrates describable, testable, and comparable
-without pretending physical execution is deterministic.
+physical-substrate execution attempts under uncertainty. It is aimed at making heterogeneous programmable-matter substrates describable, testable, and comparable without pretending physical execution is deterministic.
 
 ## Current Alpha Status
 
