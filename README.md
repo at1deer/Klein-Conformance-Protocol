@@ -1,3 +1,5 @@
+<img width="2200" height="1498" alt="gate-formation rulebook" src="https://github.com/user-attachments/assets/e000df43-3ba7-44f1-93dd-d10756c40ff3" />
+
 # Klein Conformance Protocol (KCP)
 
 KCP is a protocol stack for producing, packaging, signing, and independently verifying evidence of physical-substrate execution attempts under uncertainty. It is aimed at making heterogeneous programmable-matter substrates describable, testable, and comparable without pretending physical execution is deterministic.
