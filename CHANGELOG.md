@@ -6,6 +6,11 @@ All notable changes to this project are documented here.
 
 ### Public-alpha mirror patch (post `1.0.0a0`)
 
+- Anchored the setuptools `MANIFEST` entry in `.gitignore` to `/MANIFEST`. The unanchored
+  rule (boilerplate from the Python `.gitignore` template) was matching every `manifest/`
+  directory on case-insensitive filesystems (Windows/macOS), so the public mirror was
+  shipping without the per-vector signed-manifest fixtures or the directory-format Run
+  Bundle manifest fixture.
 - Restored signed-manifest vector fixtures that were missing from the public mirror:
   `manifest/run_manifest_signed.json` and `manifest/trust_policy.json` for the v1 vectors
   `012_hard_signed_run_manifest`, `N020_signed_manifest_tampered_payload`,
@@ -17,15 +22,32 @@ All notable changes to this project are documented here.
   53/53 with N020/N021/N022 failing for their declared expected error codes.
 - Restored `tests/fixtures/run_bundle/valid_signed_run_dir/manifest/run_manifest.json` so
   the bundled directory-format Run Bundle fixture is complete.
+- Rewrote stale declared `sha256` references that were CRLF-poisoned during fixture
+  generation on Windows (the prior fixture-author's working tree had `core.autocrlf=true`,
+  so the declared hashes were computed against CRLF working-tree bytes while the committed
+  blob is LF). Fixed declarations:
+  - `raw_device_logs[0].sha256` in
+    `tests/fixtures/recorded_run/dmf_dry_run_recorded_run/recorded_run.json`,
+    `tests/fixtures/recorded_run/mock_recorded_run/recorded_run.json`, and
+    `tests/fixtures/recorded_run/opendrop_dry_run_recorded_run/recorded_run.json`;
+  - `hashes.run_manifest` and `hashes.trust_policy` in
+    `tests/fixtures/run_bundle/valid_signed_run_dir/bundle.json`.
+  Without this fix, `klein-recorded-run validate` fails on Linux fresh clones with
+  `RAW_DEVICE_LOG_HASH_MISMATCH`, and `test_run_bundle_verify_zip_and_directory_match_result_schema`
+  fails with `RUN_BUNDLE_MISSING_ENTRY`. A previous iteration of this patch mistakenly
+  reported these declarations as correct; the Windows `autocrlf=true` smudge was masking
+  the mismatch in the working tree only. A repo-wide audit of declared sha256 references
+  against on-disk bytes now reports 0 stale declarations (excluding the intentionally
+  wrong `9999…9999` HAIL digest in `N022`, which is the negative fixture's whole point).
+- Re-normalized affected text fixtures to LF on disk so working-tree byte-level checks
+  match the committed blob bytes on every platform.
 - Documented the Rust verifier's required toolchain: the committed `Cargo.lock` is
   lockfile v4 and several dependencies require `edition2024`. Validated with `cargo 1.95.0`;
   the Ubuntu 24.04 distro-packaged `cargo 1.75` is too old. Updated `verifiers/rust/README.md`,
   `docs/VALIDATION_MATRIX.md`, `README.md`, `examples/public-alpha/DEMO_COMMANDS.md`, and
   `examples/public-alpha/EXPECTED_OUTPUTS.md` to call this out.
 
-No HAIL goldens, vector intent, or claim boundaries changed in this patch. Recorded-run raw
-device-log hash fixtures were re-checked and already match their declared `sha256`
-references on a fresh clone; no fixture edits were required for that path.
+No HAIL goldens, vector intent, or claim boundaries changed in this patch.
 
 ### Other
 

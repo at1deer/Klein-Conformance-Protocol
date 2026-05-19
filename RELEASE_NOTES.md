@@ -2,10 +2,13 @@
 
 ## Public-alpha mirror patch
 
-Following a fresh-clone review of the public mirror, this patch restores release-safe
-artifacts that an external reviewer found missing or under-documented. No protocol features,
-HAIL semantics, v1 vector intent, or claim boundaries changed.
+Following two fresh-clone reviews of the public mirror, this patch restores release-safe
+artifacts that an external reviewer found missing, mis-declared, or under-documented.
+No protocol features, HAIL semantics, v1 vector intent, or claim boundaries changed.
 
+- Anchored the setuptools `MANIFEST` entry in `.gitignore` to `/MANIFEST`. The unanchored
+  rule was matching every `manifest/` directory on case-insensitive filesystems, so the
+  public mirror was shipping without the per-vector signed-manifest fixtures.
 - Restored signed-manifest vector fixtures (`manifest/run_manifest_signed.json` and
   `manifest/trust_policy.json`) for `012_hard_signed_run_manifest`,
   `N020_signed_manifest_tampered_payload`, `N021_signed_manifest_untrusted_key`, and
@@ -14,14 +17,23 @@ HAIL semantics, v1 vector intent, or claim boundaries changed.
   reasons rather than their intended tamper / untrusted-key / wrong-HAIL-digest semantics.
 - Restored `tests/fixtures/run_bundle/valid_signed_run_dir/manifest/run_manifest.json`
   so the directory-format Run Bundle fixture is complete.
+- Rewrote stale declared `sha256` references that were CRLF-poisoned during fixture
+  generation on Windows. Without this fix, `klein-recorded-run validate` fails on Linux
+  fresh clones with `RAW_DEVICE_LOG_HASH_MISMATCH`, and
+  `test_run_bundle_verify_zip_and_directory_match_result_schema` fails with
+  `RUN_BUNDLE_MISSING_ENTRY`. The Windows `autocrlf=true` smudge was masking these
+  mismatches in the working tree only. Fixed fields:
+  - `raw_device_logs[0].sha256` in `dmf_dry_run_recorded_run/recorded_run.json`,
+    `mock_recorded_run/recorded_run.json`, and `opendrop_dry_run_recorded_run/recorded_run.json`;
+  - `hashes.run_manifest` and `hashes.trust_policy` in
+    `tests/fixtures/run_bundle/valid_signed_run_dir/bundle.json`.
+- Re-normalized affected text fixtures to LF so working-tree byte-level checks match the
+  committed blob bytes on every platform.
 - Documented the Rust verifier's required toolchain: the committed `Cargo.lock` is
   lockfile v4 and several dependencies require `edition2024`. Validated with
   `cargo 1.95.0`; the Ubuntu 24.04 distro-packaged `cargo 1.75` is too old. See
   `verifiers/rust/README.md`, `docs/VALIDATION_MATRIX.md`, `README.md`,
   `examples/public-alpha/DEMO_COMMANDS.md`, and `examples/public-alpha/EXPECTED_OUTPUTS.md`.
-
-Recorded-run raw device-log hash fixtures were re-verified on a fresh clone and already
-match the declared `sha256` references on disk; no fixture edits were required.
 
 ## Summary
 

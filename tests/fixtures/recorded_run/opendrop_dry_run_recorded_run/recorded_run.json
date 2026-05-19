@@ -21,7 +21,7 @@
       "log_format": "jsonl",
       "log_id": "log-0001",
       "path": "raw/device-log.jsonl",
-      "sha256": "sha256:d77cb143d9cef0914f98aca761804667ca17a9ee7e340dbde21aae3d64212533",
+      "sha256": "sha256:2ef42ff2e38360830f04672d23491151f1806d8512636f46e55775913204382a",
       "source_type": "mock_hardware"
     }
   ],

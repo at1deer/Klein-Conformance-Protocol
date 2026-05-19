@@ -2,11 +2,19 @@
 
 Current as of this alpha release-candidate prep pass. Counts may change after future protocol work.
 
-This transcript reflects the post-fresh-clone patch that restored missing signed-manifest
-fixtures (`012_hard_signed_run_manifest`, `N020_signed_manifest_tampered_payload`,
-`N021_signed_manifest_untrusted_key`, `N022_signed_manifest_wrong_hail_digest`) and the
-directory-format Run Bundle manifest fixture, and added Rust toolchain requirement
-documentation. See `RELEASE_NOTES.md` and `CHANGELOG.md` for details.
+This transcript reflects the post-fresh-clone patch that:
+
+- restored missing signed-manifest fixtures (`012_hard_signed_run_manifest`,
+  `N020_signed_manifest_tampered_payload`, `N021_signed_manifest_untrusted_key`,
+  `N022_signed_manifest_wrong_hail_digest`) and the directory-format Run Bundle
+  manifest fixture, after anchoring the unanchored `MANIFEST` `.gitignore` entry
+  that was hiding them on case-insensitive filesystems;
+- rewrote stale CRLF-poisoned declared `sha256` references in three
+  `recorded_run.json` files and one `bundle.json` (Windows `autocrlf=true` fixture
+  generation drift; declared hashes are now LF-correct against the committed blobs);
+- documented the Rust verifier toolchain requirement.
+
+See `RELEASE_NOTES.md` and `CHANGELOG.md` for details.
 
 ## Environment
 
