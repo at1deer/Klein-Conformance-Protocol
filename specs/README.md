@@ -1,8 +1,7 @@
 # Specs Index
 
-This directory contains KCP protocol, artifact, profile, algorithm, catalog, and historical notes.
-The split v1 specs are the current public-alpha reference. `specs/klein_protocol_master.md` is
-retained as January prototype context.
+This directory contains the current KCP protocol, artifact, profile, algorithm, and catalog specs.
+The split v1 specs are the public-alpha reference.
 
 ## Core Specs
 
@@ -54,7 +53,7 @@ Current alpha implemented:
 - `specs/profiles/dmf/opendrop-ewod-adapter-v1.md`
 - `specs/profiles/dmf/opendrop-transport-planning-v1.md`
 
-Target/future or profile roadmap context:
+Additional profile context:
 
 - `specs/profiles/dmf/dmf-opendrop-v1.md`
 
@@ -66,12 +65,6 @@ Target/future or profile roadmap context:
 
 - `specs/catalogs/conformance_levels.v1.json`: normative conformance-level catalog.
 - `src/klein/catalogs/conformance_levels.v1.json`: packaged copy used by installed CLIs.
-
-## Notes And Legacy Context
-
-- `specs/notes/modal-substrate-theory.md`: theory notes, not current alpha implementation.
-- `specs/klein_protocol_master.md`: January prototype context, not the current split-spec source of
-  truth.
 
 ## Claim Layers
 

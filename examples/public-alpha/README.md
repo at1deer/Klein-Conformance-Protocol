@@ -34,7 +34,6 @@ GPL-licensed code.
 
 - `examples/public-alpha/DEMO_COMMANDS.md`
 - `examples/public-alpha/EXPECTED_OUTPUTS.md`
-- `examples/public-alpha/RELEASE_ASSETS.md`
 - `examples/public-alpha/VALIDATION_TRANSCRIPT.md`
 
 ## Non-Claims

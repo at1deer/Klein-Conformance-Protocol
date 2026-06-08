@@ -73,12 +73,11 @@ Documentation, examples, schemas, and fixtures:
   old `FieldType.GRAVITY.value = "gravity"` and the new
   `FieldType.ATTRACTOR.value = "attractor"` triggered the same Gaussian
   branch in `FieldManager.compute_phi`.
-- `docs/API.md`, `docs/GLOSSARY.md`, `docs/HARDWARE_INTEGRATION.md`, and
-  `specs/notes/modal-substrate-theory.md` reframed to use Fermat /
+- Public API and glossary docs reframed terminology toward Fermat /
   Doyle-Snell language. The math display is unchanged.
-- `specs/physics_engine.md` substantially rewritten under the new
-  vocabulary; all numerical formulas, clamps, constants, and the A*
-  heuristic are unchanged.
+- Supporting internal physics notes were rewritten under the new vocabulary;
+  all numerical formulas, clamps, constants, and the A* heuristic are
+  unchanged.
 
 Numerical behaviour intentionally **not** changed:
 
@@ -187,8 +186,8 @@ No HAIL goldens, vector intent, or claim boundaries changed in this patch.
 - Added OpenDrop/EWOD Adapter Skeleton v1 as a dry-run/config-only boundary with config/status/command-intent schemas, row-major electrode mapping, `klein-opendrop-backend`, dry-run OpenDrop intent/raw-log/observation generation, adapter-produced recorded-run fixtures, conformance-level catalog entries, and Rust OpenDrop fixture checks.
 - Added OpenDrop Transport Planning v1 as a disabled experimental transport boundary with config and serial-command schemas, deterministic command-stream serialization, `klein-opendrop-backend validate-transport` / `serialize-runbook`, strict current-alpha hardware IO and endpoint rejection, cross-language fixtures, and GPL/vendor-boundary documentation.
 - Tightened OpenDrop current-alpha schemas so hardware IO, active endpoints/baud rates, connected device status, and hardware-allowed serial commands fail schema validation as well as runtime validation.
-- Reworked public-alpha documentation with a reader-facing README, architecture map, current-alpha claims page, quickstart, validation matrix, bundle verification guide, DMF profile overview, adapter guide, roadmap, release checklist, and specs/docs indexes.
-- Added `docs/WHITEPAPER.md` as the public-alpha whitepaper synthesis for the current evidence, conformance, verifier, DMF/EWOD, adapter, and non-claim boundaries.
+- Reworked public-alpha documentation with a reader-facing README, architecture map, current-alpha claims page, quickstart, validation matrix, bundle verification guide, DMF profile overview, adapter guide, and specs/docs indexes.
+- Moved draft whitepaper, roadmap/release planning, site-copy drafts, legacy migration notes, future integration guides, theory notes, and historical prototype docs out of the tracked public surface.
 - Added Trusted Timestamp Profile v1 stub with schemas, mock/local profile and token fixtures, `klein-timestamp`, canonical token/profile hashing, target-hash binding checks, conformance-level catalog entry, and Rust fixture parity without claiming trusted timestamp proof.
 - Added Attestation Profile v1 stub with schemas, none/mock profile and statement fixtures, `klein-attestation`, canonical statement/profile hashing, subject/backend binding checks, conformance-level catalog entry, and Rust fixture parity without claiming hardware attestation proof.
 

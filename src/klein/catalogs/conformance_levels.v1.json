@@ -365,7 +365,7 @@
         "fixtures": [],
         "specs": [
           "specs/profiles/dmf/opendrop-ewod-adapter-v1.md",
-          "docs/TARGET_V1_TEST_PLAN.md"
+          "specs/core/conformance-levels-v1.md"
         ],
         "tests": []
       },
@@ -396,7 +396,7 @@
         "fixtures": [],
         "specs": [
           "specs/profiles/dmf/opendrop-ewod-adapter-v1.md",
-          "docs/TARGET_V1_TEST_PLAN.md"
+          "specs/core/conformance-levels-v1.md"
         ],
         "tests": []
       },
@@ -1099,7 +1099,7 @@
       "evidence": {
         "fixtures": [],
         "specs": [
-          "docs/TARGET_V1_TEST_PLAN.md",
+          "specs/core/conformance-levels-v1.md",
           "specs/core/recorded-device-run-v1.md"
         ],
         "tests": []
@@ -1170,7 +1170,7 @@
       "evidence": {
         "fixtures": [],
         "specs": [
-          "docs/TARGET_V1_TEST_PLAN.md"
+          "specs/core/conformance-levels-v1.md"
         ],
         "tests": []
       },
@@ -1199,7 +1199,7 @@
       "evidence": {
         "fixtures": [],
         "specs": [
-          "docs/TARGET_V1_TEST_PLAN.md"
+          "specs/core/conformance-levels-v1.md"
         ],
         "tests": []
       },
@@ -1227,7 +1227,7 @@
       "evidence": {
         "fixtures": [],
         "specs": [
-          "docs/TARGET_V1_TEST_PLAN.md"
+          "specs/core/conformance-levels-v1.md"
         ],
         "tests": []
       },
@@ -1257,7 +1257,7 @@
       "evidence": {
         "fixtures": [],
         "specs": [
-          "docs/TARGET_V1_TEST_PLAN.md"
+          "specs/core/conformance-levels-v1.md"
         ],
         "tests": []
       },
@@ -1286,7 +1286,7 @@
       "evidence": {
         "fixtures": [],
         "specs": [
-          "docs/TARGET_V1_TEST_PLAN.md"
+          "specs/core/conformance-levels-v1.md"
         ],
         "tests": []
       },
@@ -1315,7 +1315,7 @@
       "evidence": {
         "fixtures": [],
         "specs": [
-          "docs/TARGET_V1_TEST_PLAN.md"
+          "specs/core/conformance-levels-v1.md"
         ],
         "tests": []
       },

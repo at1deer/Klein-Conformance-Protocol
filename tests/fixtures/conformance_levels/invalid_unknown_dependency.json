@@ -587,7 +587,7 @@
       "evidence": {
         "fixtures": [],
         "specs": [
-          "docs/TARGET_V1_TEST_PLAN.md"
+          "specs/core/conformance-levels-v1.md"
         ],
         "tests": []
       },
@@ -616,7 +616,7 @@
       "evidence": {
         "fixtures": [],
         "specs": [
-          "docs/TARGET_V1_TEST_PLAN.md"
+          "specs/core/conformance-levels-v1.md"
         ],
         "tests": []
       },
@@ -645,7 +645,7 @@
       "evidence": {
         "fixtures": [],
         "specs": [
-          "docs/TARGET_V1_TEST_PLAN.md"
+          "specs/core/conformance-levels-v1.md"
         ],
         "tests": []
       },
@@ -673,7 +673,7 @@
       "evidence": {
         "fixtures": [],
         "specs": [
-          "docs/TARGET_V1_TEST_PLAN.md"
+          "specs/core/conformance-levels-v1.md"
         ],
         "tests": []
       },
@@ -703,7 +703,7 @@
       "evidence": {
         "fixtures": [],
         "specs": [
-          "docs/TARGET_V1_TEST_PLAN.md"
+          "specs/core/conformance-levels-v1.md"
         ],
         "tests": []
       },
@@ -732,7 +732,7 @@
       "evidence": {
         "fixtures": [],
         "specs": [
-          "docs/TARGET_V1_TEST_PLAN.md"
+          "specs/core/conformance-levels-v1.md"
         ],
         "tests": []
       },
@@ -761,7 +761,7 @@
       "evidence": {
         "fixtures": [],
         "specs": [
-          "docs/TARGET_V1_TEST_PLAN.md"
+          "specs/core/conformance-levels-v1.md"
         ],
         "tests": []
       },

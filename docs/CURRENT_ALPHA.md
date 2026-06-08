@@ -1,7 +1,6 @@
 # Current Alpha Claims
 
-This page is the human-readable summary of `docs/CLAIMS_LEDGER.md`. The ledger remains the detailed
-source for individual claim IDs and evidence references.
+This page summarizes the implemented public-alpha claim surface and the explicit non-claims.
 
 ## Current Implemented Claims
 

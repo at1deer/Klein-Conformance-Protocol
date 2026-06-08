@@ -319,5 +319,5 @@ Stored as `.kleinc` containers or loose folder format.
 ## See Also
 
 - [API Reference](API.md)
-- [Protocol Specification](../specs/klein_protocol_master.md)
-- [Physics Engine](../specs/physics_engine.md)
+- [Specs Index](../specs/README.md)
+- [KCP Core v1](../specs/core/kcp-core-v1.md)

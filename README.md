@@ -54,10 +54,9 @@ Current alpha does not claim:
 - OpenDrop serial hardware transport;
 - production certification.
 
-These are not abandoned goals, tracked as `TARGET_V1` or `LONG_HORIZON` work in
-`docs/CLAIMS_LEDGER.md`, `docs/CURRENT_ALPHA.md`, and `docs/ROADMAP.md`.
+These are future-work boundaries, not current public-alpha claims. For the implemented claim
+surface, read `docs/CURRENT_ALPHA.md`.
 
-For the current public-alpha synthesis, read `docs/WHITEPAPER.md`.
 For a runnable public demo path, start with `examples/public-alpha/README.md`.
 
 ## Quickstart
@@ -146,14 +145,12 @@ GPL-licensed code.
 
 Read `docs/ADAPTERS.md` and `docs/VERIFY_A_BUNDLE.md` for the current boundaries.
 
-## Roadmap
+## Future Work Boundaries
 
-Near-term work is expected to move from the timestamp and attestation profile
+Protocol work after the current alpha is expected to move from timestamp and attestation profile
 stubs toward external timestamp authority validation, real attestation verification, real backend
-planning, hardware source semantics, and eventually hardware-backed evidence under an explicit threat
-model.
-
-See `docs/ROADMAP.md`.
+planning, hardware source semantics, and hardware-backed evidence under an explicit threat model.
+Those remain non-claims until implemented and validated.
 
 ## Repository Layout
 
@@ -163,7 +160,7 @@ See `docs/ROADMAP.md`.
 - `tests/vectors/v1/`: authoritative v1 conformance vectors.
 - `tests/fixtures/`: cross-language, verifier, profile, adapter, and recorded-run fixtures.
 - `verifiers/rust/`: first non-Python independent verifier slice.
-- `docs/`: public-alpha guides, claims, roadmap, and validation docs.
+- `docs/`: public-alpha guides, current claims, and validation docs.
 
 ## Development Validation Matrix
 

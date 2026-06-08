@@ -780,6 +780,6 @@ SOLVER_VERSION = "klein-sim/1.0.0"
 ## See Also
 
 - [Glossary of Terms](GLOSSARY.md)
-- [Protocol Specification](../specs/klein_protocol_master.md)
-- [Physics Engine](../specs/physics_engine.md)
+- [Specs Index](../specs/README.md)
+- [KCP Core v1](../specs/core/kcp-core-v1.md)
 - [Canonicalization Rules](../specs/algorithms/klein_canon.jsonl.v1.md)

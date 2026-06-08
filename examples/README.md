@@ -174,5 +174,5 @@ optical-path cost. Inverse-square: Φ(p) = −strength / ||p − C||².
 
 - [API Documentation](../docs/API.md)
 - [Glossary](../docs/GLOSSARY.md)
-- [Physics Engine Specification](../specs/physics_engine.md)
-- [Protocol Specification](../specs/klein_protocol_master.md)
+- [Specs Index](../specs/README.md)
+- [KCP Core v1](../specs/core/kcp-core-v1.md)

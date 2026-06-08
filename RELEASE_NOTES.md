@@ -39,8 +39,7 @@ No protocol features, HAIL semantics, v1 vector intent, or claim boundaries chan
 
 This is the first public alpha of the Klein Conformance Protocol evidence and verification stack.
 It packages the current KCP core, DMF/EWOD simulator profile, trust/bundle/verifier machinery,
-dry-run adapter skeletons, public demo assets, and whitepaper documentation into a release-candidate
-state.
+dry-run adapter skeletons, and public demo assets into a release-candidate state.
 
 KCP is an evidence, conformance, and verification protocol stack for physical-substrate execution
 attempts under uncertainty. This alpha verifies evidence artifacts and declared bindings. It does
@@ -75,7 +74,6 @@ not prove physical execution.
 - Trusted Timestamp Profile v1 stub with mock/local timestamp profile and token validation.
 - Attestation Profile v1 stub with none/mock attestation profile and statement validation.
 - Public demo package under `examples/public-alpha/`.
-- Whitepaper v1 at `docs/WHITEPAPER.md`.
 
 ## What Does Not Work / Non-Claims
 
@@ -91,7 +89,7 @@ This alpha does not claim:
 - hardware attestation proof, hardware identity proof, or TPM/TEE verification;
 - production certification.
 
-These are target or future claims tracked in the roadmap and claims ledger.
+These are target or future claims and remain explicit non-claims for this alpha.
 
 ## Validation Summary
 
@@ -106,8 +104,7 @@ Current expected validation results:
 
 ## Recommended Release Assets
 
-See `examples/public-alpha/RELEASE_ASSETS.md` for the release asset manifest. Recommended assets
-include:
+Recommended release assets include:
 
 - source distribution: `dist/klein_protocol-1.0.0a0.tar.gz`;
 - wheel: `dist/klein_protocol-1.0.0a0-py3-none-any.whl`;
@@ -117,7 +114,6 @@ include:
 - OpenDrop transport planning fixtures:
   `tests/fixtures/backends/dmf/opendrop/opendrop_transport_none.json` and
   `tests/fixtures/backends/dmf/opendrop/command_stream_minimal.jsonl`;
-- whitepaper: `docs/WHITEPAPER.md`;
 - validation transcript: `examples/public-alpha/VALIDATION_TRANSCRIPT.md`;
 - Rust verifier source: `verifiers/rust/`;
 - fixture index: `tests/fixtures/cross_language/fixtures.json`.
@@ -139,7 +135,7 @@ include:
 - `tests/fixtures/crypto/backend_test_ed25519_private.pem` is an intentional public deterministic
   test fixture key only, not a production signing or backend identity key.
 
-## Next Roadmap Items
+## Future Work Items
 
 - Manual alpha release tag decision.
 - External timestamp authority / RFC 3161-like validation beyond the mock/local timestamp stub.

@@ -122,3 +122,20 @@ Thumbs.db
 # Project-specific
 *.kleinc.tmp
 *.hail.jsonl
+
+# Local-only internal and draft documentation
+RELEASE_MANIFEST.md
+docs/CLAIMS_LEDGER.md
+docs/HARDWARE_INTEGRATION.md
+docs/LEGACY_MIGRATION_PLAN.md
+docs/RELEASE_CHECKLIST.md
+docs/ROADMAP.md
+docs/SENSING_INTEGRATION.md
+docs/TARGET_V1_TEST_PLAN.md
+docs/WHITEPAPER.md
+docs/site/
+examples/public-alpha/RELEASE_ASSETS.md
+specs/klein_protocol_master.md
+specs/notes/
+specs/physics_engine.md
+whitepaper/
